@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "removeComments": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "alwaysStrict": true,
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "allowSyntheticDefaultImports": true, 
+    "esModuleInterop": true,  
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "./src/test",
+    "*.spec.ts"
+  ]
+}
