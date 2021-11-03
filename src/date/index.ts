@@ -1,24 +1,60 @@
 import { anyToStringFn } from '../type'
 
+function minLength(value: any, len: number) {
+	return String(value).length < len ? `0${value}` : value;
+}
+
+function date(format: string, timestamp: string): string {
+
+	let time: Date = new Date(timestamp);
+	let year: number = time.getFullYear();
+	let day: number = time.getDay();
+	let month: number = time.getMonth();
+	let hour: number = time.getHours();
+	let minutes: number = time.getMinutes();
+	let seconds: number = time.getSeconds()
+
+	let formatlist: { reg: String, value: number | string }[] = [
+		{ reg: 'YYYY', value: minLength(year, 4) },
+		{ reg: 'yyyy', value: minLength(year, 4) },
+		{ reg: 'mm', value: minLength(month, 2) },
+		{ reg: 'dd', value: minLength(day, 2) },
+		{ reg: 'hh', value: minLength(hour, 2) },
+		{ reg: 'mm', value: minLength(minutes, 2) },
+		{ reg: 'ss', value: minLength(seconds, 2) },
+	]
+
+	formatlist.forEach((item: { reg: String, value: number | string }): void => {
+		format = format.replace(item.reg, item.value);
+	})
+
+	return format;
+}
+
 // 支持时间戳/ (普通时间, 时间格式), , 指定时区, 指定返回格式
 
 function BaseToDateString(time: any): void {
-	this.time = time;
+	this.time = new Date().getTime();
 	this.formatStr = "YYYY-MM-DD";
-	this.timezone = 8;
+	this.formTimezone = 8;
+	this.toTimezone = 8;
 }
 
 // 指定 输入时间 时区
-BaseToDateString.prototype.tz = function (timezone) {
-	this.timezone = timezone;
-	// this.time = 
+BaseToDateString.prototype.FormTz = function (timezone: number) {
+	this.formTimezone = timezone;
+	return this;
+}
+
+BaseToDateString.prototype.toTz = function (timezone: number) {
+	this.toTimezone = timezone;
 	return this;
 }
 
 // 指定日期格式化输出
 BaseToDateString.prototype.format = function (format) {
-	this.formatStr += format;
-	return this.time;
+	this.formatStr = format;
+	return date(this.formatStr, this.time);
 }
 
 export {
