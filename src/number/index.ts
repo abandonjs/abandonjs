@@ -5,6 +5,12 @@ const BaseToNumber: anyToNumberFn = (value: any): number => {
 	return +value;
 }
 
+const isNumber: boolean = (value: any): boolean => {
+	return typeof value !== 'undefined'
+		&& !isNaN(Number(value))
+}
+
 export {
-	BaseToNumber
+	BaseToNumber,
+	isNumber,
 }

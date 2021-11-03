@@ -6,8 +6,12 @@ const { log } = RH;
 
 // log(new RH.BaseToDateString('yyyy-mm-dd').format('123'))
 // log('--六一--', new RH.BaseToDateString('2021/06/01').FormTz(9).toTz(9).format('yyyy-mm-dd'))
-log('--今天--', new RH.BaseToDateString('').FormTz(9).toTz(9).format('yyyy-mm-dd hh:mm:ss'))
-
+// log('--今天--', new RH.BaseToDateString('').FormTz(9).toTz(9).format('yyyy-mm-dd hh:mm:ss'))
+log(
+	RH.uuid(),
+	RH.name(),
+	// RH.name.name(),
+)
 // RH.log(RH.BaseToString([1, 4, 5]))
 // RH.log(RH.BaseToString(`1, 4, 5`))
 // RH.log(RH.BaseToNumber('1111fhjsdhf'))

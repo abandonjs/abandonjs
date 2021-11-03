@@ -1,5 +1,5 @@
-import { stringToString } from '../type'
-
+import { stringToString } from '../type';
+import * as RandomName from './random/name'
 /**
  * 
  * @param {string} value uuid 的格式 default:'xxxxxxxx-xxxx-xxxx-yxxx-xxxxxxxxxxxx' 
@@ -7,7 +7,7 @@ import { stringToString } from '../type'
  * @description 生成随机uid
  */
 
-export const uuid: stringToString = (value: string): string => {
+const uuid: stringToString = (value: string): string => {
 	let val: string = value || 'xxxxxxxx-xxxx-xxxx-yxxx-xxxxxxxxxxxx';
 	let d: number = new Date().getTime();   // 随机种子
 	return val.replace(/[xy]/g, function (c: string): string {
@@ -17,5 +17,10 @@ export const uuid: stringToString = (value: string): string => {
 	});
 }
 
+const _mock = Object.assign(
+	{ uuid, },
+	RandomName
+)
 
+export default _mock;
 
