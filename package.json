@@ -1,8 +1,8 @@
 {
-  "name": "express-ts",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "rh-methods",
+  "version": "0.0.2",
+  "description": "方法包",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
@@ -11,18 +11,19 @@
     "test-c": "jest --coverage",
     "restart": "rimraf dist && npm run build && npm start",
     "start": "node ./dist/index.js",
-    "prod": "npm run build && npm run start"
+    "prod": "npm run build && npm run start",
+    "pub": "npm publish"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+  },
+  "devDependencies": {
     "@types/node": "^16.11.6",
     "rimraf": "^3.0.2",
     "ts-node-dev": "^1.1.8",
-    "typescript": "^4.4.4"
-  },
-  "devDependencies": {
+    "typescript": "^4.4.4",
     "@types/jest": "^27.0.2",
     "jest": "^27.3.1",
     "node-notifier": "^8.0.2",
