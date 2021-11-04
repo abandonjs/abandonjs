@@ -14,8 +14,10 @@
     "prod": "npm run build && npm run start",
     "pub": "npm publish"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "typescript"
+  ],
+  "author": "ruihuag",
   "license": "ISC",
   "dependencies": {
   },

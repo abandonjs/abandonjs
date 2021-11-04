@@ -8,17 +8,28 @@ const { log } = RH;
 // log('--六一--', new RH.BaseToDateString('2021/06/01').FormTz(9).toTz(9).format('yyyy-mm-dd'))
 // log('--今天--', new RH.BaseToDateString('').FormTz(9).toTz(9).format('yyyy-mm-dd hh:mm:ss'))
 log(
-	// _mock.mock({ 'name': '@name' })
+	_mock.mock({ 'name|2': { a: 'a', 'b': 'b', c: 'c' } }),
+	_mock.mock({ 'name|1': ['a', 'b', 'c'] }),// 多选一
+	_mock.mock({ 'name|2-4': '@name' }),
+	_mock.mock({ 'name': '@name', 'name2': '@name' }),
+	_mock.mock('@name'),
 	// _mock.Random.name()
 	// _mock.Random.name(),
-	_mock.mock('@name'),
-	_mock.mock({ 'name': '@name' }),
-	_mock.mock({ 'name|2': '@name' }),
-	_mock.mock({
-		'name|2': {
-			'cn': '@name',
-		}
-	}),
+	// _mock.mock({
+	// 	'name|2': {
+	// 		'cn': '@name',
+	// 	},
+	// 	'name2|2': {
+	// 		'cn': '@name',
+	// 	}
+	// }),
+	// _mock.mock({
+	// 	'name|2': {
+	// 		'cn|3': {
+	// 			'cnn|2': '@name',
+	// 		}
+	// 	}
+	// }),
 	// RH.uuid(),
 	// RH.name(),
 	// RH.name.name(),

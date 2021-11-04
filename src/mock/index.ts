@@ -2,6 +2,7 @@ import { stringToString } from '../type'
 import Handler from './handler'
 import Random from './random'
 import Util from './util'
+
 /**
  * @param {string} value uuid 的格式 default:'xxxxxxxx-xxxx-xxxx-yxxx-xxxxxxxxxxxx' 
  * @returns {string} uuid
@@ -50,16 +51,18 @@ const _mock = Object.assign(
 */
 
 
-_mock.mock = function (rurl, rtype, template): any {
+_mock.mock = function (template: any,
+	// rtype, template
+): any {
 
 	// _mock.mock(template)
-	if (arguments.length === 1) return Handler.gen(rurl);
+	if (arguments.length === 1) return Handler.generate(template);
 
 	// _mock.mock(rurl, template)
-	if (arguments.length === 2) {
-		template = rtype;
-		rtype = undefined;
-	}
+	// if (arguments.length === 2) {
+	// 	template = rtype;
+	// 	rtype = undefined;
+	// }
 
 	// 拦截 XHR ( 后续再制作 )
 	// if (XHR) window.XMLHttpRequest = XHR

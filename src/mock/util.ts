@@ -1,3 +1,5 @@
+import { tTemplate, iHandler2, tContext } from './type'
+
 const Util = {};
 
 
@@ -43,7 +45,7 @@ Util.isNumeric = (value: any) => !isNaN(parseFloat(value)) && isFinite(value)
 
 
 // 用来判断是obj 类型 ( string, function, object )
-Util.type = function type(obj) {
+Util.type = function (obj) {
 	return (obj === null || obj === undefined)
 		? String(obj)
 		: Object.prototype.toString.call(obj).match(/\[object (\w+)\]/)[1].toLowerCase()
