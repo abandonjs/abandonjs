@@ -1,6 +1,6 @@
 // import * as  RH2 from '../index'
 // import RH3 from '../utils/Methods'
-import { RH, _methods, _number } from '../index'
+import { RH, _methods, _number, _mock } from '../index'
 
 const { log } = RH;
 
@@ -8,8 +8,13 @@ const { log } = RH;
 // log('--六一--', new RH.BaseToDateString('2021/06/01').FormTz(9).toTz(9).format('yyyy-mm-dd'))
 // log('--今天--', new RH.BaseToDateString('').FormTz(9).toTz(9).format('yyyy-mm-dd hh:mm:ss'))
 log(
-	RH.uuid(),
-	RH.name(),
+	// _mock.mock({ 'name': '@name' })
+	// _mock.Random.name()
+	_mock.Random.name(),
+	_mock.mock('@name'),
+	_mock.mock({ 'name': '@name' }),
+	// RH.uuid(),
+	// RH.name(),
 	// RH.name.name(),
 )
 // RH.log(RH.BaseToString([1, 4, 5]))
@@ -29,8 +34,6 @@ log(
 // RH.log(RH.uuid('xxxxxxxx-xxxx-xxxx-yxxx-xxxxxxxxx'));
 // RH.log(RH.uuid('xxxxxxxxxxxxx123123x'));
 // RH.log(RH.uuid());
-
-
 
 // RH.log('Methods', 'Methods.log', RH.BaseToNumber(123));
 // RH.log('Methods', 'Methods.log', _number.BaseToNumber(123));

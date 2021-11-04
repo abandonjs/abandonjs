@@ -1,7 +1,8 @@
-import { stringToString } from '../type';
-import * as RandomName from './random/name'
+import { stringToString } from '../type'
+import Handler from './handler'
+import Random from './random'
+
 /**
- * 
  * @param {string} value uuid 的格式 default:'xxxxxxxx-xxxx-xxxx-yxxx-xxxxxxxxxxxx' 
  * @returns {string} uuid
  * @description 生成随机uid
@@ -18,9 +19,21 @@ const uuid: stringToString = (value: string): string => {
 }
 
 const _mock = Object.assign(
-	{ uuid, },
-	RandomName
+	{
+		Handler,
+	},
+	{
+		uuid,
+		Random,
+	},
 )
 
-export default _mock;
+_mock.mock = function (rurl, rtype, template): any {
+	// _mock.mock(template)
+	if (arguments.length === 1) return Handler.gen(rurl);
+	_mock.mock(rurl, template)
+	// 拦截 XHR ( 后续再制作 )
+	return _mock;
+}
 
+export default _mock;
