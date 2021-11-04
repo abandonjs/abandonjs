@@ -23,12 +23,12 @@
  */
 
 import Constant from './constant'
+import { isEmptyToEmptyString } from '../string'
 import Random from './random'
 
-/* jshint -W041 */
 module.exports = {
 	parse: function (name) {
-		name = name == undefined ? '' : (name + '')
+		name = isEmptyToEmptyString(name)
 
 		let parameters = (name || '').match(Constant.RE_KEY)
 

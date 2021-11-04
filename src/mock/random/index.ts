@@ -1,8 +1,9 @@
-import * as RandomName from './name'
+import * as _name from './name'
+import * as _basis from './basis'
 
 const Random = Object.assign(
-	{},
-	RandomName
+	_name,
+	_basis,
 )
 
 

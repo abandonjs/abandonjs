@@ -10,9 +10,15 @@ const { log } = RH;
 log(
 	// _mock.mock({ 'name': '@name' })
 	// _mock.Random.name()
-	_mock.Random.name(),
+	// _mock.Random.name(),
 	_mock.mock('@name'),
 	_mock.mock({ 'name': '@name' }),
+	_mock.mock({ 'name|2': '@name' }),
+	_mock.mock({
+		'name|2': {
+			'cn': '@name',
+		}
+	}),
 	// RH.uuid(),
 	// RH.name(),
 	// RH.name.name(),

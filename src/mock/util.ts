@@ -1,7 +1,5 @@
 const Util = {};
 
-Util.isArray = (value: any): boolean => Array.isArray(value)
-Util.isObject = (value: any): boolean => value.contructor === Object;
 
 Util.extend = function () {
 	let target = arguments[0] || {},
@@ -39,8 +37,13 @@ Util.extend = function () {
 	return target
 }
 
+Util.isArray = (value: any): boolean => Array.isArray(value)
+Util.isObject = (value: any): boolean => value.contructor === Object;
+Util.isNumeric = (value: any) => !isNaN(parseFloat(value)) && isFinite(value)
+
+
+// 用来判断是obj 类型 ( string, function, object )
 Util.type = function type(obj) {
-	// console.log('obj', obj)
 	return (obj === null || obj === undefined)
 		? String(obj)
 		: Object.prototype.toString.call(obj).match(/\[object (\w+)\]/)[1].toLowerCase()
