@@ -14,7 +14,7 @@ function date(format: string, timestamp: string): string {
 	let minutes: number = time.getMinutes();
 	let seconds: number = time.getSeconds()
 
-	let formatlist: { reg: String, value: number | string }[] = [
+	let formatlist: { reg: string, value: number | string }[] = [
 		{ reg: 'YYYY', value: minLength(year, 4) },
 		{ reg: 'yyyy', value: minLength(year, 4) },
 		{ reg: 'mm', value: minLength(month, 2) },
@@ -24,8 +24,8 @@ function date(format: string, timestamp: string): string {
 		{ reg: 'ss', value: minLength(seconds, 2) },
 	]
 
-	formatlist.forEach((item: { reg: String, value: number | string }): void => {
-		format = format.replace(item.reg, item.value);
+	formatlist.forEach((item: { reg: string, value: number | string }): void => {
+		// format = format.replace(item.reg, item.value);
 	})
 
 	return format;
@@ -33,29 +33,29 @@ function date(format: string, timestamp: string): string {
 
 // 支持时间戳/ (普通时间, 时间格式), , 指定时区, 指定返回格式
 
-function BaseToDateString(time: any): void {
-	this.time = new Date().getTime();
-	this.formatStr = "YYYY-MM-DD";
-	this.formTimezone = 8;
-	this.toTimezone = 8;
+function BaseToDateString(time: string): void {
+	// this.time = new Date(time).getTime();
+	// this.formatStr = "YYYY-MM-DD";
+	// this.formTimezone = 8;
+	// this.toTimezone = 8;
 }
 
 // 指定 输入时间 时区
-BaseToDateString.prototype.FormTz = function (timezone: number) {
-	this.formTimezone = timezone;
-	return this;
-}
+// BaseToDateString.prototype.FormTz = function (timezone: number) {
+// 	this.formTimezone = timezone;
+// 	return this;
+// }
 
-BaseToDateString.prototype.toTz = function (timezone: number) {
-	this.toTimezone = timezone;
-	return this;
-}
+// BaseToDateString.prototype.toTz = function (timezone: number) {
+// 	this.toTimezone = timezone;
+// 	return this;
+// }
 
-// 指定日期格式化输出
-BaseToDateString.prototype.format = function (format) {
-	this.formatStr = format;
-	return date(this.formatStr, this.time);
-}
+// // 指定日期格式化输出
+// BaseToDateString.prototype.format = function (format) {
+// 	this.formatStr = format;
+// 	return date(this.formatStr, this.time);
+// }
 
 export {
 	BaseToDateString,

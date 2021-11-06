@@ -5,7 +5,7 @@ const BaseToNumber: anyToNumberFn = (value: any): number => {
 	return +value;
 }
 
-const isNumber: boolean = (value: any): boolean => {
+const isNumber: (value: any) => boolean = (value: any): boolean => {
 	return typeof value !== 'undefined'
 		&& !isNaN(Number(value))
 }
