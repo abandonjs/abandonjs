@@ -10,7 +10,16 @@ const isNumber: (value: any) => boolean = (value: any): boolean => {
 		&& !isNaN(Number(value))
 }
 
+function randomNumByRange(min: number, max: number): number {
+	switch (arguments.length) {
+		case 1: return parseInt(String(Math.random() * min + 1));
+		case 2: return parseInt(String(Math.random() * (max - min + 1) + min));
+		default: return 0;
+	}
+}
+
 export {
 	BaseToNumber,
 	isNumber,
+	randomNumByRange,
 }
