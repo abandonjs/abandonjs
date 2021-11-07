@@ -1,6 +1,6 @@
 import { randomNumByRange } from '../number'
 
-export function GenerateArrayByNum(num: number, item?: any): any[] {
+export function generateArrayByNum(num: number, item?: any): any[] {
 	return new Array(num).fill(item || '')
 }
 

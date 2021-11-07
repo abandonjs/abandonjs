@@ -1,6 +1,6 @@
 // import * as  RH2 from '../index'
 // import RH3 from '../utils/Methods'
-import { RH, _methods, _number } from '../index'
+import { RH, _methods, _number, _array } from '../index'
 
 const { log } = RH;
 
@@ -9,9 +9,10 @@ const { log } = RH;
 // log('--今天--', new RH.BaseToDateString('').FormTz(9).toTz(9).format('yyyy-mm-dd hh:mm:ss'))
 log(
 	// RH.
-	RH.GenerateArrayByNum(10, '123'),
+	RH.generateArrayByNum(10, '123'),
 	RH.arraySelectOne([1, 4, 5, 6, 7]),
 	RH.arraySelectItemsByRange([1, 4, 5, 6, 7], 2, 4),
+	_array.arraySelectItemsByRange([1, 4, 5, 6, 7], 2, 4),
 	// _mock.mock({ 'name|2': { a: 'a', 'b': 'b', c: 'c' } }),
 	// _mock.mock({ 'name|1': ['a', 'b', 'c'] }),// 多选一
 	// _mock.mock({ 'name|2-4': '@name' }),
