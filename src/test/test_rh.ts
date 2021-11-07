@@ -10,8 +10,8 @@ const { log } = RH;
 log(
 	// RH.
 	RH.GenerateArrayByNum(10, '123'),
-	RH.selectOne([1, 4, 5, 6, 7]),
-	RH.selectItemsByRange([1, 4, 5, 6, 7], 2, 4),
+	RH.arraySelectOne([1, 4, 5, 6, 7]),
+	RH.arraySelectItemsByRange([1, 4, 5, 6, 7], 2, 4),
 	// _mock.mock({ 'name|2': { a: 'a', 'b': 'b', c: 'c' } }),
 	// _mock.mock({ 'name|1': ['a', 'b', 'c'] }),// 多选一
 	// _mock.mock({ 'name|2-4': '@name' }),
