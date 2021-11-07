@@ -11,10 +11,11 @@ export function selectOne(list: any[]): any {
 export function selectItemsByRange(list: any[], min: number, max: number): any[] {
 	let len: number = randomNumByRange(min, max) || 0;
 	let result: any[] = [];
+	let index: number = 0;
 	while (len--) {
-		let item: any = selectOne(list)
-		// if(list.IN)
-		result.push(item);
+		index = ~~(Math.random() * list.length)
+		result.push(list[index]);
+		list.splice(index, 1);
 	}
 	return result
 }
