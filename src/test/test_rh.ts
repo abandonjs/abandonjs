@@ -9,6 +9,8 @@ const { log } = RH;
 // log('--今天--', new RH.BaseToDateString('').FormTz(9).toTz(9).format('yyyy-mm-dd hh:mm:ss'))
 log(
 	// RH.
+	RH.arrayUniqueItem([1, 2, 3, 1, 4]),
+	RH.type(1),
 	RH.generateArrayByNum(10, '123'),
 	RH.arraySelectOne([1, 4, 5, 6, 7]),
 	RH.arraySelectItemsByRange([1, 4, 5, 6, 7], 2, 4),

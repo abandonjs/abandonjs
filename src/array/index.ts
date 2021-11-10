@@ -1,5 +1,10 @@
 import { randomNumByRange } from '../number'
 
+export function arrayUniqueItem(list: any[]) {
+	return [...new Set(list)]
+}
+
+
 export function generateArrayByNum(num: number, item?: any): any[] {
 	return new Array(num).fill(item || '')
 }

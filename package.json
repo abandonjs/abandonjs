@@ -1,6 +1,6 @@
 {
   "name": "rh-js-methods",
-  "version": "0.0.4",
+  "version": "0.0.8",
   "description": "方法包",
   "main": "dist/index.js",
   "scripts": {
