@@ -4,6 +4,7 @@ import * as _string from './string'
 import * as _date from './date'
 import * as _util from './Util'
 import * as _array from './array'
+import * as _object from './Object'
 
 const RH: any = Object.assign(
 	_methods,
@@ -11,10 +12,12 @@ const RH: any = Object.assign(
 	_string,
 	_date,
 	_util,
-	_array
+	_array,
+	_object
 );
 
 export {
+	_object,
 	_methods,
 	_number,
 	_string,

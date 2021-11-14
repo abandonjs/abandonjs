@@ -4,17 +4,24 @@ import { RH, _methods, _number, _array } from '../index'
 
 const { log } = RH;
 
+log(
+	RH.objectIncluede({ 'a': 'a', 'cc': 'cc' }, ['a', 'b']),
+	RH.objectIncluede({ 'a': 'a', 'cc': 'cc' }, 'b'),
+	RH.objectIncluede({ 'a': 'a', 'cc': 'cc' }),
+)
+
+
 // log(new RH.BaseToDateString('yyyy-mm-dd').format('123'))
 // log('--六一--', new RH.BaseToDateString('2021/06/01').FormTz(9).toTz(9).format('yyyy-mm-dd'))
 // log('--今天--', new RH.BaseToDateString('').FormTz(9).toTz(9).format('yyyy-mm-dd hh:mm:ss'))
 log(
 	// RH.
-	RH.arrayUniqueItem([1, 2, 3, 1, 4]),
-	RH.type(1),
-	RH.generateArrayByNum(10, '123'),
-	RH.arraySelectOne([1, 4, 5, 6, 7]),
-	RH.arraySelectItemsByRange([1, 4, 5, 6, 7], 2, 4),
-	_array.arraySelectItemsByRange([1, 4, 5, 6, 7], 2, 4),
+	// RH.arrayUniqueItem([1, 2, 3, 1, 4]),
+	// RH.type(1),
+	// RH.generateArrayByNum(10, '123'),
+	// RH.arraySelectOne([1, 4, 5, 6, 7]),
+	// RH.arraySelectItemsByRange([1, 4, 5, 6, 7], 2, 4),
+	// _array.arraySelectItemsByRange([1, 4, 5, 6, 7], 2, 4),
 	// _mock.mock({ 'name|2': { a: 'a', 'b': 'b', c: 'c' } }),
 	// _mock.mock({ 'name|1': ['a', 'b', 'c'] }),// 多选一
 	// _mock.mock({ 'name|2-4': '@name' }),
