@@ -2,6 +2,11 @@ export interface iObject {
 	[key: string]: any;
 }
 export type iObjectKey = String;
+
+export function isObject(val: any): boolean {
+	return Object.prototype.toString.call(val) === '[object Object]';
+}
+
 export function objectIncluede(obj: iObject, keys: iObjectKey[] | iObjectKey): boolean | boolean[] {
 	const result: string[] = [];
 	const objKeys: string[] = Object.keys(obj);

@@ -5,6 +5,8 @@ import { RH, _methods, _number, _array } from '../index'
 const { log } = RH;
 
 log(
+	RH.arrayFilterByObject([1, true, NaN, { a: 123 }, { a: '123 6' }, { a: '12' }], { a: '6' }, true),
+	RH.arrayFilterByObject([1, true, NaN, { a: 123 }, { a: '123 6' }, { a: '12' }], { a: '1' }),
 	RH.objectIncluede({ 'a': 'a', 'cc': 'cc' }, ['a', 'b']),
 	RH.objectIncluede({ 'a': 'a', 'cc': 'cc' }, 'b'),
 	RH.objectIncluede({ 'a': 'a', 'cc': 'cc' }),
