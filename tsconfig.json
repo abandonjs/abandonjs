@@ -5,7 +5,7 @@
     "sourceMap": true,
     "outDir": "./dist",
     "removeComments": true,
-    "strict": true,
+    // "strict": true,
     "noImplicitAny": false,
     "strictNullChecks": true,
     "alwaysStrict": true,

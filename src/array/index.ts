@@ -18,7 +18,7 @@ export function arraySelectOne(list: any[]): any {
 // 单层过滤
 export function arrayFilterByObject(list: any[], filter: { [key: string]: any }, retainNotObject = false): any[] {
 	if (!filter || list.length === 0) return list;
-	let regObj: { [key: string]: RegExp<any> } = {};
+	let regObj: { [key: string]: RegExp } = {};
 	// 生成相应的 RegExp
 	for (let key in filter) regObj[key] = new RegExp(filter[key], 'i')
 	// 开始过滤

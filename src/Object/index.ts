@@ -1,14 +1,14 @@
 export interface iObject {
 	[key: string]: any;
 }
-export type iObjectKey = String;
+export type iObjectKey = string;
 
 export function isObject(val: any): boolean {
 	return Object.prototype.toString.call(val) === '[object Object]';
 }
 
-export function objectIncluede(obj: iObject, keys: iObjectKey[] | iObjectKey): boolean | boolean[] {
-	const result: string[] = [];
+export function objectInclude(obj: iObject, keys: iObjectKey[] | iObjectKey): boolean | boolean[] {
+	const result: boolean[] = [];
 	const objKeys: string[] = Object.keys(obj);
 	if (!Array.isArray(keys)) keys = [keys];
 	keys.forEach((item: iObjectKey): void => {
