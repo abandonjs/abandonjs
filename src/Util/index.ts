@@ -12,14 +12,14 @@
 
 // 获取url的参数
 export function getWindonHref() {
-	var sHref = window.location.href;
-	var args = sHref.split('?');
+	let sHref = window.location.href;
+	let args = sHref.split('?');
 	if (args[0] === sHref) {
 		return '';
 	}
-	var hrefarr = args[1].split('#')[0].split('&');
-	var obj = {};
-	for (var i = 0; i < hrefarr.length; i++) {
+	let hrefarr = args[1].split('#')[0].split('&');
+	let obj = {};
+	for (let i = 0; i < hrefarr.length; i++) {
 		hrefarr[i] = hrefarr[i].split('=');
 		obj[hrefarr[i][0]] = hrefarr[i][1];
 	}
@@ -45,3 +45,5 @@ export function isEmpty(value: any): boolean {
 	) return true;
 	return false;
 }
+
+

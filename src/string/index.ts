@@ -1,7 +1,25 @@
 import { anyToStringFn } from '../type'
 import { isEmpty } from '../Util'
+import { isObject } from '../Object'
 
-const BaseToString: anyToStringFn = (value: any): string => {
+export function isString(val: any): boolean {
+	return Object.prototype.toString.call(val) === '[object String]';
+}
+
+export function isJsonString(val: any) {
+	if (typeof val === 'string') {
+		try {
+			let obj = JSON.parse(val);
+			return isObject(obj) && obj
+		} catch (e) {
+			return false;
+		}
+	}
+	return false;
+}
+
+
+export function BaseToString(value: any): string {
 	if (typeof value === 'string') return value;
 	if (Array.isArray(value)) return `${value.map(BaseToString)}`
 	const result: string = `${value}`;
@@ -9,20 +27,14 @@ const BaseToString: anyToStringFn = (value: any): string => {
 }
 
 // 任何值 => 字符串
-const allToString: anyToStringFn = (value: any): string => {
+export function allToString(value: any): string {
 	if (isEmpty(value)) return '';
 	return String(value);
 }
 
 
 // 空值 => 空字符串
-const isEmptyToEmptyString: anyToStringFn = (value: any): string => {
+export function isEmptyToEmptyString(value: any): string {
 	if (isEmpty(value)) return '';
 	return value;
-}
-
-export {
-	BaseToString,
-	isEmptyToEmptyString,
-	allToString,
 }
