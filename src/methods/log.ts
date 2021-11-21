@@ -1,6 +1,4 @@
-export const log:
-	(...arg: any[]) => void
-	= (...arg: any[]): void => {
+export function log(...arg: any[]): void {
 		if (Array.isArray(arg)) {
 			arg.forEach((item: any): void => {
 				console.log(item);

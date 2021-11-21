@@ -2,6 +2,12 @@ import { anyToStringFn } from '../type'
 import { isEmpty } from '../Util'
 import { isObject } from '../Object'
 
+
+// 反转字符串
+export function strReverse(str: string): string {
+	return str.split('').reverse().join('');
+}
+
 export function isString(val: any): boolean {
 	return Object.prototype.toString.call(val) === '[object String]';
 }

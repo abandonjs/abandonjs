@@ -1,15 +1,25 @@
-// import * as  RH2 from '../index'
-// import RH3 from '../utils/Methods'
 import { RH, _methods, _number, _array } from '../index'
 
 const { log } = RH;
 
-log(
+let af: boolean = false;
+let bf: boolean = false;
+// af = true;
+bf = true;
+
+bf && log(
+	RH.strReverse('hello world'),   // 'dlrow olleh'
+	RH.dayOfYear(new Date()),
+	RH.isDateValid("2012-12-13 12:12:12"),
+	RH.dateInterval(new Date("2021-11-3"), new Date("2022-2-1")),
+)
+
+af && log(
 	RH.arrayFilterByObject([1, true, NaN, { a: 123 }, { a: '123 6' }, { a: '12' }], { a: '6' }, true),
 	RH.arrayFilterByObject([1, true, NaN, { a: 123 }, { a: '123 6' }, { a: '12' }], { a: '1' }),
-	RH.objectIncluede({ 'a': 'a', 'cc': 'cc' }, ['a', 'b']),
-	RH.objectIncluede({ 'a': 'a', 'cc': 'cc' }, 'b'),
-	RH.objectIncluede({ 'a': 'a', 'cc': 'cc' }),
+	RH.objectInclude({ 'a': 'a', 'cc': 'cc' }, ['a', 'b']),
+	RH.objectInclude({ 'a': 'a', 'cc': 'cc' }, 'b'),
+	RH.objectInclude({ 'a': 'a', 'cc': 'cc' }),
 )
 
 
@@ -24,31 +34,6 @@ log(
 	// RH.arraySelectOne([1, 4, 5, 6, 7]),
 	// RH.arraySelectItemsByRange([1, 4, 5, 6, 7], 2, 4),
 	// _array.arraySelectItemsByRange([1, 4, 5, 6, 7], 2, 4),
-	// _mock.mock({ 'name|2': { a: 'a', 'b': 'b', c: 'c' } }),
-	// _mock.mock({ 'name|1': ['a', 'b', 'c'] }),// 多选一
-	// _mock.mock({ 'name|2-4': '@name' }),
-	// _mock.mock({ 'name': '@name', 'name2': '@name' }),
-	// _mock.mock('@name'),
-	// _mock.Random.name()
-	// _mock.Random.name(),
-	// _mock.mock({
-	// 	'name|2': {
-	// 		'cn': '@name',
-	// 	},
-	// 	'name2|2': {
-	// 		'cn': '@name',
-	// 	}
-	// }),
-	// _mock.mock({
-	// 	'name|2': {
-	// 		'cn|3': {
-	// 			'cnn|2': '@name',
-	// 		}
-	// 	}
-	// }),
-	// RH.uuid(),
-	// RH.name(),
-	// RH.name.name(),
 )
 // RH.log(RH.BaseToString([1, 4, 5]))
 // RH.log(RH.BaseToString(`1, 4, 5`))

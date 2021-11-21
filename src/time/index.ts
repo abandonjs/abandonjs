@@ -1,5 +1,23 @@
 import { anyToStringFn } from '../type'
 
+
+export function dayOfYear(date: Date): number {
+	return Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+}
+
+dayOfYear(new Date());   // 307
+
+// 计算两个日期的相隔多少天
+export function dateInterval(date1: Date, date2: Date): number {
+	return Math.ceil(Math.abs(date1.getTime() - date2.getTime()) / 86400000)
+}
+
+
+// 检查日期是否有效
+export function isDateValid(...val): boolean {
+	return !Number.isNaN(new Date(...val).valueOf());
+}
+
 function minLength(value: any, len: number) {
 	return String(value).length < len ? `0${value}` : value;
 }
@@ -33,7 +51,7 @@ function date(format: string, timestamp: string): string {
 
 // 支持时间戳/ (普通时间, 时间格式), , 指定时区, 指定返回格式
 
-function BaseToDateString(time: string): void {
+export function BaseToDateString(time: string): void {
 	// this.time = new Date(time).getTime();
 	// this.formatStr = "YYYY-MM-DD";
 	// this.formTimezone = 8;
@@ -57,9 +75,6 @@ function BaseToDateString(time: string): void {
 // 	return date(this.formatStr, this.time);
 // }
 
-export {
-	BaseToDateString,
-}
 
 /*
 YYYY	2014	4 或 2 位数字的年份
