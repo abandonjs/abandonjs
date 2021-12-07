@@ -1,11 +1,93 @@
-import { RH, _methods, _number, _array } from '../index'
+import { RH, _methods, _number, _array, _function } from '../index'
 
-const { log } = RH;
+const { log, eventBus } = RH;
+
+
+
+
+
+
+
+
+
+
+const task1 = () => { console.log('task111'); }
+const task2 = () => { console.log('task222'); }
+
+eventBus.on('task', task1)
+eventBus.on('task', task2)
+eventBus.off('task', task1)
+setTimeout(() => {
+	eventBus.emit('task') // task2
+}, 1000)
+
+// 测试
+// const obj = { name: 'Jack', address: { x: 100, y: 200 } }
+// obj.a = obj // 循环引用
+// const newObj = RH.deepClone(obj)
+// console.log(newObj.address === obj.address) // false
+
+
+
+// function process(): void {
+// 	console.log("DevPoint");
+// }
+// const throttledProcess: any = RH.throttle(process, 1000);
+// const delayProcess: any = RH.debounce(process, 400);
+// // const throttledProcess: any = process
+// // const delayProcess: any = process
+
+// for (let i: number = 0, len: number = 50; i < len; i++) {
+// 	setTimeout(() => {
+// 		delayProcess();
+// 		throttledProcess();
+// 	}, 300)
+// }
+
+
+
+// function end() {
+// 	console.log("异步操作结束了！");
+// }
+// const endAfter3Calls: any = RH.after(3, end); // 定义在执行3次异步操作后执行函数logResult
+
+// setTimeout(() => {
+// 	console.log("=>完成第一次异步操作");
+// 	endAfter3Calls();
+// }, 3000);
+// setTimeout(() => {
+// 	console.log("=>完成第二次异步操作");
+// 	endAfter3Calls();
+// }, 2000);
+// setTimeout(() => {
+// 	console.log("=>完成第三次异步操作");
+// 	endAfter3Calls();
+// }, 6000);
+
+
 
 let af: boolean = false;
 let bf: boolean = false;
+let cf: boolean = false;
+
 // af = true;
-bf = true;
+// bf = true;
+cf = true;
+
+// function process(title) {
+// 	console.log({ title });
+// }
+
+// const processonce = RH.once(process);
+// const title: string = "DevPoint";
+// processonce(title);
+// processonce(title);
+// processonce(title);
+
+// cf && log(
+// 	RH.initMultArray('it', '2&4')
+// )
+
 
 bf && log(
 	RH.strReverse('hello world'),   // 'dlrow olleh'

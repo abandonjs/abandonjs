@@ -1,15 +1,4 @@
-
-//深拷贝 (待实现)
-// 圣杯模式的继承
-// function inherit(Target, Origin) {
-// 	function F() { };
-// 	F.prototype = Origin.prototype;
-// 	Target.prototype = new F();
-// 	Target.prototype.constructor = Target;
-// 	// 最终的原型指向
-// 	Target.prop.uber = Origin.prototype;
-// }
-
+// 从数组中取任意 一个 元素
 export function pick(list: any[]): string {
 	return list[Math.floor(Math.random() * list.length)];
 }
@@ -29,5 +18,64 @@ export function isEmpty(value: any): boolean {
 	) return true;
 	return false;
 }
+
+// 深拷贝
+export function deepClone(obj: any, cache = new WeakMap()) {
+	if (typeof obj !== 'object') return obj // 普通类型，直接返回
+	if (obj === null) return obj
+	if (cache.get(obj)) return cache.get(obj) // 防止循环引用，程序进入死循环
+	if (obj instanceof Date) return new Date(obj)
+	if (obj instanceof RegExp) return new RegExp(obj)
+
+	// 找到所属原型上的constructor，所属原型上的constructor指向当前对象的构造函数
+	let cloneObj: any = new obj.constructor()
+	cache.set(obj, cloneObj) // 缓存拷贝的对象，用于处理循环引用的情况
+	for (let key in obj) {
+		if (obj.hasOwnProperty(key)) {
+			cloneObj[key] = deepClone(obj[key], cache) // 递归拷贝
+		}
+	}
+	return cloneObj
+}
+
+// 时间总线, 观察订阅模式
+class EventEmitter {
+	constructor() {
+		this.cache = {}
+	}
+
+	on(name: any, fn: any): void {
+		if (this.cache[name]) {
+			this.cache[name].push(fn)
+		} else {
+			this.cache[name] = [fn]
+		}
+	}
+
+	off(name: any, fn: any): void {
+		const tasks = this.cache[name]
+		if (tasks) {
+			const index = tasks.findIndex((f) => f === fn || f.callback === fn)
+			if (index >= 0) {
+				tasks.splice(index, 1)
+			}
+		}
+	}
+
+	emit(name, once = false) {
+		if (this.cache[name]) {
+			// 创建副本，如果回调函数内继续注册相同事件，会造成死循环
+			const tasks = this.cache[name].slice()
+			for (let fn of tasks) {
+				fn();
+			}
+			if (once) {
+				delete this.cache[name]
+			}
+		}
+	}
+}
+
+export const eventBus = new EventEmitter()
 
 

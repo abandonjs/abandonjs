@@ -1,6 +1,33 @@
 import { randomNumByRange } from '../number'
 import { isObject } from '../Object'
 
+// 生成多位数组(未完成)
+export function initMultArray(unit: any, dimension?: string): any[] {
+	if (!dimension) return [];
+	let dimArr: number[] = dimension.split('&').map((item: string): number => Number(item) || 1);
+	let depth: number = dimArr.length;
+	let cursor: number = 0;
+
+	let tempArr: any[] = Array(dimArr[depth - 1]).fill(unit);
+	let result: any[] = Array(dimArr[cursor++]);
+
+	const initArray = () => {
+
+	}
+
+	if (dimArr.length > 1) {
+		result = result.map((): any => {
+			return Array(dimArr[cursor++]).fill(unit)
+		})
+	}
+
+
+	console.log({ depth, dimArr });
+	return result;
+}
+
+
+// 去除数组重复项
 export function arrayUniqueItem(list: any[]) {
 	return [...new Set(list)]
 }
