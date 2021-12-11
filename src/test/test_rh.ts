@@ -2,24 +2,17 @@ import { RH, _methods, _number, _array, _function } from '../index'
 
 const { log, eventBus } = RH;
 
+// console.log(RH.initMultArray('null', "2&3&2"))
 
+// const task1 = () => { console.log('task111'); }
+// const task2 = () => { console.log('task222'); }
 
-
-
-
-
-
-
-
-const task1 = () => { console.log('task111'); }
-const task2 = () => { console.log('task222'); }
-
-eventBus.on('task', task1)
-eventBus.on('task', task2)
-eventBus.off('task', task1)
-setTimeout(() => {
-	eventBus.emit('task') // task2
-}, 1000)
+// eventBus.on('task', task1)
+// eventBus.on('task', task2)
+// eventBus.off('task', task1)
+// setTimeout(() => {
+// 	eventBus.emit('task') // task2
+// }, 1000)
 
 // 测试
 // const obj = { name: 'Jack', address: { x: 100, y: 200 } }
