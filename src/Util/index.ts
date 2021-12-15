@@ -1,3 +1,15 @@
+// 分组打印(简化console.groupCollapsed)
+
+export function logGroup(name: string = '', ...list: any[]) {
+	console.groupCollapsed(`--- ${name} ---`)
+	Array.isArray(list)
+		&& list.length > 0
+		&& list.forEach((item: any) => {
+			console.log(item)
+		})
+	console.groupEnd()
+}
+
 // 从数组中取任意 一个 元素
 export function pick(list: any[]): string {
 	return list[Math.floor(Math.random() * list.length)];
