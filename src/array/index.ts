@@ -101,8 +101,6 @@ export function concat(...list?: any[]) {
 
 		}
 	}
-
-	// Array.isArray()
 	return result;
 }
 
