@@ -1,4 +1,13 @@
 
+import { type } from '../Util'
+
+/* interface & type start */
+type tAnyFunction = (...arg: any[]) => any
+type tAnyObject = {
+	[key: string]: any,
+}
+/* interface & type end */
+
 
 // fn 方法只会执行一次
 export function once(fn: any): any {
@@ -53,4 +62,78 @@ export function debounce(fn: any, interval: number): any {
 		}, interval);
 	};
 	return debounced;
+}
+
+/**
+ * @description 调用n次后才触发func
+ * @param n 调用后多少次才执行
+ * @param func 限定的函数
+ * @returns 新的限定函数
+ */
+export function after(n: number = 0, func: tAnyFunction): tAnyFunction {
+	return function (...args: any[]): any {
+		if (--n < 0) return func(args);
+		return;
+	}
+}
+
+
+/**
+ * @description 调用func最多接受n个参数
+ * @param func 限定函数
+ * @param n 限制参数数量
+ * @returns 新的覆盖函数
+ */
+export function ary(func: tAnyFunction, n: number): tAnyFunction {
+	return function (...args: any[]): any {
+		return func(...args.splice(0, n))
+	}
+}
+
+
+/**
+ * @description 调用n次后，再调用就会返回最后一次调用的结果
+ * @param n 超过n次不再调用
+ * @param func 限定函数
+ * @returns 新的限定函数
+ */
+export function before(n: number, func: tAnyFunction): tAnyFunction {
+	let lastResult: any = undefined;
+	return function (...args: any[]): any {
+		if (n-- > 0) {
+			lastResult = func(...args);
+		}
+		return lastResult
+	}
+}
+
+
+
+/**
+ * @description thisArg绑定func的this，并且func会接收partials附加参数
+ * @param func 绑定的函数
+ * @param thisArg 绑定的对象
+ * @param partials 附加的部分参数
+ * @returns 新的绑定函数
+ */
+export function bind(func: tAnyFunction, thisArg: tAnyObject = {}, ...partials: any[]): tAnyFunction {
+	return function (...args: any[]): any {
+		return func.call(thisArg, ...[...partials, ...args])
+	}
+}
+
+/**
+ * (未完成，有问题)
+ * @param object 对象
+ * @param key 
+ * @param partials 
+ * @returns 
+ */
+export function bindkey(object: tAnyObject, key: string, ...partials: any[]): any {
+	if (type(object[key]) === 'function') {
+		return function (...args: any[]): any {
+			return object[key](...partials, ...args);
+		}
+	}
+	return object[key]
 }
