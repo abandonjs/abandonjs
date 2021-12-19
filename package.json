@@ -9,6 +9,7 @@
     "dev": "ts-node-dev --respawn --transpile-only ./src/test/test_rh.ts",
     "test_array": "ts-node-dev --respawn --transpile-only ./src/array/__test__/index.ts",
     "test_function": "ts-node-dev --respawn --transpile-only ./src/Function/__test__/index.ts",
+    "test_math": "ts-node-dev --respawn --transpile-only ./src/Math/__test__/index.ts",
     "test": "jest",
     "test-c": "jest --coverage",
     "restart": "rimraf dist && npm run build && npm start",

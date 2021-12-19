@@ -2,7 +2,7 @@
 import { type } from '../Util'
 
 /* interface & type start */
-type tAnyFunction = (...arg: any[]) => any
+type tAnyFunction = (...arg: any[]) => any;
 type tAnyObject = {
 	[key: string]: any,
 }
@@ -136,4 +136,73 @@ export function bindkey(object: tAnyObject, key: string, ...partials: any[]): an
 		}
 	}
 	return object[key]
+}
+
+/**
+ * 
+ * @param func 待柯里化函数
+ * @param len 待柯里化参数个数
+ * @returns 柯里化函数
+ */
+export function curry(func: tAnyFunction, len: number): tAnyFunction {
+
+	// 第一次执行时，定义一个数组专门用来存储所有的参数
+	let _args: any[] = [];
+	const _resFn: any = function (...args: any[]): any {
+		_args = _args.concat(args);
+		if (_args.length < len) {
+			return _resFn;
+		}
+		return func(..._args);
+	};
+	return _resFn;
+}
+
+/**
+ * @param func 指定函数
+ * @param delayTime 延迟时间
+ * @param args 传输参数
+ * @returns func执行结果(Promise)
+ */
+export function delay(func: tAnyFunction, delayTime: number = 0, ...args: any[]): any {
+	return new Promise(
+		(resolve: any, reject: any): void => {
+			setTimeout(() => {
+				resolve(func(...args))
+			}, delayTime);
+		}
+	)
+}
+
+/**
+ * @title flip
+ * @t
+ * @description 
+ * @param func 要翻转参数的函数
+ * @param args 反转参数
+ * @returns 
+ */
+export function flip(func: tAnyFunction): tAnyFunction {
+	return function (...args: any[]): any {
+		return func(...args.reverse());
+	}
+}
+
+
+/**
+ * @title memoize
+ * @description 待制作
+ * @param func 
+ * @param len 
+ * @returns 
+ */
+export function memoize(func: tAnyFunction, len: number): tAnyFunction {
+	return function (...args: any[]): any {
+
+	}
+}
+
+
+export function negate(): any {
+	return
 }

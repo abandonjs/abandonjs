@@ -6,9 +6,11 @@ import * as _util from './Util'
 import * as _array from './array'
 import * as _object from './Object'
 import * as _function from './Function'
+import * as _math from './Math'
 
 const RH: any = Object.assign(
 	_methods,
+	_math,
 	_number,
 	_string,
 	_time,
@@ -19,6 +21,7 @@ const RH: any = Object.assign(
 );
 
 export {
+	_math,
 	_function,
 	_object,
 	_methods,

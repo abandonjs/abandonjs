@@ -70,3 +70,26 @@ logGroup('bindkey',
 	_.bindkey(bindkeyObj, 'say')('ruihuag'),
 	_.bindkey(bindkeyObj, 'say2', 'ruihuag')(123),
 )
+
+
+
+function curryTestFn(a: any, b: any, c: any): string {
+	return "fn:" + JSON.stringify([a, b, c]);
+};
+
+logGroup('curry',
+	_.curry(curryTestFn, 3)(1)(2)(3),
+	_.curry(curryTestFn, 3)(1, 2)(3),
+	_.curry(curryTestFn, 3)(1, 2, 3),
+	_.curry(curryTestFn, 3)(1)(3)(2),
+	_.curry(curryTestFn, 3)(100)(3)(2),
+)
+
+// logGroup('delay',
+// 	_.delay(curryTestFn, 2000, 'a', 'b', 'c').then(res => console.log('res', res))
+// )
+const flipTestFn = _.flip(function (a: string, b: string): any { return [a, b] })
+
+logGroup('flip',
+	flipTestFn('a', 'b')
+)
