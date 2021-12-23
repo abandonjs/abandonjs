@@ -1,6 +1,6 @@
 {
   "name": "rh-js-methods",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "方法包",
   "main": "dist/index.js",
   "scripts": {
@@ -12,6 +12,7 @@
     "test_number": "ts-node-dev --respawn --transpile-only ./src/number/__test__/index.ts",
     "test_math": "ts-node-dev --respawn --transpile-only ./src/Math/__test__/index.ts",
     "test_object": "ts-node-dev --respawn --transpile-only ./src/Object/__test__/index.ts",
+    "test_time": "ts-node-dev --respawn --transpile-only ./src/time/__test__/index.ts",
     "test": "jest",
     "test-c": "jest --coverage",
     "restart": "rimraf dist && npm run build && npm start",

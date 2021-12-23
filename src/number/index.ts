@@ -38,7 +38,7 @@ export const isNumber: (value: any) => boolean = (value: any): boolean => {
  * @returns boolean
  */
 export function isFloat(num: number): boolean {
-	return num !== parseInt(num);
+	return num - num % 1 !== 0;
 }
 
 export function randomNumByRange(min: number, max: number): number {
@@ -58,7 +58,9 @@ export function randomNumByRange(min: number, max: number): number {
  * @param upper 上限
  * @returns 返回被限制的值
  */
-export function clamp(num: number, lower?: number = -INFINITY, upper?: number = INFINITY): number {
+export function clamp(num: number, lower?: number, upper?: number): number {
+	if (lower === undefined) lower = -INFINITY;
+	if (upper === undefined) upper = INFINITY;
 	if (num < lower) return lower;
 	if (num > upper) return upper;
 	return num;
@@ -72,8 +74,9 @@ export function clamp(num: number, lower?: number = -INFINITY, upper?: number = 
  * @param end 结束范围
  * @returns boolean
  */
-export function inRange(num: number, start?: number = 0, end?: number = INFINITY): boolean {
-	console.log(arguments);
+export function inRange(num: number, start?: number, end?: number): boolean {
+	if (start === undefined) start = 0;
+	if (end === undefined) end = INFINITY;
 	if (arguments.length === 2) {
 		end = start;
 		start = 0;
@@ -90,11 +93,18 @@ export function inRange(num: number, start?: number = 0, end?: number = INFINITY
  * @param upper 上限
  * @param floating 是否返回浮点数
  */
-export function random(lower?: number = 0, upper?: number = 1, floating?: boolean = false): number {
+export function random(lower?: number, upper?: number, floating?: boolean): number {
+	lower === undefined && (lower = 0)
+	upper === undefined && (upper = 1)
+	floating === undefined && (floating = false)
+
 	if (arguments.length === 1) {
 		upper = arguments[0];
 		lower = 0;
 	}
+
+	if (upper === undefined) return Math.random();
+
 	if (
 		type(arguments[arguments.length - 1]) === 'Boolean'
 		|| isFloat(upper)
@@ -102,7 +112,7 @@ export function random(lower?: number = 0, upper?: number = 1, floating?: boolea
 	) {
 		floating = arguments[arguments.length - 1];
 	}
-	let result = lower + (Math.random() * (upper - lower));
+	let result: number = lower + (Math.random() * (upper - lower));
 	if (floating) return result;
 	return Math.ceil(result);
 }

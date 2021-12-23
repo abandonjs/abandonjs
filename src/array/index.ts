@@ -32,12 +32,12 @@ export function initMultArray(unit: any, dimension?: string): any[] {
 
 
 // 去除数组重复项
-export function arrayUniqueItem(list: any[]) {
+export function arrayUniqueItem(list: any[]): any[] {
 	return [...new Set(list)]
 }
 
 export function arraySelectOne(list: any[] = [], index?: number): any {
-	if (index !== null || index !== undefined) {
+	if (index !== null && index !== undefined) {
 		if (index > -1) return list[index]
 		if (index < 0) {
 			return list[list.length + index]
@@ -77,18 +77,18 @@ export function arraySelectItems(list: any[], min: number, max: number): any[] {
 }
 
 // 通过 size 切割数组
-export function chunk(list: any[], size: number) {
+export function chunk(list: any[], size: number): any[] {
 	return [list.slice(0, size), list.slice(size)]
 }
 
 
 // 过滤掉假值 false, null, 0, "", undefined, NaN
-export function compact(list: any[]) {
+export function compact(list: any[]): any[] {
 	return list.filter((item: any): boolean => !!item);
 }
 
 // 连接 多个数组
-export function concat(...list?: any[]) {
+export function concat(...list: any[]): any[] {
 	let result: any[] = [];
 	if (list && list.length > 0) {
 		let len: number = list.length;
@@ -111,7 +111,7 @@ export function concat(...list?: any[]) {
  * @param ...filterConditions 过滤使用的条件
  * @returns 过滤后的数组(new)
  */
-export function difference(list: any[], ...filterConditions: any[]) {
+export function difference(list: any[], ...filterConditions: any[]): any[] {
 
 	if (!list) return [];
 	const result: any[] = list || [];
@@ -134,7 +134,7 @@ export function difference(list: any[], ...filterConditions: any[]) {
  * @param number n 要去除元素个数
  * @returns any[] list 剩余切片
  */
-export function drop(list: any[] = [], n: number = 0) {
+export function drop(list: any[] = [], n: number = 0): any[] {
 	while (n--) {
 		if (list.length < 1) return [];
 		list.shift();

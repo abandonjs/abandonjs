@@ -23,17 +23,6 @@ export function once(fn: any): any {
 	};
 }
 
-// count 次的调用后, 才执行fn
-export function after(count: number, fn: any): any {
-	let runCount: number = 0;
-	return function runAfter(): any {
-		runCount = runCount + 1;
-		if (runCount >= count) {
-			return fn.apply(this, arguments);
-		}
-	};
-}
-
 // 节流: 用于限制函数触发频率, 每个delay时间间隔，最多只能执行函数一次
 export function throttle(fn: any, interval: number): any {
 	let lastTime: number = 0;
@@ -54,10 +43,10 @@ export function throttle(fn: any, interval: number): any {
  * */
 export function debounce(fn: any, interval: number): any {
 	let timer: number = 0;
-	const debounced = (): void => {
+	const debounced: () => void = (): void => {
 		clearTimeout(timer);
 		const args: any = arguments;
-		timer = setTimeout(() => {
+		setTimeout((): void => {
 			fn.apply(this, args);
 		}, interval);
 	};

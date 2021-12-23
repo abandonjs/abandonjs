@@ -1,14 +1,16 @@
 import { anyToStringFn } from '../type'
+import { calendar } from './lunar';
 
-// 获取农历日期
-
-
-
-export function dayOfYear(date: Date): number {
-	return Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+export {
+	calendar
 }
 
-dayOfYear(new Date());   // 307
+
+// export function dayOfYear(date: Date): number {
+// 	return Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+// }
+
+// dayOfYear(new Date());   // 307
 
 // 计算两个日期的相隔多少天
 export function dateInterval(date1: Date, date2: Date): number {
@@ -17,8 +19,8 @@ export function dateInterval(date1: Date, date2: Date): number {
 
 
 // 检查日期是否有效
-export function isDateValid(...val): boolean {
-	return !Number.isNaN(new Date(...val).valueOf());
+export function isDateValid(val: any): boolean {
+	return !Number.isNaN(new Date(val).valueOf());
 }
 
 function minLength(value: any, len: number) {

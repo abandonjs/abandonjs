@@ -64,8 +64,11 @@ export function max(list: any[]): number | undefined {
 	list.forEach((val: any): void => {
 		let item: number = Number(val)
 		if (isEffectNumber(item)) {
-			maxValue = item > maxValue ? item : maxValue;
-			if (maxValue === undefined) maxValue = item;
+			if (maxValue === undefined) {
+				maxValue = item;
+			}
+			else
+				maxValue = item < maxValue ? maxValue : item;
 		}
 	})
 	return maxValue;
@@ -73,20 +76,12 @@ export function max(list: any[]): number | undefined {
 
 
 
-const useValue: any = (__type: string, itteratee: tItteratee): any => {
-
-	if (__type === 'String') {
-		return function (val: { [key: string]: any }): any {
-			return val[itteratee];
-		}
-	}
-	if (__type === 'Function') {
-		return function (val: any): any {
-			return itteratee(val)
-		}
-	}
+const useValue: any = (itteratee: tItteratee): any => {
+	const __type: string = type(itteratee)
 
 	return function (val: any): any {
+		if (__type === 'String') return val[itteratee as string]
+		if (__type === 'Function') return (itteratee as (val: any) => any)(val)
 		return val;
 	}
 }
@@ -105,19 +100,20 @@ export function maxBy(list: any[], itteratee?: tItteratee): number | undefined |
 	}
 	let maxValue: number | undefined = undefined;
 	let result: number | undefined | { [key: string]: any } = undefined;
-	const handleValue: any = useValue(_type, itteratee)
+	const handleValue: any = useValue(itteratee)
 
 	list.forEach((val: any): void => {
 		let item: number = Number(handleValue(val))
 		if (isEffectNumber(item)) {
-			if (item > maxValue) {
-				maxValue = item
-				result = val;
-			}
 			if (maxValue === undefined) {
 				maxValue = item;
 				result = val;
 			}
+			if (item > maxValue) {
+				maxValue = item
+				result = val;
+			}
+
 		}
 	})
 	return result;
@@ -143,11 +139,11 @@ export function mean(list: any[]): number | undefined {
  * @param itteratee 迭代函数 / key
  * @returns 平均数
  */
-export function meanBy(list: any[], itteratee: tItteratee): any {
+export function meanBy(list: any[], itteratee?: tItteratee): any {
 	let total: number = 0;
 	let len: number = 0;
-	let _type: stirng = type(itteratee);
-	const handleValue: any = useValue(_type, itteratee)
+	let _type: string = type(itteratee);
+	const handleValue: any = useValue(itteratee)
 	list.forEach((val: any): void => {
 		let item: number = Number(handleValue(val))
 		if (isEffectNumber(item)) {
@@ -182,12 +178,15 @@ export function minBy(list: any[], itteratee?: tItteratee): any {
 	let result: any = undefined;
 	let minValue: number | undefined = undefined;
 	let len: number = list.length;
-	let _type: stirng = type(itteratee);
-	const handleValue: any = useValue(_type, itteratee)
+	let _type: string = type(itteratee);
+	const handleValue: any = useValue(itteratee)
 	while (len--) {
 		let val: number = Number(handleValue(list[len]))
 		if (isEffectNumber(val)) {
-			minValue = minValue < val ? minValue : val;
+			if (minValue === undefined) {
+				minValue = val;
+			} else
+				minValue = minValue < val ? minValue : val;
 			result = list[len];
 		}
 	}
@@ -215,7 +214,7 @@ export function sumBy(list: any[], itteratee?: tItteratee): undefined | number {
 	let _type: string = type(itteratee)
 	let total: undefined | number = undefined;
 	let len: number = list.length;
-	const handleValue: any = useValue(_type, itteratee)
+	const handleValue: any = useValue(itteratee)
 	while (len--) {
 		let val: number = Number(handleValue(list[len]));
 		if (isEffectNumber(val)) {
@@ -244,7 +243,8 @@ export function multiply(augend: number, addend: number): number {
  * @param precision 精度
  * @returns 四舍五入的数字
  */
-export function round(num: number, precision?: number = 0): number {
+export function round(num: number, precision?: number): number {
+	if (precision === undefined) precision = 0;
 	return Math.round(num * toNumber(10 ** precision))
 		* toNumber(10 ** -precision);
 }

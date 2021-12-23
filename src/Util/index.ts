@@ -52,6 +52,7 @@ export function deepClone(obj: any, cache = new WeakMap()) {
 
 // 时间总线, 观察订阅模式
 class EventEmitter {
+	cache: { [key: string]: any } = {}
 	constructor() {
 		this.cache = {}
 	}
@@ -74,10 +75,10 @@ class EventEmitter {
 		}
 	}
 
-	emit(name, once = false) {
-		if (this.cache[name]) {
+	emit(name: any, once: boolean = false): void {
+		if (this.cache && this.cache[name]) {
 			// 创建副本，如果回调函数内继续注册相同事件，会造成死循环
-			const tasks = this.cache[name].slice()
+			const tasks: any = this.cache[name].slice()
 			for (let fn of tasks) {
 				fn();
 			}
@@ -88,6 +89,6 @@ class EventEmitter {
 	}
 }
 
-export const eventBus = new EventEmitter()
+export const eventBus: EventEmitter = new EventEmitter()
 
 
