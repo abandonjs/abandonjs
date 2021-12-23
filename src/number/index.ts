@@ -31,6 +31,16 @@ export const isNumber: (value: any) => boolean = (value: any): boolean => {
 		&& !isNaN(Number(value))
 }
 
+/**
+ * @title isFloat
+ * @description 判断数是否为浮点型
+ * @param num 待检测的数据类型
+ * @returns boolean
+ */
+export function isFloat(num: number): boolean {
+	return num !== parseInt(num);
+}
+
 export function randomNumByRange(min: number, max: number): number {
 	switch (arguments.length) {
 		case 1: return parseInt(String(Math.random() * min + 1));
@@ -38,3 +48,63 @@ export function randomNumByRange(min: number, max: number): number {
 		default: return 0;
 	}
 }
+
+
+/**
+ * @title clamp
+ * @description 限制在lower和upper之间
+ * @param num 被限制的值
+ * @param lower 下限
+ * @param upper 上限
+ * @returns 返回被限制的值
+ */
+export function clamp(num: number, lower?: number = -INFINITY, upper?: number = INFINITY): number {
+	if (num < lower) return lower;
+	if (num > upper) return upper;
+	return num;
+}
+
+/**
+ * @title inRange
+ * @description 判断是否在该范围
+ * @param num 要检查的值
+ * @param [start=0] 开始范围
+ * @param end 结束范围
+ * @returns boolean
+ */
+export function inRange(num: number, start?: number = 0, end?: number = INFINITY): boolean {
+	console.log(arguments);
+	if (arguments.length === 2) {
+		end = start;
+		start = 0;
+	}
+	if (num > end) return false;
+	if (num < start) return false;
+	return true;
+}
+
+/**
+ * @title random
+ * @description 随机数
+ * @param lower 下限
+ * @param upper 上限
+ * @param floating 是否返回浮点数
+ */
+export function random(lower?: number = 0, upper?: number = 1, floating?: boolean = false): number {
+	if (arguments.length === 1) {
+		upper = arguments[0];
+		lower = 0;
+	}
+	if (
+		type(arguments[arguments.length - 1]) === 'Boolean'
+		|| isFloat(upper)
+		|| isFloat(lower)
+	) {
+		floating = arguments[arguments.length - 1];
+	}
+	let result = lower + (Math.random() * (upper - lower));
+	if (floating) return result;
+	return Math.ceil(result);
+}
+
+

@@ -1,5 +1,8 @@
 import { anyToStringFn } from '../type'
 
+// 获取农历日期
+
+
 
 export function dayOfYear(date: Date): number {
 	return Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
