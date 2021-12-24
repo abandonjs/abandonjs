@@ -1,8 +1,5 @@
 node_modules/
 dist/
-./push.bat
-./push-update.bat
-./pull.bat
 *.log
 *lock
 package-lock.json
