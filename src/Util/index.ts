@@ -1,5 +1,4 @@
 // 分组打印(简化console.groupCollapsed)
-
 export function logGroup(name: string = '', ...list: any[]) {
 	console.groupCollapsed(`--- ${name} ---`)
 	Array.isArray(list)
@@ -16,10 +15,11 @@ export function pick(list: any[]): string {
 }
 
 // 返回数据类型
-export function type(param: any): string | any {
-	return Object.prototype.toString.call(param).match(/\[object (\w+)\]/)[1];
+export function type(param: any): string {
+	const result: string = Object.prototype.toString.call(param).match(/\[object (\w+)\]/)[1];
+	if (result === 'Number' && isNaN(param)) return 'NaN';
+	return result;
 }
-
 
 // 当做空值 undefined, null, NaN
 export function isEmpty(value: any): boolean {
