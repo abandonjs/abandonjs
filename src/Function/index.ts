@@ -1,5 +1,5 @@
 
-import { type } from '../Util'
+import { type } from '../util'
 
 /* interface & type start */
 type tAnyFunction = (...arg: any[]) => any;

@@ -1,6 +1,6 @@
 import { INFINITY, MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../constants'
 import { toNumber, isEffectNumber } from '../number'
-import { type } from '../Util'
+import { type } from '../util'
 import { tItteratee } from '../type'
 // 无限大（小）当做 js Number 的最大（小）值[主要处理计算异常的问题, 二期再加入大位数处理]
 // 二期再加入大位数计算

@@ -1,5 +1,5 @@
 import * as _ from '../index'
-import { logGroup } from '../../Util'
+import { logGroup } from '../../util'
 
 logGroup('clamp',
 	_.calendar,

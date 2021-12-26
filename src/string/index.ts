@@ -1,6 +1,6 @@
 import { anyToStringFn } from '../type'
-import { isEmpty } from '../Util'
-import { isObject } from '../Object'
+import { isEmpty } from '../util'
+import { isObject } from '../object'
 
 
 // 反转字符串
