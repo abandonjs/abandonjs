@@ -203,6 +203,7 @@ import { tPredicate, tAnyValueToBooleanFunc } from '../type'
 // 			break;
 // 		case "7": tmpnewchar = "柒" + tmpnewchar;
 // 			break;
+
 // 		case "8":
 // 			tmpnewchar = "捌" + tmpnewchar;
 // 			break;

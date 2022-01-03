@@ -7,6 +7,7 @@
     "build": "tsc",
     "lint-staged": "lint-staged",
     "dev": "ts-node-dev --respawn --transpile-only ./src/test/index.ts",
+    "md": "ts-node-dev --respawn --transpile-only ./md.ts",
     "test": "jest",
     "test-c": "jest --coverage",
     "restart": "rimraf dist && npm run build && npm start",

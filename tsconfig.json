@@ -16,7 +16,7 @@
   },
   "include": [
     "./src/**/*"
-  ],
+, "md.ts"  ],
   "exclude": [
     "./src/test",
     "**/*/__test__/*",
