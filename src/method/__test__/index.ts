@@ -1,8 +1,7 @@
 import * as _ from '../index'
 import { logGroup } from '../../util'
 
-logGroup(
-  'id 相关',
+logGroup( 'id',
   _.uniqueId(),
   _.uniqueId('contact_'),
   _.uniqueId(23, 'contact_'),
