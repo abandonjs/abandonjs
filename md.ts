@@ -1,107 +1,11 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-function readDirAllData(url: string, excludeDir: string[]): string {
-  let allData: string = ''
-  if (excludeDir && excludeDir.length > 0) {
-    const urls: string = url.split(/[\/|\\|\\\\]/)
-    if (
-      excludeDir.length > 0 &&
-      excludeDir.filter((item: string): boolean => urls.includes(item)).length >
-        0
-    ) {
-      return allData
-    }
-  }
-  let allfileAndDir: string[] = fs.readdirSync(url)
-  allfileAndDir.forEach((item: stirng): void => {
-    let itemUrl: string = url + '/' + item
-    if (isFile(item)) {
-      allData += fs.readFileSync(itemUrl)
-    } else {
-      allData += readDirAllData(itemUrl, excludeDir)
-    }
-  })
-  return allData
-}
-
-// console.log(readDirAllData(path.join(__dirname, 'src','math'), ['math']))
-// readDirAllData(path.join(__dirname, 'src', 'math'), ['math'])
-
-function getDesc(data: any): string {
-  return String(data).match(/@[\w]*[.\w\s\u4E00-\u9FA5].*/gi) || []
-}
-
-function getTestDesc(data: any): string {
-  let reg: RegExp = /[\s|\t|\n].*((_.)|(logGroup))[\w]*?[(][\w\W)].*/gi
-  return String(data).match(reg) || []
-}
 function isFile(url: string): boolean {
   return url.split('.').length > 1
 }
 
-function handleTestData(item: string): any {
-  let itemList: any[] = []
-  if (item.length < 1) return itemList
-
-  if (/(logGroup\()/g.exec(item)) {
-    let iitem: any = item
-      .split(/(\n|\t)/)
-      .filter((filterItem: string): boolean => {
-        if (['\n', '//', 'logGroup(', '', '// ', '\t'].includes(filterItem)) {
-          return false
-        }
-        return !!filterItem
-      })
-      .forEach((fItem: string): void => {
-        /**
-         * 缺少补充判断数据类型
-         */
-        // console.log('tt',fItem.indexOf('logGroup('));
-        if (fItem.indexOf('logGroup(')>-1) {
-          // console.log('tt',item.indexOf('logGroup(')===1);
-          console.log('tt',fItem);
-        // if (/(logGroup\()/g.exec(item)) {
-          const fItemArr = fItem
-            .split(/(logGroup\(')/)
-            .filter((filterItem: string): boolean => {
-              if (['\n', '//', '', '// ', '\t'].includes(filterItem)) {
-                return false
-              }
-              return !!filterItem
-            })
-          // console.log({ fItemArr })
-        }
-      })
-
-    // console.log({ iitem })
-    // itemObj['title'] = item.replace(/title[\s]?/, '')
-  }
-  return itemList
-}
-function handleData(item: string): any {
-  let itemObj: { [key: string]: any } = {}
-  if (item.length < 1) return itemObj
-  if (/title/g.exec(item)) {
-    itemObj['title'] = item.replace(/title[\s]?/, '')
-  }
-  if (/description/g.exec(item)) {
-    itemObj['description'] = item.replace(/description[\s]?/, '')
-  }
-  if (/returns/g.exec(item)) {
-    itemObj['returns'] = item.replace(/returns[\s]?/, '')
-  }
-  if (/param/g.exec(item)) {
-    itemObj['param'] = []
-    const [key, value]: [string, string] = item
-      .replace(/param[\s]?/, '')
-      .split(/\s/)
-    itemObj['param'].push({ [key]: value })
-  }
-  return itemObj
-}
-
-async function run(): void {
+async function run(): Promise<void> {
   let __path: string = path.join(__dirname, 'src')
   let dirs: string[] = fs.readdirSync(__path) || []
 
@@ -123,40 +27,50 @@ async function run(): void {
       let itemObj: { [key: string]: any } = {}
 
       // 读取文件数据
+      if (/([\w].*?)((.md)|(.spec.ts))/.test(iipath)) {
+        console.log('过滤文件:', iipath)
+        return
+      }
       if (isFile(iipath)) {
-        let tempData: string = String(getDesc(fs.readFileSync(iiUrl)))
-        tempData.split('@').forEach((item: string): void => {
-          itemObj = { ...itemObj, ...handleData(item) }
+        let __data: string = fs.readFileSync(iiUrl).toString()
+        let __dataArray: string[] = []
+        let __reg: RegExp = /\/\*\*|\*\//
+        __dataArray = __data.split(__reg).filter((__item: string): boolean => {
+          return __item.indexOf('* @') > -1
         })
-        if (itemObj !== {}) iData.data.push(itemObj)
-        return
-      }
-      // 读取数据, 不是index.ts文件下的数据
-      if (!isFile(iipath) && iipath !== '__test__') {
-        let tempData: string = String(
-          getDesc(readDirAllData(iiUrl, ['__test__']))
-        )
-        tempData.split('@').forEach((item: string): void => {
-          itemObj = { ...itemObj, ...handleData(item) }
-        })
-        if (itemObj !== {}) iData.data.push(itemObj)
-        return
-      }
 
-      // 读取__test__数据
-      if (iipath === '__test__') {
-        let tempData: string = String(getTestDesc(readDirAllData(iiUrl)))
-        tempData.split('@').forEach((item: string): void => {
-          itemObj = { ...itemObj, ...handleTestData(item) }
+        itemObj.data = __dataArray.map((item: string): string => {
+          if (item.indexOf('@title') > -1) {
+            item = item.replace(' * @title', '###')
+          }
+          return item
         })
-        if (itemObj !== {}) iData.testData.push(itemObj)
+        if (itemObj !== {}) iData.data.push(itemObj)
         return
       }
     })
 
     allData[dirName] = iData
   })
-  // console.log(JSON.stringify(allData, null, 2))
+
+  // 组合数据
+  const __file_flag: string = '\r\n------\r\n------\r\n'
+  let __writeFileData: string =
+    fs.readFileSync('./README.md').toString().split(__file_flag)[0] +
+    __file_flag
+
+  Object.keys(allData).forEach((item: any, index: number): void => {
+    __writeFileData +=
+      `\r\n## ${item}\r\n` +
+      allData[item].data[0].data.join('').replace(/ \* @/g, '> - ')
+  })
+
+  try {
+    fs.writeFileSync('./README.md', __writeFileData)
+    console.log(`---生成成功, ctrl + v 暂停 ---`)
+  } catch (error) {
+    console.log(`---生成失败, ctrl + v 暂停 ---`)
+  }
 }
 
 run()

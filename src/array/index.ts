@@ -3,12 +3,12 @@ import { iAnyObject, tAnyValueToBooleanFunc } from '../type'
 import { defaultValue, type, useArrayPredicate } from '../util'
 import { isObject } from '../object'
 
-// 生成多维数组
 /**
- *
+ * @title initMultArray
+ * @description 生成多维数组
  * @param unit 初始化单元
  * @param dimension 多维指定 用&符号隔开
- * @returns
+ * @returns 多维数组
  */
 export function initMultArray(unit: any, dimension?: string): any[] {
   if (!dimension) return [unit]
@@ -133,7 +133,7 @@ export function differenceBy() {}
 export function differenceWith() {}
 
 /**
- * 去除前n个元素
+ * @description 去除前n个元素
  * @param any[] list 数组
  * @param number n 要去除元素个数
  * @returns any[] list 剩余切片
@@ -161,11 +161,10 @@ export function dropWhile() {}
  */
 export function fill<T>(
   array: T[],
-  value?: any,
-  start?: number,
-  end?: number
+  value: any = undefined,
+  start: number = 0,
+  end: number = 0
 ): T[] {
-  start = defaultValue(start, 0)
   end = defaultValue(end, defaultValue(array.length, 0))
   while (start < end) array[start++] = value
   return array
@@ -181,11 +180,10 @@ export function fill<T>(
  */
 export function findIndex<T>(
   array: T[],
-  predicate?: T[] | ((val: T) => T) | iAnyObject | string,
-  fromIndex?: number
+  predicate: T[] | ((val: T) => T) | iAnyObject | string,
+  fromIndex: number = 0
 ): number {
   let len: number = array.length
-  fromIndex = defaultValue(fromIndex, 0)
   let predicateFunc: tAnyValueToBooleanFunc = useArrayPredicate(predicate)
   if (array.length === 0) return -1
   do {
@@ -204,9 +202,9 @@ export function findIndex<T>(
  */
 export function findLastIndex<T>(
   array: T[],
-  predicate?: T[] | ((val: T) => T) | iAnyObject | string,
-  fromIndex?: number
-): nubmer {
+  predicate: T[] | ((val: T) => T) | iAnyObject | string,
+  fromIndex: number
+): number {
   let len: number = array.length
   fromIndex = defaultValue(fromIndex, len - 1)
   let predicateFunc: tAnyValueToBooleanFunc = useArrayPredicate(predicate)

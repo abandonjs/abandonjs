@@ -379,7 +379,9 @@ export function defaultValue(key: any, value: any): any {
   }
 }
 
-export function useArrayPredicate(predicate: tPredicate): tAnyValueToBooleanFunc {
+export function useArrayPredicate(
+  predicate: tPredicate
+): tAnyValueToBooleanFunc {
   const __type: string = type(predicate)
   switch (__type) {
     case 'Undefined':
@@ -394,19 +396,20 @@ export function useArrayPredicate(predicate: tPredicate): tAnyValueToBooleanFunc
         return false
       }
     case 'Object':
-      return (item: any): boolean => {
-        for (let key: string in predicate) {
-          if (item[key] !== predicate[key]) return false
+      return (item: object): boolean => {
+        for (let key in predicate as object) {
+          if (item[key] !== (predicate as object)[key]) return false
         }
         return true
       }
     case 'String':
-      return (item: any): boolean => {
-        return !!item[predicate]
+      return (item: object): boolean => {
+        if (predicate === undefined) return false
+        return !!(item as object)[predicate as string]
       }
     case 'Function':
       return (item: any): boolean => {
-        return predicate(item)
+        return (predicate as (val: any) => any)(item)
       }
     default:
       return (item: any): boolean => !!item
@@ -431,7 +434,9 @@ export function pick(list: any[]): string {
 
 // 返回数据类型
 export function type(param: any): string {
-  const result: string = Object.prototype.toString.call(param).match(/\[object (\w+)\]/)[1]
+  const result: string = Object.prototype.toString
+    .call(param)
+    .match(/\[object (\w+)\]/)[1]
   if (result === 'Number' && isNaN(param)) return 'NaN'
   return result
 }

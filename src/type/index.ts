@@ -9,4 +9,4 @@ export type tItteratee = string | ((val: any) => any)
 export interface iAnyObject {
   [key: string]: any
 }
-export type tPredicate = any[] | ((val: any) => any) | iAnyObject | string
+export type tPredicate = any[] | ((val: any) => any) | iAnyObject | string | undefined
