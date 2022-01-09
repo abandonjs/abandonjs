@@ -6,6 +6,7 @@
 ------
 ------
 
+<hr/>
 ## array
 
 ### initMultArray
@@ -52,8 +53,10 @@
 > - param fromIndex [fromIndex=array.length-1] (number): 指定开始查找的下标
 > - returns (number): 返回找到元素的 索引值（index），否则返回 - 1。
 
+<hr/>
 ## collection
 
+<hr/>
 ## function
 
 > - description 调用n次后才触发func
@@ -110,7 +113,18 @@
 > - param len
 > - returns
 
+<hr/>
 ## math
+
+> - 无限大（小）当做 js Number 的最大（小）值[主要处理计算异常的问题, 二期再加入大位数处理]
+> - 二期再加入大位数计算
+
+### countingMethod
+>
+> - description 将数字装换成需要装换的数据格式(k, m, g, t, p, e, z, y, b)
+> - param num (number|string) 待转换的数子 (<binary^ 9)
+> - param binary (number) 进制 (default:1024)
+> - returns (number)
 
 ### add
 >
@@ -206,6 +220,7 @@
 > - param precision 精度
 > - returns 四舍五入的数字
 
+<hr/>
 ## method
 
 ### id
@@ -232,6 +247,7 @@
 > - param value 任何值
 > - returns 首个值
 
+<hr/>
 ## number
 
 ### isEffectNumber
@@ -277,6 +293,7 @@
 > - param end 结束值(不包含该值)
 > - returns
 
+<hr/>
 ## object
 
 ### assign
@@ -291,14 +308,16 @@
 > - param 来源对象
 > - returns 合并后的对象
 
+<hr/>
 ## string
 
-## test
-
+<hr/>
 ## time
 
+<hr/>
 ## type
 
+<hr/>
 ## util
 
 ### defaultValue

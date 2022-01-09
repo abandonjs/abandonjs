@@ -18,6 +18,7 @@ let indexes: string[] = [
   'function',
   'lang',
   'math',
+  'number',
   'method',
   'object',
   'string',

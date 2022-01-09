@@ -11,17 +11,16 @@
     "alwaysStrict": true,
     "moduleResolution": "node",
     "baseUrl": "./src",
-    "allowSyntheticDefaultImports": true, 
-    "esModuleInterop": true,  
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
-  "include": [
-    "./src/**/*"
-, "md.ts"  ],
+  "include": ["./src/**/*"],
   "exclude": [
     "./src/test",
     "**/*/__test__/*",
     "**/*/__test__/",
     "*.spec.ts",
+    "**/*/md.ts",
     "**/*/*.md"
   ]
 }

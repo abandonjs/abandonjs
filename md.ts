@@ -60,16 +60,17 @@ async function run(): Promise<void> {
     __file_flag
 
   Object.keys(allData).forEach((item: any, index: number): void => {
+    if (item === 'test') return;
     __writeFileData +=
-      `\r\n## ${item}\r\n` +
+      `\r\n<hr/>\r\n## ${item}\r\n` +
       allData[item].data[0].data.join('').replace(/ \* @/g, '> - ')
   })
 
   try {
     fs.writeFileSync('./README.md', __writeFileData)
-    console.log(`---生成成功, ctrl + v 暂停 ---`)
+    console.log(`---生成成功, ctrl + c 暂停 ---`)
   } catch (error) {
-    console.log(`---生成失败, ctrl + v 暂停 ---`)
+    console.log(`---生成失败, ctrl + c 暂停 ---`)
   }
 }
 
