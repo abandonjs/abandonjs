@@ -62,7 +62,7 @@ async function run(): Promise<void> {
   Object.keys(allData).forEach((item: any, index: number): void => {
     if (item === 'test') return;
     __writeFileData +=
-      `\r\n<hr/>\r\n## ${item}\r\n` +
+      `\r\n<hr/>\r\n\r\n## ${item}\r\n` +
       allData[item].data[0].data.join('').replace(/ \* @/g, '> - ')
   })
 

@@ -7,6 +7,7 @@
 ------
 
 <hr/>
+
 ## array
 
 ### initMultArray
@@ -54,9 +55,11 @@
 > - returns (number): 返回找到元素的 索引值（index），否则返回 - 1。
 
 <hr/>
+
 ## collection
 
 <hr/>
+
 ## function
 
 > - description 调用n次后才触发func
@@ -114,6 +117,7 @@
 > - returns
 
 <hr/>
+
 ## math
 
 > - 无限大（小）当做 js Number 的最大（小）值[主要处理计算异常的问题, 二期再加入大位数处理]
@@ -221,6 +225,7 @@
 > - returns 四舍五入的数字
 
 <hr/>
+
 ## method
 
 ### id
@@ -248,6 +253,7 @@
 > - returns 首个值
 
 <hr/>
+
 ## number
 
 ### isEffectNumber
@@ -294,6 +300,7 @@
 > - returns
 
 <hr/>
+
 ## object
 
 ### assign
@@ -309,15 +316,19 @@
 > - returns 合并后的对象
 
 <hr/>
+
 ## string
 
 <hr/>
+
 ## time
 
 <hr/>
+
 ## type
 
 <hr/>
+
 ## util
 
 ### defaultValue
