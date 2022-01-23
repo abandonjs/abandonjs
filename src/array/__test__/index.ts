@@ -2,6 +2,20 @@ import { initMultArray, arrayUniqueItem } from '../index'
 import * as _Array from '../index'
 import * as _ from '../index'
 import { logGroup } from '../../Util'
+import { once } from '../../function'
+
+// 只运行第一个
+logGroup = once(logGroup)
+
+
+logGroup(
+  'dropRight',
+  _.dropRight([1, 2, 3]), // => [1, 2]
+  _.dropRight([1, 2, 3, 9, 10], 4), // => [1, 2]
+  _.dropRight([1, 2, 3], 2), // => [1]
+  _.dropRight([1, 2, 3], 5), // => []
+  _.dropRight([1, 2, 3], 0) // => [1, 2, 3]
+)
 
 logGroup(
   'arraySelectOne',
@@ -12,35 +26,61 @@ logGroup(
 
 logGroup('arrayUniqueItem', arrayUniqueItem([1, 3, 4, 5, 1, 3, 2, 1, 1]))
 
-console.groupCollapsed('--- arrayUniqueItem ---')
-console.log(arrayUniqueItem([1, 3, 4, 5, 1, 3, 2, 1, 1]))
-console.groupEnd()
+logGroup('arrayUniqueItem', arrayUniqueItem([1, 3, 4, 5, 1, 3, 2, 1, 1]))
 
-console.groupCollapsed('--- initMultArray ---')
-console.log(initMultArray('unit'))
-console.log(initMultArray('unit', '10'))
-console.log(initMultArray('unit', '10&1'))
-console.log(initMultArray('unit', '2&2'))
-console.log(initMultArray('unit', '2&2'))
-console.groupEnd()
+logGroup(
+  'initMultArray',
+  initMultArray('unit'),
+  initMultArray('unit', '10'),
+  initMultArray('unit', '10&1'),
+  initMultArray('unit', '2&2'),
+  initMultArray('unit', '2&2')
+)
 
 logGroup(
   'arrayFilterByObject',
-  _Array.arrayFilterByObject([{ a: 123, b: '00' }, { a: 123, b: '00' }, 123, 'fjdsjf'], { a: 1 }),
-  _Array.arrayFilterByObject([{ a: 123, b: '00' }, { a: 23, b: '00' }, 123, 'fjdsjf'], { a: 1, b: '0' }, true)
+  _Array.arrayFilterByObject(
+    [{ a: 123, b: '00' }, { a: 123, b: '00' }, 123, 'fjdsjf'],
+    { a: 1 }
+  ),
+  _Array.arrayFilterByObject(
+    [{ a: 123, b: '00' }, { a: 23, b: '00' }, 123, 'fjdsjf'],
+    { a: 1, b: '0' },
+    true
+  )
 )
 
 logGroup(
   'arraySelectItems',
-  _Array.arraySelectItems([1, 4, 5, 6, 223, 23, 32, 42134, 234, 123, 123], 3, 5),
-  _Array.arraySelectItems([1, 4, 5, 6, 99, 223, 23, 32, 42134, 234, 12, 123, 123], 3, 10),
-  _Array.arraySelectItems([1, 4, 5, 6, 99, 223, 23, 32, 42134, 234, 12, 123, 123], 3, 3)
+  _Array.arraySelectItems(
+    [1, 4, 5, 6, 223, 23, 32, 42134, 234, 123, 123],
+    3,
+    5
+  ),
+  _Array.arraySelectItems(
+    [1, 4, 5, 6, 99, 223, 23, 32, 42134, 234, 12, 123, 123],
+    3,
+    10
+  ),
+  _Array.arraySelectItems(
+    [1, 4, 5, 6, 99, 223, 23, 32, 42134, 234, 12, 123, 123],
+    3,
+    3
+  )
 )
 
 logGroup('chunk', _Array.chunk([1, 3, 4, 5, 3, 2, 3, 12], 3))
-logGroup('compact', _Array.compact([1, 3, 4, false, 0, 5, '', 3, 2, , 3, 12, null, undefined]))
+logGroup(
+  'compact',
+  _Array.compact([1, 3, 4, false, 0, 5, '', 3, 2, , 3, 12, null, undefined])
+)
 
-logGroup('concat', _Array.concat([1, 4, 6, 7], [33], [444], 3, 1, 2), _Array.concat(3, 1, 2), _Array.concat([3, 1, 2]))
+logGroup(
+  'concat',
+  _Array.concat([1, 4, 6, 7], [33], [444], 3, 1, 2),
+  _Array.concat(3, 1, 2),
+  _Array.concat([3, 1, 2])
+)
 
 logGroup(
   'difference',

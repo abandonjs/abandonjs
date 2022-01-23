@@ -8,6 +8,7 @@ import { tItteratee } from '../type'
  * @ 二期再加入大位数计算
  */
 
+const __binary: string[] = ['', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y', 'B']
 /**
  * @title countingMethod
  * @description 将数字装换成需要装换的数据格式(k, m, g, t, p, e, z, y, b)
@@ -15,7 +16,6 @@ import { tItteratee } from '../type'
  * @param binary (number) 进制 (default:1024)
  * @returns (number)
  */
-const __binary: string[] = ['', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y', 'B']
 export function countingMethod(
   num: number | string,
   binary: number = 1024

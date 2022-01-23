@@ -1,6 +1,13 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
+const __file_flag: string = '\r\n------\r\n------\r\n'
+type iDataType = {
+  data: any[]
+  urls: any[]
+  testData: any[]
+}
+
 function isFile(url: string): boolean {
   return url.split('.').length > 1
 }
@@ -8,7 +15,6 @@ function isFile(url: string): boolean {
 async function run(): Promise<void> {
   let __path: string = path.join(__dirname, 'src')
   let dirs: string[] = fs.readdirSync(__path) || []
-
   const allData: { [key: string]: any } = {}
 
   dirs.forEach((dirName: string): void => {
@@ -17,14 +23,14 @@ async function run(): Promise<void> {
     let idirs: string[] = fs.readdirSync(__ipath) || []
     if (idirs.length < 1) return
 
-    const iData: { [key: string]: any } = {}
-    iData.urls = idirs
-    iData.data = []
-    iData.testData = []
+    const iData: iDataType = {
+      urls: idirs,
+      data: [],
+      testData: []
+    }
 
     idirs.forEach((iipath: string): void => {
       const iiUrl: string = path.join(__dirname, 'src', dirName, iipath) || ''
-      let itemObj: { [key: string]: any } = {}
 
       // 读取文件数据
       if (/([\w].*?)((.md)|(.spec.ts))/.test(iipath)) {
@@ -39,13 +45,13 @@ async function run(): Promise<void> {
           return __item.indexOf('* @') > -1
         })
 
-        itemObj.data = __dataArray.map((item: string): string => {
+        __dataArray.forEach((item: string): void => {
           if (item.indexOf('@title') > -1) {
             item = item.replace(' * @title', '###')
           }
-          return item
+          iData.data.push(item)
         })
-        if (itemObj !== {}) iData.data.push(itemObj)
+
         return
       }
     })
@@ -54,16 +60,22 @@ async function run(): Promise<void> {
   })
 
   // 组合数据
-  const __file_flag: string = '\r\n------\r\n------\r\n'
   let __writeFileData: string =
     fs.readFileSync('./README.md').toString().split(__file_flag)[0] +
     __file_flag
 
-  Object.keys(allData).forEach((item: any, index: number): void => {
-    if (item === 'test') return;
-    __writeFileData +=
-      `\r\n<hr/>\r\n\r\n## ${item}\r\n` +
-      allData[item].data[0].data.join('').replace(/ \* @/g, '> - ')
+  Object.keys(allData).forEach((item: any): void => {
+    if (item === 'test') return
+    // console.log({ name: item, item: allData[item] })
+    if (allData[item].data.length === 0) return
+    // console.log({ name: item, item: allData[item].data })
+    let resItem: string = allData[item].data
+      .join('')
+      .replace(/ \*/g, '>')
+      .replace(/@/g, '- ')
+      .replace(/---/g, '\t-')
+      .replace(/--/g, '  -')
+    __writeFileData += `\r\n<hr/>\r\n\r\n## ${item}\r\n` + resItem
   })
 
   try {

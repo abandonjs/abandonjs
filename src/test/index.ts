@@ -11,6 +11,7 @@ import * as _ from '../index'
 // console.log(process.env.npm_config_test)
 
 // npm run dev --要运行的模块名
+// npm run dev --modules=要运行的模块名(new)
 
 let indexes: string[] = [
   'array',
@@ -26,8 +27,12 @@ let indexes: string[] = [
   'util'
 ]
 
-indexes.forEach((name: string): void => {
-  if (process.env[`npm_config_${name}`]) {
-    import(`../${name}/__test__`)
+let modules: string[] = process.env[`npm_config_modules`].split(/,|_/)
+
+console.log({ modules })
+
+modules.forEach((name: string): void => {
+  if (indexes.includes(name)) {
+      import(`../${name}/__test__`)
   }
 })

@@ -1,6 +1,6 @@
 {
   "name": "rh-js-methods",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "方法包",
   "main": "dist/index.js",
   "scripts": {
@@ -9,6 +9,7 @@
     "dev": "ts-node-dev --respawn --transpile-only ./src/test/index.ts",
     "md": "ts-node-dev --respawn --transpile-only ./md.ts",
     "test": "jest",
+    "test_index": "ts-node-dev --respawn --transpile-only ./src/test/index.test.ts",
     "test-c": "jest --coverage",
     "restart": "rimraf dist && npm run build && npm start",
     "start": "node ./dist/index.js",
@@ -16,7 +17,8 @@
     "pub": "npm publish"
   },
   "keywords": [
-    "typescript"
+    "typescript",
+    "javascript"
   ],
   "author": "ruihuag",
   "license": "ISC",

@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "ESNext",
     "module": "commonjs",
     "sourceMap": true,
     "outDir": "./dist",
     "removeComments": true,
-    // "strict": true,
     "noImplicitAny": false,
     "strictNullChecks": true,
     "alwaysStrict": true,

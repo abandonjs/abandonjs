@@ -8,8 +8,12 @@ type tAnyObject = {
 }
 /* interface & type end */
 
-
-// fn 方法只会执行一次
+/**
+ * @title once
+ * @description  fn 方法只会执行一次
+ * @param fn 指定值运行一次的方法
+ * @returns 返回封装后的方法
+ */
 export function once(fn: any): any {
 	let returnValue: any;
 	let canRun: boolean = true;
@@ -23,7 +27,13 @@ export function once(fn: any): any {
 	};
 }
 
-// 节流: 用于限制函数触发频率, 每个delay时间间隔，最多只能执行函数一次
+/** 
+ * @title throttle
+ * @description 节流: 用于限制函数触发频率, 每个delay时间间隔，最多只能执行函数一次
+ * @param fn function 待处理函数
+ * @param interval number 间隔
+ * @returns func 
+ */
 export function throttle(fn: any, interval: number): any {
 	let lastTime: number = 0;
 	return function throttled(): void {
@@ -35,12 +45,18 @@ export function throttle(fn: any, interval: number): any {
 	};
 }
 
-//  防抖:  时间内只会执行一次 可以减少函数触发的频率
+
 /**
- * 当函数触发时，使用一个定时器延迟执行操作。
- * 当函数被再次触发时，清除已设置的定时器，重新设置定时器。
- * 如果上一次的延迟操作还未执行，则会被清除。 
- * */
+ * @title debounce
+ * @description 
+ * -- 防抖:  时间内只会执行一次 可以减少函数触发的频率
+ * -- 当函数触发时，使用一个定时器延迟执行操作。
+ * -- 当函数被再次触发时，清除已设置的定时器，重新设置定时器。
+ * -- 如果上一次的延迟操作还未执行，则会被清除。 
+ * @param fn function
+ * @param interval number
+ * @returns
+ */
 export function debounce(fn: any, interval: number): any {
 	let timer: number = 0;
 	const debounced: () => void = (): void => {
@@ -54,6 +70,7 @@ export function debounce(fn: any, interval: number): any {
 }
 
 /**
+ * @title after
  * @description 调用n次后才触发func
  * @param n 调用后多少次才执行
  * @param func 限定的函数
@@ -68,6 +85,7 @@ export function after(n: number = 0, func: tAnyFunction): tAnyFunction {
 
 
 /**
+ * @title ary
  * @description 调用func最多接受n个参数
  * @param func 限定函数
  * @param n 限制参数数量
@@ -81,6 +99,7 @@ export function ary(func: tAnyFunction, n: number): tAnyFunction {
 
 
 /**
+ * @title before
  * @description 调用n次后，再调用就会返回最后一次调用的结果
  * @param n 超过n次不再调用
  * @param func 限定函数
@@ -99,6 +118,7 @@ export function before(n: number, func: tAnyFunction): tAnyFunction {
 
 
 /**
+ * @title bind
  * @description thisArg绑定func的this，并且func会接收partials附加参数
  * @param func 绑定的函数
  * @param thisArg 绑定的对象
@@ -112,23 +132,8 @@ export function bind(func: tAnyFunction, thisArg: tAnyObject = {}, ...partials: 
 }
 
 /**
- * (未完成，有问题)
- * @param object 对象
- * @param key 
- * @param partials 
- * @returns 
- */
-export function bindkey(object: tAnyObject, key: string, ...partials: any[]): any {
-	if (type(object[key]) === 'function') {
-		return function (...args: any[]): any {
-			return object[key](...partials, ...args);
-		}
-	}
-	return object[key]
-}
-
-/**
- * 
+ * @title curry
+ * @description 柯里化
  * @param func 待柯里化函数
  * @param len 待柯里化参数个数
  * @returns 柯里化函数
@@ -148,6 +153,7 @@ export function curry(func: tAnyFunction, len: number): tAnyFunction {
 }
 
 /**
+ * @title delay
  * @param func 指定函数
  * @param delayTime 延迟时间
  * @param args 传输参数
@@ -165,8 +171,6 @@ export function delay(func: tAnyFunction, delayTime: number = 0, ...args: any[])
 
 /**
  * @title flip
- * @t
- * @description 
  * @param func 要翻转参数的函数
  * @param args 反转参数
  * @returns 
@@ -175,23 +179,4 @@ export function flip(func: tAnyFunction): tAnyFunction {
 	return function (...args: any[]): any {
 		return func(...args.reverse());
 	}
-}
-
-
-/**
- * @title memoize
- * @description 待制作
- * @param func 
- * @param len 
- * @returns 
- */
-export function memoize(func: tAnyFunction, len: number): tAnyFunction {
-	return function (...args: any[]): any {
-
-	}
-}
-
-
-export function negate(): any {
-	return
 }

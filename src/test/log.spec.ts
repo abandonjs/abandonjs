@@ -1,5 +1,5 @@
 // import { mocked } from 'ts-jest/utils'
-import { log } from '../utils'
+// import { log } from '../utils'
 
 // test('测试jest.fn()调用', () => {
 //   let mockFn = jest.fn();
@@ -15,9 +15,9 @@ import { log } from '../utils'
 //   expect(mockFn).toHaveBeenCalledWith(1, 2, 3);
 // })
 
-test('log test', () => {
-	expect(log)
-})
+// test('log test', () => {
+//   expect(log)
+// })
 
 // test('sum fn test', () => {
 // 	let mockFn = jest.fn(sum);

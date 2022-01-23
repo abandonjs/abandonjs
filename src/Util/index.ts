@@ -1,70 +1,90 @@
 import { tPredicate, tAnyValueToBooleanFunc } from '../type'
 
-// 16进制颜色转RGBRGBA字符串
-// export const colorToRGB = (val, opa) => {
-// 	let pattern = /^(#?)[a-fA-F0-9]{6}$/;
-// 	//16进制颜色值校验规则
-// 	let isOpa = typeof opa == 'number';
-// 	//判断是否有设置不透明度
-// 	if (!pattern.test(val)) {
-// 		//如果值不符合规则返回空字符
-// 		return '';
-// 	}
-// 	let v = val.replace(/#/, '');
-// 	//如果有#号先去除#号
-// 	let rgbArr = [];
-// 	let rgbStr = '';
-// 	for (let i = 0; i < 3; i++) {
-// 		let item = v.substring(i * 2, i * 2 + 2);
-// 		let num = parseInt(item, 16);
-// 		rgbArr.push(num);
-// 	}
-// 	rgbStr = rgbArr.join();
-// 	rgbStr = 'rgb' + (isOpa ? 'a' : '') + '(' + rgbStr + (isOpa ? ',' + opa : '') + ')';
-// 	return rgbStr;
-// }
+/**
+ * @title colorToRGB
+ * @description 16进制颜色转RGB/RGBA字符串
+ * @param val 16进制颜色
+ * @param ?opa 透明度
+ * @returns [string]
+ */
+export const colorToRGB = (val: string, opa?: number): string => {
+  let pattern: RegExp = /^(#?)[a-fA-F0-9]{6}$/
+  if (!pattern.test(val)) return ''
 
-// // 检查密码强度
-// export const checkPwd = (str) => {
-// 	let Lv = 0;
-// 	if (str.length < 6) {
-// 		return Lv
-// 	}
-// 	if (/[0-9]/.test(str)) { Lv++ }
-// 	if (/[a-z]/.test(str)) { Lv++ }
-// 	if (/[A-Z]/.test(str)) { Lv++ }
-// 	if (/[\.|-|_]/.test(str)) { Lv++ }
-// 	return Lv;
-// }
+  let isOpa: boolean = typeof opa == 'number'
 
-// // 字符转换，type: 1:首字母大写 2：首字母小写 3：大小写转换 4：全部大写 5：全部小写
-// export const changeCase = (str, type) => {
-// 	type = type || 4
-// 	switch (type) {
-// 		case 1:
-// 			return str.replace(/\b\w+\b/g, function (word) {
-// 				return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
-// 			});
-// 		case 2:
-// 			return str.replace(/\b\w+\b/g, function (word) {
-// 				return word.substring(0, 1).toLowerCase() + word.substring(1).toUpperCase();
-// 			});
-// 		case 3:
-// 			return str.split('').map(function (word) {
-// 				if (/[a-z]/.test(word)) {
-// 					return word.toUpperCase();
-// 				} else {
-// 					return word.toLowerCase()
-// 				}
-// 			}).join('')
-// 		case 4:
-// 			return str.toUpperCase();
-// 		case 5:
-// 			return str.toLowerCase();
-// 		default:
-// 			return str;
-// 	}
-// }
+  let v: string = val.replace(/#/, '')
+  //如果有#号先去除#号
+  let rgbArr: any[] = []
+  let rgbStr = ''
+  for (let i = 0; i < 3; i++) {
+    let item = v.substring(i * 2, i * 2 + 2)
+    let num = parseInt(item, 16)
+    rgbArr.push(num)
+  }
+  rgbStr = `rgb${isOpa ? 'a' : ''}(${rgbArr.join()}${isOpa ? ',' + opa : ''})
+`
+  return rgbStr
+}
+
+/**
+ * @title checkPwd
+ * @description 检查密码强度
+ * @param pwd [string] 密码
+ * @returns [number] 密码等级
+ */
+export const checkPwd = (pwd: string): number => {
+  let Lv = 0
+  if (pwd.length < 6) return Lv
+  if (/[0-9]/.test(pwd)) Lv++
+  if (/[a-z]/.test(pwd)) Lv++
+  if (/[A-Z]/.test(pwd)) Lv++
+  if (/[\.|-|_]/.test(pwd)) Lv++
+  return Lv
+}
+
+/**
+ * @title changeCase
+ * @description  字符转换
+ * --- type: 1:首字母大写 2：首字母小写 3：大小写转换 4：全部大写 5：全部小写
+ * @param str string
+ * @param type number
+ * @returns
+ */
+export const changeCase = (str: string, type: number) => {
+  type = type || 4
+  switch (type) {
+    case 1:
+      return str.replace(/\b\w+\b/g, function (word) {
+        return (
+          word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase()
+        )
+      })
+    case 2:
+      return str.replace(/\b\w+\b/g, function (word) {
+        return (
+          word.substring(0, 1).toLowerCase() + word.substring(1).toUpperCase()
+        )
+      })
+    case 3:
+      return str
+        .split('')
+        .map(function (word) {
+          if (/[a-z]/.test(word)) {
+            return word.toUpperCase()
+          } else {
+            return word.toLowerCase()
+          }
+        })
+        .join('')
+    case 4:
+      return str.toUpperCase()
+    case 5:
+      return str.toLowerCase()
+    default:
+      return str
+  }
+}
 
 // //  去除空格 type: 1-所有空格 2-前后空格 3-前空格 4-后空格
 // export const trim = (str, type) => {
@@ -416,23 +436,29 @@ export function useArrayPredicate(
   }
 }
 
-// 分组打印(简化console.groupCollapsed)
-export function logGroup(name: string = '', ...list: any[]) {
+/**
+ * @title logGroup
+ * @description 分组打印(简化console.groupCollapsed)
+ * @param name 分组名称
+ * @param ...args 需要分组打印的结果
+ * @example logGroup(name[, ...args])
+ */
+export function logGroup(name: string = '', ...args: any[]) {
   console.groupCollapsed(`--- ${name} ---`)
-  Array.isArray(list) &&
-    list.length > 0 &&
-    list.forEach((item: any) => {
+  Array.isArray(args) &&
+    args.length > 0 &&
+    args.forEach((item: any) => {
       console.log(item)
     })
   console.groupEnd()
 }
 
-// 从数组中取任意 一个 元素
-export function pick(list: any[]): string {
-  return list[Math.floor(Math.random() * list.length)]
-}
-
-// 返回数据类型
+/**
+ * @title type
+ * @description 获取类型
+ * @param any 参数
+ * @return string 类型名称
+ */
 export function type(param: any): string {
   const result: string = Object.prototype.toString
     .call(param)

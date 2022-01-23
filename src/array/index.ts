@@ -1,98 +1,54 @@
-import { randomNumByRange, between } from '../number'
 import { iAnyObject, tAnyValueToBooleanFunc } from '../type'
-import { defaultValue, type, useArrayPredicate } from '../util'
-import { isObject } from '../object'
-
-/**
- * @title initMultArray
- * @description 生成多维数组
- * @param unit 初始化单元
- * @param dimension 多维指定 用&符号隔开
- * @returns 多维数组
- */
-export function initMultArray(unit: any, dimension?: string): any[] {
-  if (!dimension) return [unit]
-  if (!unit) unit = undefined
-
-  let dimArr: number[] = dimension
-    .split('&')
-    .map((item: string): number => Number(item) || 1)
-
-  if (dimArr.length < 2) {
-    return Array(dimArr[0]).fill(unit)
-  }
-
-  let depth: number = dimArr.length
-  let arrItem: any[] = Array(dimArr[--depth]).fill(unit)
-  do {
-    let tmp_arrItem: any[] = JSON.parse(JSON.stringify(arrItem)) || []
-    arrItem = Array(dimArr[--depth]).fill(tmp_arrItem)
-  } while (depth)
-
-  return arrItem
+import { defaultValue, useArrayPredicate } from '../util'
+import initMultArray from './initMultArray'
+import { arrayFilterByObject, compact } from './filter'
+import { arraySelectItems, arraySelectOne, difference } from './select'
+export {
+  initMultArray,
+  arrayFilterByObject,
+  difference,
+  compact,
+  arraySelectItems,
+  arraySelectOne
 }
 
-// 去除数组重复项
+/**
+ * @title pick
+ * @description 从数组中取任意 一个 元素
+ * @param any[] list
+ * @returns 数组中任意一个
+ */
+export function pick(list: any[]): string {
+  return list[Math.floor(Math.random() * list.length)]
+}
+
+/**
+ * @title arrayUniqueItem
+ * @description 去除数组重复项
+ * @param any[] list 待过滤数组
+ * @returns any[]
+ */
 export function arrayUniqueItem(list: any[]): any[] {
   return [...new Set(list)]
 }
 
-export function arraySelectOne(list: any[] = [], index?: number): any {
-  if (index !== null && index !== undefined) {
-    if (index > -1) return list[index]
-    if (index < 0) {
-      return list[list.length + index]
-    }
-  }
-  return list[~~(Math.random() * list.length)]
-}
-
-// 单层过滤
-export function arrayFilterByObject(
-  list: any[],
-  filter: { [key: string]: any },
-  retainNotObject = false
-): any[] {
-  if (!filter || list.length === 0) return list
-  let regObj: { [key: string]: RegExp } = {}
-  // 生成相应的 RegExp
-  for (let key in filter) regObj[key] = new RegExp(filter[key], 'i')
-  // 开始过滤
-  return list.filter((item: any): boolean => {
-    if (!isObject(item)) return retainNotObject
-    for (let key in regObj) {
-      if (isObject(item[key])) return false
-      if (!regObj[key].test(String(item[key]))) return false
-    }
-    return true
-  })
-}
-
-// 指定范围长度 来随机选择数组元素
-export function arraySelectItems(list: any[], min: number, max: number): any[] {
-  let len: number =
-    randomNumByRange(min, max > list.length ? list.length : max) || 0
-  let result: any[] = []
-  let index: number = 0
-  while (len--) {
-    index = ~~(Math.random() * list.length)
-    result.push(list[index])
-    list.splice(index, 1)
-  }
-  return result
-}
-
-// 通过 size 切割数组
+/**
+ * @title chunk
+ * @description  通过 size 切割数组
+ * @param list any[]
+ * @param size number 切割点索引
+ * @returns any[]
+ */
 export function chunk(list: any[], size: number): any[] {
   return [list.slice(0, size), list.slice(size)]
 }
 
-// 过滤掉假值 false, null, 0, "", undefined, NaN
-export function compact(list: any[]): any[] {
-  return list.filter((item: any): boolean => !!item)
-}
-
-// 连接 多个数组
+/**
+ * @title concat
+ * @description 连接多个数组
+ * @params ...list any[][] 多个数组 
+ * @returns any[]
+ */
 export function concat(...list: any[]): any[] {
   let result: any[] = []
   if (list && list.length > 0) {
@@ -109,30 +65,7 @@ export function concat(...list: any[]): any[] {
 }
 
 /**
- * @title difference
- * @description 过滤数组
- * @param list 待过滤的数组
- * @param ...filterConditions 过滤使用的条件
- * @returns 过滤后的数组(new)
- */
-export function difference(list: any[], ...filterConditions: any[]): any[] {
-  if (!list) return []
-  const result: any[] = list || []
-
-  // 整合过滤条件
-  if (!filterConditions) return list
-  let [...allFilterConditions]: any[] = filterConditions || []
-  allFilterConditions = concat(...allFilterConditions)
-
-  return result.filter((item: any): boolean => {
-    return !allFilterConditions.includes(item)
-  })
-}
-
-export function differenceBy() {}
-export function differenceWith() {}
-
-/**
+ * @title drop
  * @description 去除前n个元素
  * @param any[] list 数组
  * @param number n 要去除元素个数
@@ -146,9 +79,16 @@ export function drop(list: any[] = [], n: number = 0): any[] {
   return list
 }
 
-export function dropRight() {}
-export function dropRightWhile() {}
-export function dropWhile() {}
+/**
+ * @title dropRight
+ * @description 从右往左删除的指定个数
+ * @param list 要处理的数组
+ * @param n 需要删除的元素数量 [=1]
+ */
+export function dropRight(list: any[], n: number = 1) {
+  const len: number = list.length || 0
+  return list.splice(0, len - n)
+}
 
 /**
  * @title fill
@@ -214,53 +154,3 @@ export function findLastIndex<T>(
   } while (fromIndex--)
   return -1
 }
-export function first() {}
-export function flatten() {}
-export function flattenDeep() {}
-export function flattenDepth() {}
-export function fromPairs() {}
-export function head() {}
-export function indexOf() {}
-export function initial() {}
-export function intersection() {}
-export function intersectionBy() {}
-export function intersectionWith() {}
-export function join() {}
-export function last() {}
-export function lastIndexOf() {}
-export function nth() {}
-export function pull() {}
-export function pullAll() {}
-export function pullAllBy() {}
-export function pullAllWith() {}
-export function pullAt() {}
-export function remove() {}
-export function reverse() {}
-export function slice() {}
-export function sortedIndex() {}
-export function sortedIndexBy() {}
-export function sortedIndexOf() {}
-export function sortedIndexIndex() {}
-export function sortedIndexIndexOf() {}
-export function sortedUniq() {}
-export function sortedUniqBy() {}
-export function tail() {}
-export function take() {}
-export function takeRight() {}
-export function takeRightWhile() {}
-export function takeWhile() {}
-export function union() {}
-export function unionBy() {}
-export function unionWith() {}
-export function uniq() {}
-export function uniqBy() {}
-export function uniqWith() {}
-export function unzip() {}
-export function unzipWith() {}
-export function without() {}
-export function xor() {}
-export function xorWith() {}
-export function zip() {}
-export function zipObject() {}
-export function zipObjectDeep() {}
-export function zipWith() {}
