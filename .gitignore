@@ -1,6 +1,7 @@
 node_modules/
 dist/
+lib/
 *.log
 *lock
 *.md
-package-lock.json
+*-lock.json
