@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "commonjs",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "declaration": true,
     "sourceMap": true,
-    "outDir": "./dist",
     "removeComments": true,
     "noImplicitAny": false,
     "strictNullChecks": true,

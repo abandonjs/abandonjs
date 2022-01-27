@@ -117,7 +117,7 @@ export function random(
   ) {
     floating = arguments[arguments.length - 1]
   }
-  let result: number = lower + Math.random() * (upper - lower)
+  const result: number = lower + Math.random() * (upper - lower)
   if (floating) return result
   return Math.ceil(result)
 }

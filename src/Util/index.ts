@@ -8,7 +8,7 @@ import { tPredicate, tAnyValueToBooleanFunc } from '../type'
  * @returns [string]
  */
 export const colorToRGB = (val: string, opa?: number): string => {
-  let pattern: RegExp = /^(#?)[a-fA-F0-9]{6}$/
+  const pattern = /^(#?)[a-fA-F0-9]{6}$/
   if (!pattern.test(val)) return ''
 
   let isOpa: boolean = typeof opa == 'number'
@@ -39,7 +39,7 @@ export const checkPwd = (pwd: string): number => {
   if (/[0-9]/.test(pwd)) Lv++
   if (/[a-z]/.test(pwd)) Lv++
   if (/[A-Z]/.test(pwd)) Lv++
-  if (/[\.|-|_]/.test(pwd)) Lv++
+  if (/[.|-|_]/.test(pwd)) Lv++
   return Lv
 }
 
