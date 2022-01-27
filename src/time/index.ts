@@ -1,4 +1,4 @@
-import { anyToStringFn } from '../type'
+// import { anyToStringFn } from '../type'
 import { calendar } from './lunar';
 
 export {
@@ -23,45 +23,45 @@ export function isDateValid(val: any): boolean {
 	return !Number.isNaN(new Date(val).valueOf());
 }
 
-function minLength(value: any, len: number) {
-	return String(value).length < len ? `0${value}` : value;
-}
+// function minLength(value: any, len: number) {
+// 	return String(value).length < len ? `0${value}` : value;
+// }
 
-function date(format: string, timestamp: string): string {
+// function date(format: string, timestamp: string): string {
 
-	let time: Date = new Date(timestamp);
-	let year: number = time.getFullYear();
-	let day: number = time.getDay();
-	let month: number = time.getMonth();
-	let hour: number = time.getHours();
-	let minutes: number = time.getMinutes();
-	let seconds: number = time.getSeconds()
+// 	const time: Date = new Date(timestamp);
+// 	const year: number = time.getFullYear();
+// 	const day: number = time.getDay();
+// 	const month: number = time.getMonth();
+// 	const hour: number = time.getHours();
+// 	const minutes: number = time.getMinutes();
+// 	const seconds: number = time.getSeconds()
 
-	let formatlist: { reg: string, value: number | string }[] = [
-		{ reg: 'YYYY', value: minLength(year, 4) },
-		{ reg: 'yyyy', value: minLength(year, 4) },
-		{ reg: 'mm', value: minLength(month, 2) },
-		{ reg: 'dd', value: minLength(day, 2) },
-		{ reg: 'hh', value: minLength(hour, 2) },
-		{ reg: 'mm', value: minLength(minutes, 2) },
-		{ reg: 'ss', value: minLength(seconds, 2) },
-	]
+// 	const formatlist: { reg: string, value: number | string }[] = [
+// 		{ reg: 'YYYY', value: minLength(year, 4) },
+// 		{ reg: 'yyyy', value: minLength(year, 4) },
+// 		{ reg: 'mm', value: minLength(month, 2) },
+// 		{ reg: 'dd', value: minLength(day, 2) },
+// 		{ reg: 'hh', value: minLength(hour, 2) },
+// 		{ reg: 'mm', value: minLength(minutes, 2) },
+// 		{ reg: 'ss', value: minLength(seconds, 2) },
+// 	]
 
-	formatlist.forEach((item: { reg: string, value: number | string }): void => {
-		// format = format.replace(item.reg, item.value);
-	})
+// 	formatlist.forEach((item: { reg: string, value: number | string }): void => {
+// 		// format = format.replace(item.reg, item.value);
+// 	})
 
-	return format;
-}
+// 	return format;
+// }
 
 // 支持时间戳/ (普通时间, 时间格式), , 指定时区, 指定返回格式
 
-export function BaseToDateString(time: string): void {
-	// this.time = new Date(time).getTime();
-	// this.formatStr = "YYYY-MM-DD";
-	// this.formTimezone = 8;
-	// this.toTimezone = 8;
-}
+// export function BaseToDateString(time: string): void {
+// 	this.time = new Date(time).getTime();
+// 	this.formatStr = "YYYY-MM-DD";
+// 	this.formTimezone = 8;
+// 	this.toTimezone = 8;
+// }
 
 // 指定 输入时间 时区
 // BaseToDateString.prototype.FormTz = function (timezone: number) {

@@ -1,7 +1,7 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-const __file_flag: string = '\r\n------\r\n------\r\n'
+const __file_flag = '\r\n------\r\n------\r\n'
 type iDataType = {
   data: any[]
   urls: any[]
@@ -13,14 +13,14 @@ function isFile(url: string): boolean {
 }
 
 async function run(): Promise<void> {
-  let __path: string = path.join(__dirname, 'src')
-  let dirs: string[] = fs.readdirSync(__path) || []
+  const __path: string = path.join(__dirname, 'src')
+  const dirs: string[] = fs.readdirSync(__path) || []
   const allData: { [key: string]: any } = {}
 
   dirs.forEach((dirName: string): void => {
     if (isFile(dirName)) return
-    let __ipath: string = path.join(__dirname, 'src', dirName)
-    let idirs: string[] = fs.readdirSync(__ipath) || []
+    const __ipath: string = path.join(__dirname, 'src', dirName)
+    const idirs: string[] = fs.readdirSync(__ipath) || []
     if (idirs.length < 1) return
 
     const iData: iDataType = {
@@ -38,9 +38,9 @@ async function run(): Promise<void> {
         return
       }
       if (isFile(iipath)) {
-        let __data: string = fs.readFileSync(iiUrl).toString()
+        const __data: string = fs.readFileSync(iiUrl).toString()
         let __dataArray: string[] = []
-        let __reg: RegExp = /\/\*\*|\*\//
+        const __reg = /\/\*\*|\*\//
         __dataArray = __data.split(__reg).filter((__item: string): boolean => {
           return __item.indexOf('* @') > -1
         })
@@ -69,7 +69,7 @@ async function run(): Promise<void> {
     // console.log({ name: item, item: allData[item] })
     if (allData[item].data.length === 0) return
     // console.log({ name: item, item: allData[item].data })
-    let resItem: string = allData[item].data
+    const resItem: string = allData[item].data
       .join('')
       .replace(/ \*/g, '>')
       .replace(/@/g, '- ')

@@ -12,8 +12,8 @@ import { concat } from './index'
 export function arraySelectItems(list: any[], min: number, max: number): any[] {
   let len: number =
     randomNumByRange(min, max > list.length ? list.length : max) || 0
-  let result: any[] = []
-  let index: number = 0
+  const result: any[] = []
+  let index = 0
   while (len--) {
     index = ~~(Math.random() * list.length)
     result.push(list[index])

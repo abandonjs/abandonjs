@@ -8,8 +8,7 @@
   "jsdelivr": "/lib/",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "build:lib": "npx rollup -c --extend rollup.config.ts",
+    "build": "npx rollup -c --extend rollup.config.ts",
     "lint-staged": "lint-staged",
     "dev": "ts-node-dev --respawn --transpile-only ./src/test/index.ts",
     "md": "ts-node-dev --respawn --transpile-only ./md.ts",
@@ -19,6 +18,7 @@
     "restart": "rimraf dist && npm run build && npm start",
     "start": "node ./dist/index.js",
     "prod": "npm run build && npm run start",
+    "eslint": "eslint . --ext .ts --fix",
     "pub": "npm publish"
   },
   "keywords": [
@@ -31,6 +31,7 @@
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
+    "@rollup/plugin-commonjs": "^21.0.1",
     "@types/bluebird": "^3.5.36",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.6",
@@ -45,7 +46,6 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.66.1",
     "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-typescript2": "^0.31.1",

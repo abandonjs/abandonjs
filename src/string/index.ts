@@ -25,7 +25,7 @@ export function isJsonString(val: any) {
 export function BaseToString(value: any): string {
   if (typeof value === 'string') return value
   if (Array.isArray(value)) return `${value.map(BaseToString)}`
-  const result: string = `${value}`
+  const result = `${value}`
   return (result === '0' && 1 / value === -Infinity ? '-0' : result) || ''
 }
 

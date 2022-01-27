@@ -71,7 +71,7 @@ export function concat(...list: any[]): any[] {
  * @param number n 要去除元素个数
  * @returns any[] list 剩余切片
  */
-export function drop(list: any[] = [], n: number = 0): any[] {
+export function drop(list: any[] = [], n = 0): any[] {
   while (n--) {
     if (list.length < 1) return []
     list.shift()
@@ -85,7 +85,7 @@ export function drop(list: any[] = [], n: number = 0): any[] {
  * @param list 要处理的数组
  * @param n 需要删除的元素数量 [=1]
  */
-export function dropRight(list: any[], n: number = 1) {
+export function dropRight(list: any[], n = 1) {
   const len: number = list.length || 0
   return list.splice(0, len - n)
 }
@@ -102,8 +102,8 @@ export function dropRight(list: any[], n: number = 1) {
 export function fill<T>(
   array: T[],
   value: any = undefined,
-  start: number = 0,
-  end: number = 0
+  start = 0,
+  end = 0
 ): T[] {
   end = defaultValue(end, defaultValue(array.length, 0))
   while (start < end) array[start++] = value
@@ -121,10 +121,10 @@ export function fill<T>(
 export function findIndex<T>(
   array: T[],
   predicate: T[] | ((val: T) => T) | iAnyObject | string,
-  fromIndex: number = 0
+  fromIndex = 0
 ): number {
-  let len: number = array.length
-  let predicateFunc: tAnyValueToBooleanFunc = useArrayPredicate(predicate)
+  const len: number = array.length
+  const predicateFunc: tAnyValueToBooleanFunc = useArrayPredicate(predicate)
   if (array.length === 0) return -1
   do {
     if (predicateFunc(array[fromIndex])) return fromIndex
@@ -145,9 +145,9 @@ export function findLastIndex<T>(
   predicate: T[] | ((val: T) => T) | iAnyObject | string,
   fromIndex: number
 ): number {
-  let len: number = array.length
+  const len: number = array.length
   fromIndex = defaultValue(fromIndex, len - 1)
-  let predicateFunc: tAnyValueToBooleanFunc = useArrayPredicate(predicate)
+  const predicateFunc: tAnyValueToBooleanFunc = useArrayPredicate(predicate)
   if (array.length === 0) return -1
   do {
     if (predicateFunc(array[fromIndex])) return fromIndex

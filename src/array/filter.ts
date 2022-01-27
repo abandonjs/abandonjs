@@ -14,13 +14,13 @@ export function arrayFilterByObject(
   retainNotObject = false
 ): any[] {
   if (!filter || list.length === 0) return list
-  let regObj: { [key: string]: RegExp } = {}
+  const regObj: { [key: string]: RegExp } = {}
   // 生成相应的 RegExp
-  for (let key in filter) regObj[key] = new RegExp(filter[key], 'i')
+  for (const key in filter) regObj[key] = new RegExp(filter[key], 'i')
   // 开始过滤
   return list.filter((item: any): boolean => {
     if (!isObject(item)) return retainNotObject
-    for (let key in regObj) {
+    for (const key in regObj) {
       if (isObject(item[key])) return false
       if (!regObj[key].test(String(item[key]))) return false
     }

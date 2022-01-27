@@ -13,5 +13,5 @@ logGroup( 'id',
   _.uuid()
 )
 
-let a: any = { a: 1 }
+const a: any = { a: 1 }
 logGroup('identity', _.identity(a) === a)

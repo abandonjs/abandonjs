@@ -9,7 +9,7 @@ export default function initMultArray(unit: any, dimension?: string): any[] {
   if (!dimension) return [unit]
   if (!unit) unit = undefined
 
-  let dimArr: number[] = dimension
+  const dimArr: number[] = dimension
     .split('&')
     .map((item: string): number => Number(item) || 1)
 
@@ -20,7 +20,7 @@ export default function initMultArray(unit: any, dimension?: string): any[] {
   let depth: number = dimArr.length
   let arrItem: any[] = Array(dimArr[--depth]).fill(unit)
   do {
-    let tmp_arrItem: any[] = JSON.parse(JSON.stringify(arrItem)) || []
+    const tmp_arrItem: any[] = JSON.parse(JSON.stringify(arrItem)) || []
     arrItem = Array(dimArr[--depth]).fill(tmp_arrItem)
   } while (depth)
 

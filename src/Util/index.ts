@@ -11,15 +11,15 @@ export const colorToRGB = (val: string, opa?: number): string => {
   const pattern = /^(#?)[a-fA-F0-9]{6}$/
   if (!pattern.test(val)) return ''
 
-  let isOpa: boolean = typeof opa == 'number'
+  const isOpa: boolean = typeof opa == 'number'
 
-  let v: string = val.replace(/#/, '')
+  const v: string = val.replace(/#/, '')
   //如果有#号先去除#号
-  let rgbArr: any[] = []
+  const rgbArr: any[] = []
   let rgbStr = ''
   for (let i = 0; i < 3; i++) {
-    let item = v.substring(i * 2, i * 2 + 2)
-    let num = parseInt(item, 16)
+    const item = v.substring(i * 2, i * 2 + 2)
+    const num = parseInt(item, 16)
     rgbArr.push(num)
   }
   rgbStr = `rgb${isOpa ? 'a' : ''}(${rgbArr.join()}${isOpa ? ',' + opa : ''})
@@ -410,14 +410,14 @@ export function useArrayPredicate(
       return (item: any): boolean => {
         if (item === undefined || item === null) return false
         const predicateStr: string = JSON.stringify(predicate)
-        for (let iitem of Object.entries(item)) {
+        for (const iitem of Object.entries(item)) {
           if (JSON.stringify(iitem) === predicateStr) return true
         }
         return false
       }
     case 'Object':
       return (item: object): boolean => {
-        for (let key in predicate as object) {
+        for (const key in predicate as object) {
           if (item[key] !== (predicate as object)[key]) return false
         }
         return true
@@ -443,7 +443,7 @@ export function useArrayPredicate(
  * @param ...args 需要分组打印的结果
  * @example logGroup(name[, ...args])
  */
-export function logGroup(name: string = '', ...args: any[]) {
+export function logGroup(name = '', ...args: any[]) {
   console.groupCollapsed(`--- ${name} ---`)
   Array.isArray(args) &&
     args.length > 0 &&
@@ -482,9 +482,9 @@ export function deepClone(obj: any, cache = new WeakMap()) {
   if (obj instanceof RegExp) return new RegExp(obj)
 
   // 找到所属原型上的constructor，所属原型上的constructor指向当前对象的构造函数
-  let cloneObj: any = new obj.constructor()
+  const cloneObj: any = new obj.constructor()
   cache.set(obj, cloneObj) // 缓存拷贝的对象，用于处理循环引用的情况
-  for (let key in obj) {
+  for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
       cloneObj[key] = deepClone(obj[key], cache) // 递归拷贝
     }
@@ -517,11 +517,11 @@ class EventEmitter {
     }
   }
 
-  emit(name: any, once: boolean = false): void {
+  emit(name: any, once = false): void {
     if (this.cache && this.cache[name]) {
       // 创建副本，如果回调函数内继续注册相同事件，会造成死循环
       const tasks: any = this.cache[name].slice()
-      for (let fn of tasks) {
+      for (const fn of tasks) {
         fn()
       }
       if (once) {

@@ -99,7 +99,7 @@ logGroup(
   _Array.drop([1, 34, 4], 20)
 )
 
-let array = [1, 2, 3]
+const array = [1, 2, 3]
 
 logGroup(
   'fill',
@@ -110,7 +110,7 @@ logGroup(
   _.fill([4, 6, 8, 10], '*', 1, 3)
 )
 
-let users = [
+const users = [
   { user: 'barney', active: false },
   { user: 'fred', active: false },
   { user: 'pebbles', active: true }

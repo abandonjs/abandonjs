@@ -8,21 +8,21 @@ import {
 const now: Date = new Date()
 
 //用于计算农历年月日的数据
-let GY: number = now.getFullYear()
-let GM: number = now.getMonth()
-let GD: number = now.getDate()
+const GY: number = now.getFullYear()
+const GM: number = now.getMonth()
+const GD: number = now.getDate()
 
-let year: number = now.getFullYear()
-let _month: number = now.getMonth() + 1
-let _date: number = now.getDate()
-let _hours: number = now.getHours()
-let _minutes: number = now.getMinutes()
-let _seconds: number = now.getSeconds()
-let month: string = _month.toString().padStart(2, '0')
-let date: string = _date.toString().padStart(2, '0')
-let hours: string = _hours.toString().padStart(2, '0')
-let minutes: string = _minutes.toString().padStart(2, '0')
-let seconds: string = _seconds.toString().padStart(2, '0')
+const year: number = now.getFullYear()
+const _month: number = now.getMonth() + 1
+const _date: number = now.getDate()
+const _hours: number = now.getHours()
+const _minutes: number = now.getMinutes()
+const _seconds: number = now.getSeconds()
+const month: string = _month.toString().padStart(2, '0')
+const date: string = _date.toString().padStart(2, '0')
+const hours: string = _hours.toString().padStart(2, '0')
+const minutes: string = _minutes.toString().padStart(2, '0')
+const seconds: string = _seconds.toString().padStart(2, '0')
 
 /**
  * @title isLeapYear
@@ -81,12 +81,12 @@ function monthDays(year?: number, month?: number): 30 | 29 {
 //==== 算出农历, 传入日期对象, 传回农历日期对象
 //     该对象属性有 农历年year 农历月month 农历日day 是否闰年isLeap yearCyl dayCyl monCyl
 function Lunar(objDate: Date): { [key: string]: any } {
-	let i, temp: number = 0
-	let baseDate: Date = new Date(1900, 0, 31)
+	let i, temp = 0
+	const baseDate: Date = new Date(1900, 0, 31)
 	let offset: number = Math.floor((objDate.getTime() - baseDate.getTime()) / 86400000)
 
-	let dayCyl: number = offset + 40
-	let monCyl: number = 14
+	const dayCyl: number = offset + 40
+	let monCyl = 14
 
 	for (i = 1900; i < 2050 && offset > 0; i++) {
 		temp = lYearDays(i)
@@ -99,11 +99,11 @@ function Lunar(objDate: Date): { [key: string]: any } {
 		monCyl -= 12
 	}
 	//农历年
-	let year: number = i
-	let yearCyl: number = i - 1864
+	const year: number = i
+	const yearCyl: number = i - 1864
 
-	let leap: number = leapMonth(i) //闰哪个月
-	let isLeap: boolean = false  //是否闰年
+	const leap: number = leapMonth(i) //闰哪个月
+	let isLeap = false  //是否闰年
 
 	for (i = 1; i < 13 && offset > 0; i++) {
 		//闰月
@@ -134,9 +134,9 @@ function Lunar(objDate: Date): { [key: string]: any } {
 		--monCyl
 	}
 	//农历月
-	let month: number = i
+	const month: number = i
 	//农历日
-	let day: number = offset + 1
+	const day: number = offset + 1
 
 	return {
 		year: year,
@@ -152,8 +152,8 @@ function Lunar(objDate: Date): { [key: string]: any } {
 
 //==== 中文日期 m为传入月份，d为传入日期
 function cDay(m: number, d: number): { [key: string]: any } {
-	let nStr1: string[] = ['日', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
-	let nStr2: string[] = ['初', '十', '廿', '卅', '']
+	const nStr1: string[] = ['日', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
+	const nStr2: string[] = ['初', '十', '廿', '卅', '']
 	//农历中文月
 	let lunarMonthCn
 	//农历中文日
@@ -179,7 +179,7 @@ function cDay(m: number, d: number): { [key: string]: any } {
 
 //节气
 function getSolarTerm(): string {
-	let solarTerms: string = ''
+	let solarTerms = ''
 
 	let tmp1: Date = new Date(
 		(31556925974.7 * (GY - 1900)
@@ -200,10 +200,10 @@ function getSolarTerm(): string {
 }
 
 //去掉时分秒的日期
-let sDObj: Date = new Date(GY, GM, GD);
-let lDObj: { [key: string]: any } = Lunar(sDObj);
+const sDObj: Date = new Date(GY, GM, GD);
+const lDObj: { [key: string]: any } = Lunar(sDObj);
 
-export let calendar: Calendar = {
+export const calendar: Calendar = {
 	//公历年月日、星期、时分秒
 	gregorianYear: year,
 	gregorianMonth: month,

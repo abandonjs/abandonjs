@@ -4,6 +4,7 @@ specifiers:
   '@babel/core': ^7.16.12
   '@babel/preset-env': ^7.16.11
   '@babel/preset-typescript': ^7.16.7
+  '@rollup/plugin-commonjs': ^21.0.1
   '@types/bluebird': ^3.5.36
   '@types/jest': ^27.0.2
   '@types/node': ^16.11.6
@@ -18,7 +19,6 @@ specifiers:
   rimraf: ^3.0.2
   rollup: ^2.66.1
   rollup-plugin-babel: ^4.4.0
-  rollup-plugin-commonjs: ^10.1.0
   rollup-plugin-eslint: ^7.0.0
   rollup-plugin-node-resolve: ^5.2.0
   rollup-plugin-typescript2: ^0.31.1
@@ -32,6 +32,7 @@ devDependencies:
   '@babel/core': 7.16.12
   '@babel/preset-env': 7.16.11_@babel+core@7.16.12
   '@babel/preset-typescript': 7.16.7_@babel+core@7.16.12
+  '@rollup/plugin-commonjs': 21.0.1_rollup@2.66.1
   '@types/bluebird': 3.5.36
   '@types/jest': 27.4.0
   '@types/node': 16.11.21
@@ -46,7 +47,6 @@ devDependencies:
   rimraf: 3.0.2
   rollup: 2.66.1
   rollup-plugin-babel: 4.4.0_9997319ace8bca27de532a1e218e7823
-  rollup-plugin-commonjs: 10.1.0_rollup@2.66.1
   rollup-plugin-eslint: 7.0.0
   rollup-plugin-node-resolve: 5.2.0_rollup@2.66.1
   rollup-plugin-typescript2: 0.31.1_afb80b3c969361daf2066783b6778d69
@@ -1517,6 +1517,34 @@ packages:
       fastq: 1.13.0
     dev: true
 
+  /@rollup/plugin-commonjs/21.0.1_rollup@2.66.1:
+    resolution: {integrity: sha512-EA+g22lbNJ8p5kuZJUYyhhDK7WgJckW5g4pNN7n4mAFUM96VuwUnNT3xr2Db2iCZPI1pJPbGyfT5mS9T1dHfMg==}
+    engines: {node: '>= 8.0.0'}
+    peerDependencies:
+      rollup: ^2.38.3
+    dependencies:
+      '@rollup/pluginutils': 3.1.0_rollup@2.66.1
+      commondir: 1.0.1
+      estree-walker: 2.0.2
+      glob: 7.2.0
+      is-reference: 1.2.1
+      magic-string: 0.25.7
+      resolve: 1.22.0
+      rollup: 2.66.1
+    dev: true
+
+  /@rollup/pluginutils/3.1.0_rollup@2.66.1:
+    resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
+    engines: {node: '>= 8.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0
+    dependencies:
+      '@types/estree': 0.0.39
+      estree-walker: 1.0.1
+      picomatch: 2.3.1
+      rollup: 2.66.1
+    dev: true
+
   /@rollup/pluginutils/4.1.2:
     resolution: {integrity: sha512-ROn4qvkxP9SyPeHaf7uQC/GPFY6L/OWy9+bd9AwcjOAWQwxRscoEyAUD8qCY5o5iL4jqQwoLk2kaTKJPb/HwzQ==}
     engines: {node: '>= 8.0.0'}
@@ -1603,6 +1631,10 @@ packages:
 
   /@types/bluebird/3.5.36:
     resolution: {integrity: sha512-HBNx4lhkxN7bx6P0++W8E289foSu8kO8GCk2unhuVggO+cE7rh9DhZUyPhUxNRG9m+5B5BTKxZQ5ZP92x/mx9Q==}
+    dev: true
+
+  /@types/estree/0.0.39:
+    resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
     dev: true
 
   /@types/estree/0.0.50:
@@ -2756,6 +2788,10 @@ packages:
 
   /estree-walker/0.6.1:
     resolution: {integrity: sha512-SqmZANLWS0mnatqbSfRP5g8OXZC12Fgg1IwNtLsyHDzJizORW4khDfjPqJZsemPWBB2uqykUah5YpQ6epsqC/w==}
+    dev: true
+
+  /estree-walker/1.0.1:
+    resolution: {integrity: sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==}
     dev: true
 
   /estree-walker/2.0.2:
@@ -4517,20 +4553,6 @@ packages:
     dependencies:
       '@babel/core': 7.16.12
       '@babel/helper-module-imports': 7.16.7
-      rollup: 2.66.1
-      rollup-pluginutils: 2.8.2
-    dev: true
-
-  /rollup-plugin-commonjs/10.1.0_rollup@2.66.1:
-    resolution: {integrity: sha512-jlXbjZSQg8EIeAAvepNwhJj++qJWNJw1Cl0YnOqKtP5Djx+fFGkp3WRh+W0ASCaFG5w1jhmzDxgu3SJuVxPF4Q==}
-    deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-commonjs.
-    peerDependencies:
-      rollup: '>=1.12.0'
-    dependencies:
-      estree-walker: 0.6.1
-      is-reference: 1.2.1
-      magic-string: 0.25.7
-      resolve: 1.22.0
       rollup: 2.66.1
       rollup-pluginutils: 2.8.2
     dev: true

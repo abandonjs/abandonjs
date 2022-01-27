@@ -2,10 +2,10 @@ import path from 'path'
 import rollupTypescript from 'rollup-plugin-typescript2'
 import babel from 'rollup-plugin-babel'
 import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
+import commonjs from '@rollup/plugin-commonjs'
 import { eslint } from 'rollup-plugin-eslint'
 import { DEFAULT_EXTENSIONS } from '@babel/core'
-
+// import { uglify } from 'rollup-plugin-uglify'
 import pkg from './package.json'
 
 const paths = {
@@ -44,6 +44,7 @@ const rollupConfig = {
     // 使得 rollup 支持 commonjs 规范，识别 commonjs 规范的依赖
     commonjs(),
 
+
     // 配合 commnjs 解析第三方模块
     resolve({
       // 将自定义选项传递给解析插件
@@ -58,7 +59,8 @@ const rollupConfig = {
       exclude: 'node_modules/**',
       // babel 默认不支持 ts 需要手动添加
       extensions: [...DEFAULT_EXTENSIONS, '.ts']
-    })
+    }),
+    // uglify()
   ]
 }
 

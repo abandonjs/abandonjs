@@ -1,0 +1,4 @@
+.eslintrc.js
+test/
+lib/
+src/*/__test__

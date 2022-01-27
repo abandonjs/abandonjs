@@ -1,5 +1,4 @@
-// .eslintrc.js
-const eslintrc = {
+module.exports = {
   parser: '@typescript-eslint/parser', // 使用 ts 解析器
   extends: [
     'eslint:recommended', // eslint 推荐规则
@@ -22,11 +21,11 @@ const eslintrc = {
   },
   rules: {
     'no-prototype-builtins':'off',
-    '@typescript-eslint/no-unused-vars':'off',
-    '@typescript-eslint/no-inferrable-types': 'off',
-    'prefer-const': 'off',
+    // '@typescript-eslint/no-unused-vars':'off',
+    // '@typescript-eslint/no-inferrable-types': 'off',
+    // 'prefer-const': 'off',
     'prefer-rest-params': 'off',
-    '@typescript-eslint/no- inferable -types': 'off',
+    // '@typescript-eslint/no- inferable -types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'jest/expect-expect': [
       'error',
@@ -37,5 +36,3 @@ const eslintrc = {
     ]
   } // 自定义
 }
-
-module.exports = eslintrc

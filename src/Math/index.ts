@@ -1,4 +1,4 @@
-import { INFINITY, MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../constants'
+// import { INFINITY, MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../constants'
 import { toNumber, isEffectNumber } from '../number'
 import { type } from '../util'
 import { tItteratee } from '../type'
@@ -18,15 +18,15 @@ const __binary: string[] = ['', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y', 'B']
  */
 export function countingMethod(
   num: number | string,
-  binary: number = 1024
+  binary = 1024
 ): string {
-  let result: string = ''
-  let tempNum: number = Number(num)
+  let result = ''
+  let tempNum = Number(num)
   if (num > binary ** 9) return '1024B'
-  let index: number = 0
+  const index = 0
 
   function translate(index: number): void {
-    let _index_num: number = tempNum % binary
+    const _index_num: number = tempNum % binary
     tempNum = (tempNum - _index_num) / binary
     if (_index_num > 0) result = _index_num + __binary[index] + result
     if (tempNum < 1) return
@@ -54,7 +54,7 @@ export function add(augend: number, addend: number): number {
  * @param precision 精度
  * @returns
  */
-export function ceil(num: number, precision: number = 0): number {
+export function ceil(num: number, precision = 0): number {
   return Math.ceil(num * toNumber(10 ** precision)) * toNumber(10 ** -precision)
 }
 
@@ -76,7 +76,7 @@ export function divide(dividend: number, divisor: number): number {
  * @param precision 精度
  * @returns 向下取整
  */
-export function floor(num: number, precision: number = 0): number {
+export function floor(num: number, precision = 0): number {
   return (
     Math.floor(num * toNumber(10 ** precision)) * toNumber(10 ** -precision)
   )
@@ -92,7 +92,7 @@ export function floor(num: number, precision: number = 0): number {
 export function max(list: any[]): number | undefined {
   let maxValue: number | undefined = undefined
   list.forEach((val: any): void => {
-    let item: number = Number(val)
+    const item = Number(val)
     if (isEffectNumber(item)) {
       if (maxValue === undefined) {
         maxValue = item
@@ -123,7 +123,7 @@ export function maxBy(
   list: any[],
   itteratee?: tItteratee
 ): number | undefined | { [key: string]: any } {
-  let _type: string = type(itteratee)
+  const _type: string = type(itteratee)
   if (_type === 'Undefined') {
     return max(list)
   }
@@ -132,7 +132,7 @@ export function maxBy(
   const handleValue: any = useValue(itteratee)
 
   list.forEach((val: any): void => {
-    let item: number = Number(handleValue(val))
+    const item = Number(handleValue(val))
     if (isEffectNumber(item)) {
       if (maxValue === undefined) {
         maxValue = item
@@ -166,12 +166,11 @@ export function mean(list: any[]): number | undefined {
  * @returns 平均数
  */
 export function meanBy(list: any[], itteratee?: tItteratee): any {
-  let total: number = 0
-  let len: number = 0
-  let _type: string = type(itteratee)
+  let total = 0
+  let len = 0
   const handleValue: any = useValue(itteratee)
   list.forEach((val: any): void => {
-    let item: number = Number(handleValue(val))
+    const item = Number(handleValue(val))
     if (isEffectNumber(item)) {
       total += item
       ++len
@@ -203,10 +202,9 @@ export function minBy(list: any[], itteratee?: tItteratee): any {
   let result: any = undefined
   let minValue: number | undefined = undefined
   let len: number = list.length
-  let _type: string = type(itteratee)
   const handleValue: any = useValue(itteratee)
   while (len--) {
-    let val: number = Number(handleValue(list[len]))
+    const val = Number(handleValue(list[len]))
     if (isEffectNumber(val)) {
       if (minValue === undefined) {
         minValue = val
@@ -235,12 +233,11 @@ export function sum(list: any[]): undefined | number {
  */
 export function sumBy(list: any[], itteratee?: tItteratee): undefined | number {
   if (list.length === 0) return undefined
-  let _type: string = type(itteratee)
   let total: undefined | number = undefined
   let len: number = list.length
   const handleValue: any = useValue(itteratee)
   while (len--) {
-    let val: number = Number(handleValue(list[len]))
+    const val = Number(handleValue(list[len]))
     if (isEffectNumber(val)) {
       if (total === undefined) total = 0
       total += val
