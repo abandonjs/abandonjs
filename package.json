@@ -1,6 +1,6 @@
 {
   "name": "rh-js-methods",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "方法包",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
@@ -14,7 +14,7 @@
     "md": "ts-node-dev --respawn --transpile-only ./md.ts",
     "test": "jest",
     "test_index": "ts-node-dev --respawn --transpile-only ./src/test/index.test.ts",
-    "test-c": "jest --coverage",
+    "test-c": "jest --coverage --verbose -u",
     "restart": "rimraf dist && npm run build && npm start",
     "start": "node ./dist/index.js",
     "prod": "npm run build && npm run start",

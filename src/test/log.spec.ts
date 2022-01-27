@@ -1,3 +1,12 @@
+// import { assert } from 'assert';
+// import assert from 'assert'
+
+describe('validate', () => {
+  test('add', () => {
+    expect(2 + 2).toEqual(4)
+  })
+})
+
 // import { mocked } from 'ts-jest/utils'
 // import { log } from '../utils'
 
