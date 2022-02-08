@@ -466,6 +466,11 @@ export function type(param: any): string {
   if (result === 'Number' && isNaN(param)) return 'NaN'
   return result
 }
+type.array = 'Array'
+type.object = 'Object'
+type.function = 'Function'
+type.string = 'String'
+type.number = 'Number'
 
 // 当做空值 undefined, null, NaN
 export function isEmpty(value: any): boolean {

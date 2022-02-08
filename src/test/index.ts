@@ -29,7 +29,7 @@ let indexes: string[] = [
 
 let modules: string[] = process.env[`npm_config_modules`].split(/,|_/)
 
-console.log({ modules })
+// console.log({ modules })
 
 modules.forEach((name: string): void => {
   if (indexes.includes(name)) {

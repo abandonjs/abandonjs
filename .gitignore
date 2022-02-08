@@ -3,5 +3,4 @@ dist/
 lib/
 *.log
 *lock
-*.md
 *-lock.json
