@@ -1,6 +1,6 @@
 import { isEmpty } from '../util'
 import { isObject } from '../object'
-
+export * from './match'
 // 反转字符串
 export function strReverse(str: string): string {
   return str.split('').reverse().join('')

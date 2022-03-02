@@ -54,12 +54,12 @@ const bindkeyObj = {
   }
 }
 
-logGroup(
-  'bindkey',
-  _.bindkey(bindkeyObj, 'a'),
-  _.bindkey(bindkeyObj, 'say')('ruihuag'),
-  _.bindkey(bindkeyObj, 'say2', 'ruihuag')(123)
-)
+// logGroup(
+//   'bindkey',
+//   _.bindkey(bindkeyObj, 'a'),
+//   _.bindkey(bindkeyObj, 'say')('ruihuag'),
+//   _.bindkey(bindkeyObj, 'say2', 'ruihuag')(123)
+// )
 
 function curryTestFn(a: any, b: any, c: any): string {
   return 'fn:' + JSON.stringify([a, b, c])
