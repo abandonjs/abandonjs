@@ -1,5 +1,5 @@
 /**
- * @title once
+ * @title getWordAndNumber
  * @description  将提取字母和数字
  * @param str 待处理 字符串
  * @returns RegExpMatchArray( string[] | [] ) | null
