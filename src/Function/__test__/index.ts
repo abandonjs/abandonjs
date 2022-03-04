@@ -1,5 +1,7 @@
 import * as _ from '../index'
-import { logGroup } from '../../util'
+import { logGroup as log } from '../../util'
+
+const logGroup = _.once(log)
 
 function test(): any {
   return `func result`
@@ -13,6 +15,12 @@ function testThis(a: any = '', b: any = ''): string {
 }
 
 // console.log('function')
+
+// {
+//   const fn = _.multipleValues({ '1': '111', '2': undefined, '3': 123 })
+//   logGroup('multipleValues', fn('1'), fn('2'), fn('3'))
+// }
+
 
 const done: any = _.after(3, test)
 

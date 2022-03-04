@@ -5,6 +5,20 @@ type tAnyObject = {
 }
 /* interface & type end */
 
+
+/**
+ * @title multipleValues
+ * @description 通过字典获取值
+ * @param dictionary object 字典
+ * @returns function(key:keyof dictionary):any
+ */
+// export function multipleValues<T extends object>(dictionary: T) {
+//   return function (key: keyof T): T[keyof T] {
+//     return dictionary[key]
+//   }
+// }
+
+
 /**
  * @title once
  * @description  fn 方法只会执行一次
