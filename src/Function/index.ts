@@ -1,3 +1,5 @@
+export { default as VirtualDao } from './virtualDao'
+
 /* interface & type start */
 type tAnyFunction = (...arg: any[]) => any
 type tAnyObject = {
@@ -5,6 +7,35 @@ type tAnyObject = {
 }
 /* interface & type end */
 
+
+function initCRUD<T>(tableData: any[]): void {
+  Object.defineProperties(tableData, {
+    select: {
+      value: () => {
+        console.log(this)
+        return this
+      }
+    },
+    // select: { value: select },
+    // selectPage: { value: selectPage },
+    // add: { value: add },
+    // update: { value: update },
+    // del: { value: del },
+    // format: { value: format }
+  })
+}
+
+class VirtualDao {
+  init(tableName: string, tableData: any[] = []): any {
+    initCRUD(tableData)
+    this[tableName] = tableData ?? []
+    return this;
+  }
+}
+
+export function minxin(pendingDatas: any[]) {
+  return new VirtualDao().init('target', pendingDatas)
+}
 
 /**
  * @title multipleValues
@@ -17,7 +48,6 @@ type tAnyObject = {
 //     return dictionary[key]
 //   }
 // }
-
 
 /**
  * @title once

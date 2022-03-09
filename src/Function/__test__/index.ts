@@ -20,7 +20,39 @@ function testThis(a: any = '', b: any = ''): string {
 //   const fn = _.multipleValues({ '1': '111', '2': undefined, '3': 123 })
 //   logGroup('multipleValues', fn('1'), fn('2'), fn('3'))
 // }
+let list = 'jfksjdfkaj,fj1238a0fasklfn23r0-fasdf'
+let vdao: any = new _.VirtualDao();
+vdao.init('ls', list.split('').map((item: string) => {
+  return { value: item+'123' }
+}))
+vdao.insert('ls', list.split('').map((item: string) => {
+  return { value: item+'--' }
+}))
+vdao.insert('ls2', list.split('').map((item: string) => {
+  return { value: item+'--' }
+}))
 
+logGroup('VirtualDao',
+  // vdao.ls,
+  // vdao.ls2,
+  vdao.ls.select({ value: 'a--' }),
+  // !!'f--'.match(new RegExp('g','g')),
+)
+
+// let pr = new Proxy<any>([], {
+//   set: (target: any, p: string | symbol, value: any): boolean => {
+//     console.log({ target, p, value })
+//     target[0] = value
+//     return true
+//   },
+//   get: function (target, name) {
+//     console.log({ target, name });
+//   }
+// })
+
+// pr[0] = 1234
+// console.log(pr)
+// console.log(pr.a)
 
 const done: any = _.after(3, test)
 

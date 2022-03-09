@@ -55,5 +55,9 @@
     "ts-node-dev": "^1.1.8",
     "ts-toolbelt": "^9.6.0",
     "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "reflect-metadata": "^0.1.13",
+    "rh-ts-methods": "^0.0.2"
   }
 }
