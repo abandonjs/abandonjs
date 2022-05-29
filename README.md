@@ -13,10 +13,7 @@
 >   - 修改包的方法名称, 将原有的`[_+名称]` 改为 `[r+首字母大小的名称]`
 >   - 完善使用文档
 
-------
-------
-
-<hr/>
+<div class="exploded-line" />
 
 ## array
 
@@ -107,7 +104,6 @@
 ### arraySelectItems
 >
 > - description 指定范围长度 来随机选择数组元素
-> - param list any[]
 > - param list: any[]
 > - param min: number
 > - param max: number
@@ -130,6 +126,12 @@
 <hr/>
 
 ## function
+
+### multipleValues
+>
+> - description 通过字典获取值
+> - param dictionary object 字典
+> - returns function(key:keyof dictionary):any
 
 ### once
 >
@@ -423,12 +425,6 @@
 > - param val 16进制颜色
 > - param ?opa 透明度
 > - returns [string]
-
-### checkPwd
->
-> - description 检查密码强度
-> - param pwd [string] 密码
-> - returns [number] 密码等级
 
 ### changeCase
 >

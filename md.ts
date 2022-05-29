@@ -1,7 +1,10 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-const __file_flag = '\r\n------\r\n------\r\n'
+const __file_flag = 
+// '\r\n------\r\n------\r\n'
+"<div class=\"exploded-line\" />"
+
 type iDataType = {
   data: any[]
   urls: any[]
@@ -66,9 +69,7 @@ async function run(): Promise<void> {
 
   Object.keys(allData).forEach((item: any): void => {
     if (item === 'test') return
-    // console.log({ name: item, item: allData[item] })
     if (allData[item].data.length === 0) return
-    // console.log({ name: item, item: allData[item].data })
     const resItem: string = allData[item].data
       .join('')
       .replace(/ \*/g, '>')
