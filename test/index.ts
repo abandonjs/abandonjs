@@ -1,4 +1,4 @@
-import * as _ from '../index'
+import * as _ from '../src/index'
 
 // 情况一：通过 npm run test --arg=testArg
 // 可以在 process.env.npm_config_arg 拿到输入的参数 'testArg'
@@ -10,7 +10,6 @@ import * as _ from '../index'
 
 // console.log(process.env.npm_config_test)
 
-// npm run dev --要运行的模块名
 // npm run dev --modules=要运行的模块名(new)
 
 let indexes: string[] = [
@@ -27,12 +26,14 @@ let indexes: string[] = [
   'util'
 ]
 
-let modules: string[] = process.env[`npm_config_modules`].split(/,|_/)
+console.log(process.env)
 
-// console.log({ modules })
+let modules: string[] = (process.env[`npm_config_modules`] || '').split(/,|_/)
+
+console.log({ modules })
 
 modules.forEach((name: string): void => {
   if (indexes.includes(name)) {
-      import(`../${name}/__test__`)
+    import(`../src/${name}/__test__`)
   }
 })

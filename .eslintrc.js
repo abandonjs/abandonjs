@@ -2,10 +2,9 @@ module.exports = {
   parser: '@typescript-eslint/parser', // 使用 ts 解析器
   extends: [
     'eslint:recommended', // eslint 推荐规则
-    'plugin:@typescript-eslint/recommended', // ts 推荐规则
-    'plugin:jest/recommended'
+    'plugin:@typescript-eslint/recommended' // ts 推荐规则
   ],
-  plugins: ['@typescript-eslint', 'jest'],
+  plugins: ['@typescript-eslint'],
   env: {
     browser: true,
     node: true,
@@ -20,19 +19,12 @@ module.exports = {
     }
   },
   rules: {
-    'no-prototype-builtins':'off',
+    'no-prototype-builtins': 'off',
     // '@typescript-eslint/no-unused-vars':'off',
     // '@typescript-eslint/no-inferrable-types': 'off',
     // 'prefer-const': 'off',
     'prefer-rest-params': 'off',
     // '@typescript-eslint/no- inferable -types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    'jest/expect-expect': [
-      'error',
-      {
-        // assertFunctionNames: ['expect', 'expectSaga', 'expect\\$','request.**.expect'],
-        // additionalTestBlockFunctions: ['theoretically']
-      }
-    ]
   } // 自定义
 }
