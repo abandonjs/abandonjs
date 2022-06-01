@@ -1,16 +1,7 @@
-import { iAnyObject, tAnyValueToBooleanFunc } from '../type'
-import { defaultValue, useArrayPredicate } from '../util'
-import initMultArray from './initMultArray'
-import { arrayFilterByObject, compact } from './filter'
-import { arraySelectItems, arraySelectOne, difference } from './select'
-export {
-  initMultArray,
-  arrayFilterByObject,
-  difference,
-  compact,
-  arraySelectItems,
-  arraySelectOne
-}
+import { defaultValue } from '../util'
+export { initMultArray } from './initMultArray'
+export { filter } from './filter'
+export { selects, select, difference } from './select'
 
 /**
  * @title pick
@@ -28,7 +19,7 @@ export function pick(list: any[]): string {
  * @param any[] list 待过滤数组
  * @returns any[]
  */
-export function arrayUniqueItem(list: any[]): any[] {
+export function unique(list: any[]): any[] {
   return [...new Set(list)]
 }
 
@@ -108,49 +99,4 @@ export function fill<T>(
   end = defaultValue(end, defaultValue(array.length, 0))
   while (start < end) array[start++] = value
   return array
-}
-
-/**
- * @title findIndex(待完成)
- * @description 通过 predicate 判断为真值的元素的索引值（index），而不是元素本身
- * @param array 要搜索的数组
- * @param predicate (Array|Function|Object|string): 这个函数会在每一次迭代调用
- * @param fromIndex (number) 指定开始查找的下标
- * @returns (number): 返回找到元素的 索引值（index），否则返回 - 1。
- */
-export function findIndex<T>(
-  array: T[],
-  predicate: T[] | ((val: T) => T) | iAnyObject | string,
-  fromIndex = 0
-): number {
-  const len: number = array.length
-  const predicateFunc: tAnyValueToBooleanFunc = useArrayPredicate(predicate)
-  if (array.length === 0) return -1
-  do {
-    if (predicateFunc(array[fromIndex])) return fromIndex
-  } while (fromIndex++ < len)
-  return -1
-}
-
-/**
- * @title findIndex(待完成)
- * @description 通过 predicate 判断为真值的元素的索引值（index），而不是元素本身(倒序查找)
- * @param array (Array): 要搜索的数组
- * @param predicate (Array|Function|Object|string): 这个函数会在每一次迭代调用。
- * @param fromIndex [fromIndex=array.length-1] (number): 指定开始查找的下标
- * @returns (number): 返回找到元素的 索引值（index），否则返回 - 1。
- */
-export function findLastIndex<T>(
-  array: T[],
-  predicate: T[] | ((val: T) => T) | iAnyObject | string,
-  fromIndex: number
-): number {
-  const len: number = array.length
-  fromIndex = defaultValue(fromIndex, len - 1)
-  const predicateFunc: tAnyValueToBooleanFunc = useArrayPredicate(predicate)
-  if (array.length === 0) return -1
-  do {
-    if (predicateFunc(array[fromIndex])) return fromIndex
-  } while (fromIndex--)
-  return -1
 }

@@ -12,9 +12,7 @@ export function getValueByLocation(
 ): Collection | undefined {
   if (location === undefined) return collection
   const locationType: string = type(location)
-  // console.log({ collectionType, locationType })
   const islegal: boolean = isCollection(collection)
-  console.log(islegal)
   if (!islegal) return undefined
 
   if (locationType === type.number) {

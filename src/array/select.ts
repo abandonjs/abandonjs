@@ -1,14 +1,15 @@
 import { randomNumByRange } from '../number'
 import { concat } from './index'
+
 /**
- * @title arraySelectItems
+ * @title select
  * @description 指定范围长度 来随机选择数组元素
  * @param list: any[]
  * @param min: number 
  * @param max: number
  * @returns any[]
  */
-export function arraySelectItems(list: any[], min: number, max: number): any[] {
+export function selects(list: any[], min: number, max: number): any[] {
   let len: number =
     randomNumByRange(min, max > list.length ? list.length : max) || 0
   const result: any[] = []
@@ -22,13 +23,13 @@ export function arraySelectItems(list: any[], min: number, max: number): any[] {
 }
 
 /**
- * @title arraySelectOne
+ * @title selects
  * @description 选择数组其中一项
  * @param list any[] 待选择数组
  * @param index ?number 指定选择索引
  * @returns 选择项
  */
-export function arraySelectOne(list: any[] = [], index?: number): any {
+export function select(list: any[] = [], index?: number): any {
   if (index !== null && index !== undefined) {
     if (index > -1) return list[index]
     if (index < 0) {
@@ -58,6 +59,3 @@ export function difference(list: any[], ...filterConditions: any[]): any[] {
     return !allFilterConditions.includes(item)
   })
 }
-
-// export function differenceBy() {}
-// export function differenceWith() {}

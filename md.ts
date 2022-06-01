@@ -72,7 +72,7 @@ async function run(): Promise<void> {
     if (allData[item].data.length === 0) return
     const resItem: string = allData[item].data
       .join('')
-      .replace(/ \*/g, '>')
+      .replace(/ \*/g, '')
       .replace(/@/g, '- ')
       .replace(/---/g, '\t-')
       .replace(/--/g, '  -')

@@ -47,7 +47,6 @@ export function assign(): any {
 export function assignIn(): any {
 	let result: any = {};
 	for (const key in arguments) {
-		// console.log(arguments[key].prototype);
 		result = Object.assign(result, { ...arguments[key] })
 	}
 	return result;

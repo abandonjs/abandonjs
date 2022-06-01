@@ -181,7 +181,7 @@ export function meanBy(list: any[], itteratee?: tItteratee): any {
 }
 
 /**
- * @title 最小值
+ * @title min
  * @description 求最小值
  * @param list 要迭代的数组
  * @returns 最小值

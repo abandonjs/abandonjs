@@ -5,7 +5,7 @@
  * @param dimension 多维指定 用&符号隔开
  * @returns 多维数组
  */
-export default function initMultArray(unit: any, dimension?: string): any[] {
+export function initMultArray(unit: any, dimension?: string): any[] {
   if (!dimension) return [unit]
   if (!unit) unit = undefined
 
