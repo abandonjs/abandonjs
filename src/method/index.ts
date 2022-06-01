@@ -46,15 +46,3 @@ export function uniqueId(length?: number, prefix?: string): string {
   }
   return `${prefix + id(length)}`
 }
-
-/**
- * @title identity
- * @description 返回首个提供参数
- * @param value 任何值
- * @returns 首个值
- */
-export function identity(...value: any): any {
-  return value[0]
-}
-
-// export function iteratee() {}

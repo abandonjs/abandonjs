@@ -1,9 +1,9 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-const __file_flag = 
-// '\r\n------\r\n------\r\n'
-"<div class=\"exploded-line\" />"
+const __file_flag =
+  // '\r\n------\r\n------\r\n'
+  "<div class=\"exploded-line\" />"
 
 type iDataType = {
   data: any[]
@@ -76,6 +76,10 @@ async function run(): Promise<void> {
       .replace(/@/g, '- ')
       .replace(/---/g, '\t-')
       .replace(/--/g, '  -')
+      .replace(/md-thl/g, ':----|')
+      .replace(
+        /([a-zA-Z0-9\.\(\)\|\<\^\[\]\?\:]{2,}|[a-zA-Z]{1,}|[0-9]{1,})/g,
+        '`' + "$&" + '`')
     __writeFileData += `\r\n<hr/>\r\n\r\n## ${item}\r\n` + resItem
   })
 

@@ -1,4 +1,4 @@
-import { type } from "../../util"
+import { type } from '../index'
 import { Val, Valer } from './type'
 import { matchStringValue } from './matchStringValue'
 import { matchNumberValue } from './matchNumberValue'
@@ -15,15 +15,15 @@ import { toPathValue } from "./toPathValue"
  * @returns boolean
  */
 export function matchValue(val: Val, valer: Valer, path?: string): boolean {
-	
+
 	if (path) {
 		val = toPathValue(val, path)
 	}
-	
+
 	if (val === valer) {
 		return true
 	}
-	
+
 	switch (type(val)) {
 		// 简单数据类型处理
 		case 'String':

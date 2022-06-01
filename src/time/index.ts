@@ -1,5 +1,6 @@
-// import { anyToStringFn } from '../type'
+import { type } from '../util';
 import { calendar } from './lunar';
+import { extendLength } from './util'
 
 export {
 	calendar
@@ -12,112 +13,109 @@ export {
 
 // dayOfYear(new Date());   // 307
 
-// 计算两个日期的相隔多少天
-export function dateInterval(date1: Date, date2: Date): number {
-	return Math.ceil(Math.abs(date1.getTime() - date2.getTime()) / 86400000)
+/**
+ * @title deadline
+ * @description 倒计时
+ * @param target:Date 目标时间
+ * @param timeKey?: 'year' | 'mouth' | 'day' | 'hour' | 'minute' | 'second' | 'timeStamp'  指定倒计时单位
+ * @param now?:Date 起始时间
+ * @returns number 
+ */
+type TimeKey = 'year' | 'mouth' | 'day' | 'hour' | 'minute' | 'second' | 'timeStamp'
+export function deadline(
+	target: Date,
+	timeKey: TimeKey = 'day',
+	now: Date = new Date(),
+): number {
+	const surplusTimeStamp = target.getTime() - now.getTime()
+	const surplusDay: number = Math.ceil(surplusTimeStamp / 86400000)
+	switch (timeKey) {
+		case 'year': return target.getFullYear() - now.getFullYear()
+		case 'mouth': return (target.getFullYear() - now.getFullYear()) * 12 + (target.getDate() - now.getDate())
+		case 'day': return surplusDay
+		case 'hour': return surplusDay * 24
+		case 'minute': return surplusDay * 1440
+		case 'second': return surplusDay * 8640086400
+		case 'timeStamp': return surplusDay
+		default: return surplusTimeStamp
+	}
 }
 
-
-// 检查日期是否有效
-export function isDateValid(val: any): boolean {
-	return !Number.isNaN(new Date(val).valueOf());
+/**
+ * @title isDate
+ * @description 检查日期是否有效
+ * @param date:any 待判断日期
+ * @returns boolean
+ */
+export function isDate(date: any): boolean {
+	return date instanceof Date && !isNaN(date.getTime());
 }
 
-// function minLength(value: any, len: number) {
-// 	return String(value).length < len ? `0${value}` : value;
-// }
+/**
+ * @title format
+ * @description 时间格式化
+ * @param time:number|string|Date  时间
+ * @param pattern?:string 格式 
+ * @returns string 格式化后的数据 
+ 
+| 符号 | 结果| 描述 |
+| md-thl md-thl md-thl
+| YYYY	| 2022	| 4位数字的年份 |
+| YY	|  1-14	| 2 位数字的年份 |
+| M  MM |	1-12 |	月份数字 |
+| D  DD |	1-31 |	日数 |
+| H  HH	| 0-23 |  24 小时制 |
+| h  hh	| 1-12 |	12 小时制 |
+| m  mm | 0-59 |	分钟|
+| s  ss	| 0-59 |	秒钟|
+
+ */
+export function format(time: number | string | Date = new Date(), pattern: string = 'YYYY-MM-DD'): string {
+	if (type(time) === 'Number') {
+		if (time.toString().length === 10) time += '000'
+	}
+	const date: Date = new Date(time)
+	const year: number = date.getFullYear()
+	if (isNaN(year)) {
+		return 'Invalid Date'
+	}
+	const month: number = date.getMonth() + 1
+	const day: number = date.getDate()
+	const hour: number = date.getHours()
+	const minutes: number = date.getMinutes()
+	const seconds: number = date.getSeconds()
+
+	return pattern
+		.replace(/[Y|y]{4}/, extendLength(year, 4))
+		.replace(/[Y|y]{2}/, extendLength(year, 2, 2))
+		.replace(/[M]{2}/, extendLength(month, 2, 2))
+		.replace(/[M]{1}/, extendLength(month, 1, 2))
+		.replace(/[D]{2}/, extendLength(day, 2, 2))
+		.replace(/[D]{1}/, extendLength(day, 1, 2))
+		.replace(/[H]{2}/, extendLength(hour, 2, 2))
+		.replace(/[H]{1}/, extendLength(hour, 1, 2))
+		.replace(/[h]{2}/, extendLength(hour % 12, 2, 2))
+		.replace(/[h]{1}/, extendLength(hour % 12, 1, 2))
+		.replace(/[m]{2}/, extendLength(minutes, 2, 2))
+		.replace(/[m]{1}/, extendLength(minutes, 1, 2))
+		.replace(/[s]{2}/, extendLength(seconds, 2, 2))
+		.replace(/[s]{1}/, extendLength(seconds, 1, 2))
+}
+
 
 // function date(format: string, timestamp: string): string {
-
-// 	const time: Date = new Date(timestamp);
-// 	const year: number = time.getFullYear();
-// 	const day: number = time.getDay();
-// 	const month: number = time.getMonth();
-// 	const hour: number = time.getHours();
-// 	const minutes: number = time.getMinutes();
-// 	const seconds: number = time.getSeconds()
 
 // 	const formatlist: { reg: string, value: number | string }[] = [
 // 		{ reg: 'YYYY', value: minLength(year, 4) },
 // 		{ reg: 'yyyy', value: minLength(year, 4) },
-// 		{ reg: 'mm', value: minLength(month, 2) },
+// 		{ reg: 'MM', value: minLength(month, 2) },
 // 		{ reg: 'dd', value: minLength(day, 2) },
 // 		{ reg: 'hh', value: minLength(hour, 2) },
 // 		{ reg: 'mm', value: minLength(minutes, 2) },
 // 		{ reg: 'ss', value: minLength(seconds, 2) },
 // 	]
 
-// 	formatlist.forEach((item: { reg: string, value: number | string }): void => {
-// 		// format = format.replace(item.reg, item.value);
-// 	})
-
-// 	return format;
-// }
 
 // 支持时间戳/ (普通时间, 时间格式), , 指定时区, 指定返回格式
 
-// export function BaseToDateString(time: string): void {
-// 	this.time = new Date(time).getTime();
-// 	this.formatStr = "YYYY-MM-DD";
-// 	this.formTimezone = 8;
-// 	this.toTimezone = 8;
-// }
 
-// 指定 输入时间 时区
-// BaseToDateString.prototype.FormTz = function (timezone: number) {
-// 	this.formTimezone = timezone;
-// 	return this;
-// }
-
-// BaseToDateString.prototype.toTz = function (timezone: number) {
-// 	this.toTimezone = timezone;
-// 	return this;
-// }
-
-// // 指定日期格式化输出
-// BaseToDateString.prototype.format = function (format) {
-// 	this.formatStr = format;
-// 	return date(this.formatStr, this.time);
-// }
-
-
-/*
-YYYY	2014	4 或 2 位数字的年份
-YY	14	2 位数字的年份
-Y	-25	带有任意数字和符号的年份
-Q	1..4	年份的季度。将月份设置为季度的第一个月
-M MM	1..12	月份数字
-MMM MMMM	Jan..December	语言环境中的月份名称，由 moment.locale() 设置
-D DD	1..31	月的某天
-Do	1st..31st	月的某天，带序数
-DDD DDDD	1..365	年的某天
-X	1410715640.579	Unix 时间戳
-x	1410715640579	Unix 毫秒时间戳
-
-gggg	2014	语言环境的 4 位数字的周年
-gg	14	语言环境的 2 位数字的周年
-w ww	1..53	语言环境的年的第几周
-e	0..6	语言环境的星期几
-ddd dddd	Mon...Sunday	语言环境的星期几的名称，由 moment.locale() 设置
-GGGG	2014	ISO 的 4 位数字的周年
-GG	14	ISO 的 2 位数字的周年
-W WW	1..53	ISO 的年的第几周
-E	1..7	ISO 的星期几
-
-L	04/09/1986	日期（以本地格式）
-LL	September 4 1986	月份名称、月份日期、年份
-LLL	September 4 1986 8:30 PM	月份名称、月份日期、年份、时间
-LLLL	Thursday, September 4 1986 8:30 PM	星期几、月份名称、月份日期、年份、时间
-LT	08:30 PM	时间（不含秒钟）
-LTS	08:30:00 PM	时间（含秒钟）
-
-H HH	0..23	小时（24 小时制）
-h hh	1..12	小时（使用 a A 的 12 小时制）
-k kk	1..24	小时（从 1 到 24 的 24 小时制）
-a A	am pm	上午或下午（单一字符 a p 也被视为有效）
-m mm	0..59	分钟
-s ss	0..59	秒钟
-S SS SSS	0..999	带分数的秒钟
-Z ZZ	+12:00	从 UTC 偏移为 +-HH:mm、+-HHmm 或 Z
-
-*/

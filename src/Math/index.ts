@@ -1,4 +1,4 @@
-// import { INFINITY, MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../constants'
+import { useValue } from './util'
 import { toNumber, isEffectNumber } from '../number'
 import { type } from '../util'
 import { tItteratee } from '../type'
@@ -41,10 +41,10 @@ export function countingMethod(
  * @description 两数求和
  * @param augend 加数
  * @param addend 被加数
- * @returns 和
+ * @returns 和 ( 不会超过数字的边界值 )
  */
 export function add(augend: number, addend: number): number {
-  return toNumber(augend) + toNumber(addend)
+  return toNumber(toNumber(augend) + toNumber(addend))
 }
 
 /**
@@ -102,22 +102,12 @@ export function max(list: any[]): number | undefined {
   return maxValue
 }
 
-const useValue: any = (itteratee: tItteratee): any => {
-  const __type: string = type(itteratee)
-
-  return function (val: any): any {
-    if (__type === 'String') return val[itteratee as string]
-    if (__type === 'Function') return (itteratee as (val: any) => any)(val)
-    return val
-  }
-}
-
 /**
  * @title maxBy
  * @description 求最大值
  * @param list 要迭代数组
  * @param itteratee 迭代函数 / key
- * @returns
+ * @returns 最大值
  */
 export function maxBy(
   list: any[],
@@ -198,11 +188,13 @@ export function min(list: any[]): number | undefined {
  * @returns 最小值
  */
 export function minBy(list: any[], itteratee?: tItteratee): any {
+
   if (list.length === 0) return undefined
   let result: any = undefined
   let minValue: number | undefined = undefined
   let len: number = list.length
   const handleValue: any = useValue(itteratee)
+
   while (len--) {
     const val = Number(handleValue(list[len]))
     if (isEffectNumber(val)) {
@@ -212,6 +204,7 @@ export function minBy(list: any[], itteratee?: tItteratee): any {
       result = list[len]
     }
   }
+
   return result
 }
 
@@ -254,7 +247,7 @@ export function sumBy(list: any[], itteratee?: tItteratee): undefined | number {
  * @returns 积
  */
 export function multiply(augend: number, addend: number): number {
-  return toNumber(augend) * toNumber(addend)
+  return toNumber(toNumber(augend) * toNumber(addend))
 }
 
 /**
@@ -264,9 +257,6 @@ export function multiply(augend: number, addend: number): number {
  * @param precision 精度
  * @returns 四舍五入的数字
  */
-export function round(num: number, precision?: number): number {
-  if (precision === undefined) precision = 0
-  return (
-    Math.round(num * toNumber(10 ** precision)) * toNumber(10 ** -precision)
-  )
+export function round(num: number, precision: number = 0): number {
+  return ( Math.round(num * toNumber(10 ** precision)) * toNumber(10 ** -precision) )
 }

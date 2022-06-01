@@ -10,3 +10,8 @@ export interface iAnyObject {
   [key: string]: any
 }
 export type tPredicate = any[] | ((val: any) => any) | iAnyObject | string | undefined
+
+export type tAnyFunction = (...arg: any[]) => any
+export type tAnyObject = {
+  [key: string]: any
+}

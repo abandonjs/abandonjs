@@ -28,7 +28,7 @@ export function unique(list: any[]): any[] {
  * @description  通过 size 切割数组
  * @param list any[]
  * @param size number 切割点索引
- * @returns any[]
+ * @returns [ [切割点前数据], [切割点后数据] ]
  */
 export function chunk(list: any[], size: number): any[] {
   return [list.slice(0, size), list.slice(size)]

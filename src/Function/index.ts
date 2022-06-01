@@ -1,53 +1,4 @@
-export { default as VirtualDao } from './virtualDao'
-
-/* interface & type start */
-type tAnyFunction = (...arg: any[]) => any
-type tAnyObject = {
-  [key: string]: any
-}
-/* interface & type end */
-
-
-function initCRUD<T>(tableData: any[]): void {
-  Object.defineProperties(tableData, {
-    select: {
-      value: () => {
-        console.log(this)
-        return this
-      }
-    },
-    // select: { value: select },
-    // selectPage: { value: selectPage },
-    // add: { value: add },
-    // update: { value: update },
-    // del: { value: del },
-    // format: { value: format }
-  })
-}
-
-class VirtualDao {
-  init(tableName: string, tableData: any[] = []): any {
-    initCRUD(tableData)
-    this[tableName] = tableData ?? []
-    return this;
-  }
-}
-
-export function minxin(pendingDatas: any[]) {
-  return new VirtualDao().init('target', pendingDatas)
-}
-
-/**
- * @title multipleValues
- * @description 通过字典获取值
- * @param dictionary object 字典
- * @returns function(key:keyof dictionary):any
- */
-// export function multipleValues<T extends object>(dictionary: T) {
-//   return function (key: keyof T): T[keyof T] {
-//     return dictionary[key]
-//   }
-// }
+import { tAnyFunction, tAnyObject} from '../type'
 
 /**
  * @title once
@@ -55,7 +6,7 @@ export function minxin(pendingDatas: any[]) {
  * @param fn 指定值运行一次的方法
  * @returns 返回封装后的方法
  */
-export function once(fn: any): any {
+export function once(fn: tAnyFunction): any {
   let returnValue: any
   let canRun = true
 
@@ -75,7 +26,7 @@ export function once(fn: any): any {
  * @param interval number 间隔
  * @returns func
  */
-export function throttle(fn: any, interval: number): any {
+export function throttle(fn: tAnyFunction, interval: number): any {
   let lastTime = 0
   return function throttled(): void {
     const timeSinceLastExecution: number = Date.now() - lastTime
@@ -97,7 +48,7 @@ export function throttle(fn: any, interval: number): any {
  * @param interval number
  * @returns
  */
-export function debounce(fn: any, interval: number): any {
+export function debounce(fn: tAnyFunction, interval: number): any {
   const timer = 0
   const debounced: () => void = (): void => {
     clearTimeout(timer)

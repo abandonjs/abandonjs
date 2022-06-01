@@ -1,10 +1,12 @@
+import { type } from "../util";
+
 export interface iObject {
 	[key: string]: any;
 }
 export type iObjectKey = string;
 
-export function isObject(val: any): boolean {
-	return Object.prototype.toString.call(val) === '[object Object]';
+export function isObject(value:any):boolean{
+	return type(value) === 'Object'
 }
 
 export function objectInclude(obj: iObject, keys: iObjectKey[] | iObjectKey): boolean | boolean[] {

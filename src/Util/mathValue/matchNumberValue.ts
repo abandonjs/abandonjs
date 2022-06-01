@@ -1,4 +1,4 @@
-import { type } from "../../util"
+import { type } from ".."
 import { Valer, Val } from './type'
 
 export function matchNumberValue(val: Val, valer: Valer) {
