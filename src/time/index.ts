@@ -1,17 +1,5 @@
 import { type } from '../util';
-import { calendar } from './lunar';
 import { extendLength } from './util'
-
-export {
-	calendar
-}
-
-
-// export function dayOfYear(date: Date): number {
-// 	return Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
-// }
-
-// dayOfYear(new Date());   // 307
 
 /**
  * @title deadline
@@ -101,21 +89,5 @@ export function format(time: number | string | Date = new Date(), pattern: strin
 		.replace(/[s]{2}/, extendLength(seconds, 2, 2))
 		.replace(/[s]{1}/, extendLength(seconds, 1, 2))
 }
-
-
-// function date(format: string, timestamp: string): string {
-
-// 	const formatlist: { reg: string, value: number | string }[] = [
-// 		{ reg: 'YYYY', value: minLength(year, 4) },
-// 		{ reg: 'yyyy', value: minLength(year, 4) },
-// 		{ reg: 'MM', value: minLength(month, 2) },
-// 		{ reg: 'dd', value: minLength(day, 2) },
-// 		{ reg: 'hh', value: minLength(hour, 2) },
-// 		{ reg: 'mm', value: minLength(minutes, 2) },
-// 		{ reg: 'ss', value: minLength(seconds, 2) },
-// 	]
-
-
-// 支持时间戳/ (普通时间, 时间格式), , 指定时区, 指定返回格式
 
 

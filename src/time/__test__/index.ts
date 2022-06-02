@@ -1,19 +1,18 @@
 import * as _ from '../index'
 import { logGroup } from '../../util'
 
-
-logGroup('deadline',
+0 && logGroup('deadline',
 	_.deadline(new Date('2023/7/14'), 'year', new Date()),
-	24*60*60
+	24 * 60 * 60
 )
 
-logGroup('isDate',
+0 && logGroup('isDate',
 	_.isDate('123'),
 	_.isDate(new Date()),
 	_.isDate(new Date().getTime()),
 )
 
-logGroup('format',
+0 && logGroup('format',
 	_.format(new Date()),
 	_.format(new Date(), 'yy'),
 	_.format(new Date(), 'yyyy'),
@@ -36,20 +35,3 @@ logGroup('format',
 	// _.calendar.isLeapYear(),
 
 )
-
-// const a:any = { c: 123 }
-const a: any = { c: 123 }
-Object.defineProperties(a, {
-	format: {
-		writable: true,
-		enumerable: false,
-		configurable: true,
-		value: function () {
-			console.log(123456)
-			return 456
-		}
-	}
-})
-
-console.log(a)
-console.log(a.format())
