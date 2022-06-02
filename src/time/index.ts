@@ -58,12 +58,13 @@ export function isDate(date: any): boolean {
 | s  ss	| 0-59 |	秒钟|
 
  */
-export function format(time: number | string | Date = new Date(), pattern: string = 'YYYY-MM-DD'): string {
+export function format(time: number | string | Date = new Date(), pattern = 'YYYY-MM-DD'): string {
 	if (type(time) === 'Number') {
 		if (time.toString().length === 10) time += '000'
 	}
 	const date: Date = new Date(time)
 	const year: number = date.getFullYear()
+	// eslint-disable-next-line
 	if (isNaN(year)) {
 		return 'Invalid Date'
 	}

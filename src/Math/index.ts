@@ -1,7 +1,7 @@
 import { useValue } from './util'
 import { toNumber, isEffectNumber } from '../number'
 import { type } from '../util'
-import { tItteratee } from '../type'
+import { Itteratee } from '../type'
 
 /**
  * @ 无限大（小）当做 js Number 的最大（小）值[主要处理计算异常的问题, 二期再加入大位数处理]
@@ -111,7 +111,7 @@ export function max(list: any[]): number | undefined {
  */
 export function maxBy(
   list: any[],
-  itteratee?: tItteratee
+  itteratee?: Itteratee
 ): number | undefined | { [key: string]: any } {
   const _type: string = type(itteratee)
   if (_type === 'Undefined') {
@@ -155,7 +155,7 @@ export function mean(list: any[]): number | undefined {
  * @param itteratee 迭代函数 / key
  * @returns 平均数
  */
-export function meanBy(list: any[], itteratee?: tItteratee): any {
+export function meanBy(list: any[], itteratee?: Itteratee): any {
   let total = 0
   let len = 0
   const handleValue: any = useValue(itteratee)
@@ -187,7 +187,7 @@ export function min(list: any[]): number | undefined {
  * @param itteratee 迭代函数 / key
  * @returns 最小值
  */
-export function minBy(list: any[], itteratee?: tItteratee): any {
+export function minBy(list: any[], itteratee?: Itteratee): any {
 
   if (list.length === 0) return undefined
   let result: any = undefined
@@ -224,7 +224,7 @@ export function sum(list: any[]): undefined | number {
  * @param itteratee 迭代函数 / key
  * @returns 总和
  */
-export function sumBy(list: any[], itteratee?: tItteratee): undefined | number {
+export function sumBy(list: any[], itteratee?: Itteratee): undefined | number {
   if (list.length === 0) return undefined
   let total: undefined | number = undefined
   let len: number = list.length
@@ -257,6 +257,6 @@ export function multiply(augend: number, addend: number): number {
  * @param precision 精度
  * @returns 四舍五入的数字
  */
-export function round(num: number, precision: number = 0): number {
+export function round(num: number, precision = 0): number {
   return ( Math.round(num * toNumber(10 ** precision)) * toNumber(10 ** -precision) )
 }

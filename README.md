@@ -7,7 +7,7 @@
 - 2.0.0  
   - 去除包的方法组名称
   - 修改方法的导出方法
-  - 修改很多方法
+  - 修改许多方法
   - 不与老版本兼容
   - 移除农历方法, 若想使用例外安装rh-lunar
 - 1.0.1  使用rollup来打包, 其他功能使用均不变
@@ -38,6 +38,12 @@ import { filter } from 'rh-js-methods'
 - `param` `filterConditions` { `[key:string]:` `any` | `RegExp` } 过滤条件
 - `param` `retainNotObject` 是否保留非对象项
 - `returns` `any[]`
+
+### `isArray`
+
+- `description` 是否为数组
+- `param` `value` `any`
+- `returns` `boolean`
 
 ### `pick`
 
@@ -86,13 +92,6 @@ import { filter } from 'rh-js-methods'
 - `param` `end` 结束位置(不包括, 默认`array.length)`
 - `returns`
 
-### `initMultArray`
-
-- `description` 生成多维数组
-- `param` `unit` 初始化单元
-- `param` `dimension` 多维指定 用&符号隔开
-- `returns` 多维数组
-
 ### `select`
 
 - `description` 指定范围长度 来随机选择数组元素
@@ -118,6 +117,12 @@ import { filter } from 'rh-js-methods'
 <hr/>
 
 ## function
+
+### `isArray`
+
+- `description` 是否为数组
+- `param` `value` `any`
+- `returns` `boolean`
 
 ### `once`
 
@@ -302,29 +307,13 @@ import { filter } from 'rh-js-methods'
 
 <hr/>
 
-## method
-
-### `id`
-
-- `description` `id`
-- `param` `length` `[1<`=`length`, `default` `10]`
-- `returns` `id`
-
-### `uuid`
-
-- `description` `uuid`
-- `param` {`string`} `template` `uuid` 的格式 `default:`'`xxxxxxxx`-`xxxx`-`xxxx`-`yxxx`-`xxxxxxxxxxxx`'
-- `returns` {`string`} `uuid`
-- `description` 生成随机`uid`
-
-### `uniqueId`
-
-- `description` `id`
-- `param` `prefix` `id` 前缀
-
-<hr/>
-
 ## number
+
+### `isNumber`
+
+- `description` 是否为数字
+- `param` `value` `any`
+- `returns` `boolean`
 
 ### `isEffectNumber`
 
@@ -373,17 +362,21 @@ import { filter } from 'rh-js-methods'
 
 ## object
 
-### `assign`
+### `isObject`
 
-- `description` 合并对象
-- `param` 来源对象
-- `returns` 合并后的对象
+- `description` 判断是否为`Oject`
+- `param` `value`
+- `returns` `boolean`
 
-### `assignIn`
+<hr/>
 
-- `description` 合并对象(没有实现)
-- `param` 来源对象
-- `returns` 合并后的对象
+## string
+
+### `isString`
+
+- `description` 是否为字符串
+- `param` `val` `any`
+- `returns` `boolean`
 
 <hr/>
 
@@ -438,13 +431,6 @@ import { filter } from 'rh-js-methods'
   - `type:` `1:`首字母大写 `2`：首字母小写 `3`：大小写转换 `4`：全部大写 `5`：全部小写
 - `param` `str` `string`
 - `param` `type` `number`
-- `returns`
-
-### `defaultValue`
-
-- `description` 判断默认值放回对应的值
-- `param` `key` 需要判断的变量
-- `param` `value` 默认值
 - `returns`
 
 ### `logGroup`

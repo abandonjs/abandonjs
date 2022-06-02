@@ -1,6 +1,17 @@
-import { anyToNumberFn } from '../type'
 import { type } from '../util'
 import { INFINITY, MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../constants'
+
+
+/**
+ * @title isNumber
+ * @description 是否为数字
+ * @param value any
+ * @returns boolean
+ */
+export function isNumber(value: any): boolean {
+  // return typeof value !== 'undefined' && !isNaN(Number(value))
+  return type(value) === "Number"
+}
 
 /**
  * @title isEffectNumber
@@ -17,7 +28,7 @@ export function isEffectNumber(num: number): boolean {
   return false
 }
 
-export const toNumber: anyToNumberFn = (value: any): number => {
+export const toNumber = (value: any): number => {
   if (type(value) === 'Number') {
     if (value === INFINITY) return MAX_VALUES_NUMBER
     if (value === -INFINITY) return MIN_VALUES_NUMBER
@@ -26,9 +37,7 @@ export const toNumber: anyToNumberFn = (value: any): number => {
   return +value
 }
 
-export const isNumber: (value: any) => boolean = (value: any): boolean => {
-  return typeof value !== 'undefined' && !isNaN(Number(value))
-}
+
 
 /**
  * @title isFloat

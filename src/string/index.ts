@@ -1,18 +1,23 @@
-import { isEmpty } from '../util'
+import { isEmpty, type } from '../util'
 import { isObject } from '../object'
+
+
+/**
+ * @title isString
+ * @description 是否为字符串
+ * @param val any
+ * @returns boolean
+ */
+export function isString(val:any):boolean{
+  return type(val) === 'String'
+}
 
 // 反转字符串
 export function strReverse(str: string): string {
   return str.split('').reverse().join('')
 }
 
-
-
-export function isString(val: any): boolean {
-  return Object.prototype.toString.call(val) === '[object String]'
-}
-
-export function isJsonString(val: any) {
+export function isJsonStr(val: any) {
   if (typeof val === 'string') {
     try {
       const obj = JSON.parse(val)

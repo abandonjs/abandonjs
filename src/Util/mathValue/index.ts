@@ -1,4 +1,4 @@
-import { type } from '../index'
+import { type } from '../type'
 import { Val, Valer } from './type'
 import { matchStringValue } from './matchStringValue'
 import { matchNumberValue } from './matchNumberValue'

@@ -1,15 +1,12 @@
-declare type tAnyFunction = (...arg: any[]) => any;
-declare type tAnyObject = {
-    [key: string]: any;
-};
-export declare function once(fn: any): any;
-export declare function throttle(fn: any, interval: number): any;
-export declare function debounce(fn: any, interval: number): any;
-export declare function after(n: number | undefined, func: tAnyFunction): tAnyFunction;
-export declare function ary(func: tAnyFunction, n: number): tAnyFunction;
-export declare function before(n: number, func: tAnyFunction): tAnyFunction;
-export declare function bind(func: tAnyFunction, thisArg?: tAnyObject, ...partials: any[]): tAnyFunction;
-export declare function curry(func: tAnyFunction, len: number): tAnyFunction;
-export declare function delay(func: tAnyFunction, delayTime?: number, ...args: any[]): any;
-export declare function flip(func: tAnyFunction): tAnyFunction;
-export {};
+import { AnyFunction, AnyObject } from '../type';
+export declare function isFunction(value: any): boolean;
+export declare function once(fn: AnyFunction): any;
+export declare function throttle(fn: AnyFunction, interval: number): any;
+export declare function debounce(fn: AnyFunction, interval: number): any;
+export declare function after(n: number | undefined, func: AnyFunction): AnyFunction;
+export declare function ary(func: AnyFunction, n: number): AnyFunction;
+export declare function before(n: number, func: AnyFunction): AnyFunction;
+export declare function bind(func: AnyFunction, thisArg?: AnyObject, ...partials: any[]): AnyFunction;
+export declare function curry(func: AnyFunction, len: number): AnyFunction;
+export declare function delay(func: AnyFunction, delayTime?: number, ...args: any[]): any;
+export declare function flip(func: AnyFunction): AnyFunction;

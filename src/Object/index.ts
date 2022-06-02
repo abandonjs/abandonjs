@@ -5,6 +5,12 @@ export interface iObject {
 }
 export type iObjectKey = string;
 
+/**
+ * @title isObject
+ * @description 判断是否为Oject
+ * @param value 
+ * @returns boolean
+ */
 export function isObject(value:any):boolean{
 	return type(value) === 'Object'
 }
@@ -23,33 +29,5 @@ export function objectInclude(obj: iObject, keys: iObjectKey[] | iObjectKey): bo
 	})
 	if (result.length === 0) return false;
 	if (result.length === 1) return result[0]
-	return result;
-}
-
-/**
- * @title assign
- * @description 合并对象
- * @param 来源对象
- * @returns 合并后的对象
- */
-export function assign(): any {
-	let result: any = {};
-	for (const key in arguments) {
-		result = Object.assign(result, { ...arguments[key] })
-	}
-	return result;
-}
-
-/**
- * @title assignIn
- * @description 合并对象(没有实现)
- * @param 来源对象
- * @returns 合并后的对象
- */
-export function assignIn(): any {
-	let result: any = {};
-	for (const key in arguments) {
-		result = Object.assign(result, { ...arguments[key] })
-	}
 	return result;
 }

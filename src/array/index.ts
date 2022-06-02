@@ -1,7 +1,16 @@
-import { defaultValue } from '../util'
-export { initMultArray } from './initMultArray'
+import { type } from '../util'
 export { filter } from './filter'
-export { selects, select, difference } from './select'
+export { selects, select } from './select'
+
+/**
+ * @title isArray
+ * @description 是否为数组
+ * @param value any
+ * @returns boolean
+ */
+export function isArray(value:any):boolean{
+  return type(value) === 'Array'
+}
 
 /**
  * @title pick
@@ -96,7 +105,27 @@ export function fill<T>(
   start = 0,
   end = 0
 ): T[] {
-  end = defaultValue(end, defaultValue(array.length, 0))
   while (start < end) array[start++] = value
   return array
+}
+
+/**
+ * @title difference
+ * @description 过滤数组
+ * @param list 待过滤的数组
+ * @param ...filterConditions 过滤使用的条件
+ * @returns 过滤后的数组(new)
+ */
+export function difference(list: any[], ...filterConditions: any[]): any[] {
+  if (!list) return []
+  const result: any[] = list || []
+
+  // 整合过滤条件
+  if (!filterConditions) return list
+  let [...allFilterConditions]: any[] = filterConditions || []
+  allFilterConditions = concat(...allFilterConditions)
+
+  return result.filter((item: any): boolean => {
+    return !allFilterConditions.includes(item)
+  })
 }

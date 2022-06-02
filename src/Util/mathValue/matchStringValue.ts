@@ -1,4 +1,4 @@
-import { type } from ".."
+import { type } from "../type"
 import { Valer } from './type'
 
 export function matchStringValue(val: string, valer: Valer) {

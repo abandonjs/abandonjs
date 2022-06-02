@@ -1,17 +1,11 @@
-export type nullToVoidFn = () => void;
-export type nullToStringFn = () => string;
-export type nullToNumberFn = () => number;
-export type stringToString = (value: string) => string;
-export type anyToNumberFn = (value: any) => number;
-export type anyToStringFn = (value: any) => string;
-export type tAnyValueToBooleanFunc = (value: any) => boolean
-export type tItteratee = string | ((val: any) => any)
-export interface iAnyObject {
-  [key: string]: any
-}
-export type tPredicate = any[] | ((val: any) => any) | iAnyObject | string | undefined
+export type Itteratee = string | ((val: any) => any)
 
-export type tAnyFunction = (...arg: any[]) => any
-export type tAnyObject = {
+export type Predicate = any[] | ((val: any) => any) | AnyObject | string | undefined
+
+export type AnyFunction = (...arg: any[]) => any
+export type AnyObject = {
   [key: string]: any
 }
+
+export type NoParamFn<Result> = () => Result
+export type OneParamFn<Param, Result> = (value: Param) => Result

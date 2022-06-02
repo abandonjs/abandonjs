@@ -1,7 +1,7 @@
 import { type } from '../util'
-import { tItteratee } from '../type'
+import { Itteratee } from '../type'
 
-export function useValue(itteratee?: tItteratee): any {
+export function useValue(itteratee?: Itteratee): any {
 	const __type: string = type(itteratee)
 
 	return function (val: any): any {

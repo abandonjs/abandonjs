@@ -6,6 +6,7 @@ import fs from 'fs'
 const url = 'src'
 const indexes: string[] = fs.readdirSync(url) || []
 
+
 let modules: string[] = (process.env[`npm_config_modules`] || '').split(/,|_/)
 
 if (modules.length > 0) {

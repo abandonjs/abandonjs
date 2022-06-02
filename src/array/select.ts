@@ -1,5 +1,4 @@
 import { randomNumByRange } from '../number'
-import { concat } from './index'
 
 /**
  * @title select
@@ -39,23 +38,3 @@ export function select(list: any[] = [], index?: number): any {
   return list[~~(Math.random() * list.length)]
 }
 
-/**
- * @title difference
- * @description 过滤数组
- * @param list 待过滤的数组
- * @param ...filterConditions 过滤使用的条件
- * @returns 过滤后的数组(new)
- */
-export function difference(list: any[], ...filterConditions: any[]): any[] {
-  if (!list) return []
-  const result: any[] = list || []
-
-  // 整合过滤条件
-  if (!filterConditions) return list
-  let [...allFilterConditions]: any[] = filterConditions || []
-  allFilterConditions = concat(...allFilterConditions)
-
-  return result.filter((item: any): boolean => {
-    return !allFilterConditions.includes(item)
-  })
-}

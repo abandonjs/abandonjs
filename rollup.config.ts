@@ -5,7 +5,7 @@ import resolve from 'rollup-plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import { eslint } from 'rollup-plugin-eslint'
 import { DEFAULT_EXTENSIONS } from '@babel/core'
-// import { uglify } from 'rollup-plugin-uglify'
+import { terser } from 'rollup-plugin-terser'
 import pkg from './package.json'
 
 const paths = {
@@ -59,7 +59,8 @@ const rollupConfig = {
       // babel 默认不支持 ts 需要手动添加
       extensions: [...DEFAULT_EXTENSIONS, '.ts']
     }),
-    // uglify()
+    terser()
+
   ]
 }
 

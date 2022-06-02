@@ -1,5 +1,7 @@
-import { tPredicate, tAnyValueToBooleanFunc } from '../type'
-
+import { Predicate, OneParamFn } from '../type'
+import { type } from './type'
+export { type }
+export * from './mathValue'
 /**
  * @title colorToRGB
  * @description 16进制颜色转RGB/RGBA字符串
@@ -69,6 +71,132 @@ export const changeCase = (str: string, type: number) => {
       return str
   }
 }
+
+export function useArrayPredicate(
+  predicate: Predicate
+): OneParamFn<any, boolean> {
+  const __type: string = type(predicate)
+  switch (__type) {
+    case 'Undefined':
+      return (item: any): boolean => !!item
+    case 'Array':
+      return (item: any): boolean => {
+        if (item === undefined || item === null) return false
+        const predicateStr: string = JSON.stringify(predicate)
+        for (const iitem of Object.entries(item)) {
+          if (JSON.stringify(iitem) === predicateStr) return true
+        }
+        return false
+      }
+    case 'Object':
+      return (item: object): boolean => {
+        for (const key in predicate as object) {
+          if (item[key] !== (predicate as object)[key]) return false
+        }
+        return true
+      }
+    case 'String':
+      return (item: object): boolean => {
+        if (predicate === undefined) return false
+        return !!(item as object)[predicate as string]
+      }
+    case 'Function':
+      return (item: any): boolean => {
+        return (predicate as (val: any) => any)(item)
+      }
+    default:
+      return (item: any): boolean => !!item
+  }
+}
+
+/**
+ * @title logGroup
+ * @description 分组打印(简化console.groupCollapsed)
+ * @param name 分组名称
+ * @param ...args 需要分组打印的结果
+ * @example logGroup(name[, ...args])
+ */
+export function logGroup(name = '', ...args: any[]) {
+  console.groupCollapsed(`--- ${name} ---`)
+  Array.isArray(args) &&
+    args.length > 0 &&
+    args.forEach((item: any) => {
+      console.log(item)
+    })
+  console.groupEnd()
+}
+
+
+
+
+// 当做空值 undefined, null, NaN
+export function isEmpty(value: any): boolean {
+  if (value === undefined || value === null || isNaN(value)) return true
+  return false
+}
+
+// 深拷贝
+export function deepClone(obj: any, cache = new WeakMap()) {
+  if (typeof obj !== 'object') return obj // 普通类型，直接返回
+  if (obj === null) return obj
+  if (cache.get(obj)) return cache.get(obj) // 防止循环引用，程序进入死循环
+  if (obj instanceof Date) return new Date(obj)
+  if (obj instanceof RegExp) return new RegExp(obj)
+
+  // 找到所属原型上的constructor，所属原型上的constructor指向当前对象的构造函数
+  const cloneObj: any = new obj.constructor()
+  cache.set(obj, cloneObj) // 缓存拷贝的对象，用于处理循环引用的情况
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      cloneObj[key] = deepClone(obj[key], cache) // 递归拷贝
+    }
+  }
+  return cloneObj
+}
+
+// 时间总线, 观察订阅模式
+class EventEmitter {
+  cache: { [key: string]: any } = {}
+  constructor() {
+    this.cache = {}
+  }
+
+  on(name: any, fn: any): void {
+    if (this.cache[name]) {
+      this.cache[name].push(fn)
+    } else {
+      this.cache[name] = [fn]
+    }
+  }
+
+  off(name: any, fn: any): void {
+    const tasks = this.cache[name]
+    if (tasks) {
+      const index = tasks.findIndex((f) => f === fn || f.callback === fn)
+      if (index >= 0) {
+        tasks.splice(index, 1)
+      }
+    }
+  }
+
+  emit(name: any, once = false): void {
+    if (this.cache && this.cache[name]) {
+      // 创建副本，如果回调函数内继续注册相同事件，会造成死循环
+      const tasks: any = this.cache[name].slice()
+      for (const fn of tasks) {
+        fn()
+      }
+      if (once) {
+        delete this.cache[name]
+      }
+    }
+  }
+}
+
+export const eventBus: EventEmitter = new EventEmitter()
+
+
+
 
 // //  去除空格 type: 1-所有空格 2-前后空格 3-前空格 4-后空格
 // export const trim = (str, type) => {
@@ -366,158 +494,3 @@ export const changeCase = (str: string, type: number) => {
 // 	}
 // 	return true
 // }
-
-/**
- * @title defaultValue
- * @description 判断默认值放回对应的值
- * @param key 需要判断的变量
- * @param value 默认值
- * @returns
- */
-export function defaultValue(key: any, value: any): any {
-  try {
-    if (key === undefined) return value
-    return key
-  } catch (error) {
-    return value
-  }
-}
-
-export function useArrayPredicate(
-  predicate: tPredicate
-): tAnyValueToBooleanFunc {
-  const __type: string = type(predicate)
-  switch (__type) {
-    case 'Undefined':
-      return (item: any): boolean => !!item
-    case 'Array':
-      return (item: any): boolean => {
-        if (item === undefined || item === null) return false
-        const predicateStr: string = JSON.stringify(predicate)
-        for (const iitem of Object.entries(item)) {
-          if (JSON.stringify(iitem) === predicateStr) return true
-        }
-        return false
-      }
-    case 'Object':
-      return (item: object): boolean => {
-        for (const key in predicate as object) {
-          if (item[key] !== (predicate as object)[key]) return false
-        }
-        return true
-      }
-    case 'String':
-      return (item: object): boolean => {
-        if (predicate === undefined) return false
-        return !!(item as object)[predicate as string]
-      }
-    case 'Function':
-      return (item: any): boolean => {
-        return (predicate as (val: any) => any)(item)
-      }
-    default:
-      return (item: any): boolean => !!item
-  }
-}
-
-/**
- * @title logGroup
- * @description 分组打印(简化console.groupCollapsed)
- * @param name 分组名称
- * @param ...args 需要分组打印的结果
- * @example logGroup(name[, ...args])
- */
-export function logGroup(name = '', ...args: any[]) {
-  console.groupCollapsed(`--- ${name} ---`)
-  Array.isArray(args) &&
-    args.length > 0 &&
-    args.forEach((item: any) => {
-      console.log(item)
-    })
-  console.groupEnd()
-}
-
-/**
- * @title type
- * @description 获取类型
- * @param any 参数
- * @return string 类型名称
- */
-export function type(param: any): string {
-  const result: string = Object.prototype.toString
-    .call(param)
-    .match(/\[object (\w+)\]/)[1]
-  if (result === 'Number' && isNaN(param)) return 'NaN'
-  return result
-}
-type.array = 'Array'
-type.object = 'Object'
-type.function = 'Function'
-type.string = 'String'
-type.number = 'Number'
-
-// 当做空值 undefined, null, NaN
-export function isEmpty(value: any): boolean {
-  if (value === undefined || value === null || isNaN(value)) return true
-  return false
-}
-
-// 深拷贝
-export function deepClone(obj: any, cache = new WeakMap()) {
-  if (typeof obj !== 'object') return obj // 普通类型，直接返回
-  if (obj === null) return obj
-  if (cache.get(obj)) return cache.get(obj) // 防止循环引用，程序进入死循环
-  if (obj instanceof Date) return new Date(obj)
-  if (obj instanceof RegExp) return new RegExp(obj)
-
-  // 找到所属原型上的constructor，所属原型上的constructor指向当前对象的构造函数
-  const cloneObj: any = new obj.constructor()
-  cache.set(obj, cloneObj) // 缓存拷贝的对象，用于处理循环引用的情况
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      cloneObj[key] = deepClone(obj[key], cache) // 递归拷贝
-    }
-  }
-  return cloneObj
-}
-
-// 时间总线, 观察订阅模式
-class EventEmitter {
-  cache: { [key: string]: any } = {}
-  constructor() {
-    this.cache = {}
-  }
-
-  on(name: any, fn: any): void {
-    if (this.cache[name]) {
-      this.cache[name].push(fn)
-    } else {
-      this.cache[name] = [fn]
-    }
-  }
-
-  off(name: any, fn: any): void {
-    const tasks = this.cache[name]
-    if (tasks) {
-      const index = tasks.findIndex((f) => f === fn || f.callback === fn)
-      if (index >= 0) {
-        tasks.splice(index, 1)
-      }
-    }
-  }
-
-  emit(name: any, once = false): void {
-    if (this.cache && this.cache[name]) {
-      // 创建副本，如果回调函数内继续注册相同事件，会造成死循环
-      const tasks: any = this.cache[name].slice()
-      for (const fn of tasks) {
-        fn()
-      }
-      if (once) {
-        delete this.cache[name]
-      }
-    }
-  }
-}
-
-export const eventBus: EventEmitter = new EventEmitter()

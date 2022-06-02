@@ -1,7 +1,6 @@
-import { anyToNumberFn } from '../type';
+export declare function isNumber(value: any): boolean;
 export declare function isEffectNumber(num: number): boolean;
-export declare const toNumber: anyToNumberFn;
-export declare const isNumber: (value: any) => boolean;
+export declare const toNumber: (value: any) => number;
 export declare function isFloat(num: number): boolean;
 export declare function randomNumByRange(min: number, max: number): number;
 export declare function clamp(num: number, lower?: number, upper?: number): number;

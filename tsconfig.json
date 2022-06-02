@@ -5,6 +5,7 @@
       "DOM",
       "ESNext"
     ],
+    "emitDecoratorMetadata": true,
     "declaration": true,
     "sourceMap": true,
     "removeComments": true,
