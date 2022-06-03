@@ -9,8 +9,7 @@ import { INFINITY, MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../constants'
  * @returns boolean
  */
 export function isNumber(value: any): boolean {
-  // return typeof value !== 'undefined' && !isNaN(Number(value))
-  return type(value) === "Number"
+  return type(value) === "Number" && typeof value === 'number'
 }
 
 /**

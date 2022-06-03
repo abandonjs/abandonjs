@@ -12,7 +12,7 @@ export type iObjectKey = string;
  * @returns boolean
  */
 export function isObject(value:any):boolean{
-	return type(value) === 'Object'
+	return type(value) === 'Object' && typeof value === 'object'
 }
 
 export function objectInclude(obj: iObject, keys: iObjectKey[] | iObjectKey): boolean | boolean[] {

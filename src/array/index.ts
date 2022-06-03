@@ -1,4 +1,3 @@
-import { type } from '../util'
 export { filter } from './filter'
 export { selects, select } from './select'
 
@@ -9,7 +8,7 @@ export { selects, select } from './select'
  * @returns boolean
  */
 export function isArray(value:any):boolean{
-  return type(value) === 'Array'
+  return Array.isArray(value)
 }
 
 /**

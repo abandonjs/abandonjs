@@ -9,7 +9,7 @@ import { isObject } from '../object'
  * @returns boolean
  */
 export function isString(val:any):boolean{
-  return type(val) === 'String'
+  return type(val) === 'String' && typeof val === 'string'
 }
 
 // 反转字符串
