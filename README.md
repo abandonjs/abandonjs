@@ -4,6 +4,7 @@
 
 ## 更新日志
 
+- 2.0.3 arrayUniqueItem 改名为unique
 - 2.0.2 优化 类型判断
 - 2.0.1 修改 package.json 配置
 - 2.0.0  
@@ -53,7 +54,7 @@ import { filter } from 'rh-js-methods'
 - `param` `any[]` `list`
 - `returns` 数组中任意一个
 
-### `arrayUniqueItem`
+### `unique`
 
 - `description` 去除数组重复项
 - `param` `any[]` `list` 待过滤数组
@@ -94,6 +95,13 @@ import { filter } from 'rh-js-methods'
 - `param` `end` 结束位置(不包括, 默认`array.length)`
 - `returns`
 
+### `difference`
+
+- `description` 过滤数组
+- `param` `list` 待过滤的数组
+- `param` `...filterConditions` 过滤使用的条件
+- `returns` 过滤后的数组`(new)`
+
 ### `select`
 
 - `description` 指定范围长度 来随机选择数组元素
@@ -108,13 +116,6 @@ import { filter } from 'rh-js-methods'
 - `param` `list` `any[]` 待选择数组
 - `param` `index` `?number` 指定选择索引
 - `returns` 选择项
-
-### `difference`
-
-- `description` 过滤数组
-- `param` `list` 待过滤的数组
-- `param` `...filterConditions` 过滤使用的条件
-- `returns` 过滤后的数组`(new)`
 
 <hr/>
 

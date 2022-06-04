@@ -22,7 +22,7 @@ export function pick(list: any[]): string {
 }
 
 /**
- * @title arrayUniqueItem
+ * @title unique
  * @description 去除数组重复项
  * @param any[] list 待过滤数组
  * @returns any[]
