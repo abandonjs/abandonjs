@@ -4,6 +4,7 @@
 
 ## 更新日志
 
+- 2.0.4 修复 unique 默认为整形数字, isFloat 结果有误
 - 2.0.3 arrayUniqueItem 改名为unique
 - 2.0.2 优化 类型判断
 - 2.0.1 修改 package.json 配置

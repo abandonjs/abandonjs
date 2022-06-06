@@ -45,7 +45,7 @@ export const toNumber = (value: any): number => {
  * @returns boolean
  */
 export function isFloat(num: number): boolean {
-  return num - (num % 1) !== 0
+  return (num % 1) !== 0
 }
 
 export function randomNumByRange(min: number, max: number): number {
@@ -103,13 +103,10 @@ export function inRange(num: number, start?: number, end?: number): boolean {
  * @param floating 是否返回浮点数
  */
 export function random(
-  lower?: number,
-  upper?: number,
-  floating?: boolean
+  lower = 0,
+  upper = 1,
+  floating = false
 ): number {
-  lower === undefined && (lower = 0)
-  upper === undefined && (upper = 1)
-  floating === undefined && (floating = false)
 
   if (arguments.length === 1) {
     upper = arguments[0]
@@ -126,8 +123,8 @@ export function random(
     floating = arguments[arguments.length - 1]
   }
   const result: number = lower + Math.random() * (upper - lower)
-  if (floating) return result
-  return Math.ceil(result)
+  if (floating) return ~~result
+  return ~~Math.ceil(result)
 }
 
 /**

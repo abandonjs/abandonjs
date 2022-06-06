@@ -1,12 +1,18 @@
 import * as _ from '../index'
 import { once } from '../../function'
-import { logGroup as log } from '../../Util'
+import { logGroup as log, type } from '../../Util'
+
+console.log(type(1.1))
 
 const logGroup: any = once(log)
+logGroup('random',
+	_.random(-10, 1)
+	)
+
 logGroup('isNumber',
-_.isNumber(-1),
-_.isNumber(1),
-_.isNumber(-1.2),
+	_.isNumber(-1),
+	_.isNumber(1),
+	_.isNumber(-1.2),
 )
 // logGroup(
 //   'countingMethod',
