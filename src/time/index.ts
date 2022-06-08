@@ -48,10 +48,10 @@ export function isDate(date: any): boolean {
  
 | 符号 | 结果| 描述 |
 | md-thl md-thl md-thl
-| YYYY	| 2022	| 4位数字的年份 |
-| YY	|  1-14	| 2 位数字的年份 |
+| YYYY	| 2022	| 4位数字的年份, 忽略大小写 |
+| YY	|  1-14	| 2 位数字的年份, 忽略大小写 |
 | M  MM |	1-12 |	月份数字 |
-| D  DD |	1-31 |	日数 |
+| D  DD |	1-31 |	日数, 忽略大小写 |
 | H  HH	| 0-23 |  24 小时制 |
 | h  hh	| 1-12 |	12 小时制 |
 | m  mm | 0-59 |	分钟|
@@ -79,8 +79,8 @@ export function format(time: number | string | Date = new Date(), pattern = 'YYY
 		.replace(/[Y|y]{2}/, extendLength(year, 2, 2))
 		.replace(/[M]{2}/, extendLength(month, 2, 2))
 		.replace(/[M]{1}/, extendLength(month, 1, 2))
-		.replace(/[D]{2}/, extendLength(day, 2, 2))
-		.replace(/[D]{1}/, extendLength(day, 1, 2))
+		.replace(/[D|d]{2}/, extendLength(day, 2, 2))
+		.replace(/[D|d]{1}/, extendLength(day, 1, 2))
 		.replace(/[H]{2}/, extendLength(hour, 2, 2))
 		.replace(/[H]{1}/, extendLength(hour, 1, 2))
 		.replace(/[h]{2}/, extendLength(hour % 12, 2, 2))

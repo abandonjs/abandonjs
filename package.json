@@ -1,6 +1,6 @@
 {
   "name": "rh-js-methods",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "方法包",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
@@ -10,7 +10,8 @@
   "scripts": {
     "build": "npx rollup -c --extend rollup.config.ts",
     "lint-staged": "lint-staged",
-    "md": "ts-node-dev --respawn --transpile-only ./md.ts",
+    "md": "ts-node ./md.ts",
+    "md:dev": "ts-node-dev --respawn --transpile-only ./md.ts",
     "test": "ts-node-dev --respawn --transpile-only ./test/index.ts",
     "restart": "rimraf dist && npm run build && npm start",
     "start": "node ./dist/index.js",
