@@ -128,7 +128,6 @@ export function logGroup(name = '', ...args: any[]) {
 
 
 
-
 // 当做空值 undefined, null, NaN
 export function isEmpty(value: any): boolean {
   if (value === undefined || value === null || isNaN(value)) return true
@@ -195,7 +194,10 @@ class EventEmitter {
 
 export const eventBus: EventEmitter = new EventEmitter()
 
-
+// 手机号码中间四位隐藏
+export function hideMobile(mobile) {
+  return mobile.replace(/^(\d{3})\d{4}(\d{4})$/, "$1****$2")
+}
 
 
 // //  去除空格 type: 1-所有空格 2-前后空格 3-前空格 4-后空格

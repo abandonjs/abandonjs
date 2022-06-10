@@ -31,3 +31,10 @@ export function objectInclude(obj: iObject, keys: iObjectKey[] | iObjectKey): bo
 	if (result.length === 1) return result[0]
 	return result;
 }
+
+
+export function serialize(query, encode = false) {
+  return Object.keys(query)
+    .map((key) => `${key}=${encode ? encodeURIComponent(query[key]) : query[key]}`)
+    .join('&')
+}

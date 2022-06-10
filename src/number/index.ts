@@ -138,3 +138,19 @@ export function random(
 export function between(value: number, start: number, end: number): boolean {
   return value >= start && value < end
 }
+
+// 数字四舍五入，保留n位小数
+export function round(number, n) {
+  n = n ? parseInt(n) : 0
+  if (n <= 0) return Math.round(number)
+  number = Math.round(number * Math.pow(10, n)) / Math.pow(10, n)
+  return number
+}
+
+// 数字每千位加逗号
+export function toThousands(num) {
+  return num && num.toString()
+    .replace(/\d+/, function (s) {
+      return s.replace(/(\d)(?=(\d{3})+$)/g, '$1,')
+    })
+}

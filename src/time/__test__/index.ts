@@ -1,5 +1,15 @@
+import { test, expect } from 'rh-test'
 import * as _ from '../index'
 import { logGroup } from '../../util'
+
+test('isSameDate',
+	expect(_.isSameDate).setParams(new Date(), new Date()).tobe(true),
+	expect(_.isSameDate).setParams(new Date().getTime(), new Date()).tobe(true),
+	expect(_.isSameDate).setParams(new Date(), 123).tobe(false),
+	expect(_.isSameDate).setParams(123, new Date()).tobe(false),
+	expect(_.isSameDate).setParams(123, 123).tobe(false),
+)
+
 
 0 && logGroup('deadline',
 	_.deadline(new Date('2023/7/14'), 'year', new Date()),
