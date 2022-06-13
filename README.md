@@ -4,6 +4,7 @@
 
 ## 更新日志
 
+- 2.0.6 优化number 方法
 - 2.0.5 优化 time / format 方法
 - 2.0.4 修复 unique 默认为整形数字, isFloat 结果有误
 - 2.0.3 arrayUniqueItem 改名为unique
@@ -322,9 +323,15 @@ import { filter } from 'rh-js-methods'
 
 ### `isEffectNumber`
 
-- `description` 是否为`js`的有效区间的数
-- `param` `number` `num`
+- `description` 是否为`js`的有效区间的数, 非`number`类型都为`false`
+- `param` `num` `any`
 - `returns` `boolean`
+
+### `toNumber`
+
+- `description` 将值转换为`Number`, 不可以正确装换的值, 均返回`0`
+- `param` `value` `any` 待转换的数值
+- `returns` `number`
 
 ### `isFloat`
 
@@ -335,18 +342,10 @@ import { filter } from 'rh-js-methods'
 ### `clamp`
 
 - `description` 限制在`lower`和`upper`之间
-- `param` `num` 被限制的值
+- `param` `num` 待限制的值
 - `param` `lower` 下限
 - `param` `upper` 上限
 - `returns` 返回被限制的值
-
-### `inRange`
-
-- `description` 判断是否在该范围
-- `param` `num` 要检查的值
-- `param` `[start`=`0]` 开始范围
-- `param` `end` 结束范围
-- `returns` `boolean`
 
 ### `random`
 
@@ -355,13 +354,33 @@ import { filter } from 'rh-js-methods'
 - `param` `upper` 上限
 - `param` `floating` 是否返回浮点数
 
+### `inRange`
+
+- `description` 判断是否在该范围
+- `param` `num` 要检查的值
+- `param` `start`=`0` 开始范围
+- `param` `end` 结束范围(包含该值)
+- `returns` `boolean`
+
 ### `between`
 
 - `description` 判断值是否在两值之间
-- `param` `value` 待判断值
-- `param` `start` 起始值
-- `param` `end` 结束值(不包含该值)
-- `returns`
+- `param` `num:number` 待判断值
+- `param` `start`=`0` 起始值
+- `param` `end:number` 结束值(不包含该值)
+- `returns` `boolean`
+
+    - - `title` `round`
+    - - `description`数字四舍五入，保留`n`位小数
+    - - `param` `number` : `number` 待处理数值
+    - - `param` `n` : `number` = `0` 四舍五入的位数
+    - - `returns`
+
+### `toThousands`
+
+- `description` 数字每千位加逗号
+- `param` `num` `string|number`
+- `returns` `string`
 
 <hr/>
 
@@ -397,7 +416,7 @@ import { filter } from 'rh-js-methods'
 
 ### `isDate`
 
-- `description` 检查日期是否有效
+- `description` 检查日期是否有效, 时间戳也为有效时间`(13`位)
 - `param` `date:any` 待判断日期
 - `returns` `boolean`
 
@@ -418,6 +437,13 @@ import { filter } from 'rh-js-methods'
 | `h`  `hh` | `1`-`12` | `12` 小时制 |
 | `m`  `mm` | `0`-`59` | 分钟|
 | `s`  `ss` | `0`-`59` | 秒钟|
+
+### `isSameDate`
+
+- `description` 时间是否相同, 时间类型支持`isDate`的类型
+- `param` `timeA` 比较时间
+- `param` `timeB` 被比较时间
+- `returns` `boolean`
 
 <hr/>
 
