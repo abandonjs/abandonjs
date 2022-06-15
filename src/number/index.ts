@@ -3,6 +3,34 @@ import { INFINITY, MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../constants'
 
 
 /**
+ * @title spLength
+ * @description 指定长度
+ * @param value any
+ * @param min = 0
+ * @param max number
+ * @returns string
+ */
+
+export function spLength(value: number | string, min = 0, max: number): string {
+  if (!/^[0-9]*$/.test(String(value))) {
+    return new Array(min).fill('0').join('')
+  }
+
+  const tmpValue: string = value.toString()
+  const len = tmpValue.length
+
+  if (len > max) {
+    return tmpValue.slice(len - max)
+  }
+
+  if (len < min) {
+    return new Array(min - len).fill('0').join('') + tmpValue
+  }
+
+  return tmpValue
+}
+
+/**
  * @title isNumber
  * @description 是否为数字
  * @param value any

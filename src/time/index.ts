@@ -1,6 +1,21 @@
+import { spLength } from '../number';
+import { replaces } from '../string';
 import { type } from '../util';
 import { Time } from './type';
-import { extendLength } from './util'
+
+/**
+ * @title toDate
+ * @description 字符串装换成Date对象
+ * @param value string 可以转换成时间的字符串
+ * @returns Date
+ */
+export function toDate(value: string): Date {
+	// ios 不支持 YYYY-MM-DD hh:mm:ss
+	if (/\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}/.test(value)) {
+		value.replaceAll('-', '/')
+	}
+	return new Date(value)
+}
 
 /**
  * @title deadline
@@ -63,7 +78,9 @@ export function isDate(date: any): boolean {
 | s  ss	| 0-59 |	秒钟|
 
  */
+
 export function format(time: Time = new Date(), pattern = 'YYYY-MM-DD'): string {
+
 	if (type(time) === 'Number') {
 		if (time.toString().length === 10) time += '000'
 	}
@@ -79,21 +96,22 @@ export function format(time: Time = new Date(), pattern = 'YYYY-MM-DD'): string 
 	const minutes: number = date.getMinutes()
 	const seconds: number = date.getSeconds()
 
-	return pattern
-		.replace(/[Y|y]{4}/, extendLength(year, 4))
-		.replace(/[Y|y]{2}/, extendLength(year, 2, 2))
-		.replace(/[M]{2}/, extendLength(month, 2, 2))
-		.replace(/[M]{1}/, extendLength(month, 1, 2))
-		.replace(/[D|d]{2}/, extendLength(day, 2, 2))
-		.replace(/[D|d]{1}/, extendLength(day, 1, 2))
-		.replace(/[H]{2}/, extendLength(hour, 2, 2))
-		.replace(/[H]{1}/, extendLength(hour, 1, 2))
-		.replace(/[h]{2}/, extendLength(hour % 12, 2, 2))
-		.replace(/[h]{1}/, extendLength(hour % 12, 1, 2))
-		.replace(/[m]{2}/, extendLength(minutes, 2, 2))
-		.replace(/[m]{1}/, extendLength(minutes, 1, 2))
-		.replace(/[s]{2}/, extendLength(seconds, 2, 2))
-		.replace(/[s]{1}/, extendLength(seconds, 1, 2))
+	return replaces(pattern, [
+		{ reg: /[Y|y]{4}/, value: spLength(year, 4, 4) },
+		{ reg: /[Y|y]{2}/, value: spLength(year, 2, 2) },
+		{ reg: /[M]{2}/, value: spLength(month, 2, 2) },
+		{ reg: /[M]{1}/, value: spLength(month, 1, 2) },
+		{ reg: /[D|d]{2}/, value: spLength(day, 2, 2) },
+		{ reg: /[D|d]{1}/, value: spLength(day, 1, 2) },
+		{ reg: /[H]{2}/, value: spLength(hour, 2, 2) },
+		{ reg: /[H]{1}/, value: spLength(hour, 1, 2) },
+		{ reg: /[h]{2}/, value: spLength(hour % 12, 2, 2) },
+		{ reg: /[h]{1}/, value: spLength(hour % 12, 1, 2) },
+		{ reg: /[m]{2}/, value: spLength(minutes, 2, 2) },
+		{ reg: /[m]{1}/, value: spLength(minutes, 1, 2) },
+		{ reg: /[s]{2}/, value: spLength(seconds, 2, 2) },
+		{ reg: /[s]{1}/, value: spLength(seconds, 1, 2) }
+	])
 }
 
 /**

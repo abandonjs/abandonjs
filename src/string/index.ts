@@ -1,6 +1,23 @@
 import { isEmpty, type } from '../util'
 import { isObject } from '../object'
 
+/**
+ * @title replaces
+ * @description 同时定义多个replace的规则使用
+ * @param target string
+ * @param regs { reg: RegExp | string, value: string }[]
+ * @returns string
+ */
+export function replaces(target = '', regs: {
+  reg: RegExp | string,
+  value: string
+}[] = []): string {
+  for (let i = 0; i < regs.length; i++) {
+    const { reg, value } = regs[i]
+    target = target.replace(reg, value)
+  }
+  return target
+}
 
 /**
  * @title isString
@@ -8,7 +25,7 @@ import { isObject } from '../object'
  * @param val any
  * @returns boolean
  */
-export function isString(val:any):boolean{
+export function isString(val: any): boolean {
   return type(val) === 'String' && typeof val === 'string'
 }
 

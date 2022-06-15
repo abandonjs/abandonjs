@@ -1,9 +1,18 @@
 import * as _ from '../index'
-import { test as tst, expect } from 'rh-test'
-import { once } from '../../function'
+import { test, expect } from 'rh-test'
 import { MAX_VALUES_NUMBER } from '../../constants'
-const test = once(tst)
-// const test = tst
+
+
+test('spLength',
+	expect(_.spLength).setParams('121212', 3, 5).tobe('21212'),
+	expect(_.spLength).setParams('12', 3, 5).tobe('012'),
+	expect(_.spLength).setParams('123456', 1, 5).tobe('23456'),
+	expect(_.spLength).setParams('123456', 1, 5).tobe('23456'),
+	expect(_.spLength).setParams('123456').tobe('123456'),
+	expect(_.spLength).setParams(123456).tobe('123456'),
+	expect(_.spLength).setParams(123456).tobe('123456'),
+	expect(_.spLength).setParams({}).tobe(''),
+)
 
 test('isNumber',
 	expect(_.isNumber).setParams(MAX_VALUES_NUMBER).tobe(true),
@@ -25,10 +34,10 @@ test('isEffectNumber',
 	expect(_.isEffectNumber).setParams(undefined).tobe(false),
 	expect(_.isEffectNumber).setParams(-1).tobe(true),
 	expect(_.isEffectNumber).setParams(10000).tobe(true),
-	expect(_.isEffectNumber).setParams(MAX_VALUES_NUMBER*9999).tobe(false),
+	expect(_.isEffectNumber).setParams(MAX_VALUES_NUMBER * 9999).tobe(false),
 	expect(_.isEffectNumber).setParams(Infinity).tobe(false),
 	expect(_.isEffectNumber).setParams(MAX_VALUES_NUMBER).tobe(true),
-	expect(_.isEffectNumber).setParams(-MAX_VALUES_NUMBER*9999).tobe(false),
+	expect(_.isEffectNumber).setParams(-MAX_VALUES_NUMBER * 9999).tobe(false),
 	expect(_.isEffectNumber).setParams(-Infinity).tobe(false),
 )
 
@@ -91,18 +100,3 @@ test('toThousands',
 	expect(_.toThousands).setParams(1000000).tobe('1,000,000'),
 	expect(_.toThousands).setParams('1000000').tobe('1,000,000')
 )
-
-
-// logGroup('isNumber',
-// 	_.isNumber(-1),
-// 	_.isNumber(1),
-// 	_.isNumber(-1.2),
-// )
-// logGroup(
-//   'countingMethod',
-//   _.countingMethod(1024),
-//   _.countingMethod(1024 * 12),
-//   _.countingMethod(1024 ** 3 + 1024 * 12 + 12),
-//   _.countingMethod(1024 * 12),
-//   _.countingMethod(1024 * 12)
-// )
