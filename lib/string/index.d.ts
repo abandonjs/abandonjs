@@ -1,3 +1,7 @@
+export declare function replaces(target?: string, regs?: {
+    reg: RegExp | string;
+    value: string;
+}[]): string;
 export declare function isString(val: any): boolean;
 export declare function strReverse(str: string): string;
 export declare function isJsonStr(val: any): any;

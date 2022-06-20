@@ -249,14 +249,3 @@ export function sumBy(list: any[], itteratee?: Itteratee): undefined | number {
 export function multiply(augend: number, addend: number): number {
   return toNumber(toNumber(augend) * toNumber(addend))
 }
-
-/**
- * @title round
- * @description 四舍五入
- * @param num 要四舍五入的数
- * @param precision 精度
- * @returns 四舍五入的数字
- */
-export function round(num: number, precision = 0): number {
-  return ( Math.round(num * toNumber(10 ** precision)) * toNumber(10 ** -precision) )
-}

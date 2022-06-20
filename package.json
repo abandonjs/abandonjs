@@ -22,7 +22,8 @@
   },
   "keywords": [
     "typescript",
-    "javascript"
+    "javascript",
+    "method"
   ],
   "author": "ruihuag",
   "license": "ISC",

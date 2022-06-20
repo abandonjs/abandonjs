@@ -1,4 +1,4 @@
-import { randomNumByRange } from '../number'
+import { random } from '../number'
 
 /**
  * @title select
@@ -10,7 +10,7 @@ import { randomNumByRange } from '../number'
  */
 export function selects(list: any[], min: number, max: number): any[] {
   let len: number =
-    randomNumByRange(min, max > list.length ? list.length : max) || 0
+    random(min, max > list.length ? list.length : max) || 0
   const result: any[] = []
   let index = 0
   while (len--) {

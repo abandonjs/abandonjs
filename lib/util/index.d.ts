@@ -18,3 +18,4 @@ declare class EventEmitter {
     emit(name: any, once?: boolean): void;
 }
 export declare const eventBus: EventEmitter;
+export declare function hideMobile(mobile: any): any;

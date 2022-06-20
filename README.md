@@ -315,6 +315,14 @@ import { filter } from 'rh-js-methods'
 
 ## number
 
+### `spLength`
+
+- `description` 指定长度
+- `param` `value` `any`
+- `param` `min` = `0`
+- `param` `max` `number`
+- `returns` `string`
+
 ### `isNumber`
 
 - `description` 是否为数字
@@ -370,11 +378,11 @@ import { filter } from 'rh-js-methods'
 - `param` `end:number` 结束值(不包含该值)
 - `returns` `boolean`
 
-  - - `title` `round`
-  - - `description`数字四舍五入，保留`n`位小数
-  - - `param` `number` : `number` 待处理数值
-  - - `param` `n` : `number` = `0` 四舍五入的位数
-  - - `returns`
+  * - `title` `round`
+  * - `description`数字四舍五入，保留`n`位小数
+  * - `param` `number` : `number` 待处理数值
+  * - `param` `n` : `number` = `0` 四舍五入的位数
+  * - `returns`
 
 ### `toThousands`
 
@@ -396,6 +404,13 @@ import { filter } from 'rh-js-methods'
 
 ## string
 
+### `replaces`
+
+- `description` 同时定义多个`replace`的规则使用
+- `param` `target` `string`
+- `param` `regs` { `reg:` `RegExp` | `string`, `value:` `string` }`[]`
+- `returns` `string`
+
 ### `isString`
 
 - `description` 是否为字符串
@@ -405,6 +420,12 @@ import { filter } from 'rh-js-methods'
 <hr/>
 
 ## time
+
+### `toDate`
+
+- `description` 字符串装换成`Date`对象
+- `param` `value` `string` 可以转换成时间的字符串
+- `returns` `Date`
 
 ### `deadline`
 

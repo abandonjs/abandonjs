@@ -15,4 +15,3 @@ export declare function minBy(list: any[], itteratee?: Itteratee): any;
 export declare function sum(list: any[]): undefined | number;
 export declare function sumBy(list: any[], itteratee?: Itteratee): undefined | number;
 export declare function multiply(augend: number, addend: number): number;
-export declare function round(num: number, precision?: number): number;

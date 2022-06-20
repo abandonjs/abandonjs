@@ -41,3 +41,20 @@ export function matchValue(val: Val, valer: Valer, path?: string): boolean {
 	}
 
 }
+
+/**
+ * @title equal
+ * @description 比较是否值和类型是否相等
+ * @param value any
+ * @param lastValue any 
+ * @returns 
+ */
+export function equal(value: any, lastValue: any): boolean {
+	if(value === lastValue) return true
+	if(type(value) !== type(value)) return false
+	if(type(value) === 'Symbol'){
+		return false
+	}
+	if(JSON.stringify(value) === JSON.stringify(lastValue)) return true
+	return false
+}
