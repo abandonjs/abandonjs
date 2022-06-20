@@ -1,9 +1,6 @@
 import { type } from '../type'
 import { Val, Valer } from './type'
-import { matchStringValue } from './matchStringValue'
 import { matchNumberValue } from './matchNumberValue'
-import { matchArrayValue } from './matchArrayValue'
-import { matchObjectValue } from "./matchObjectValue"
 import { toPathValue } from "./toPathValue"
 
 
@@ -16,30 +13,23 @@ import { toPathValue } from "./toPathValue"
  */
 export function matchValue(val: Val, valer: Valer, path?: string): boolean {
 
-	if(equal(val,valer)){
-		return true
-	}
-
 	if (path) {
 		val = toPathValue(val, path)
 	}
 
-	switch (type(val)) {
-		// 简单数据类型处理
-		case 'String':
-		case 'Boolean':
-			return matchStringValue(String(val), valer as Valer)
-		case 'Number':
-			return matchNumberValue(val, valer)
-		// 复杂数据类型处理
-		case 'Array':
-			return matchArrayValue(val, valer)
-		case 'Object':
-			return matchObjectValue(val, valer)
-		default:
-			return true
+	if (equal(val, valer)) {
+		return true
 	}
 
+	if (type(valer) === 'RegExp') {
+		return (valer as RegExp).test(String(val))
+	}
+
+	if (type(val) === 'Number') {
+		return matchNumberValue(val, valer)
+	}
+
+	return true
 }
 
 /**
@@ -50,11 +40,11 @@ export function matchValue(val: Val, valer: Valer, path?: string): boolean {
  * @returns 
  */
 export function equal(value: any, lastValue: any): boolean {
-	if(value === lastValue) return true
-	if(type(value) !== type(value)) return false
-	if(type(value) === 'Symbol'){
+	if (value === lastValue) return true
+	if (type(value) !== type(value)) return false
+	if (type(value) === 'Symbol') {
 		return false
 	}
-	if(JSON.stringify(value) === JSON.stringify(lastValue)) return true
+	if (JSON.stringify(value) === JSON.stringify(lastValue)) return true
 	return false
 }
