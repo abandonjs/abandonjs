@@ -4,6 +4,7 @@
 
 ## 更新日志
 
+- 2.0.7 添加 equal 方法
 - 2.0.6 优化number 方法
 - 2.0.5 优化 time / format 方法
 - 2.0.4 修复 unique 默认为整形数字, isFloat 结果有误
@@ -378,11 +379,11 @@ import { filter } from 'rh-js-methods'
 - `param` `end:number` 结束值(不包含该值)
 - `returns` `boolean`
 
-  * - `title` `round`
-  * - `description`数字四舍五入，保留`n`位小数
-  * - `param` `number` : `number` 待处理数值
-  * - `param` `n` : `number` = `0` 四舍五入的位数
-  * - `returns`
+  - - `title` `round`
+  - - `description`数字四舍五入，保留`n`位小数
+  - - `param` `number` : `number` 待处理数值
+  - - `param` `n` : `number` = `0` 四舍五入的位数
+  - - `returns`
 
 ### `toThousands`
 
