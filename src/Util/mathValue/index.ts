@@ -16,12 +16,12 @@ import { toPathValue } from "./toPathValue"
  */
 export function matchValue(val: Val, valer: Valer, path?: string): boolean {
 
-	if (path) {
-		val = toPathValue(val, path)
+	if(equal(val,valer)){
+		return true
 	}
 
-	if (val === valer) {
-		return true
+	if (path) {
+		val = toPathValue(val, path)
 	}
 
 	switch (type(val)) {

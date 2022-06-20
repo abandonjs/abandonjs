@@ -2,6 +2,7 @@ import { Predicate, OneParamFn } from '../type'
 import { type } from './type'
 export { type }
 export * from './mathValue'
+
 /**
  * @title colorToRGB
  * @description 16进制颜色转RGB/RGBA字符串
