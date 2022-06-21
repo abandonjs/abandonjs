@@ -26,7 +26,7 @@ export function matchValue(val: Val, valer: Valer, path?: string): boolean {
 	}
 
 	if (type(val) === 'Number') {
-		return matchNumberValue(val, valer)
+		return matchNumberValue(val as number, valer)
 	}
 
 	return true
