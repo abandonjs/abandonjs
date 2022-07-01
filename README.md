@@ -9,7 +9,7 @@
 - 2.0.5 优化 time / format 方法
 - 2.0.4 修复 unique 默认为整形数字, isFloat 结果有误
 - 2.0.3 arrayUniqueItem 改名为unique
-- 2.0.2 优化 类型判断
+- 2.0.2 优化 类型判ff
 - 2.0.1 修改 package.json 配置
 - 2.0.0  
   - 去除包的方法组名称
@@ -305,13 +305,6 @@ import { filter } from 'rh-js-methods'
 - `param` `addend` 被乘数
 - `returns` 积
 
-### `round`
-
-- `description` 四舍五入
-- `param` `num` 要四舍五入的数
-- `param` `precision` 精度
-- `returns` 四舍五入的数字
-
 <hr/>
 
 ## number
@@ -379,11 +372,11 @@ import { filter } from 'rh-js-methods'
 - `param` `end:number` 结束值(不包含该值)
 - `returns` `boolean`
 
-  - - `title` `round`
-  - - `description`数字四舍五入，保留`n`位小数
-  - - `param` `number` : `number` 待处理数值
-  - - `param` `n` : `number` = `0` 四舍五入的位数
-  - - `returns`
+    - - `title` `round`
+    - - `description`数字四舍五入，保留`n`位小数
+    - - `param` `number` : `number` 待处理数值
+    - - `param` `n` : `number` = `0` 四舍五入的位数
+    - - `returns`
 
 ### `toThousands`
 
@@ -492,6 +485,58 @@ import { filter } from 'rh-js-methods'
 - `param` `name` 分组名称
 - `param` `...args` 需要分组打印的结果
 - `example` `logGroup(name[`, `...args])`
+
+### `IsEndOfStrings`
+
+- `description` 是否为指定字符串结尾
+- `param` `fileName` `string`
+- `param` `list` `string[]`
+- `returns` `boolean`
+
+### `isImage`
+
+- `param` `fileName` `string`
+- `returns` `boolean`
+
+### `isH5Videos`
+
+- `param` `fileName` `string`
+- `returns` `boolean`
+
+### `isPdf`
+
+- `param` `fileName` `string`
+- `returns` `boolean`
+
+### `isWord`
+
+- `param` `fileName` `string`
+- `returns` `boolean`
+
+### `siExcel`
+
+- `param` `fileName` `string`
+- `returns` `boolean`
+
+- `ttitle` `matchValue`
+- `param` `val` 被比较值
+- `param` `valer` 比较值 / 可为正则
+- `param` `path` 值的路径 用逗号隔开
+- `returns` `boolean`
+
+### `equal`
+
+- `description` 比较是否值和类型是否相等
+- `param` `value` `any`
+- `param` `lastValue` `any`
+- `returns`
+
+### `toPathValue`
+
+- `description` 通过`path` 来获取值
+- `param` `val` 待取值
+- `param` `path` `string` 路径 (若路径有`.` 可用`\\.`代替)
+- `returns` 通过路径获取对应值
 
 ### `type`
 

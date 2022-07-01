@@ -1,5 +1,18 @@
 import * as _ from '../index'
 import { test, expect } from 'rh-test'
+import { toPathValue } from '../toPathValue'
+
+
+test('toPathValue',
+	expect(toPathValue).setParams({
+		['a.2.3']: {
+			4: 123
+		}
+	},
+		'a\\.2\\.3.4'
+	).tobe(123)
+)
+
 
 const sym = Symbol(12)
 test('equal',

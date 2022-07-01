@@ -1,7 +1,7 @@
 import { Predicate, OneParamFn } from '../type'
 import { type } from './type'
 export { type }
-export * from './mathValue'
+export * from './matchValue'
 
 /**
  * @title colorToRGB

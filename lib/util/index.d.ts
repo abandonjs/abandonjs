@@ -1,7 +1,7 @@
 import { Predicate, OneParamFn } from '../type';
 import { type } from './type';
 export { type };
-export * from './mathValue';
+export * from './matchValue';
 export declare const colorToRGB: (val: string, opa?: number) => string;
 export declare const changeCase: (str: string, type: number) => string;
 export declare function useArrayPredicate(predicate: Predicate): OneParamFn<any, boolean>;

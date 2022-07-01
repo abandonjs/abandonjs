@@ -1,28 +1,59 @@
 
-// 文件类型判断
-export function checkFileName(fileName: string, list) {
-	if (typeof fileName !== 'string') return;
+/**
+ * @title IsEndOfStrings
+ * @description 是否为指定字符串结尾
+ * @param fileName string
+ * @param list string[]
+ * @returns boolean
+ */
+export function IsEndOfStrings(fileName: string, list: string[] = []): boolean {
+	if (typeof fileName !== 'string') return false;
 	const name = fileName.toLowerCase();
-	return list.some(i => name.endsWith(`.${i}`) === true)
+	return list.some(i => name.endsWith(i) === true)
+}
+/**
+ * @title isImage
+ * @param fileName string
+ * @returns boolean
+ */
+export function isImage(fileName: string): boolean {
+	return IsEndOfStrings(fileName, ['.png', '.jpeg', '.jpg', '.png', '.bmp'])
 }
 
-export function isImage(fileName: string) {
-	return checkFileName(fileName, ['png', 'jpeg', 'jpg', 'png', 'bmp'])
+/**
+ * @title isH5Videos
+ * @param fileName string
+ * @returns boolean
+ */
+export function isH5Video(fileName: string): boolean {
+	return IsEndOfStrings(fileName, ['.mp4', '.webm', '.ogg'])
 }
 
-export function isH5Video(fileName: string) {
-	return checkFileName(fileName, ['mp4', 'webm', 'ogg'])
-}
-export function isPdf(fileName: string) {
-	return checkFileName(fileName, ['pdf'])
-}
-
-export function isWord(fileName: string) {
-	return checkFileName(fileName, ['doc', 'docx'])
+/**
+ * @title isPdf
+ * @param fileName string
+ * @returns boolean
+ */
+export function isPdf(fileName: string): boolean {
+	return IsEndOfStrings(fileName, ['.pdf'])
 }
 
-export function isExcel(fileName: string) {
-	return checkFileName(fileName, ['xlsx', 'xls'])
+/**
+ * @title isWord
+ * @param fileName string
+ * @returns boolean
+ */
+export function isWord(fileName: string): boolean {
+	return IsEndOfStrings(fileName, ['.doc', '.docx'])
+}
+
+/**
+ * @title siExcel
+ * @param fileName string
+ * @returns boolean
+ */
+export function isExcel(fileName: string): boolean {
+	return IsEndOfStrings(fileName, ['.xlsx', '.xls', '.csv'])
 }
 
 
