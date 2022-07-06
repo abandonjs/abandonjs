@@ -3,7 +3,6 @@ import { concat } from './index'
 /**
  * @title arraySelectItems
  * @description 指定范围长度 来随机选择数组元素
- * @param list any[]
  * @param list: any[]
  * @param min: number 
  * @param max: number

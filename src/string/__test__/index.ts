@@ -1,9 +1,6 @@
 import * as _ from '../index'
 import { logGroup } from '../../util'
 
-logGroup('clamp',
-	_.calendar,
-	// _.calendar.isLeapYear(),
-
+logGroup('split',
+	_.getWordAndNumber('phone13Pro mac+_-,)')
 )
-

@@ -28,22 +28,6 @@ export const colorToRGB = (val: string, opa?: number): string => {
 }
 
 /**
- * @title checkPwd
- * @description 检查密码强度
- * @param pwd [string] 密码
- * @returns [number] 密码等级
- */
-export const checkPwd = (pwd: string): number => {
-  let Lv = 0
-  if (pwd.length < 6) return Lv
-  if (/[0-9]/.test(pwd)) Lv++
-  if (/[a-z]/.test(pwd)) Lv++
-  if (/[A-Z]/.test(pwd)) Lv++
-  if (/[.|-|_]/.test(pwd)) Lv++
-  return Lv
-}
-
-/**
  * @title changeCase
  * @description  字符转换
  * --- type: 1:首字母大写 2：首字母小写 3：大小写转换 4：全部大写 5：全部小写

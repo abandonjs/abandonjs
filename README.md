@@ -5,6 +5,7 @@
 
 ## 更新日志
 >
+> - 2.0.0  修改包的方法名称, 将原有的`[r+首字母大小的名称]` 改为 `[R+名称]`
 > - 1.0.1
 > - 修改使用rollup来打包, 其他功能使用均不变
 > - 1.0.0
@@ -135,7 +136,7 @@
 > - description  fn 方法只会执行一次
 > - param fn 指定值运行一次的方法
 > - returns 返回封装后的方法
-  
+
 ### throttle
 >
 > - description 节流: 用于限制函数触发频率, 每个delay时间间隔，最多只能执行函数一次
@@ -401,6 +402,16 @@
 > - description 合并对象(没有实现)
 > - param 来源对象
 > - returns 合并后的对象
+
+<hr/>
+
+## string
+
+### getWordAndNumber
+>
+> - description  将提取字母和数字
+> - param str 待处理 字符串
+> - returns RegExpMatchArray( string[] | [] ) | null
 
 <hr/>
 

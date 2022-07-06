@@ -12,6 +12,7 @@
     "strictNullChecks": true,
     "alwaysStrict": true,
     "moduleResolution": "node",
+    "experimentalDecorators":true,
     "baseUrl": "./src",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true

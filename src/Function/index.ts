@@ -1,9 +1,53 @@
+export { default as VirtualDao } from './virtualDao'
+
 /* interface & type start */
 type tAnyFunction = (...arg: any[]) => any
 type tAnyObject = {
   [key: string]: any
 }
 /* interface & type end */
+
+
+function initCRUD<T>(tableData: any[]): void {
+  Object.defineProperties(tableData, {
+    select: {
+      value: () => {
+        console.log(this)
+        return this
+      }
+    },
+    // select: { value: select },
+    // selectPage: { value: selectPage },
+    // add: { value: add },
+    // update: { value: update },
+    // del: { value: del },
+    // format: { value: format }
+  })
+}
+
+class VirtualDao {
+  init(tableName: string, tableData: any[] = []): any {
+    initCRUD(tableData)
+    this[tableName] = tableData ?? []
+    return this;
+  }
+}
+
+export function minxin(pendingDatas: any[]) {
+  return new VirtualDao().init('target', pendingDatas)
+}
+
+/**
+ * @title multipleValues
+ * @description 通过字典获取值
+ * @param dictionary object 字典
+ * @returns function(key:keyof dictionary):any
+ */
+// export function multipleValues<T extends object>(dictionary: T) {
+//   return function (key: keyof T): T[keyof T] {
+//     return dictionary[key]
+//   }
+// }
 
 /**
  * @title once

@@ -1,11 +1,11 @@
 import { initMultArray, arrayUniqueItem } from '../index'
 import * as _Array from '../index'
 import * as _ from '../index'
-import { logGroup } from '../../Util'
+import { logGroup as log2 } from '../../Util'
 import { once } from '../../function'
 
 // 只运行第一个
-logGroup = once(logGroup)
+const logGroup = once(log2)
 
 
 logGroup(
@@ -84,7 +84,7 @@ logGroup(
 
 logGroup(
   'difference',
-  _Array.difference(),
+  // _Array.difference(),
   _Array.difference([1, 34, 4]),
   _Array.difference([1, 34, 4], [4]),
   _Array.difference([1, 34, 4], [4], 34)
@@ -136,22 +136,22 @@ logGroup(
   // => 2
 )
 
-logGroup(
-  'findLastIndex',
-  _.findLastIndex(users, function (o) {
-    return o.user == 'pebbles'
-  }),
-  // => 2
+// logGroup(
+//   'findLastIndex',
+//   _.findLastIndex(users, function (o) {
+//     return o.user == 'pebbles'
+//   }),
+//   // => 2
 
-  // The `_.matches` iteratee shorthand.
-  _.findLastIndex(users, { user: 'barney', active: true }),
-  // => 0
+//   // The `_.matches` iteratee shorthand.
+//   _.findLastIndex(users, { user: 'barney', active: true }),
+//   // => 0
 
-  // The `_.matchesProperty` iteratee shorthand.
-  _.findLastIndex(users, ['active', false]),
-  // => 2
+//   // The `_.matchesProperty` iteratee shorthand.
+//   _.findLastIndex(users, ['active', false]),
+//   // => 2
 
-  // The `_.property` iteratee shorthand.
-  _.findLastIndex(users, 'active')
-  // => 0
-)
+//   // The `_.property` iteratee shorthand.
+//   _.findLastIndex(users, 'active')
+//   // => 0
+// )
