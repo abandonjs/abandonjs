@@ -117,13 +117,15 @@ export function before(n: number, func: tAnyFunction): tAnyFunction {
  * @param partials 附加的部分参数
  * @returns 新的绑定函数
  */
-export function bind(
+export function bind<T extends unknown>(
   func: tAnyFunction,
   thisArg: tAnyObject = {},
   ...partials: any[]
 ): tAnyFunction {
-  return function (...args: any[]): any {
-    return func.call(thisArg, ...[...partials, ...args])
+  return function (...args: any[]): T | undefined {
+    if (func)
+      return func.call(thisArg, ...[...partials, ...args])
+    return
   }
 }
 
