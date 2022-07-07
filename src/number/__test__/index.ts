@@ -1,58 +1,102 @@
 import * as _ from '../index'
-import { once } from '../../function'
-import { logGroup as log } from '../../Util'
+import { test } from 'rh-test'
+import { MAX_VALUES_NUMBER } from '../../constants'
 
-const logGroup: any = once(log)
 
-logGroup(
-  'countingMethod',
-  _.countingMethod(1024),
-  _.countingMethod(1024 * 12),
-  _.countingMethod(1024 ** 3 + 1024 * 12 + 12),
-  _.countingMethod(1024 * 12),
-  _.countingMethod(1024 * 12)
+test('spLength', _.spLength,
+	{ params: ['121212', 3, 5], tobe: '21212' },
+	{ params: ['12', 3, 5], tobe: '012' },
+	{ params: ['123456', 1, 5], tobe: '23456' },
+	{ params: ['123456', 1, 5], tobe: '23456' },
+	{ params: ['123456'], tobe: '123456' },
+	{ params: [123456], tobe: '123456' },
+	{ params: [123456], tobe: '123456' },
+	{ params: [{}], tobe: '' },
 )
 
-logGroup(
-  'clamp',
-  _.clamp(-10, -5, 5),
-  // => -5
-  _.clamp(10, -5, 5)
-  // => 5
+test('isNumber', _.isNumber,
+	{ params: MAX_VALUES_NUMBER, tobe: true },
+	{ params: '1', tobe: false },
+	{ params: null, tobe: false },
+	{ params: NaN, tobe: false },
+	{ params: undefined, tobe: false },
+	{ params: -1, tobe: true },
+	{ params: 10000, tobe: true },
 )
 
-logGroup(
-  'isRange',
-  _.inRange(3, 2, 4),
-  // => true
 
-  _.inRange(4, 8),
-  // => true
 
-  _.inRange(4, 2),
-  // => false
-
-  _.inRange(2, 2),
-  // => false
-
-  _.inRange(1.2, 2),
-  // => true
-
-  _.inRange(5.2, 4),
-  // => false
-
-  _.inRange(-3, -2, -6)
-  // => true
+test('isEffectNumber', _.isEffectNumber,
+	{ params: 1, tobe: true },
+	{ params: '1', tobe: false },
+	{ params: null, tobe: false },
+	{ params: NaN, tobe: false },
+	{ params: undefined, tobe: false },
+	{ params: -1, tobe: true },
+	{ params: 10000, tobe: true },
+	{ params: MAX_VALUES_NUMBER * 9999, tobe: false },
+	{ params: Infinity, tobe: false },
+	{ params: MAX_VALUES_NUMBER, tobe: true },
+	{ params: -MAX_VALUES_NUMBER * 9999, tobe: false },
+	{ params: -Infinity, tobe: false },
 )
 
-logGroup(
-  'random',
-  _.random(0, 5), // => an integer between 0 and 5
+test('toNumber', _.toNumber,
+	{ params: 1, tobe: 1 },
+	{ params: '1', tobe: 1 },
+	{ params: null, tobe: 0 },
+	{ params: NaN, tobe: 0 },
+	{ params: undefined, tobe: 0 },
+	{ params: -1, tobe: -1 },
+	{ params: 10000, tobe: 10000 },
+)
 
-  _.random(5), // => also an integer between 0 and 5
+test('isFloat', _.isFloat,
+	{ params: 1, tobe: false },
+	{ params: 1.1, tobe: true },
+	{ params: 1.0, tobe: false },
+	{ params: 0.0, tobe: false },
+)
 
-  _.random(5, true), // => a floating-point number between 0 and 5
 
-  _.random(1.2, 5.2),
-  _.random(1.2, 5.2, true) // => a floating-point number between 1.2 and 5.2
+test('clamp', _.clamp,
+	{ params: [100, - 1, 1], tobe: 1 },
+	{ params: [-100, - 1, 1], tobe: -1 },
+	{ params: [10, -5, 5], tobe: 5 },
+	{ params: [-10, -5, 5], tobe: -5 },
+)
+
+test('random', _.random,
+	{ params: [1, 1], tobe: 1 },
+	{ params: [3, 4], tobe: true },
+	{ params: [3, 4], tobe: true },
+)
+
+test('inRnage', _.inRange,
+	{ params: [0], tobe: true },
+	{ params: [0, 1], tobe: false },
+	{ params: [0, 1, 2], tobe: false },
+)
+
+test('round', _.round,
+	{ params: 1, tobe: 1 },
+	{ params: [1.05, 2], tobe: 1.05 },
+	{ params: [1.056, 2], tobe: 1.06 },
+
+)
+
+test('between', _.between,
+	{ params: [123, - 1, 1234], tobe: true },
+	{ params: [100, 99, 1000], tobe: true },
+	{ params: [1000, 99, 1000], tobe: false },
+)
+
+
+test('toThousands', _.toThousands,
+	{ params: 1, tobe: '1' },
+	{ params: '1', tobe: '1' },
+	{ params: 1000, tobe: '1,000' },
+	{ params: '1000', tobe: '1,000' },
+	{ params: 1000000, tobe: '1,000,000' },
+	{ params: '1000000', tobe: '1,000,000' }
 )

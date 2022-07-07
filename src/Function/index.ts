@@ -1,53 +1,16 @@
-export { default as VirtualDao } from './virtualDao'
-
-/* interface & type start */
-type tAnyFunction = (...arg: any[]) => any
-type tAnyObject = {
-  [key: string]: any
-}
-/* interface & type end */
-
-
-function initCRUD<T>(tableData: any[]): void {
-  Object.defineProperties(tableData, {
-    select: {
-      value: () => {
-        console.log(this)
-        return this
-      }
-    },
-    // select: { value: select },
-    // selectPage: { value: selectPage },
-    // add: { value: add },
-    // update: { value: update },
-    // del: { value: del },
-    // format: { value: format }
-  })
-}
-
-class VirtualDao {
-  init(tableName: string, tableData: any[] = []): any {
-    initCRUD(tableData)
-    this[tableName] = tableData ?? []
-    return this;
-  }
-}
-
-export function minxin(pendingDatas: any[]) {
-  return new VirtualDao().init('target', pendingDatas)
-}
+import { AnyFunction, AnyObject } from '../type'
+import { type } from '../util'
 
 /**
- * @title multipleValues
- * @description 通过字典获取值
- * @param dictionary object 字典
- * @returns function(key:keyof dictionary):any
+ * @title isArray
+ * @description 是否为数组
+ * @param value any
+ * @returns boolean
  */
-// export function multipleValues<T extends object>(dictionary: T) {
-//   return function (key: keyof T): T[keyof T] {
-//     return dictionary[key]
-//   }
-// }
+export function isFunction(value: any): boolean {
+  return /Function/.test(type(value))
+}
+
 
 /**
  * @title once
@@ -55,7 +18,7 @@ export function minxin(pendingDatas: any[]) {
  * @param fn 指定值运行一次的方法
  * @returns 返回封装后的方法
  */
-export function once(fn: any): any {
+export function once(fn: AnyFunction): any {
   let returnValue: any
   let canRun = true
 
@@ -75,7 +38,7 @@ export function once(fn: any): any {
  * @param interval number 间隔
  * @returns func
  */
-export function throttle(fn: any, interval: number): any {
+export function throttle(fn: AnyFunction, interval: number): any {
   let lastTime = 0
   return function throttled(): void {
     const timeSinceLastExecution: number = Date.now() - lastTime
@@ -97,7 +60,7 @@ export function throttle(fn: any, interval: number): any {
  * @param interval number
  * @returns
  */
-export function debounce(fn: any, interval: number): any {
+export function debounce(fn: AnyFunction, interval: number): any {
   const timer = 0
   const debounced: () => void = (): void => {
     clearTimeout(timer)
@@ -116,7 +79,7 @@ export function debounce(fn: any, interval: number): any {
  * @param func 限定的函数
  * @returns 新的限定函数
  */
-export function after(n = 0, func: tAnyFunction): tAnyFunction {
+export function after(n = 0, func: AnyFunction): AnyFunction {
   return function (...args: any[]): any {
     if (--n < 0) return func(args)
     return
@@ -130,7 +93,7 @@ export function after(n = 0, func: tAnyFunction): tAnyFunction {
  * @param n 限制参数数量
  * @returns 新的覆盖函数
  */
-export function ary(func: tAnyFunction, n: number): tAnyFunction {
+export function ary(func: AnyFunction, n: number): AnyFunction {
   return function (...args: any[]): any {
     return func(...args.splice(0, n))
   }
@@ -143,7 +106,7 @@ export function ary(func: tAnyFunction, n: number): tAnyFunction {
  * @param func 限定函数
  * @returns 新的限定函数
  */
-export function before(n: number, func: tAnyFunction): tAnyFunction {
+export function before(n: number, func: AnyFunction): AnyFunction {
   let lastResult: any = undefined
   return function (...args: any[]): any {
     if (n-- > 0) {
@@ -162,10 +125,10 @@ export function before(n: number, func: tAnyFunction): tAnyFunction {
  * @returns 新的绑定函数
  */
 export function bind<T extends unknown>(
-  func: tAnyFunction,
-  thisArg: tAnyObject = {},
+  func: AnyFunction,
+  thisArg: AnyObject = {},
   ...partials: any[]
-): tAnyFunction {
+): AnyFunction {
   return function (...args: any[]): T | undefined {
     if (func)
       return func.call(thisArg, ...[...partials, ...args])
@@ -180,7 +143,7 @@ export function bind<T extends unknown>(
  * @param len 待柯里化参数个数
  * @returns 柯里化函数
  */
-export function curry(func: tAnyFunction, len: number): tAnyFunction {
+export function curry(func: AnyFunction, len: number): AnyFunction {
   // 第一次执行时，定义一个数组专门用来存储所有的参数
   let _args: any[] = []
   const _resFn: any = function (...args: any[]): any {
@@ -201,7 +164,7 @@ export function curry(func: tAnyFunction, len: number): tAnyFunction {
  * @returns func执行结果(Promise)
  */
 export function delay(
-  func: tAnyFunction,
+  func: AnyFunction,
   delayTime = 0,
   ...args: any[]
 ): any {
@@ -218,7 +181,7 @@ export function delay(
  * @param args 反转参数
  * @returns
  */
-export function flip(func: tAnyFunction): tAnyFunction {
+export function flip(func: AnyFunction): AnyFunction {
   return function (...args: any[]): any {
     return func(...args.reverse())
   }

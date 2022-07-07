@@ -5,6 +5,7 @@
       "DOM",
       "ESNext"
     ],
+    "emitDecoratorMetadata": true,
     "declaration": true,
     "sourceMap": true,
     "removeComments": true,
@@ -19,10 +20,8 @@
   },
   "include": ["./src/**/*"],
   "exclude": [
-    "./src/test",
     "**/*/__test__/*",
     "**/*/__test__/",
-    "*.spec.ts",
     "**/*/md.ts",
     "**/*/*.md"
   ]

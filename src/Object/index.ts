@@ -1,10 +1,18 @@
+import { type } from "../util";
+
 export interface iObject {
 	[key: string]: any;
 }
 export type iObjectKey = string;
 
-export function isObject(val: any): boolean {
-	return Object.prototype.toString.call(val) === '[object Object]';
+/**
+ * @title isObject
+ * @description 判断是否为Oject
+ * @param value 
+ * @returns boolean
+ */
+export function isObject(value:any):boolean{
+	return type(value) === 'Object' && typeof value === 'object'
 }
 
 export function objectInclude(obj: iObject, keys: iObjectKey[] | iObjectKey): boolean | boolean[] {
@@ -24,31 +32,9 @@ export function objectInclude(obj: iObject, keys: iObjectKey[] | iObjectKey): bo
 	return result;
 }
 
-/**
- * @title assign
- * @description 合并对象
- * @param 来源对象
- * @returns 合并后的对象
- */
-export function assign(): any {
-	let result: any = {};
-	for (const key in arguments) {
-		result = Object.assign(result, { ...arguments[key] })
-	}
-	return result;
-}
 
-/**
- * @title assignIn
- * @description 合并对象(没有实现)
- * @param 来源对象
- * @returns 合并后的对象
- */
-export function assignIn(): any {
-	let result: any = {};
-	for (const key in arguments) {
-		// console.log(arguments[key].prototype);
-		result = Object.assign(result, { ...arguments[key] })
-	}
-	return result;
+export function serialize(query, encode = false) {
+  return Object.keys(query)
+    .map((key) => `${key}=${encode ? encodeURIComponent(query[key]) : query[key]}`)
+    .join('&')
 }

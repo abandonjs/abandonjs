@@ -1,7 +1,7 @@
-// import { INFINITY, MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../constants'
+import { useValue } from './util'
 import { toNumber, isEffectNumber } from '../number'
 import { type } from '../util'
-import { tItteratee } from '../type'
+import { Itteratee } from '../type'
 
 /**
  * @ 无限大（小）当做 js Number 的最大（小）值[主要处理计算异常的问题, 二期再加入大位数处理]
@@ -41,10 +41,10 @@ export function countingMethod(
  * @description 两数求和
  * @param augend 加数
  * @param addend 被加数
- * @returns 和
+ * @returns 和 ( 不会超过数字的边界值 )
  */
 export function add(augend: number, addend: number): number {
-  return toNumber(augend) + toNumber(addend)
+  return toNumber(toNumber(augend) + toNumber(addend))
 }
 
 /**
@@ -102,26 +102,16 @@ export function max(list: any[]): number | undefined {
   return maxValue
 }
 
-const useValue: any = (itteratee: tItteratee): any => {
-  const __type: string = type(itteratee)
-
-  return function (val: any): any {
-    if (__type === 'String') return val[itteratee as string]
-    if (__type === 'Function') return (itteratee as (val: any) => any)(val)
-    return val
-  }
-}
-
 /**
  * @title maxBy
  * @description 求最大值
  * @param list 要迭代数组
  * @param itteratee 迭代函数 / key
- * @returns
+ * @returns 最大值
  */
 export function maxBy(
   list: any[],
-  itteratee?: tItteratee
+  itteratee?: Itteratee
 ): number | undefined | { [key: string]: any } {
   const _type: string = type(itteratee)
   if (_type === 'Undefined') {
@@ -165,7 +155,7 @@ export function mean(list: any[]): number | undefined {
  * @param itteratee 迭代函数 / key
  * @returns 平均数
  */
-export function meanBy(list: any[], itteratee?: tItteratee): any {
+export function meanBy(list: any[], itteratee?: Itteratee): any {
   let total = 0
   let len = 0
   const handleValue: any = useValue(itteratee)
@@ -181,7 +171,7 @@ export function meanBy(list: any[], itteratee?: tItteratee): any {
 }
 
 /**
- * @title 最小值
+ * @title min
  * @description 求最小值
  * @param list 要迭代的数组
  * @returns 最小值
@@ -197,12 +187,14 @@ export function min(list: any[]): number | undefined {
  * @param itteratee 迭代函数 / key
  * @returns 最小值
  */
-export function minBy(list: any[], itteratee?: tItteratee): any {
+export function minBy(list: any[], itteratee?: Itteratee): any {
+
   if (list.length === 0) return undefined
   let result: any = undefined
   let minValue: number | undefined = undefined
   let len: number = list.length
   const handleValue: any = useValue(itteratee)
+
   while (len--) {
     const val = Number(handleValue(list[len]))
     if (isEffectNumber(val)) {
@@ -212,6 +204,7 @@ export function minBy(list: any[], itteratee?: tItteratee): any {
       result = list[len]
     }
   }
+
   return result
 }
 
@@ -231,7 +224,7 @@ export function sum(list: any[]): undefined | number {
  * @param itteratee 迭代函数 / key
  * @returns 总和
  */
-export function sumBy(list: any[], itteratee?: tItteratee): undefined | number {
+export function sumBy(list: any[], itteratee?: Itteratee): undefined | number {
   if (list.length === 0) return undefined
   let total: undefined | number = undefined
   let len: number = list.length
@@ -254,19 +247,5 @@ export function sumBy(list: any[], itteratee?: tItteratee): undefined | number {
  * @returns 积
  */
 export function multiply(augend: number, addend: number): number {
-  return toNumber(augend) * toNumber(addend)
-}
-
-/**
- * @title round
- * @description 四舍五入
- * @param num 要四舍五入的数
- * @param precision 精度
- * @returns 四舍五入的数字
- */
-export function round(num: number, precision?: number): number {
-  if (precision === undefined) precision = 0
-  return (
-    Math.round(num * toNumber(10 ** precision)) * toNumber(10 ** -precision)
-  )
+  return toNumber(toNumber(augend) * toNumber(addend))
 }

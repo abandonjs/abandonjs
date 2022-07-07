@@ -1,11 +1,11 @@
-import { tPredicate, tAnyValueToBooleanFunc } from '../type';
-export declare const colorToRGB: (val: string, opa?: number | undefined) => string;
-export declare const checkPwd: (pwd: string) => number;
+import { Predicate, OneParamFn } from '../type';
+import { type } from './type';
+export { type };
+export * from './matchValue';
+export declare const colorToRGB: (val: string, opa?: number) => string;
 export declare const changeCase: (str: string, type: number) => string;
-export declare function defaultValue(key: any, value: any): any;
-export declare function useArrayPredicate(predicate: tPredicate): tAnyValueToBooleanFunc;
+export declare function useArrayPredicate(predicate: Predicate): OneParamFn<any, boolean>;
 export declare function logGroup(name?: string, ...args: any[]): void;
-export declare function type(param: any): string;
 export declare function isEmpty(value: any): boolean;
 export declare function deepClone(obj: any, cache?: WeakMap<object, any>): any;
 declare class EventEmitter {
@@ -18,4 +18,4 @@ declare class EventEmitter {
     emit(name: any, once?: boolean): void;
 }
 export declare const eventBus: EventEmitter;
-export {};
+export declare function hideMobile(mobile: any): any;

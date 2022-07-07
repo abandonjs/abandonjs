@@ -1,15 +1,26 @@
-import { iAnyObject, tAnyValueToBooleanFunc } from '../type'
-import { defaultValue, useArrayPredicate } from '../util'
-import initMultArray from './initMultArray'
-import { arrayFilterByObject, compact } from './filter'
-import { arraySelectItems, arraySelectOne, difference } from './select'
-export {
-  initMultArray,
-  arrayFilterByObject,
-  difference,
-  compact,
-  arraySelectItems,
-  arraySelectOne
+export { filter } from './filter'
+export { selects, select } from './select'
+
+/**
+ * @title toArray<T>
+ * @description 将非数组转换为数组
+ * @param value T | T[]
+ * @returns T[]
+ */
+export function toArray<T>(value: T | T[]): T[] {
+  if (isArray(value)) return value as T[]
+  return [value] as T[]
+}
+
+
+/**
+ * @title isArray
+ * @description 是否为数组
+ * @param value any
+ * @returns boolean
+ */
+export function isArray(value: any): boolean {
+  return Array.isArray(value)
 }
 
 /**
@@ -23,12 +34,12 @@ export function pick(list: any[]): string {
 }
 
 /**
- * @title arrayUniqueItem
+ * @title unique
  * @description 去除数组重复项
  * @param any[] list 待过滤数组
  * @returns any[]
  */
-export function arrayUniqueItem(list: any[]): any[] {
+export function unique(list: any[]): any[] {
   return [...new Set(list)]
 }
 
@@ -37,7 +48,7 @@ export function arrayUniqueItem(list: any[]): any[] {
  * @description  通过 size 切割数组
  * @param list any[]
  * @param size number 切割点索引
- * @returns any[]
+ * @returns [ [切割点前数据], [切割点后数据] ]
  */
 export function chunk(list: any[], size: number): any[] {
   return [list.slice(0, size), list.slice(size)]
@@ -105,52 +116,27 @@ export function fill<T>(
   start = 0,
   end = 0
 ): T[] {
-  end = defaultValue(end, defaultValue(array.length, 0))
   while (start < end) array[start++] = value
   return array
 }
 
 /**
- * @title findIndex(待完成)
- * @description 通过 predicate 判断为真值的元素的索引值（index），而不是元素本身
- * @param array 要搜索的数组
- * @param predicate (Array|Function|Object|string): 这个函数会在每一次迭代调用
- * @param fromIndex (number) 指定开始查找的下标
- * @returns (number): 返回找到元素的 索引值（index），否则返回 - 1。
+ * @title difference
+ * @description 过滤数组
+ * @param list 待过滤的数组
+ * @param ...filterConditions 过滤使用的条件
+ * @returns 过滤后的数组(new)
  */
-export function findIndex<T>(
-  array: T[],
-  predicate: T[] | ((val: T) => T) | iAnyObject | string,
-  fromIndex = 0
-): number {
-  const len: number = array.length
-  const predicateFunc: tAnyValueToBooleanFunc = useArrayPredicate(predicate)
-  if (array.length === 0) return -1
-  do {
-    if (predicateFunc(array[fromIndex])) return fromIndex
-  } while (fromIndex++ < len)
-  return -1
-}
+export function difference(list: any[], ...filterConditions: any[]): any[] {
+  if (!list) return []
+  const result: any[] = list || []
 
-/**
- * @title findIndex(待完成)
- * @description 通过 predicate 判断为真值的元素的索引值（index），而不是元素本身(倒序查找)
- * @param array (Array): 要搜索的数组
- * @param predicate (Array|Function|Object|string): 这个函数会在每一次迭代调用。
- * @param fromIndex [fromIndex=array.length-1] (number): 指定开始查找的下标
- * @returns (number): 返回找到元素的 索引值（index），否则返回 - 1。
- */
-export function findLastIndex<T>(
-  array: T[],
-  predicate: T[] | ((val: T) => T) | iAnyObject | string,
-  fromIndex: number
-): number {
-  const len: number = array.length
-  fromIndex = defaultValue(fromIndex, len - 1)
-  const predicateFunc: tAnyValueToBooleanFunc = useArrayPredicate(predicate)
-  if (array.length === 0) return -1
-  do {
-    if (predicateFunc(array[fromIndex])) return fromIndex
-  } while (fromIndex--)
-  return -1
+  // 整合过滤条件
+  if (!filterConditions) return list
+  let [...allFilterConditions]: any[] = filterConditions || []
+  allFilterConditions = concat(...allFilterConditions)
+
+  return result.filter((item: any): boolean => {
+    return !allFilterConditions.includes(item)
+  })
 }

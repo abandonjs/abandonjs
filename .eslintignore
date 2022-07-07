@@ -2,3 +2,5 @@
 test/
 lib/
 src/*/__test__
+md.ts
+rollup.config.ts

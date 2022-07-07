@@ -139,9 +139,9 @@ logGroup(
 
 logGroup('multiply', _.multiply(1, 4), _.multiply(110, 4))
 
-logGroup(
-  'round',
-  _.round(4.006), // => 4
-  _.round(4.006, 2), // => 4.01
-  _.round(4060, -2) // => 4100
-)
+// logGroup(
+//   'round',
+//   _.round(4.006), // => 4
+//   _.round(4.006, 2), // => 4.01
+//   _.round(4060, -2) // => 4100
+// )
