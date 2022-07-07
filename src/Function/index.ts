@@ -81,7 +81,7 @@ export function debounce(fn: AnyFunction, interval: number): any {
  */
 export function after(n = 0, func: AnyFunction): AnyFunction {
   return function (...args: any[]): any {
-    if (--n < 0) return func(args)
+    if (--n < 0) return func(...args)
     return
   }
 }

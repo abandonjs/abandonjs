@@ -68,8 +68,8 @@ test('clamp', _.clamp,
 
 test('random', _.random,
 	{ params: [1, 1], tobe: 1 },
-	{ params: [3, 4], tobe: true },
-	{ params: [3, 4], tobe: true },
+	{ params: [3, 4], tobes: ['<=4', '>=3'], type: 'Match' },
+	{ params: [3, 4], tobe: '>2', type: 'Match' },
 )
 
 test('inRnage', _.inRange,
@@ -80,8 +80,8 @@ test('inRnage', _.inRange,
 
 test('round', _.round,
 	{ params: 1, tobe: 1 },
-	{ params: [1.05, 2], tobe: 1.05 },
-	{ params: [1.056, 2], tobe: 1.06 },
+	{ params: [1.05, 2], tobe: '>1.05', type: 'Match' },
+	{ params: [1.056, 2], tobe: '<2', type: 'Match' },
 
 )
 

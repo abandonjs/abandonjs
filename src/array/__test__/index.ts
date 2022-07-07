@@ -1,18 +1,14 @@
 import * as _Array from '../index'
 import * as _ from '../index'
-import { logGroup as log2 } from '../../Util'
-import { once } from '../../function'
-
+import { test } from 'rh-test'
 // 只运行第一个
-const logGroup = once(log2)
 
-logGroup('isArray',
-  _.isArray([]),
-  _.isArray(1),
-  _.isArray(33),
-  _.isArray([{}, 1]),
-
-)
+// test('isArray', _.isArray,
+//   { params: [], tobe: true },
+//   { params: 1, tobe: false },
+//   { params: 33, tobe: false },
+//   { params: [{}, 1], tobe: true },
+// )
 
 // logGroup(
 //   'dropRight',
