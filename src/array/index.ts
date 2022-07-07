@@ -2,12 +2,24 @@ export { filter } from './filter'
 export { selects, select } from './select'
 
 /**
+ * @title toArray<T>
+ * @description 将非数组转换为数组
+ * @param value T | T[]
+ * @returns T[]
+ */
+export function toArray<T>(value: T | T[]): T[] {
+  if (isArray(value)) return value as T[]
+  return [value] as T[]
+}
+
+
+/**
  * @title isArray
  * @description 是否为数组
  * @param value any
  * @returns boolean
  */
-export function isArray(value:any):boolean{
+export function isArray(value: any): boolean {
   return Array.isArray(value)
 }
 

@@ -8,6 +8,7 @@
   "jsdelivr": "/lib/",
   "types": "lib/index.d.ts",
   "scripts": {
+    "reload": "rimraf node_modules && cnpm install",
     "build": "npx rollup -c --extend rollup.config.ts",
     "lint-staged": "lint-staged",
     "md": "ts-node ./md.ts",
@@ -41,7 +42,7 @@
     "node-notifier": "^8.0.2",
     "prettier": "^2.4.1",
     "rh-js-methods": "^2.0.3",
-    "rh-test": "0.0.14",
+    "rh-test": "^0.1.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.66.1",
     "rollup-plugin-babel": "^4.4.0",
