@@ -38,13 +38,19 @@ import { filter } from 'rh-js-methods'
 
 ## array
 
-### `filter`
+### `filter<T` `extends` `object`>
 
 - `description` 单层过滤
-- `param` `list` `any[]` 待过滤数组
-- `param` `filterConditions` { `[key:string]:` `any` | `RegExp` } 过滤条件
+- `param` `list` `T[]` 待过滤数组
+- `param` `filterConditions` { `[key:string]:` `number|` `string` | `RegExp` } 过滤条件
 - `param` `retainNotObject` 是否保留非对象项
-- `returns` `any[]`
+- `returns` `T[]`
+
+### `toArray<T`>
+
+- `description` 将非数组转换为数组
+- `param` `value` `T` | `T[]`
+- `returns` `T[]`
 
 ### `isArray`
 
@@ -58,68 +64,68 @@ import { filter } from 'rh-js-methods'
 - `param` `any[]` `list`
 - `returns` 数组中任意一个
 
-### `unique`
+### `unique<T`>
 
 - `description` 去除数组重复项
-- `param` `any[]` `list` 待过滤数组
-- `returns` `any[]`
+- `param` `T[]` `list` 待过滤数组
+- `returns` `T[]`
 
-### `chunk`
+### `chunk<T`>
 
-- `description`  通过 `size` 切割数组
-- `param` `list` `any[]`
+- `description` 通过 `size` 切割数组
+- `param` `list` `T[]`
 - `param` `size` `number` 切割点索引
-- `returns` [ [切割点前数据], [切割点后数据] ]
+- `returns` `T[][]` [ [切割点前数据], [切割点后数据] ]
 
-### `concat`
+### `concat<T`>
 
 - `description` 连接多个数组
 - `params` `...list` `any[][]` 多个数组
 - `returns` `any[]`
 
-### `drop`
+### `drop<T`>
 
 - `description` 去除前`n`个元素
-- `param` `any[]` `list` 数组
-- `param` `number` `n` 要去除元素个数
-- `returns` `any[]` `list` 剩余切片
+- `param` `T[]` `list` 数组
+- `param` `number` `n`=`0` 要去除元素个数
+- `returns` `T[]` `list` 剩余切片
 
-### `dropRight`
+### `dropRight<T`>
 
 - `description` 从右往左删除的指定个数
-- `param` `list` 要处理的数组
-- `param` `n` 需要删除的元素数量 [=`1]`
+- `param` `list` `T[]` 要处理的数组
+- `param` `n`=`1` 需要删除的元素数量
+- `returns` `T[]`
 
-### `fill`
+### `fill<T`>
 
 - `description` 在原有数组上改变, 修改指定位置的值
-- `param` `array` 待填充改变的数组
-- `param` `value` 填充值
-- `param` `start` 开始位置
-- `param` `end` 结束位置(不包括, 默认`array.length)`
+- `param` `array` `T[]` 待填充改变的数组
+- `param` `value` `T` 填充值
+- `param` `num` 填充个数
 - `returns`
 
-### `difference`
+### `difference<T`>
 
 - `description` 过滤数组
-- `param` `list` 待过滤的数组
-- `param` `...filterConditions` 过滤使用的条件
-- `returns` 过滤后的数组`(new)`
+- `param` `list` `T[]` 待过滤的数组
+- `param` `...filterConditions:T[]` 过滤使用的条件
+- `returns` `T[]` 过滤后的数组`(new)`
 
-### `select`
+### `selects<T`>
 
-- `description` 指定范围长度 来随机选择数组元素
-- `param` `list:` `any[]`
+- `description` 指定范围 来随机选择数组元素
+- `param` `list:` `T[]`
 - `param` `min:` `number`
-- `param` `max:` `number`
-- `returns` `any[]`
+- `param` `max:` `number` (包括)
+- `returns` `T[]`
 
-### `selects`
+### `select<T`>
 
-- `description` 选择数组其中一项
-- `param` `list` `any[]` 待选择数组
-- `param` `index` `?number` 指定选择索引
-- `returns` 选择项
+- `description` 选择数组其中一项, 不指定就随机选一
+- `param` `list` `T[]` 待选择数组
+- `param` `index` `?number` 指定选择索引(可为负数)
+- `returns` `T|null` 选择项
 
 <hr/>
 
@@ -211,7 +217,7 @@ import { filter } from 'rh-js-methods'
 - 无限大（小）当做 `js` `Number` 的最大（小）值[主要处理计算异常的问题, 二期再加入大位数处理]
 - 二期再加入大位数计算
 
-### `countingMethod`
+### `HEX`
 
 - `description` 将数字装换成需要装换的数据格式`(k`, `m`, `g`, `t`, `p`, `e`, `z`, `y`, `b)`
 - `param` `num` `(number|string)` 待转换的数子 `(<binary^` `9)`
@@ -221,34 +227,34 @@ import { filter } from 'rh-js-methods'
 ### `add`
 
 - `description` 两数求和
-- `param` `augend` 加数
-- `param` `addend` 被加数
-- `returns` 和 ( 不会超过数字的边界值 )
+- `param` `augend` `number` 加数
+- `param` `addend` `number` 被加数
+- `returns` `number` ( 不会超过数字的边界值 `1.7976931348623157e`+`308` )
 
 ### `ceil`
 
 - `description` 向上取整的值(没有对`number`边界值`[Infinity`值处理`])`
 - `param` `num` 要向上舍入的值
-- `param` `precision` 精度
-- `returns`
+- `param` `precision` `number` = `0` 精度(负数就是想整数部分取整)
+- `returns` `number`
 
 ### `divide`
 
 - `description` 相除
-- `param` `dividend` 除数
-- `param` `divisor` 被除数
-- `returns` 商
+- `param` `dividend` `number` 除数
+- `param` `divisor` `number` 被除数
+- `returns` `number` 商
 
 ### `floor`
 
 - `description` 向下取整(没有对`number`边界值`[Infinity`值处理`])`
 - `param` `num` 待向下舍入的值
-- `param` `precision` 精度
+- `param` `precision` 精度 (负数就是处理整数部分)
 - `returns` 向下取整
 
 ### `max`
 
-- `description` 求最大值(只会判断有效值)
+- `description` 求最大值(只会判断有效值), 只会统计`number` | `string`类型的数值
 - `param` `list` 数组
 - `returns` 最大值
 
@@ -301,8 +307,8 @@ import { filter } from 'rh-js-methods'
 ### `multiply`
 
 - `description` 相乘
-- `param` `augend` 乘数
-- `param` `addend` 被乘数
+- `param` `augend` `number` 乘数
+- `param` `addend` `number` 被乘数
 - `returns` 积
 
 <hr/>
@@ -372,11 +378,11 @@ import { filter } from 'rh-js-methods'
 - `param` `end:number` 结束值(不包含该值)
 - `returns` `boolean`
 
-    - - `title` `round`
-    - - `description`数字四舍五入，保留`n`位小数
-    - - `param` `number` : `number` 待处理数值
-    - - `param` `n` : `number` = `0` 四舍五入的位数
-    - - `returns`
+  * - `title` `round`
+  * - `description`数字四舍五入，保留`n`位小数
+  * - `param` `number` : `number` 待处理数值
+  * - `param` `n` : `number` = `0` 四舍五入的位数
+  * - `returns`
 
 ### `toThousands`
 
@@ -393,6 +399,20 @@ import { filter } from 'rh-js-methods'
 - `description` 判断是否为`Oject`
 - `param` `value`
 - `returns` `boolean`
+
+### `existKeys`
+
+- `description` 判断对象是否拥有指定`keys`
+- `param` `obj` `object`
+- `param` `keys` `string[]` | `string`
+- `returns` `boolean`
+
+### `serialize`
+
+- `description` 序列化对象
+- `param` `query` `object`
+- `param` `encode` `boolean` = `false`
+- `returns` `string`
 
 <hr/>
 
@@ -518,7 +538,8 @@ import { filter } from 'rh-js-methods'
 - `param` `fileName` `string`
 - `returns` `boolean`
 
-- `ttitle` `matchValue`
+### `matchValue`
+
 - `param` `val` 被比较值
 - `param` `valer` 比较值 / 可为正则
 - `param` `path` 值的路径 用逗号隔开

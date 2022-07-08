@@ -1,7 +1,8 @@
 export interface iObject {
     [key: string]: any;
 }
-export declare type iObjectKey = string;
 export declare function isObject(value: any): boolean;
-export declare function objectInclude(obj: iObject, keys: iObjectKey[] | iObjectKey): boolean | boolean[];
-export declare function serialize(query: any, encode?: boolean): string;
+export declare function existKeys(obj: iObject, keys: string[] | string): boolean;
+export declare function serialize(query: {
+    [key: string]: string | number;
+}, encode?: boolean): string;

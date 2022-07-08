@@ -1,159 +1,83 @@
 import * as _Array from '../index'
 import * as _ from '../index'
 import { test } from 'rh-test'
-// 只运行第一个
 
-// test('isArray', _.isArray,
-//   { params: [], tobe: true },
-//   { params: 1, tobe: false },
-//   { params: 33, tobe: false },
-//   { params: [{}, 1], tobe: true },
-// )
+test('toArray', _.toArray,
+	{ param: [], tobe: [] },
+	{ param: 1, tobe: [1] },
+	{ param: 33, tobe: [33] },
+	{ param: [{}, 1], tobe: [{}, 1] },
+)
 
-// logGroup(
-//   'dropRight',
-//   _.dropRight([1, 2, 3]), // => [1, 2]
-//   _.dropRight([1, 2, 3, 9, 10], 4), // => [1, 2]
-//   _.dropRight([1, 2, 3], 2), // => [1]
-//   _.dropRight([1, 2, 3], 5), // => []
-//   _.dropRight([1, 2, 3], 0) // => [1, 2, 3]
-// )
+test('isArray', _.isArray,
+	{ param: [], tobe: true },
+	{ param: 1, tobe: false },
+	{ param: 33, tobe: false },
+	{ param: [{}, 1], tobe: true },
+)
 
-// logGroup(
-//   'arraySelectOne',
-//   _Array.arraySelectOne([1, 4, 5]),
-//   _Array.arraySelectOne([1, 4, 5], 0),
-//   _Array.arraySelectOne([1, 4, 5], -1)
-// )
 
-// logGroup('arrayUniqueItem', arrayUniqueItem([1, 3, 4, 5, 1, 3, 2, 1, 1]))
+test('dropRight', _.dropRight,
+	{ params: [[1, 2, 3]], tobe: [1, 2] },
+	{ params: [[1, 2, 3, 9, 10], 4], tobe: [1] },
+	{ params: [[1, 2, 3], 2], tobe: [1] },
+	{ params: [[1, 2, 3], 5], tobe: [] },
+	{ params: [[1, 2, 3], 0], tobe: [1, 2, 3] },
+)
 
-// logGroup('arrayUniqueItem', arrayUniqueItem([1, 3, 4, 5, 1, 3, 2, 1, 1]))
+test('pick', _.pick,
+	{ param: [1, 2, 3], tobes: ['<=3', '>=1'], type: 'Match' }
+)
 
-// logGroup(
-//   'initMultArray',
-//   initMultArray('unit'),
-//   initMultArray('unit', '10'),
-//   initMultArray('unit', '10&1'),
-//   initMultArray('unit', '2&2'),
-//   initMultArray('unit', '2&2')
-// )
+test('unique', _.unique,
+	{ param: [1, 1, 1, 1], tobe: [1] }
+)
 
-// logGroup(
-//   'arrayFilterByObject',
-//   _Array.arrayFilterByObject(
-//     [{ a: 123, b: '00' }, { a: 123, b: '00' }, 123, 'fjdsjf'],
-//     { a: 1 }
-//   ),
-//   _Array.arrayFilterByObject(
-//     [{ a: 123, b: '00' }, { a: 23, b: '00' }, 123, 'fjdsjf'],
-//     { a: 1, b: '0' },
-//     true
-//   )
-// )
+test('chunk', _.chunk,
+	{ params: [[1, 1, 1, 1], 2], tobe: [[1, 1], [1, 1]] },
+)
 
-// logGroup(
-//   'arraySelectItems',
-//   _Array.arraySelectItems(
-//     [1, 4, 5, 6, 223, 23, 32, 42134, 234, 123, 123],
-//     3,
-//     5
-//   ),
-//   _Array.arraySelectItems(
-//     [1, 4, 5, 6, 99, 223, 23, 32, 42134, 234, 12, 123, 123],
-//     3,
-//     10
-//   ),
-//   _Array.arraySelectItems(
-//     [1, 4, 5, 6, 99, 223, 23, 32, 42134, 234, 12, 123, 123],
-//     3,
-//     3
-//   )
-// )
+test('concat', _.concat,
+	{ params: [[1, 1, 1, 1], 2, [3]], tobe: [1, 1, 1, 1, 2, 3] },
+)
 
-// logGroup('chunk', _Array.chunk([1, 3, 4, 5, 3, 2, 3, 12], 3))
-// logGroup(
-//   'compact',
-//   _Array.compact([1, 3, 4, false, 0, 5, '', 3, 2, , 3, 12, null, undefined])
-// )
+test('drop', _.drop,
+	{ params: [[1, 2, 3, 4]], tobe: [1, 2, 3, 4] },
+	{ params: [[1, 2, 3, 4], 2], tobe: [3, 4] },
+)
 
-// logGroup(
-//   'concat',
-//   _Array.concat([1, 4, 6, 7], [33], [444], 3, 1, 2),
-//   _Array.concat(3, 1, 2),
-//   _Array.concat([3, 1, 2])
-// )
+test('dropRight', _.dropRight,
+	{ params: [[1, 1, 1, 2]], tobe: [1, 1, 1] },
+	{ params: [[1, 1, 1, 1], 2], tobe: [1, 1] },
+)
 
-// logGroup(
-//   'difference',
-//   // _Array.difference(),
-//   _Array.difference([1, 34, 4]),
-//   _Array.difference([1, 34, 4], [4]),
-//   _Array.difference([1, 34, 4], [4], 34)
-// )
+test('fill', _.fill,
+	{ params: [[1, 2, 3], 4, 1], tobe: [1, 2, 3, 4] }
+)
 
-// logGroup(
-//   'drop',
-//   _Array.drop(),
-//   _Array.drop([1, 34, 4]),
-//   _Array.drop([1, 34, 4], 1),
-//   _Array.drop([1, 34, 4], 2),
-//   _Array.drop([1, 34, 4], 20)
-// )
+test('difference', _.difference,
+	{ params: [[1, 2, 3], 4, 1], tobe: [2, 3] }
+)
 
-// const array = [1, 2, 3]
+test('filter', _.filter,
+	{ params: [[{ a: 123 }, { a: 456 }, 12], { a: 123 }], tobe: [{ a: 123 }] },
+	{ params: [[{ a: 123 }, { a: 456 }, 12], { a: 123 }, true], tobe: [{ a: 123 }, 12] },
+)
 
-// logGroup(
-//   'fill',
-//   _.fill(array, 'a'),
-//   // => ['a', 'a', 'a']
-//   _.fill(Array(3), 2),
-//   // => [2, 2, 2]
-//   _.fill([4, 6, 8, 10], '*', 1, 3)
-// )
+test('select', _.select,
+	{ params: [[]], tobe: null },
+	{ params: [[1, 2, 3, 4, 5, 6], 0], tobe: 1 },
+	{ params: [[1, 2, 3, 4, 5, 6], 7], tobe: 2 },
+	{ params: [[1, 2, 3, 4, 5, 6], -7], tobe: 6 },
+	{ param: [1, 2, 3, 4, 5, 6], tobes: [1, 2, 3, 4, 5, 6], type: 'Match' },
+	{ params: [[1, 2, 3, 4, 5, 6], 2], tobe: 3, type: 'Match' },
+)
 
-// const users = [
-//   { user: 'barney', active: false },
-//   { user: 'fred', active: false },
-//   { user: 'pebbles', active: true }
-// ]
-
-// logGroup(
-//   'findIndex',
-//   _.findIndex(users, function (o: any): boolean {
-//     return o.user && o.user == 'barney'
-//   }),
-//   // => 0
-
-//   // The `_.matches` iteratee shorthand.
-//   _.findIndex(users, { user: 'fred', active: false }),
-//   // => 1
-
-//   // The `_.matchesProperty` iteratee shorthand.
-//   _.findIndex(users, ['active', false]),
-//   // => 0
-
-//   // The `_.property` iteratee shorthand.
-//   _.findIndex(users, 'active')
-//   // => 2
-// )
-
-// // logGroup(
-// //   'findLastIndex',
-// //   _.findLastIndex(users, function (o) {
-// //     return o.user == 'pebbles'
-// //   }),
-// //   // => 2
-
-// //   // The `_.matches` iteratee shorthand.
-// //   _.findLastIndex(users, { user: 'barney', active: true }),
-// //   // => 0
-
-// //   // The `_.matchesProperty` iteratee shorthand.
-// //   _.findLastIndex(users, ['active', false]),
-// //   // => 2
-
-// //   // The `_.property` iteratee shorthand.
-// //   _.findLastIndex(users, 'active')
-// //   // => 0
-// // )
+test('selects', (list, min, max) => _.selects(list, min, max).length,
+	{ params: [[], 0, 0], tobe: 0 },
+	{ params: [[1, 2, 3, 4, 5, 6], 2, 6], tobes: ['>2','<=6'], type: 'Matcher' },
+	{ params: [[1, 2, 3, 4, 5, 6], 2, 6], tobes: ['>2','<=6'], type: 'Matcher' },
+	{ params: [[1, 2, 3, 4, 5, 6], 2, 6], tobes: ['>2','<=6'], type: 'Matcher' },
+	{ params: [[1, 2, 3, 4, 5, 6], 2, 6], tobes: ['>2','<=6'], type: 'Matcher' },
+	{ params: [[1, 2, 3, 4, 5, 6], 2, 6], tobes: ['>2','<=6'], type: 'Matcher' },
+)

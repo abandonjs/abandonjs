@@ -1,9 +1,9 @@
+import { toArray } from "../array";
 import { type } from "../util";
 
 export interface iObject {
 	[key: string]: any;
 }
-export type iObjectKey = string;
 
 /**
  * @title isObject
@@ -11,30 +11,36 @@ export type iObjectKey = string;
  * @param value 
  * @returns boolean
  */
-export function isObject(value:any):boolean{
+export function isObject(value: any): boolean {
 	return type(value) === 'Object' && typeof value === 'object'
 }
 
-export function objectInclude(obj: iObject, keys: iObjectKey[] | iObjectKey): boolean | boolean[] {
-	const result: boolean[] = [];
+/**
+ * @title existKeys
+ * @description 判断对象是否拥有指定keys
+ * @param obj object
+ * @param keys string[] | string
+ * @returns boolean
+ */
+export function existKeys(obj: iObject, keys: string[] | string): boolean {
 	const objKeys: string[] = Object.keys(obj);
-	if (!Array.isArray(keys)) keys = [keys];
-	keys.forEach((item: iObjectKey): void => {
-		if (objKeys.includes(item)) {
-			result.push(true)
-		} else {
-			result.push(false)
-		}
+	keys = toArray<string>(keys)
 
-	})
-	if (result.length === 0) return false;
-	if (result.length === 1) return result[0]
-	return result;
+	for (let i = 0; i < keys.length; i++) {
+		if (objKeys.includes(keys[i])) return true
+	}
+	return false
 }
 
-
-export function serialize(query, encode = false) {
-  return Object.keys(query)
-    .map((key) => `${key}=${encode ? encodeURIComponent(query[key]) : query[key]}`)
-    .join('&')
+/**
+ * @title serialize
+ * @description 序列化对象
+ * @param query object
+ * @param encode boolean = false
+ * @returns string 
+ */
+export function serialize(query: { [key: string]: string | number }, encode = false): string {
+	return Object.keys(query)
+		.map((key) => `${key}=${encode ? encodeURIComponent(query[key]) : query[key]}`)
+		.join('&')
 }

@@ -1,21 +1,20 @@
 import * as _ from '../index'
-import { logGroup } from '../../Util'
+import { test } from 'rh-test'
 
+test('isObject', _.isObject,
+	{ param: {}, tobe: true },
+	{ param: null, tobe: false },
+	{ param: undefined, tobe: false },
+	{ param: NaN, tobe: false },
+	{ param: { a: 123 }, tobe: true },
+)
 
-// function Foo() {
-// 	this.a = 1;
-// }
+test('existKeys', _.existKeys,
+	{ params: [{ a: 123 }, 'a'], tobe: true },
+	{ params: [{ a: 123 }, ['a']], tobe: true },
+	{ params: [{ a: 123, b: 3 }, 'a'], tobe: true },
+)
 
-// function Bar() {
-// 	this.c = 3;
-// }
-
-// Foo.prototype.b = 2;
-// Bar.prototype.d = 4;
-
-// // logGroup('assign',
-// // _.assign({ 'a': 0 }, new Foo, new Bar), // => { 'a': 1, 'c': 3 }
-// // )
-// logGroup('assignIn',
-// 	_.assignIn({ 'a': 0 }, new Foo, new Bar), // => { 'a': 1, 'c': 3 }
-// )
+test('serialize', _.serialize,
+	{param: {a:1, b:'c'}, tobe: 'a=1&b=c'}
+)

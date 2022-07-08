@@ -29,60 +29,62 @@ export function isArray(value: any): boolean {
  * @param any[] list
  * @returns 数组中任意一个
  */
-export function pick(list: any[]): string {
+export function pick<T>(list: T[]): T {
   return list[Math.floor(Math.random() * list.length)]
 }
 
 /**
- * @title unique
+ * @title unique<T>
  * @description 去除数组重复项
- * @param any[] list 待过滤数组
- * @returns any[]
+ * @param T[] list 待过滤数组
+ * @returns T[]
  */
-export function unique(list: any[]): any[] {
+export function unique<T>(list: T[]): T[] {
   return [...new Set(list)]
 }
 
 /**
- * @title chunk
- * @description  通过 size 切割数组
- * @param list any[]
+ * @title chunk<T>
+ * @description 通过 size 切割数组
+ * @param list T[]
  * @param size number 切割点索引
- * @returns [ [切割点前数据], [切割点后数据] ]
+ * @returns T[][] [ [切割点前数据], [切割点后数据] ]
  */
-export function chunk(list: any[], size: number): any[] {
+export function chunk<T>(list: T[], size: number): T[][] {
   return [list.slice(0, size), list.slice(size)]
 }
 
 /**
- * @title concat
+ * @title concat<T>
  * @description 连接多个数组
  * @params ...list any[][] 多个数组 
  * @returns any[]
  */
-export function concat(...list: any[]): any[] {
-  let result: any[] = []
+export function concat<T>(...list: T[]): T[] {
+  let result: T[] = []
   if (list && list.length > 0) {
-    let len: number = list.length
-    while (len--) {
-      if (Array.isArray(list[len])) {
-        result = result.concat(list[len])
+    const len: number = list.length
+    let i = 0;
+    while (i < len) {
+      if (Array.isArray(list[i])) {
+        result = result.concat(list[i])
       } else {
-        result.push(list[len])
+        result.push(list[i])
       }
+      i++;
     }
   }
   return result
 }
 
 /**
- * @title drop
+ * @title drop<T>
  * @description 去除前n个元素
- * @param any[] list 数组
- * @param number n 要去除元素个数
- * @returns any[] list 剩余切片
+ * @param T[] list 数组
+ * @param number n=0 要去除元素个数 
+ * @returns T[] list 剩余切片
  */
-export function drop(list: any[] = [], n = 0): any[] {
+export function drop<T>(list: T[] = [], n = 0): T[] {
   while (n--) {
     if (list.length < 1) return []
     list.shift()
@@ -91,52 +93,49 @@ export function drop(list: any[] = [], n = 0): any[] {
 }
 
 /**
- * @title dropRight
+ * @title dropRight<T>
  * @description 从右往左删除的指定个数
- * @param list 要处理的数组
- * @param n 需要删除的元素数量 [=1]
+ * @param list T[] 要处理的数组
+ * @param n=1 需要删除的元素数量
+ * @returns T[]
  */
-export function dropRight(list: any[], n = 1) {
+export function dropRight<T>(list: T[], n = 1): T[] {
   const len: number = list.length || 0
   return list.splice(0, len - n)
 }
 
 /**
- * @title fill
+ * @title fill<T>
  * @description 在原有数组上改变, 修改指定位置的值
- * @param array 待填充改变的数组
- * @param value 填充值
- * @param start 开始位置
- * @param end 结束位置(不包括, 默认array.length)
+ * @param array T[] 待填充改变的数组
+ * @param value T 填充值
+ * @param num 填充个数
  * @returns
  */
 export function fill<T>(
   array: T[],
-  value: any = undefined,
-  start = 0,
-  end = 0
+  value: T,
+  num = 0,
 ): T[] {
-  while (start < end) array[start++] = value
+  while (num--) array.push(value)
   return array
 }
 
 /**
- * @title difference
+ * @title difference<T>
  * @description 过滤数组
- * @param list 待过滤的数组
- * @param ...filterConditions 过滤使用的条件
- * @returns 过滤后的数组(new)
+ * @param list T[] 待过滤的数组
+ * @param ...filterConditions:T[] 过滤使用的条件
+ * @returns T[] 过滤后的数组(new)
  */
-export function difference(list: any[], ...filterConditions: any[]): any[] {
+export function difference<T>(list: T[], ...filterConditions: T[]): T[] {
   if (!list) return []
-  const result: any[] = list || []
+  const result: T[] = list || []
 
   // 整合过滤条件
   if (!filterConditions) return list
-  let [...allFilterConditions]: any[] = filterConditions || []
-  allFilterConditions = concat(...allFilterConditions)
 
-  return result.filter((item: any): boolean => {
-    return !allFilterConditions.includes(item)
+  return result.filter((item: T): boolean => {
+    return !filterConditions.includes(item)
   })
 }

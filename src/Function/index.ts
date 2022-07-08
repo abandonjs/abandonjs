@@ -124,7 +124,7 @@ export function before(n: number, func: AnyFunction): AnyFunction {
  * @param partials 附加的部分参数
  * @returns 新的绑定函数
  */
-export function bind<T extends unknown>(
+export function bind<T>(
   func: AnyFunction,
   thisArg: AnyObject = {},
   ...partials: any[]

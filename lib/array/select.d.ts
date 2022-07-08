@@ -1,2 +1,2 @@
-export declare function selects(list: any[], min: number, max: number): any[];
-export declare function select(list?: any[], index?: number): any;
+export declare function selects<T>(list: T[], min: number, max: number): T[];
+export declare function select<T>(list?: T[], index?: number): T | null;

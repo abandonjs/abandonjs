@@ -6,7 +6,7 @@ export declare function debounce(fn: AnyFunction, interval: number): any;
 export declare function after(n: number | undefined, func: AnyFunction): AnyFunction;
 export declare function ary(func: AnyFunction, n: number): AnyFunction;
 export declare function before(n: number, func: AnyFunction): AnyFunction;
-export declare function bind(func: AnyFunction, thisArg?: AnyObject, ...partials: any[]): AnyFunction;
+export declare function bind<T>(func: AnyFunction, thisArg?: AnyObject, ...partials: any[]): AnyFunction;
 export declare function curry(func: AnyFunction, len: number): AnyFunction;
 export declare function delay(func: AnyFunction, delayTime?: number, ...args: any[]): any;
 export declare function flip(func: AnyFunction): AnyFunction;

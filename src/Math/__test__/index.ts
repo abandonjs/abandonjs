@@ -1,147 +1,117 @@
 import * as _ from '../index'
-import { once } from '../../function'
-import { logGroup as log } from '../../Util'
+import { test } from 'rh-test'
 import { INFINITY, MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../../constants'
 
-const logGroup: any = once(log)
-
-logGroup(
-  'countingMethod',
-  _.countingMethod(1024),
-  _.countingMethod(1024 * 12),
-  _.countingMethod(3 * 1024 ** 3 + 1024 * 12 + 12),
-  _.countingMethod(1024 ** 9 ),
-  _.countingMethod(1024 ** 12 ),
-  _.countingMethod(1024 * 12)
+test('HEX', _.toHEX,
+  { params: [1024], tobe: '1K' },
+  { params: [1024 * 12], tobe: '12K' },
+  { params: [3 * 1024 ** 3 + 1024 * 12 + 12], tobe: '3G12K12' },
+  { params: [1024 ** 9], tobe: '1B' },
+  { params: [1024 ** 12], tobe: '1024B' },
+  { params: [1024 * 12], tobe: '12K' },
 )
 
-logGroup(
-  'add',
-  _.add(1, 1),
-  _.add(MAX_VALUES_NUMBER, MAX_VALUES_NUMBER),
-  _.add(MAX_VALUES_NUMBER, INFINITY),
-  _.add(MAX_VALUES_NUMBER, -INFINITY),
-  _.add(INFINITY, -INFINITY)
+test('add', _.add,
+  { params: [1, 1], tobe: 2 },
+  { params: [MAX_VALUES_NUMBER, MAX_VALUES_NUMBER], tobe: MAX_VALUES_NUMBER },
+  { params: [MAX_VALUES_NUMBER, INFINITY], tobe: MAX_VALUES_NUMBER },
+  { params: [MAX_VALUES_NUMBER, -INFINITY], tobe: 0 },
+  { params: [INFINITY, -INFINITY], tobe: 0 },
 )
 
-logGroup(
-  'ceil',
-  _.ceil(3.1245),
-  _.ceil(13.1245),
-  _.ceil(0.1245),
-  _.ceil(4.006),
-  _.ceil(6.004, 2),
-  _.ceil(6040, -2),
-  _.ceil(6040111, -2)
+test('ceil', _.ceil,
+  { params: [3.1245], tobe: 4 },
+  { params: [13.1245], tobe: 14 },
+  { params: [0.1245], tobe: 1 },
+  { params: [4.006], tobe: 5 },
+  { params: [6.004, 2], tobe: 6.01 },
+  { params: [6040, -2], tobe: 6100 },
+  { params: [6040111, -2], tobe: 6040200 },
 )
 
-logGroup(
-  'divide',
-  _.divide(3, 1),
-  _.divide(3, 3),
-  _.divide(3, 2),
-  _.divide(3, 4),
-  _.divide(3, 5),
-  _.divide(3, 9),
-  _.divide(6, 4),
-  _.divide(MAX_VALUES_NUMBER, 4),
-  _.divide(Infinity, 4),
-  _.divide(1, -INFINITY)
+test('divide', _.divide,
+  { params: [3, 1], tobe: 3 },
+  { params: [3, 3], tobe: 1 },
+  { params: [3, 2], tobe: 1.5 },
+  { params: [3, 4], tobe: 0.75 },
+  { params: [3, 5], tobe: 0.6 },
+  { params: [3, 9], tobe: 1 / 3 },
+  { params: [6, 4], tobe: 1.5 },
+  { params: [MAX_VALUES_NUMBER, 4], tobe: MAX_VALUES_NUMBER / 4 },
+  { params: [Infinity, 4], tobe: MAX_VALUES_NUMBER / 4 },
+  { name: '0-1', params: [1, INFINITY], tobe: 0 },
+  { name: '0-2', params: [1, -INFINITY], tobe: 0 },
 )
 
-logGroup(
-  'floor',
-  _.floor(3.1245),
-  _.floor(13.1245),
-  _.floor(0.1245),
-  _.floor(4.006),
-  _.floor(6.004, 2),
-  _.floor(6040, -2),
-  _.floor(6040111, -2)
+test('floor', _.floor,
+  { params: [3.1245], tobe: 3 },
+  { params: [13.1245], tobe: 13 },
+  { params: [0.1245], tobe: 0 },
+  { params: [4.006], tobe: 4 },
+  { params: [6.004, 2], tobe: 6.00 },
+  { params: [6040, -2], tobe: 6000 },
+  { params: [6040111, -2], tobe: 6040100 },
 )
 
-logGroup(
-  'max',
-  _.max([1, 4, 5, 2, 99999999, 3, 1, 100, 5555555]),
-  _.max([1, 4, 5, 2, 99999999, 3, 1, 100, 5555555, 'fjsdkfjksdjf']),
-  _.max([1, 4, 5, 2, 99999999, 3, 1, 100, 5555555, '', '9999999912'])
+test('max', _.max,
+  { params: [[1, 4, 5, 2, 99999999, 3, 1, 100, 5555555]], tobe: 99999999 },
+  { params: [[1, 4, 5, 2, 99999999, 3, 1, 100, 5555555, 'fjsdkfjksdjf']], tobe: 99999999 },
+  { params: [[1, 4, 5, 2, 99999999, 3, 1, 100, 5555555, '', '9999999912']], tobe: 9999999912 },
 )
 
-logGroup(
-  'maxBy',
-  _.maxBy([1, 4, 5, 2, 99999999, 3, 1, 100, 5555555]),
-  _.maxBy([1, 4, 5, 2, 99999999, 3, 1, 100, 5555555, 'fjsdkfjksdjf']),
-  _.maxBy([1, 4, 5, 2, 99999999, 3, 1, 100, 5555555, '', '9999999912']),
-  _.maxBy([{ a: 123 }, { a: 999 }, { a: 333 }]),
-  _.maxBy([{ a: 123 }, { a: 999 }, { a: 111333 }], 'a'),
-  _.maxBy([{ a: 123 }, { a: 99119 }, { a: 333 }], (val) => val.a)
+test('maxBy', _.maxBy,
+  { params: [[1, 4, 5, 2, 99999999, 3, 1, 100, 5555555]], tobe: 99999999 },
+  { params: [[1, 4, 5, 2, 99999999, 3, 1, 100, 5555555, 'fjsdkfjksdjf']], tobe: 99999999 },
+  { params: [[1, 4, 5, 2, 99999999, 3, 1, 100, 5555555, '', '9999999912']], tobe: 9999999912 },
+  { params: [[{ a: 1 }, { b: 3 }], 'a'], tobe: { a: 1 } },
 )
 
-logGroup(
-  'mean',
-  _.mean([1, 4, 5, 2, 3, 1, 100]),
-  _.mean([1, 4, 5, 2, 3, 1, 100, 'fjsdkfjksdjf']),
-  _.mean([1, 4, 5, 2, 3, 1, 100, '', '9999999912']),
-  _.mean([{ a: 123 }, { a: 999 }, { a: 333 }]),
-  _.mean([{ a: 123 }, { a: 999 }, { a: 111333 }], 'a'),
-  _.mean([{ a: 123 }, { a: 99119 }, { a: 333 }], (val) => val.a)
+test('mean', _.mean,
+  { params: [[1, 4, 5, 10, 100]], tobe: 24 },
+  { params: [[1, 4, 10, 100, 'fjsdkfjksdjf']], tobe: 23 },
 )
 
-logGroup(
-  'meanBy',
-  _.meanBy([1, 4, 5, 2, 3, 1, 100]),
-  _.meanBy([1, 4, 5, 2, 3, 1, 100, 'fjsdkfjksdjf']),
-  _.meanBy([1, 4, 5, 2, 3, 1, 100, '', '9999999912']),
-  _.meanBy([{ a: 123 }, { a: 999 }, { a: 333 }]),
-  _.meanBy([{ a: 123 }, { a: 999 }, { a: 333 }], 'a'),
-  _.meanBy([{ a: 123 }, { a: 99119 }, { a: 333 }], (val) => val.a)
+test('meanBy', _.meanBy,
+  { params: [[1, 4, 5, 10, 100]], tobe: 24 },
+  { params: [[1, 4, 10, 100, 'fjsdkfjksdjf']], tobe: 23 },
 )
 
-logGroup(
-  'min',
-  _.min([1, 4, 5, 2, 3, 1, 100]),
-  _.min([1, 4, 5, 2, 3, 1, 100, 'fjsdkfjksdjf']),
-  _.min([1, 4, 5, 2, 3, 1, 100, '', '9999999912']),
-  _.min([{ a: 123 }, { a: 999 }, { a: 333 }]),
-  _.min([{ a: 123 }, { a: 999 }, { a: 111333 }], 'a'),
-  _.min([{ a: 123 }, { a: 99119 }, { a: 333 }], (val) => val.a)
+
+
+test('min', _.min,
+  { params: [[1, 4, 5, 2, 3, 1, 100]], tobe: 1 },
+  { params: [[1, 4, 5, 2, 3, 1, 100, 'fjsdkfjksdjf']], tobe: 1 },
+  { params: [[1, 4, 5, 2, 3, 1, 100, '', '9999999912']], tobe: 1 },
+  { params: [[{ a: 123 }, { a: 999 }, { a: 333 }]], tobe: undefined },
+  { params: [[{ a: 123 }, { a: 999 }, { a: 111333 }], 'a'], tobe: undefined },
 )
 
-logGroup(
-  'minBy',
-  _.minBy([1, 4, 5, 2, 3, 1, 100]),
-  _.minBy([1, 4, 5, 2, 3, 1, 100, 'fjsdkfjksdjf']),
-  _.minBy([1, 4, 5, 2, 3, 1, 100, '', '9999999912']),
-  _.minBy([{ a: 123 }, { a: 999 }, { a: 333 }]),
-  _.minBy([{ a: 123 }, { a: 999 }, { a: 111333 }], 'a'),
-  _.minBy([{ a: 123 }, { a: 99119 }, { a: 333 }], (val) => val.a)
+test('minBy', _.minBy,
+  { params: [[1, 4, 5, 2, 3, 1, 100]], tobe: 1 },
+  { params: [[1, 4, 5, 2, 3, 1, 100, 'fjsdkfjksdjf']], tobe: 1 },
+  { params: [[1, 4, 5, 2, 3, 1, 100, '', '9999999912']], tobe: 1 },
+  { params: [[{ a: 123 }, { a: 999 }, { a: 333 }]], tobe: undefined },
+  { params: [[{ a: 123 }, { a: 999 }, { a: 111333 }], 'a'], tobe: { a: 123 } },
 )
 
-logGroup(
-  'sum',
-  _.sum([1, 4, 5, 2, 3, 1, 100]),
-  _.sum([1, 4, 5, 2, 3, 1, 100, 'fjsdkfjksdjf']),
-  _.sum([1, 4, 5, 2, 3, 1, 100, '', '9999999912']),
-  _.sum([{ a: 123 }, { a: 999 }, { a: 333 }]),
-  _.sum([{ a: 123 }, { a: 999 }, { a: 111333 }], 'a'),
-  _.sum([{ a: 123 }, { a: 99119 }, { a: 333 }], (val) => val.a)
+test('sum', _.sum,
+  { params: [[1, 4, 5, 2, 3, 1, 100]], tobe: 116 },
+  { params: [[1, 4, 5, 2, 3, 1, 100, 'fjsdkfjksdjf']], tobe: 116 },
+  { params: [[1, 4, 5, 2, 3, 1, 100, '', '9999999912']], tobe: 10000000028 },
+  { params: [[{ a: 123 }, { a: 999 }, { a: 333 }]], tobe: 0 },
+  { params: [[{ a: 123 }, { a: 999 }, { a: 111333 }]], tobe: 0 },
 )
 
-logGroup(
-  'sumBy',
-  _.sumBy([1, 4, 5, 2, 3, 1, 100]),
-  _.sumBy([1, 4, 5, 2, 3, 1, 100, 'fjsdkfjksdjf']),
-  _.sumBy([1, 4, 5, 2, 3, 1, 100, '', '9999999912']),
-  _.sumBy([{ a: 123 }, { a: 999 }, { a: 333 }]),
-  _.sumBy([{ a: 123 }, { a: 999 }, { a: 111333 }], 'a'),
-  _.sumBy([{ a: 123 }, { a: 99119 }, { a: 333 }], (val) => val.a)
+test('sumBy', _.sumBy,
+  { params: [[1, 4, 5, 2, 3, 1, 100]], tobe: 116 },
+  { params: [[1, 4, 5, 2, 3, 1, 100, 'fjsdkfjksdjf']], tobe: 116 },
+  { params: [[1, 4, 5, 2, 3, 1, 100, '', '9999999912']], tobe: 10000000028 },
+  { params: [[{ a: 123 }, { a: 999 }, { a: 333 }]], tobe: 0 },
+  { params: [[{ a: 123 }, { a: 999 }, { a: 111333 }]], tobe: 0 },
+  { params: [[{ a: 123 }, { a: 999 }, { a: 111333 }], 'a'], tobe: 112455 },
 )
 
-logGroup('multiply', _.multiply(1, 4), _.multiply(110, 4))
 
-// logGroup(
-//   'round',
-//   _.round(4.006), // => 4
-//   _.round(4.006, 2), // => 4.01
-//   _.round(4060, -2) // => 4100
-// )
+test('multiply', _.multiply,
+  { params: [110, 4], tobe: 440 },
+)

@@ -1,3 +1,5 @@
-export declare function filter(list: any[], filterConditions: {
+export declare function filter<T extends {
     [key: string]: any;
-}, retainNotObject?: boolean): any[];
+}>(list: T[], filterConditions: {
+    [key: string]: any;
+}, retainNotObject?: boolean): T[];
