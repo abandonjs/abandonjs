@@ -1,17 +1,20 @@
 import * as _ from '../index'
-import { test } from 'rh-test'
-
-const add = (a, b) => a + b
-const asyncAdd = async (a, b) => a + b
-
+import { test, add, asyncAdd } from 'rh-test'
 
 // throttle
 // debounce
 
+test('toPromise', _.toPromise,
+  { param: 1, tobe: 1 },
+  { params: [add, 1, 4], tobe: 5 },
+  { func: (fs) => _.toPromise(fs, 1, 4), params: [add], tobe: 5 },
+)
+
+
 test('isFunction', _.isFunction,
-  { params: () => 123, tobe: true },
-  { params: async () => 123, tobe: true },
-  { params: function* () { }, tobe: true }
+  { param: () => 123, tobe: true },
+  { param: async () => 123, tobe: true },
+  { param: function* () { }, tobe: true }
 )
 
 test('once', _.once(add),

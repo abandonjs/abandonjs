@@ -2,6 +2,29 @@ import { AnyFunction, AnyObject } from '../type'
 import { type } from '../util'
 
 /**
+ * @title toPromise<T>
+ * @description 将方法或值转换为Promise对象, 若传输values切target为function, 就会返回执行结果
+ * @param target any
+ * @param ...values ?any[]
+ * @returns Promise<T>
+ */
+export function toPromise<T>(target: any, ...values: any[]): Promise<T> {
+  return new Promise(
+    (resolve: (result: T) => void, reject: (result: T) => void) => {
+      try {
+        if (type(target) === 'Function' && values) {
+          resolve(target(...values))
+        } else {
+          resolve(target)
+        }
+      } catch (err) {
+        reject(err)
+      }
+
+    })
+}
+
+/**
  * @title isArray
  * @description 是否为数组
  * @param value any
@@ -40,10 +63,10 @@ export function once(fn: AnyFunction): any {
  */
 export function throttle(fn: AnyFunction, interval: number): any {
   let lastTime = 0
-  return function throttled(): void {
+  return function throttled(...args:any): void {
     const timeSinceLastExecution: number = Date.now() - lastTime
     if (!lastTime || timeSinceLastExecution >= interval) {
-      fn.apply(this, arguments)
+      fn.apply(this, ...args)
       lastTime = Date.now()
     }
   }

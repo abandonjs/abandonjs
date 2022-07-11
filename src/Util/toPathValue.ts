@@ -14,12 +14,12 @@ export function toPathValue(val: Val, path: string): Val {
 	paths.forEach((item: string) => {
 
 		if (beforKey !== '' && val[beforKey+item] !== undefined) {
-			val = val[beforKey+item] ?? undefined
+			val = val[beforKey+item] || undefined
 			return
 		}
 
 		if (val[item]) {
-			val = val[item] ?? undefined
+			val = val[item] || undefined
 		} else {
 			if (/\\$/.test(item)) {
 				beforKey += item.replace(/\\$/, '.')
