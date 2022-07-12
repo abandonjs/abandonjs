@@ -3,32 +3,7 @@ import { type } from './type'
 export { type }
 export * from './matchValue'
 
-/**
- * @title colorToRGB
- * @description 16进制颜色转RGB/RGBA字符串
- * @param val 16进制颜色
- * @param ?opa 透明度
- * @returns [string]
- */
-export const colorToRGB = (val: string, opa?: number): string => {
-  const pattern = /^(#?)[a-fA-F0-9]{6}$/
-  if (!pattern.test(val)) return ''
 
-  const isOpa: boolean = typeof opa == 'number'
-
-  const v: string = val.replace(/#/, '')
-  //如果有#号先去除#号
-  const rgbArr: any[] = []
-  let rgbStr = ''
-  for (let i = 0; i < 3; i++) {
-    const item = v.substring(i * 2, i * 2 + 2)
-    const num = parseInt(item, 16)
-    rgbArr.push(num)
-  }
-  rgbStr = `rgb${isOpa ? 'a' : ''}(${rgbArr.join()}${isOpa ? ',' + opa : ''})
-`
-  return rgbStr
-}
 
 /**
  * @title changeCase
@@ -36,9 +11,9 @@ export const colorToRGB = (val: string, opa?: number): string => {
  * --- type: 1:首字母大写 2：首字母小写 3：大小写转换 4：全部大写 5：全部小写
  * @param str string
  * @param type number
- * @returns
+ * @returns string
  */
-export const changeCase = (str: string, type: number) => {
+export const changeCase = (str: string, type: number): string => {
   type = type || 4
   switch (type) {
     case 1:
@@ -195,10 +170,7 @@ class EventEmitter {
 
 export const eventBus: EventEmitter = new EventEmitter()
 
-// 手机号码中间四位隐藏
-export function hideMobile(mobile) {
-  return mobile.replace(/^(\d{3})\d{4}(\d{4})$/, "$1****$2")
-}
+
 
 
 // //  去除空格 type: 1-所有空格 2-前后空格 3-前空格 4-后空格

@@ -1,7 +1,7 @@
 import { type } from "../type"
 import { Valer } from './type'
 
-export function matchNumberValue(val: number, valer: Valer) {
+export function matchNumberValue(val: number, valer: Valer):boolean {
 
 	const valType: string = type(val)
 	const valerType: string = type(valer)

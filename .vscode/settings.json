@@ -1,3 +1,3 @@
 {
-  "javascript.validate.enable": false // javascript 格式校验
+  "javascript.validate.enable": false, // javascript 格式校验
 }
