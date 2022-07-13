@@ -1,9 +1,7 @@
 import { Predicate, OneParamFn } from '../type'
-import { type } from './type'
-export { type }
+import { type, types } from './type'
+export { type, types }
 export * from './matchValue'
-
-
 
 /**
  * @title changeCase

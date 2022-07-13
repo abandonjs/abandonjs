@@ -2,7 +2,7 @@ import { type } from './type'
 import { Val, Valer } from './util/type'
 import { matchNumberValue } from './util/matchNumberValue'
 import { toPathValue } from "./toPathValue"
-
+export { toPathValue } 
 
 /**
  * @title matchValue

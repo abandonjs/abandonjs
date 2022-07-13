@@ -1,34 +1,38 @@
 import * as _ from '../index'
-import { test, expect } from 'rh-test'
-import { toPathValue } from '../toPathValue'
+import { test } from 'rh-test'
 
 
-test('toPathValue',
-	expect(toPathValue).setParams({
-		['a.2.3']: {
-			4: 123
-		}
+test('types', _.types,
+	{ params: [['a', 123, 4]], tobe: ['String', 'Number'] },
+	{ params: [['a', 123, 4], true], tobe: ['String', 'Number', 'Number'] },
+)
+
+test('toPathValue', _.toPathValue,
+	{
+		params: [{
+			['a.2.3']: {
+				4: 123
+			}
+		}, 'a\\.2\\.3.4'], tobe: 123
 	},
-		'a\\.2\\.3.4'
-	).tobe(123)
 )
 
 
 const sym = Symbol(12)
-test('equal',
-	expect(_.equal).setParams(1, 1).tobeTruthy(),
-	expect(_.equal).setParams([1], [1]).tobeTruthy(),
-	expect(_.equal).setParams({}, {}).tobeTruthy(),
-	expect(_.equal).setParams({ a: 1 }, { a: 1 }).tobeTruthy(),
-	expect(_.equal).setParams(sym, sym).tobeTruthy(),
-	expect(_.equal).setParams(Symbol(123), Symbol(123)).tobeFalse(),
-	expect(_.equal).setParams(Symbol(1234), Symbol(123)).tobeFalse(),
-	expect(_.equal).setParams(NaN, NaN).tobeTruthy(),
-	expect(_.equal).setParams(undefined, undefined).tobeTruthy(),
-	expect(_.equal).setParams(null, null).tobeTruthy(),
-	expect(_.equal).setParams(undefined, null).tobeFalse(),
-	expect(_.equal).setParams('', undefined).tobeFalse(),
-	expect(_.equal).setParams(null, '').tobeFalse(),
+test('equal', _.equal,
+	{ params: [1, 1], tobe: true },
+	{ params: [[1], [1]], tobe: true },
+	{ params: [{}, {}], tobe: true },
+	{ params: [{ a: 1 }, { a: 1 }], tobe: true },
+	{ params: [sym, sym], tobe: true },
+	{ params: [Symbol(123), Symbol(123)], tobe: false },
+	{ params: [Symbol(1234), Symbol(123)], tobe: false },
+	{ params: [NaN, NaN], tobe: true },
+	{ params: [undefined, undefined], tobe: true },
+	{ params: [null, null], tobe: true },
+	{ params: [undefined, null], tobe: false },
+	{ params: ['', undefined], tobe: false },
+	{ params: [null, ''], tobe: false },
 )
 
 const tmpObj = {
@@ -44,21 +48,21 @@ const tmpObj = {
 		}
 	}
 }
-test('matchStringValue',
-	expect(_.matchValue(tmpObj, '>=123', 'a.b.c.1')).tobeTruthy(),
-	expect(_.matchValue(tmpObj, false, 'a.b.c.fs')).tobeTruthy(),
-	expect(_.matchValue(tmpObj, false, 'a.b.c.f')).tobeTruthy(),
-	expect(_.matchValue(tmpObj, '>140', 'a.b.c.d.1')).tobeTruthy(),
-	expect(_.matchValue(123, '>=123')).tobeTruthy(),
-	expect(_.matchValue(123, '>=123')).tobeTruthy(),
-	expect(_.matchValue(123, '<=123')).tobeTruthy(),
-	expect(_.matchValue(123, '!=122')).tobeTruthy(),
-	expect(_.matchValue(123, '<>124')).tobeTruthy(),
-	expect(_.matchValue([], [])).tobeTruthy(),
-	expect(_.matchValue(false, /false/)).tobeTruthy(),
-	expect(_.matchValue(true, /tr.*/)).tobeTruthy(),
-	expect(_.matchValue('abb', /(?<=a)[a-z]*/)).tobeTruthy(),
-	expect(_.matchValue(123, 123)).tobeTruthy(),
-	expect(_.matchValue(123, /12.*/)).tobeTruthy(),
-	expect(!_.matchValue(123, /132.*/)).tobeTruthy(),
+test('matchValue', _.matchValue,
+	{ params: [tmpObj, '>=123', 'a.b.c.1'], tobe: true },
+	{ params: [tmpObj, false, 'a.b.c.fs'], tobe: true },
+	{ params: [tmpObj, false, 'a.b.c.f'], tobe: true },
+	{ params: [tmpObj, '>140', 'a.b.c.d.1'], tobe: true },
+	{ params: [123, '>=123'], tobe: true },
+	{ params: [123, '>=123'], tobe: true },
+	{ params: [123, '<=123'], tobe: true },
+	{ params: [123, '!=122'], tobe: true },
+	{ params: [123, '<>124'], tobe: true },
+	{ params: [[], []], tobe: true },
+	{ params: [false, /false/], tobe: true },
+	{ params: [true, /tr.*/], tobe: true },
+	{ params: ['abb', /(?<=a)[a-z]*/], tobe: true },
+	{ params: [123, 123], tobe: true },
+	{ params: [123, /12.*/], tobe: true },
+	{ params: [123, /132.*/], tobe: false },
 )
