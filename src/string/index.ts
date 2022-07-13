@@ -10,7 +10,7 @@ import { isObject } from '../object'
  * @param end = target.length
  * @returns string
  */
-export function hide(target: string, start: number = 0, end?: number): string {
+export function hide(target: string, start = 0, end?: number): string {
   if (start !== 0) {
     if (!end) {
       end = target.length

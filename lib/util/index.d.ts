@@ -1,8 +1,7 @@
 import { Predicate, OneParamFn } from '../type';
-import { type } from './type';
-export { type };
+import { type, types } from './type';
+export { type, types };
 export * from './matchValue';
-export declare const colorToRGB: (val: string, opa?: number) => string;
 export declare const changeCase: (str: string, type: number) => string;
 export declare function useArrayPredicate(predicate: Predicate): OneParamFn<any, boolean>;
 export declare function logGroup(name?: string, ...args: any[]): void;
@@ -18,4 +17,3 @@ declare class EventEmitter {
     emit(name: any, once?: boolean): void;
 }
 export declare const eventBus: EventEmitter;
-export declare function hideMobile(mobile: any): any;

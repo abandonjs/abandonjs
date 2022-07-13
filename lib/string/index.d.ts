@@ -1,3 +1,4 @@
+export declare function hide(target: string, start?: number, end?: number): string;
 export declare function replaces(target?: string, regs?: {
     reg: RegExp | string;
     value: string;

@@ -1,4 +1,5 @@
 import { AnyFunction, AnyObject } from '../type';
+export declare function toPromise<T>(target: any, ...values: any[]): Promise<T>;
 export declare function isFunction(value: any): boolean;
 export declare function once(fn: AnyFunction): any;
 export declare function throttle(fn: AnyFunction, interval: number): any;
