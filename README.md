@@ -2,27 +2,6 @@
 
 - 相关方法的封装
 
-## 更新日志
-
-- 2.0.7 添加 equal 方法
-- 2.0.6 优化number 方法
-- 2.0.5 优化 time / format 方法
-- 2.0.4 修复 unique 默认为整形数字, isFloat 结果有误
-- 2.0.3 arrayUniqueItem 改名为unique
-- 2.0.2 优化 类型判ff
-- 2.0.1 修改 package.json 配置
-- 2.0.0  
-  - 去除包的方法组名称
-  - 修改方法的导出方法
-  - 修改许多方法
-  - 不与老版本兼容
-  - 移除农历方法, 若想使用例外安装rh-lunar
-- 1.0.1  使用rollup来打包, 其他功能使用均不变
-- 1.0.0
-  - 取消`RH`对象
-  - 修改包的方法名称, 将原有的`[_+名称]` 改为 `[r+首字母大小的名称]`
-  - 完善使用文档
-
 ## 使用
 
 ```shell
@@ -129,7 +108,31 @@ import { filter } from 'rh-js-methods'
 
 <hr/>
 
+## color
+
+### `isHexColor`
+
+- `description` 判断是否为颜色字符串或数字
+- `param` `hex` `string` 三位/六位的十六进制的颜色
+- `returns` `boolean`
+
+### `toRGB`
+
+- `description` `16`进制颜色转`RGB`/`RGBA`字符串
+- `param` `val` `16`进制颜色
+- `param` `?opa` 透明度
+- `returns` `string`
+
+<hr/>
+
 ## function
+
+### `toPromise<T`>
+
+- `description` 将方法或值转换为`Promise`对象, 若传输`values`切`target`为`function`, 就会返回执行结果
+- `param` `target` `any`
+- `param` `...values` `?any[]`
+- `returns` `Promise<T`>
 
 ### `isArray`
 
@@ -378,11 +381,11 @@ import { filter } from 'rh-js-methods'
 - `param` `end:number` 结束值(不包含该值)
 - `returns` `boolean`
 
-  * - `title` `round`
-  * - `description`数字四舍五入，保留`n`位小数
-  * - `param` `number` : `number` 待处理数值
-  * - `param` `n` : `number` = `0` 四舍五入的位数
-  * - `returns`
+  - - `title` `round`
+  - - `description`数字四舍五入，保留`n`位小数
+  - - `param` `number` : `number` 待处理数值
+  - - `param` `n` : `number` = `0` 四舍五入的位数
+  - - `returns`
 
 ### `toThousands`
 
@@ -418,6 +421,14 @@ import { filter } from 'rh-js-methods'
 
 ## string
 
+### `hide`
+
+- `description` 隐藏指定位置的字符
+- `param` `target` 待替换子串
+- `param` `start` = `0`  开始位置
+- `param` `end` = `target.length`
+- `returns` `string`
+
 ### `replaces`
 
 - `description` 同时定义多个`replace`的规则使用
@@ -430,6 +441,30 @@ import { filter } from 'rh-js-methods'
 - `description` 是否为字符串
 - `param` `val` `any`
 - `returns` `boolean`
+
+### `reverseString`
+
+- `description` 反转字符串
+- `param` `target` `string`
+- `return` `string`
+
+### `isJsonString<T`>
+
+- `description` 判断是否为`json`字符串, 若是并返回处理后的对象
+- `param` `val` 待判断字符串
+- `returns` `T` | `false`
+
+### `toString`
+
+- `description` 转换为字符串
+- `param` `value` `any`
+- `returns` `string`
+
+### `toStrings`
+
+- `description` 转换为字符串数组
+- `param` `value` `any[]`
+- `returns` `string[]`
 
 <hr/>
 
@@ -484,20 +519,13 @@ import { filter } from 'rh-js-methods'
 
 ## util
 
-### `colorToRGB`
-
-- `description` `16`进制颜色转`RGB`/`RGBA`字符串
-- `param` `val` `16`进制颜色
-- `param` `?opa` 透明度
-- `returns` `[string]`
-
 ### `changeCase`
 
 - `description`  字符转换
   - `type:` `1:`首字母大写 `2`：首字母小写 `3`：大小写转换 `4`：全部大写 `5`：全部小写
 - `param` `str` `string`
 - `param` `type` `number`
-- `returns`
+- `returns` `string`
 
 ### `logGroup`
 
@@ -564,3 +592,10 @@ import { filter } from 'rh-js-methods'
 - `description` 获取类型
 - `param` `any` 参数
 - `return` `string` 类型名称
+
+### `types`
+
+- `description` 获取类型数组
+- `param` `params` `any[]` 待判断的参数列表
+- `param` `hasRepeat`=`false` 保留重复类型
+- `return` `string[]` 类型名称
