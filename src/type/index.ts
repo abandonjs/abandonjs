@@ -9,3 +9,4 @@ export type AnyObject = {
 
 export type NoParamFn<Result> = () => Result
 export type OneParamFn<Param, Result> = (value: Param) => Result
+

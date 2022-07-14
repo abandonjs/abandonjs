@@ -1,6 +1,6 @@
 # 描述
 
-- 相关方法的封装
+- 常用方法的封装
 
 ## 使用
 
@@ -25,17 +25,32 @@ import { filter } from 'rh-js-methods'
 - `param` `retainNotObject` 是否保留非对象项
 - `returns` `T[]`
 
-### `toArray<T`>
-
-- `description` 将非数组转换为数组
-- `param` `value` `T` | `T[]`
-- `returns` `T[]`
-
 ### `isArray`
 
 - `description` 是否为数组
 - `param` `value` `any`
 - `returns` `boolean`
+
+### `selects<T`>
+
+- `description` 指定范围 来随机选择数组元素
+- `param` `list:` `T[]`
+- `param` `min:` `number`
+- `param` `max:` `number` (包括)
+- `returns` `T[]`
+
+### `select<T`>
+
+- `description` 选择数组其中一项, 不指定就随机选一
+- `param` `list` `T[]` 待选择数组
+- `param` `index` `?number` 指定选择索引(可为负数)
+- `returns` `T|null` 选择项
+
+### `toArray<T`>
+
+- `description` 将非数组转换为数组
+- `param` `value` `T` | `T[]`
+- `returns` `T[]`
 
 ### `pick`
 
@@ -90,21 +105,6 @@ import { filter } from 'rh-js-methods'
 - `param` `list` `T[]` 待过滤的数组
 - `param` `...filterConditions:T[]` 过滤使用的条件
 - `returns` `T[]` 过滤后的数组`(new)`
-
-### `selects<T`>
-
-- `description` 指定范围 来随机选择数组元素
-- `param` `list:` `T[]`
-- `param` `min:` `number`
-- `param` `max:` `number` (包括)
-- `returns` `T[]`
-
-### `select<T`>
-
-- `description` 选择数组其中一项, 不指定就随机选一
-- `param` `list` `T[]` 待选择数组
-- `param` `index` `?number` 指定选择索引(可为负数)
-- `returns` `T|null` 选择项
 
 <hr/>
 
@@ -381,11 +381,11 @@ import { filter } from 'rh-js-methods'
 - `param` `end:number` 结束值(不包含该值)
 - `returns` `boolean`
 
-  - - `title` `round`
-  - - `description`数字四舍五入，保留`n`位小数
-  - - `param` `number` : `number` 待处理数值
-  - - `param` `n` : `number` = `0` 四舍五入的位数
-  - - `returns`
+    - - `title` `round`
+    - - `description`数字四舍五入，保留`n`位小数
+    - - `param` `number` : `number` 待处理数值
+    - - `param` `n` : `number` = `0` 四舍五入的位数
+    - - `returns`
 
 ### `toThousands`
 
@@ -397,17 +397,17 @@ import { filter } from 'rh-js-methods'
 
 ## object
 
-### `isObject`
-
-- `description` 判断是否为`Oject`
-- `param` `value`
-- `returns` `boolean`
-
 ### `existKeys`
 
 - `description` 判断对象是否拥有指定`keys`
 - `param` `obj` `object`
 - `param` `keys` `string[]` | `string`
+- `returns` `boolean`
+
+### `isObject`
+
+- `description` 判断是否为`Oject`
+- `param` `value`
 - `returns` `boolean`
 
 ### `serialize`
@@ -522,7 +522,7 @@ import { filter } from 'rh-js-methods'
 ### `changeCase`
 
 - `description`  字符转换
-  - `type:` `1:`首字母大写 `2`：首字母小写 `3`：大小写转换 `4`：全部大写 `5`：全部小写
+  - `type:` `FirstUpper:`首字母大写 `FirstLower`：首字母小写  `Upper`：全部大写 `Lower`：全部小写
 - `param` `str` `string`
 - `param` `type` `number`
 - `returns` `string`
@@ -533,6 +533,12 @@ import { filter } from 'rh-js-methods'
 - `param` `name` 分组名称
 - `param` `...args` 需要分组打印的结果
 - `example` `logGroup(name[`, `...args])`
+
+### `isEmpty`
+
+- `description` 判断是否为无效值 `undefined` , `null`, `NaN`
+- `param` `value` `any` 待判断值
+- `returns` `boolean`
 
 ### `IsEndOfStrings`
 

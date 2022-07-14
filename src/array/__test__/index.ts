@@ -2,14 +2,14 @@ import * as _Array from '../index'
 import * as _ from '../index'
 import { test } from 'rh-test'
 
-test('toArray', _.toArray,
+test<any, any>('toArray', _.toArray,
 	{ param: [], tobe: [] },
 	{ param: 1, tobe: [1] },
 	{ param: 33, tobe: [33] },
 	{ param: [{}, 1], tobe: [{}, 1] },
 )
 
-test('isArray', _.isArray,
+test<any, any>('isArray', _.isArray,
 	{ param: [], tobe: true },
 	{ param: 1, tobe: false },
 	{ param: 33, tobe: false },
@@ -75,9 +75,9 @@ test('select', _.select,
 
 test('selects', (list, min, max) => _.selects(list, min, max).length,
 	{ params: [[], 0, 0], tobe: 0 },
-	{ params: [[1, 2, 3, 4, 5, 6], 2, 6], tobes: ['>2','<=6'], type: 'Matcher' },
-	{ params: [[1, 2, 3, 4, 5, 6], 2, 6], tobes: ['>2','<=6'], type: 'Matcher' },
-	{ params: [[1, 2, 3, 4, 5, 6], 2, 6], tobes: ['>2','<=6'], type: 'Matcher' },
-	{ params: [[1, 2, 3, 4, 5, 6], 2, 6], tobes: ['>2','<=6'], type: 'Matcher' },
-	{ params: [[1, 2, 3, 4, 5, 6], 2, 6], tobes: ['>2','<=6'], type: 'Matcher' },
+	{ params: [[1, 2, 3, 4, 5, 6], 2, 6], tobes: ['>2', '<=6'], type: 'Matcher' },
+	{ params: [[1, 2, 3, 4, 5, 6], 2, 6], tobes: ['>2', '<=6'], type: 'Matcher' },
+	{ params: [[1, 2, 3, 4, 5, 6], 2, 6], tobes: ['>2', '<=6'], type: 'Matcher' },
+	{ params: [[1, 2, 3, 4, 5, 6], 2, 6], tobes: ['>2', '<=6'], type: 'Matcher' },
+	{ params: [[1, 2, 3, 4, 5, 6], 2, 6], tobes: ['>2', '<=6'], type: 'Matcher' },
 )
