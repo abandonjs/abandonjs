@@ -4,7 +4,7 @@
  * @param any 参数
  * @return string 类型名称
  */
-export type typeResult = 'Array' | 'Object' | 'Function' | 'AsyncFunction' | 'GeneratorFunction' | 'String' | 'Number' | 'NaN' | 'RegExp' | string
+export type typeResult = 'Array' | 'Object' | 'Function' | 'AsyncFunction' | 'GeneratorFunction' | 'String' | 'Number' | 'NaN' | 'RegExp' | 'Date' | 'Undefined' | string
 
 export function type(param: any): typeResult {
   const result: string = Object.prototype.toString

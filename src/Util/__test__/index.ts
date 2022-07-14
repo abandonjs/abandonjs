@@ -1,6 +1,25 @@
 import * as _ from '../index'
 import { test } from 'rh-test'
 
+test('type', _.type,
+	{ param: '', tobe: 'String' },
+	{ param: new String(), tobe: 'String' },
+	{ param: [], tobe: 'Array' },
+	{ param: new Array(), tobe: 'Array' },
+	{ param: {}, tobe: 'Object' },
+	{ param: new Object(), tobe: 'Object' },
+	{ param: () => { }, tobe: 'Function' },
+	{ param: new Function(), tobe: 'Function' },
+	{ param: async () => { }, tobe: 'AsyncFunction' },
+	{ param: function* a() { }, tobe: 'GeneratorFunction' },
+	{ param: 123, tobe: 'Number' },
+	{ param: 123.1, tobe: 'Number' },
+	{ param: parseInt('aa'), tobe: 'NaN' },
+	{ param: /a/, tobe: 'RegExp' },
+	{ param: new Date(), tobe: 'Date' },
+	{ param: undefined, tobe: 'Undefined' },
+
+)
 
 test('types', _.types,
 	{ params: [['a', 123, 4]], tobe: ['String', 'Number'] },
@@ -19,7 +38,7 @@ test('toPathValue', _.toPathValue,
 
 
 const sym = Symbol(12)
-test('equal', _.equal,
+test<any, any>('equal', _.equal,
 	{ params: [1, 1], tobe: true },
 	{ params: [[1], [1]], tobe: true },
 	{ params: [{}, {}], tobe: true },
@@ -48,7 +67,7 @@ const tmpObj = {
 		}
 	}
 }
-test('matchValue', _.matchValue,
+test<any, boolean>('matchValue', _.matchValue,
 	{ params: [tmpObj, '>=123', 'a.b.c.1'], tobe: true },
 	{ params: [tmpObj, false, 'a.b.c.fs'], tobe: true },
 	{ params: [tmpObj, false, 'a.b.c.f'], tobe: true },
@@ -66,3 +85,4 @@ test('matchValue', _.matchValue,
 	{ params: [123, /12.*/], tobe: true },
 	{ params: [123, /132.*/], tobe: false },
 )
+
