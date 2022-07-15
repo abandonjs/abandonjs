@@ -9,7 +9,7 @@ export declare type CaseType = CaseTypeFirstUpper | CaseTypeFirstLower | CaseTyp
 export declare function changeCase(str: string, type?: CaseType): string;
 export declare function logGroup(name?: string, ...args: any[]): void;
 export declare function isEmpty(value: any): boolean;
-export declare function deepClone(obj: any, cache?: WeakMap<object, any>): any;
+export declare function runFunc(func: any, ...args: any[]): any;
 export declare class EventEmitter {
     cache: {
         [key: string]: any;
@@ -17,5 +17,6 @@ export declare class EventEmitter {
     constructor();
     on(name: any, fn: any): void;
     off(name: any, fn: any): void;
-    emit(name: any, once?: boolean): void;
+    once(name: any, ...args: any[]): any[];
+    emit(name: any, ...args: any[]): any[];
 }

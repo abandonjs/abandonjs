@@ -75,26 +75,26 @@ export function isEmpty(value: any): boolean {
   return false
 }
 
-// 深拷贝
-export function deepClone(obj: any, cache = new WeakMap()) {
-  if (typeof obj !== 'object') return obj // 普通类型，直接返回
-  if (obj === null) return obj
-  if (cache.get(obj)) return cache.get(obj) // 防止循环引用，程序进入死循环
-  if (obj instanceof Date) return new Date(obj)
-  if (obj instanceof RegExp) return new RegExp(obj)
 
-  // 找到所属原型上的constructor，所属原型上的constructor指向当前对象的构造函数
-  const cloneObj: any = new obj.constructor()
-  cache.set(obj, cloneObj) // 缓存拷贝的对象，用于处理循环引用的情况
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      cloneObj[key] = deepClone(obj[key], cache) // 递归拷贝
-    }
+/**
+ * @title runFunc
+ * @description 运行函数, 支持普通函数和async函数, 否则返回func
+ * @param func  
+ * @param ...args 
+ * @returns 
+ */
+export function runFunc(func: any, ...args: any[]) {
+  if (type(func) === 'Function') {
+    return func(...args)
   }
-  return cloneObj
+  if (type(func) === 'AsyncFunction') {
+    return (async () => await func(...args))()
+  }
+  return func
 }
 
 // 时间总线, 观察订阅模式
+// export const eventBus: EventEmitter = new EventEmitter()
 export class EventEmitter {
   cache: { [key: string]: any } = {}
   constructor() {
@@ -112,25 +112,28 @@ export class EventEmitter {
   off(name: any, fn: any): void {
     const tasks = this.cache[name]
     if (tasks) {
-      const index = tasks.findIndex((f) => f === fn || f.callback === fn)
+      const index = tasks.findIndex(f => f === fn || f.callback === fn)
       if (index >= 0) {
         tasks.splice(index, 1)
       }
     }
   }
 
-  emit(name: any, once = false): void {
+  once(name: any, ...args: any[]): any[] {
     if (this.cache && this.cache[name]) {
-      // 创建副本，如果回调函数内继续注册相同事件，会造成死循环
       const tasks: any = this.cache[name].slice()
-      for (const fn of tasks) {
-        fn()
-      }
-      if (once) {
-        delete this.cache[name]
-      }
+      delete this.cache[name]
+      return tasks.map(i => runFunc(i, ...args))
     }
+    return []
+  }
+  
+  // 创建副本，如果回调函数内继续注册相同事件，会造成死循环
+  emit(name: any, ...args: any[]): any[] {
+    if (this.cache && this.cache[name]) {
+      const tasks: any = this.cache[name].slice()
+      return tasks.map(i => runFunc(i, ...args))
+    }
+    return []
   }
 }
-
-// export const eventBus: EventEmitter = new EventEmitter()

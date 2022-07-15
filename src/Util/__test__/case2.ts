@@ -21,5 +21,30 @@ test<any, boolean>('isEmpty', _.isEmpty,
 	{ param: NaN, tobe: true },
 	{ param: Number.NaN, tobe: true },
 )
-// deepClone
+
+test<any>('runFunc', _.runFunc,
+	{ params: [() => 3], tobe: 3 },
+	{ params: [(a) => 3 + a, 2], tobe: 5 },
+	{ params: [async () => 3], tobe: 3 },
+	{ params: [async (a) => 3 + a, 2], tobe: 5 },
+)
+
+
 // EventEmitter
+
+const _eb = new _.EventEmitter();
+
+test('EventEmitter', ()=>{},
+	{before: ()=>{
+		_eb.on('a', function () { return 3 })
+	}}
+)
+// _eb.on('a', 1)
+// _eb.on('a', 2)
+// _eb.on('a', 4)
+
+console.log(_eb.emit('a'))
+
+// test<>
+
+// deepClone

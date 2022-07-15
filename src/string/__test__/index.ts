@@ -8,7 +8,7 @@ test('hide', _.hide,
 	{ params: ['abcd', 2, 3], tobe: 'a**d' },
 )
 
-test('replaces', _.replaces,
+test<any>('replaces', _.replaces,
 	{ param: undefined, tobe: '' },
 	{ param: '123', tobe: '123' },
 	{ params: ['123', [{ reg: '12', value: '99' }]], tobe: '993' },
@@ -20,7 +20,7 @@ test('replaces', _.replaces,
 	},
 )
 
-test('isString', _.isString,
+test<any>('isString', _.isString,
 	{ param: 1, tobe: false },
 	{ param: null, tobe: false },
 	{ param: undefined, tobe: false },
@@ -34,18 +34,18 @@ test('reverseString', _.reverseString,
 	{ param: 'abc', tobe: 'cba' }
 )
 
-test('isJsonString', _.isJsonString,
+test<any, object | boolean>('isJsonString', _.isJsonString,
 	{ param: '', tobe: false },
 	{ param: '{}', tobe: {} },
 	{ param: '{"a":123}', tobe: { a: 123 } },
 )
 
-test('toString', _.toString,
+test<object | number>('toString', _.toString,
 	{ param: 1, tobe: '1' },
-	{ param: {a:1}, tobe: '{"a":1}' },
-	{ param: [1,2,'3'], tobe: '[1,2,"3"]' },
+	{ param: { a: 1 }, tobe: '{"a":1}' },
+	{ param: [1, 2, '3'], tobe: '[1,2,"3"]' },
 )
 
 test('toStrings', _.toStrings,
-	{param: [1,2,3,'4'], tobe: ['1','2','3','4']}
+	{ param: [1, 2, 3, '4'], tobe: ['1', '2', '3', '4'] }
 )
