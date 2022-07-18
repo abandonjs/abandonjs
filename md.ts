@@ -78,7 +78,7 @@ async function run(): Promise<void> {
       .replace(/--/g, '  -')
       .replace(/md-thl/g, ':----|')
       .replace(
-        /([a-zA-Z0-9\.\(\)\|\<\^\[\]\?\:]{2,}|[a-zA-Z]{1,}|[0-9]{1,})/g,
+        /([a-zA-Z0-9\.\(\)\|\<\>\^\[\]\?\:]{2,}|[a-zA-Z]{1,}|[0-9]{1,})/g,
         '`' + "$&" + '`')
     __writeFileData += `\r\n<hr/>\r\n\r\n## ${item}\r\n` + resItem
   })

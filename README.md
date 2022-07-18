@@ -17,7 +17,7 @@ import { filter } from 'rh-js-methods'
 
 ## array
 
-### `filter<T` `extends` `object`>
+### `filter<T` `extends` `object>`
 
 - `description` 单层过滤
 - `param` `list` `T[]` 待过滤数组
@@ -31,7 +31,7 @@ import { filter } from 'rh-js-methods'
 - `param` `value` `any`
 - `returns` `boolean`
 
-### `selects<T`>
+### `selects<T>`
 
 - `description` 指定范围 来随机选择数组元素
 - `param` `list:` `T[]`
@@ -39,14 +39,14 @@ import { filter } from 'rh-js-methods'
 - `param` `max:` `number` (包括)
 - `returns` `T[]`
 
-### `select<T`>
+### `select<T>`
 
 - `description` 选择数组其中一项, 不指定就随机选一
 - `param` `list` `T[]` 待选择数组
 - `param` `index` `?number` 指定选择索引(可为负数)
 - `returns` `T|null` 选择项
 
-### `toArray<T`>
+### `toArray<T>`
 
 - `description` 将非数组转换为数组
 - `param` `value` `T` | `T[]`
@@ -58,40 +58,40 @@ import { filter } from 'rh-js-methods'
 - `param` `any[]` `list`
 - `returns` 数组中任意一个
 
-### `unique<T`>
+### `unique<T>`
 
 - `description` 去除数组重复项
 - `param` `T[]` `list` 待过滤数组
 - `returns` `T[]`
 
-### `chunk<T`>
+### `chunk<T>`
 
 - `description` 通过 `size` 切割数组
 - `param` `list` `T[]`
 - `param` `size` `number` 切割点索引
 - `returns` `T[][]` [ [切割点前数据], [切割点后数据] ]
 
-### `concat<T`>
+### `concat<T>`
 
 - `description` 连接多个数组
 - `params` `...list` `any[][]` 多个数组
 - `returns` `any[]`
 
-### `drop<T`>
+### `drop<T>`
 
 - `description` 去除前`n`个元素
 - `param` `T[]` `list` 数组
 - `param` `number` `n`=`0` 要去除元素个数
 - `returns` `T[]` `list` 剩余切片
 
-### `dropRight<T`>
+### `dropRight<T>`
 
 - `description` 从右往左删除的指定个数
 - `param` `list` `T[]` 要处理的数组
 - `param` `n`=`1` 需要删除的元素数量
 - `returns` `T[]`
 
-### `fill<T`>
+### `fill<T>`
 
 - `description` 在原有数组上改变, 修改指定位置的值
 - `param` `array` `T[]` 待填充改变的数组
@@ -99,7 +99,7 @@ import { filter } from 'rh-js-methods'
 - `param` `num` 填充个数
 - `returns`
 
-### `difference<T`>
+### `difference<T>`
 
 - `description` 过滤数组
 - `param` `list` `T[]` 待过滤的数组
@@ -127,12 +127,12 @@ import { filter } from 'rh-js-methods'
 
 ## function
 
-### `toPromise<T`>
+### `toPromise<T>`
 
 - `description` 将方法或值转换为`Promise`对象, 若传输`values`切`target`为`function`, 就会返回执行结果
 - `param` `target` `any`
 - `param` `...values` `?any[]`
-- `returns` `Promise<T`>
+- `returns` `Promise<T>`
 
 ### `isArray`
 
@@ -449,7 +449,7 @@ import { filter } from 'rh-js-methods'
 - `param` `target` `string`
 - `return` `string`
 
-### `isJsonString<T`>
+### `isJsonString<T>`
 
 - `description` 判断是否为`json`字符串, 若是并返回处理后的对象
 - `param` `val` 待判断字符串
@@ -540,6 +540,13 @@ import { filter } from 'rh-js-methods'
 - `description` 判断是否为无效值 `undefined` , `null`, `NaN`
 - `param` `value` `any` 待判断值
 - `returns` `boolean`
+
+### `runFunc`
+
+- `description` 运行函数, 支持普通函数和`async`函数, 否则返回`func`
+- `param` `func`  
+- `param` `...args`
+- `returns`
 
 ### `IsEndOfStrings`
 
