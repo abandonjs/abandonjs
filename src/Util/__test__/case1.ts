@@ -37,22 +37,7 @@ test('toPathValue', _.toPathValue,
 )
 
 
-const sym = Symbol(12)
-test<any, boolean>('equal', _.equal,
-	{ params: [1, 1], tobe: true },
-	{ params: [[1], [1]], tobe: true },
-	{ params: [{}, {}], tobe: true },
-	{ params: [{ a: 1 }, { a: 1 }], tobe: true },
-	{ params: [sym, sym], tobe: true },
-	{ params: [Symbol(123), Symbol(123)], tobe: false },
-	{ params: [Symbol(1234), Symbol(123)], tobe: false },
-	{ params: [NaN, NaN], tobe: true },
-	{ params: [undefined, undefined], tobe: true },
-	{ params: [null, null], tobe: true },
-	{ params: [undefined, null], tobe: false },
-	{ params: ['', undefined], tobe: false },
-	{ params: [null, ''], tobe: false },
-)
+
 
 const tmpObj = {
 	a: {

@@ -8,7 +8,6 @@ test<string | _.CaseType, string>('changeCase', _.changeCase,
 	{ params: ['Abcde', 'FirstLower'], tobe: 'abcde' },
 	{ params: ['abcde', 'Upper'], tobe: 'ABCDE' },
 	{ params: ['ABCDE', 'Lower'], tobe: 'abcde' },
-	// { params: ['abcde'], tobe: 'ABCDE' },
 )
 
 test<any, boolean>('isEmpty', _.isEmpty,
@@ -29,22 +28,45 @@ test<any>('runFunc', _.runFunc,
 	{ params: [async (a) => 3 + a, 2], tobe: 5 },
 )
 
-
-// EventEmitter
-
 const _eb = new _.EventEmitter();
 
-test('EventEmitter', ()=>{},
-	{before: ()=>{
-		_eb.on('a', function () { return 3 })
-	}}
+test('EventEmitter', (val) => val,
+	{
+		name: 'emit',
+		before: (unit) => {
+			_eb.on(unit.name, function () { return 3 })
+			unit.param = _eb.emit(unit.name)
+			return unit
+		},
+		tobe: [3]
+	},
+	{
+		name: 'off',
+		before: (unit) => {
+			_eb.on(unit.name, function () { return 3 })
+			_eb.off(unit.name)
+			unit.param = _eb.emit(unit.name)
+			return unit
+		},
+		tobe: []
+	},
+	{
+		name: 'once1',
+		before: (unit) => {
+			_eb.on(unit.name, function () { return 3 })
+			unit.param = _eb.once(unit.name)
+			return unit
+		},
+		tobe: [3]
+	},
+	{
+		name: 'once2',
+		before: (unit) => {
+			_eb.on(unit.name, function () { return 3 })
+			_eb.once(unit.name)
+			unit.param = _eb.emit(unit.name)
+			return unit
+		},
+		tobe: []
+	},
 )
-// _eb.on('a', 1)
-// _eb.on('a', 2)
-// _eb.on('a', 4)
-
-console.log(_eb.emit('a'))
-
-// test<>
-
-// deepClone

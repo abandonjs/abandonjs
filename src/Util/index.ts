@@ -1,7 +1,7 @@
 import { type, types } from './type'
 export { type, types }
 export * from './matchValue'
-
+export * from './deepClone'
 /**
  * @title changeCase
  * @description  字符转换
@@ -93,47 +93,55 @@ export function runFunc(func: any, ...args: any[]) {
   return func
 }
 
-// 时间总线, 观察订阅模式
-// export const eventBus: EventEmitter = new EventEmitter()
-export class EventEmitter {
-  cache: { [key: string]: any } = {}
-  constructor() {
-    this.cache = {}
-  }
+// 时间总线, 观察模式
+export interface EventEmitter<T, U> {
+  cache: { [key: string]: T[] }
+  on(name: string, fn: T): void
+  off(name: string): boolean
+  once<Params extends any[] = any[]>(name: string, ...args: Params): U[]
+  emit<Params extends any[] = any[]>(name: string, ...args: Params): U[]
+}
 
-  on(name: any, fn: any): void {
+export class EventEmitter<T, U> {
+  cache: { [key: string]: T[] } = {}
+
+  on(name: string, fn: T): void {
     if (this.cache[name]) {
-      this.cache[name].push(fn)
-    } else {
-      this.cache[name] = [fn]
-    }
-  }
-
-  off(name: any, fn: any): void {
-    const tasks = this.cache[name]
-    if (tasks) {
-      const index = tasks.findIndex(f => f === fn || f.callback === fn)
-      if (index >= 0) {
-        tasks.splice(index, 1)
+      if (Array.isArray(this.cache[name])) {
+        this.cache[name].push(fn)
+      } else {
+        this.cache[name] = [fn]
       }
+      return
     }
+
+    this.cache[name] = [fn]
   }
 
-  once(name: any, ...args: any[]): any[] {
+  off(name: string): boolean {
+    if (!this.cache[name]) return false
+    delete this.cache[name]
+    return true
+  }
+
+  once<Params extends any[] = any[]>(
+    name: string,
+    ...args: Params
+  ): U[] {
     if (this.cache && this.cache[name]) {
-      const tasks: any = this.cache[name].slice()
+      const result = this.cache[name].map(i => runFunc(i, ...args))
       delete this.cache[name]
-      return tasks.map(i => runFunc(i, ...args))
+      return result
     }
     return []
   }
-  
+
   // 创建副本，如果回调函数内继续注册相同事件，会造成死循环
-  emit(name: any, ...args: any[]): any[] {
-    if (this.cache && this.cache[name]) {
-      const tasks: any = this.cache[name].slice()
-      return tasks.map(i => runFunc(i, ...args))
-    }
-    return []
+  emit<Params extends any[] = any[]>(
+    name: string,
+    ...args: Params
+  ): U[] {
+    if (!this.cache[name]) return []
+    return this.cache[name].map(i => runFunc(i, ...args))
   }
 }
