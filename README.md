@@ -520,6 +520,19 @@ import { filter } from 'rh-js-methods'
 
 ## util
 
+### `throwError<<Params` `extends` `any[]`, `R` = `any>`
+
+- `param` `func:` `(...args:` `Params)` => `R` 待捕获错误的函数
+- `param` `isErrorResult` : `R`
+- `returns` `(...args:Params)`=`>R`
+
+### `asyncRhrowError<<Params` `extends` `any[]`, `R` = `any>`
+
+- `description` 异步处理
+- `param` `func:` `(...args:` `Params)` => `R` 待捕获错误的函数
+- `param` `isErrorResult` : `R`
+- `returns` `(...args:Params)`=`>R`
+
 ### `changeCase`
 
 - `description`  字符转换
@@ -547,6 +560,23 @@ import { filter } from 'rh-js-methods'
 - `param` `func`  
 - `param` `...args`
 - `returns`
+
+  - `description` 绑定事件
+  - `param` `name` 事件名称
+  - `param` `fn` 待触发事件
+
+  - `param` `name` 移除事件的名称
+
+  - `description` 触发后就移除当前事件
+  - `param` `name` 待触发事件的名称
+  - `param` `args` 触发事件的参数
+
+  - `param` `name` 待触发事件的名称
+  - `param` `args` 触发事件的参数
+
+### `EventEmitter<T`, `U>`
+
+- `description` 简易观察者模式
 
 ### `IsEndOfStrings`
 

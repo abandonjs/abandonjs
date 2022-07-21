@@ -8,7 +8,6 @@
     "emitDecoratorMetadata": true,
     "declaration": true,
     "sourceMap": true,
-    "removeComments": true,
     "noImplicitAny": false,
     "strictNullChecks": true,
     "alwaysStrict": true,
