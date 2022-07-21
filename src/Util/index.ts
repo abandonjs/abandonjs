@@ -94,15 +94,35 @@ export function runFunc(func: any, ...args: any[]) {
   return func
 }
 
-// 时间总线, 观察模式
 export interface EventEmitter<T, U> {
   cache: { [key: string]: T[] }
+  /**
+   * @description 绑定事件
+   * @param name 事件名称
+   * @param fn 待触发事件
+   */
   on(name: string, fn: T): void
+  /**
+   * @param name 移除事件的名称
+   */
   off(name: string): boolean
+  /**
+   * @description 触发后就移除当前事件
+   * @param name 待触发事件的名称
+   * @param args 触发事件的参数
+   */
   once<Params extends any[] = any[]>(name: string, ...args: Params): U[]
+  /**
+   * @param name 待触发事件的名称
+   * @param args 触发事件的参数
+   */
   emit<Params extends any[] = any[]>(name: string, ...args: Params): U[]
 }
 
+/**
+ * @title EventEmitter<T, U>
+ * @description 简易观察者模式
+ */
 export class EventEmitter<T, U> {
   cache: { [key: string]: T[] } = {}
 

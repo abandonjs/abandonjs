@@ -1,9 +1,26 @@
 import * as _ from '../index'
-import { test, add } from 'rh-test'
+import { add, equal } from 'rh-test'
 
-test<any, number>('throwError', _.throwError,
-	{ params: [add, 0, 1, 2, 3], tobe: 6 },
-	{ params: [JSON.parse, 123, '{123}'], tobe: 123 }
+equal<number | string>('throwError',
+	{
+		func: _.throwError(add, 0),
+		params: [0, 1, 2, 3], tobe: 6
+	},
+	{
+		func: _.throwError(JSON.parse, 123),
+		params: ['{123}'],
+		tobe: 123
+	}
 )
 
-
+equal<number | string>('asyncThrowError',
+	{
+		func: _.asyncThrowError(add, 0),
+		params: [0, 1, 2, 3], tobe: 6
+	},
+	{
+		func: _.asyncThrowError(JSON.parse, 123),
+		params: ['{123}'],
+		tobe: 123
+	}
+)
