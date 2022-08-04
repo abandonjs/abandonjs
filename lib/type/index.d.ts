@@ -6,3 +6,4 @@ export declare type AnyObject = {
 };
 export declare type NoParamFn<Result> = () => Result;
 export declare type OneParamFn<Param, Result> = (value: Param) => Result;
+//# sourceMappingURL=index.d.ts.map

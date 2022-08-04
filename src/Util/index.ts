@@ -1,8 +1,11 @@
 import { type, types } from './type'
+
 export { type, types }
 export * from './matchValue'
 export * from './deepClone'
 export * from './error'
+export * from './ban'
+
 /**
  * @title changeCase
  * @description  字符转换

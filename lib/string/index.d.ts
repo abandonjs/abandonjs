@@ -53,3 +53,4 @@ export declare function toString(value: any): string;
  * @returns string[]
  */
 export declare function toStrings(values: any[]): string[];
+//# sourceMappingURL=index.d.ts.map

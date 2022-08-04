@@ -15,3 +15,4 @@ export declare function selects<T>(list: T[], min: number, max: number): T[];
  * @returns T|null 选择项
  */
 export declare function select<T>(list?: T[], index?: number): T | null;
+//# sourceMappingURL=select.d.ts.map

@@ -85,3 +85,4 @@ export declare function round(number: number, n?: number): number;
  * @returns string
  */
 export declare function toThousands(num: string | number): string;
+//# sourceMappingURL=index.d.ts.map

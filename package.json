@@ -1,12 +1,12 @@
 {
   "name": "rh-js-methods",
-  "version": "2.1.7",
+  "version": "2.1.9-Alpha.7",
   "description": "方法包",
-  "main": "lib/index.js",
   "module": "lib/index.esm.js",
+  "main": "lib/index.js",
   "unpkg": "/lib/",
   "jsdelivr": "/lib/",
-  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "reload": "rimraf node_modules && cnpm install",
     "build": "npx rollup -c --extend rollup.config.ts",
@@ -44,7 +44,6 @@
     "lint-staged": "^12.0.3",
     "node-notifier": "^8.0.2",
     "prettier": "^2.4.1",
-    "rh-js-methods": "^2.0.3",
     "rh-test": "^0.1.15",
     "rimraf": "^3.0.2",
     "rollup": "^2.66.1",

@@ -52,3 +52,4 @@ export declare function format(time?: Time, pattern?: string): string;
  */
 export declare function isSameDate(timeA: Time, timeB: Time): boolean;
 export {};
+//# sourceMappingURL=index.d.ts.map

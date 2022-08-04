@@ -97,3 +97,4 @@ export declare function delay(func: AnyFunction, delayTime?: number, ...args: an
  * @returns
  */
 export declare function flip(func: AnyFunction): AnyFunction;
+//# sourceMappingURL=index.d.ts.map

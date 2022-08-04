@@ -109,3 +109,4 @@ export declare function sumBy(list: any[], itteratee?: Itteratee): undefined | n
  * @returns 积
  */
 export declare function multiply(augend: number, addend: number): number;
+//# sourceMappingURL=index.d.ts.map

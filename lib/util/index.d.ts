@@ -87,3 +87,4 @@ export declare class EventEmitter<T, U> {
         [key: string]: T[];
     };
 }
+//# sourceMappingURL=index.d.ts.map

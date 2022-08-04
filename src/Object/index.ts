@@ -19,7 +19,7 @@ export function isObject(value: any): boolean {
  * @param encode boolean = false
  * @returns string 
  */
-export function serialize(query: { [key: string]: string | number }, encode = false): string {
+export function serialize<T extends object = Record<string, string | number>>(query: T, encode = false): string {
 	return Object.keys(query)
 		.map((key) => `${key}=${encode ? encodeURIComponent(query[key]) : query[key]}`)
 		.join('&')

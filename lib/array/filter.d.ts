@@ -11,3 +11,4 @@ export declare function filter<T extends {
 }>(list: T[], filterConditions: {
     [key: string]: any;
 }, retainNotObject?: boolean): T[];
+//# sourceMappingURL=filter.d.ts.map

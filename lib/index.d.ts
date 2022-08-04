@@ -7,3 +7,4 @@ export * from './object';
 export * from './function';
 export * from './math';
 export * from './type';
+//# sourceMappingURL=index.d.ts.map

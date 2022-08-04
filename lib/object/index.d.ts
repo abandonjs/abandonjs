@@ -13,6 +13,5 @@ export declare function isObject(value: any): boolean;
  * @param encode boolean = false
  * @returns string
  */
-export declare function serialize(query: {
-    [key: string]: string | number;
-}, encode?: boolean): string;
+export declare function serialize<T extends object = Record<string, string | number>>(query: T, encode?: boolean): string;
+//# sourceMappingURL=index.d.ts.map

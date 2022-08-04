@@ -7,6 +7,3 @@ export * from './object'
 export * from './function'
 export * from './math'
 export * from './type'
-
-// 计划中:
-// ban 死循环
