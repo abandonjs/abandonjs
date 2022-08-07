@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "/lib",
     "target": "ESNext",
     "lib": [
       "DOM",
@@ -18,11 +19,11 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
   },
-  "include": ["./src/**/*", "node_modules/**/*.d.ts"],
+  "include": ["./src/**/*"],
   "exclude": [
     "**/*/__test__/*",
     "**/*/__test__/",
     "**/*/md.ts",
-    "**/*/*.md"
+    "**/*/*.md",
   ]
 }

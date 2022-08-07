@@ -1,6 +1,6 @@
 {
   "name": "rh-js-methods",
-  "version": "2.1.9-Alpha.7",
+  "version": "2.1.10",
   "description": "方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
@@ -9,7 +9,7 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "reload": "rimraf node_modules && cnpm install",
-    "build": "npx rollup -c --extend rollup.config.ts",
+    "build": "npx rollup -c --extend ./rollup.config.ts",
     "lint-staged": "lint-staged",
     "md": "ts-node ./md.ts",
     "md:dev": "ts-node-dev --respawn --transpile-only ./md.ts",
@@ -37,28 +37,27 @@
     "@babel/preset-typescript": "^7.16.7",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@types/bluebird": "^3.5.36",
-    "@types/node": "^16.11.6",
+    "@types/node": "^18.6.4",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
     "eslint": "^8.7.0",
     "lint-staged": "^12.0.3",
     "node-notifier": "^8.0.2",
     "prettier": "^2.4.1",
-    "rh-test": "^0.1.15",
+    "rh-test": "^0.1.17",
     "rimraf": "^3.0.2",
     "rollup": "^2.66.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.31.1",
+    "rollup-plugin-typescript2": "^0.32.1",
     "ts-node": "^10.4.0",
     "ts-node-dev": "^1.1.8",
     "ts-toolbelt": "^9.6.0",
-    "typescript": "^4.4.4"
+    "typescript": "^4.1.6"
   },
   "dependencies": {
-    "reflect-metadata": "^0.1.13",
     "rh-ts-methods": "^0.0.2"
   }
 }
