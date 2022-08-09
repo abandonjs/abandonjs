@@ -1,5 +1,6 @@
-import { type } from "../util";
+import { type } from "../util"
 export * from './existKeys'
+export * from './omit'
 
 /**
  * @title isObject

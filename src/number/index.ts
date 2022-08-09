@@ -148,9 +148,9 @@ export function inRange(num: number, start = 0, end: number = MAX_VALUES_NUMBER)
 /**
  * @title between
  * @description 判断值是否在两值之间
- * @param num:number 待判断值
+ * @param num number 待判断值
  * @param start=0 起始值
- * @param end:number 结束值(不包含该值)
+ * @param end number 结束值(不包含该值)
  * @returns boolean
  */
 export function between(num: number, start = 0, end: number = MAX_VALUES_NUMBER): boolean {
@@ -163,8 +163,8 @@ export function between(num: number, start = 0, end: number = MAX_VALUES_NUMBER)
 /**
   * @title round
   * @description数字四舍五入，保留n位小数
-  * @param number : number 待处理数值
-  * @param n : number = 0 四舍五入的位数
+  * @param number number 待处理数值
+  * @param n number = 0 四舍五入的位数
   * @returns 
 */
 export function round(number: number, n = 0): number {
