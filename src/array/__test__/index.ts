@@ -2,6 +2,8 @@ import * as _Array from '../index'
 import * as _ from '../index'
 import { test } from 'rh-test'
 
+import './zip'
+
 test<any, any>('toArray', _.toArray,
 	{ param: [], tobe: [] },
 	{ param: 1, tobe: [1] },

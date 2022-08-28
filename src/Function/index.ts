@@ -1,6 +1,8 @@
 import { AnyFunction, AnyObject } from '../type'
 import { type } from '../util'
 
+export * from './loop'
+
 /**
  * @title toPromise<T>
  * @description 将方法或值转换为Promise对象, 若传输values切target为function, 就会返回执行结果
