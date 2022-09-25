@@ -54,6 +54,9 @@ const tmpObj = {
 }
 
 test<any, boolean>('matchValue', _.matchValue,
+	{ params: [tmpObj, tmpObj], tobe: true },
+	{ params: [tmpObj.a, tmpObj, 'a'], tobe: true },
+	{ params: [tmpObj, '>=123', 'a.b.c.1'], tobe: true },
 	{ params: [tmpObj, '>=123', 'a.b.c.1'], tobe: true },
 	{ params: [tmpObj, false, 'a.b.c.fs'], tobe: true },
 	{ params: [tmpObj, false, 'a.b.c.f'], tobe: true },

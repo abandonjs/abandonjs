@@ -11,7 +11,7 @@ export function loop<T>(
 	indexes: number[] = []
 ): T[] {
 	const result: T[] = []
-	for (let i: number = 0; i < length; i++) {
+	for (let i = 0; i < length; i++) {
 
 		const unit = callback(indexes.concat(i))
 		result.push(unit)

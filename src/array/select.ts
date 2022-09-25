@@ -10,7 +10,7 @@ import { random } from '../number'
  */
 export function selects<T>(list: T[], min: number, max: number): T[] {
   if (max > list.length) {
-    max = list.length
+    max = list.length - 1
   }
   let len: number = random(min, max) || 0
   const result: T[] = []

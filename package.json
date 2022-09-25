@@ -1,6 +1,6 @@
 {
   "name": "rh-js-methods",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "description": "方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",

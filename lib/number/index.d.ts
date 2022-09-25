@@ -64,17 +64,17 @@ export declare function inRange(num: number, start?: number, end?: number): bool
 /**
  * @title between
  * @description 判断值是否在两值之间
- * @param num:number 待判断值
+ * @param num number 待判断值
  * @param start=0 起始值
- * @param end:number 结束值(不包含该值)
+ * @param end number 结束值(不包含该值)
  * @returns boolean
  */
 export declare function between(num: number, start?: number, end?: number): boolean;
 /**
   * @title round
   * @description数字四舍五入，保留n位小数
-  * @param number : number 待处理数值
-  * @param n : number = 0 四舍五入的位数
+  * @param number number 待处理数值
+  * @param n number = 0 四舍五入的位数
   * @returns
 */
 export declare function round(number: number, n?: number): number;
