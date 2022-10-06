@@ -1,3 +1,4 @@
+export * from './random';
 /**
  * @title spLength
  * @description 指定长度
@@ -36,6 +37,21 @@ export declare function toNumber(value: any): number;
  */
 export declare function isFloat(num: number): boolean;
 /**
+ * @title toFloat
+ * @description 转换为指定位数的浮点数
+ * @param num { number } 数字
+ * @param fixed { number } 小数点位数
+ * @returns { number }
+ */
+export declare function toFloat(num: number, fixed?: number): number;
+/**
+ * @title getDecimal
+ * @description 获取小数点位数
+ * @param num { number }
+ * @returns { number=0 }
+ */
+export declare function getDecimal(num: number): number;
+/**
  * @title clamp
  * @description 限制在lower和upper之间
  * @param num 待限制的值
@@ -44,14 +60,6 @@ export declare function isFloat(num: number): boolean;
  * @returns 返回被限制的值
  */
 export declare function clamp(num: number, lower?: number, upper?: number): number;
-/**
- * @title random
- * @description 随机数
- * @param lower 下限
- * @param upper 上限
- * @param floating 是否返回浮点数
- */
-export declare function random(lower?: number, upper?: number, floating?: boolean): number;
 /**
  * @title inRange
  * @description 判断是否在该范围

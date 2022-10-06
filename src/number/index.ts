@@ -1,6 +1,7 @@
 import { type } from '../util'
 import { INFINITY, MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../constants'
 
+export * from './random'
 
 /**
  * @title spLength
@@ -85,6 +86,28 @@ export function isFloat(num: number): boolean {
 }
 
 /**
+ * @title toFloat
+ * @description 转换为指定位数的浮点数
+ * @param num { number } 数字
+ * @param fixed { number } 小数点位数
+ * @returns { number }
+ */
+// eslint-disable-next-line @typescript-eslint/no-inferrable-types
+export function toFloat(num: number, fixed: number = 1): number {
+  return Number(num.toFixed(fixed))
+}
+
+/**
+ * @title getDecimal
+ * @description 获取小数点位数
+ * @param num { number }
+ * @returns { number=0 }
+ */
+export function getDecimal(num: number): number {
+  if (!isFloat(num)) return 0
+  return num.toString().split('.')[1].length
+}
+/**
  * @title clamp
  * @description 限制在lower和upper之间
  * @param num 待限制的值
@@ -98,37 +121,7 @@ export function clamp(num: number, lower: number = -INFINITY, upper: number = IN
   return num
 }
 
-/**
- * @title random
- * @description 随机数
- * @param lower 下限
- * @param upper 上限
- * @param floating 是否返回浮点数
- */
-export function random(
-  lower = 0,
-  upper = 1,
-  floating = false
-): number {
 
-  if (arguments.length === 1) {
-    upper = arguments[0]
-    lower = 0
-  }
-
-  if (upper === undefined) return Math.random()
-
-  if (
-    type(arguments[arguments.length - 1]) === 'Boolean' ||
-    isFloat(upper) ||
-    isFloat(lower)
-  ) {
-    floating = arguments[arguments.length - 1]
-  }
-  const result: number = lower + Math.random() * (upper - lower)
-  if (floating) return ~~result
-  return ~~Math.ceil(result)
-}
 
 /**
  * @title inRange

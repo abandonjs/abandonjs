@@ -32,25 +32,25 @@ export function zipObject<T>(props: (string | number)[], values: any[]): T {
 }
 
 
-const _path = (path: string, value: any) => {
-	const _record = {}
-	// return _path(path, value)
-}
+// const _path = (path: string, value: any) => {
+// 	const _record = {}
+// 	// return _path(path, value)
+// }
 
-export function zipObjectDeep<T>(props: string[], values: any[]): T {
-	const record: T = {} as T
-	const _props = [...props]
-	for (let i = 0; i < props.length; i++) {
-		// const keys = props[i].split('.')
-		const key = /(\w)\./.exec(props[i])
-		// if (key?.length === 2) {
-		// 	record[key] = 
-		// }
-		// record[keys[0]] = _path(,values[i])
+// export function zipObjectDeep<T>(props: string[], values: any[]): T {
+// 	const record: T = {} as T
+// 	const _props = [...props]
+// 	for (let i = 0; i < props.length; i++) {
+// 		// const keys = props[i].split('.')
+// 		const key = /(\w)\./.exec(props[i])
+// 		// if (key?.length === 2) {
+// 		// 	record[key] = 
+// 		// }
+// 		// record[keys[0]] = _path(,values[i])
 
-		// for (let j = 1; i < keys.length; j++) {
-		// }
-		// record[props[i]] = values[i]
-	}
-	return record
-}
+// 		// for (let j = 1; i < keys.length; j++) {
+// 		// }
+// 		// record[props[i]] = values[i]
+// 	}
+// 	return record
+// }

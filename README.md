@@ -106,6 +106,13 @@ import { filter } from 'rh-js-methods'
 - `param` `...filterConditions:T[]` 过滤使用的条件
 - `returns` `T[]` 过滤后的数组`(new)`
 
+### : `zip`
+
+- `description:` 创建一个分组元素的数组，数组的第一个元素包含所有给定数组的第一个元素，数组的第二个元素包含所有给定数组的第二个元素，以此类推
+- `version:` `2.1.11`
+- `param` `arrays` : `...any[]`
+- `returns` `any[]`
+
 <hr/>
 
 ## color
@@ -212,6 +219,28 @@ import { filter } from 'rh-js-methods'
 - `param` `func` 要翻转参数的函数
 - `param` `args` 反转参数
 - `returns`
+
+### `loop`
+
+- `description:` 指定次数遍历
+- `param` `length` : `number`
+- `param`  `callback` : `(index:` `number)` => `true` | `void`
+- `returns` `number`
+
+### `loops`
+
+- `description:` 指定次数遍历
+- `param` `length` : `number[]`
+- `param`  `callback` : `(index:` `number)` => `true` | `void`
+- `returns` `number`
+
+### `loops<T>`
+
+- `description:` 数组遍历
+- `version:` `2.1.11`
+- `param` `arrays`
+- `param` `callback`
+- `returns` `number`
 
 <hr/>
 
@@ -350,6 +379,19 @@ import { filter } from 'rh-js-methods'
 - `param` `num` 待检测的数据类型
 - `returns` `boolean`
 
+### `toFloat`
+
+- `description` 转换为指定位数的浮点数
+- `param` `num` { `number` } 数字
+- `param` `fixed` { `number` } 小数点位数
+- `returns` { `number` }
+
+### `getDecimal`
+
+- `description` 获取小数点位数
+- `param` `num` { `number` }
+- `returns` { `number`=`0` }
+
 ### `clamp`
 
 - `description` 限制在`lower`和`upper`之间
@@ -357,13 +399,6 @@ import { filter } from 'rh-js-methods'
 - `param` `lower` 下限
 - `param` `upper` 上限
 - `returns` 返回被限制的值
-
-### `random`
-
-- `description` 随机数
-- `param` `lower` 下限
-- `param` `upper` 上限
-- `param` `floating` 是否返回浮点数
 
 ### `inRange`
 
@@ -376,16 +411,16 @@ import { filter } from 'rh-js-methods'
 ### `between`
 
 - `description` 判断值是否在两值之间
-- `param` `num:number` 待判断值
+- `param` `num` `number` 待判断值
 - `param` `start`=`0` 起始值
-- `param` `end:number` 结束值(不包含该值)
+- `param` `end` `number` 结束值(不包含该值)
 - `returns` `boolean`
 
 ### `round`
 
 - `description`数字四舍五入，保留`n`位小数
-- `param` `number` : `number` 待处理数值
-- `param` `n` : `number` = `0` 四舍五入的位数
+- `param` `number` `number` 待处理数值
+- `param` `n` `number` = `0` 四舍五入的位数
 - `returns`
 
 ### `toThousands`
@@ -393,6 +428,13 @@ import { filter } from 'rh-js-methods'
 - `description` 数字每千位加逗号
 - `param` `num` `string|number`
 - `returns` `string`
+
+### `random`
+
+- `description` 随机数
+- `param` `lower` { `number` } 下限
+- `param` `upper` { `number` } 上限
+- `param` `floating` { `number` = `0` } 是否返回浮点数(位数), `0:` 整数
 
 <hr/>
 
@@ -417,6 +459,13 @@ import { filter } from 'rh-js-methods'
 - `param` `query` `object`
 - `param` `encode` `boolean` = `false`
 - `returns` `string`
+
+### `omitRecord<T` `extends` `Record<string`, `any>` = `Record<string`, `any>>`
+
+- `description` 忽略`object`属性
+- `param` `record` `T`
+- `param` `propertys` `string[]`
+- `returns` `T`
 
 <hr/>
 

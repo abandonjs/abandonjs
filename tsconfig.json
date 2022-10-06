@@ -12,14 +12,14 @@
     "sourceMap": true,
     "noImplicitAny": false,
     "strictNullChecks": true,
-    "alwaysStrict": true,
+    "alwaysStrict": false,
     "moduleResolution": "node",
     "experimentalDecorators":true,
     "baseUrl": "./src",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "*.d.ts"],
   "exclude": [
     "**/*/__test__/*",
     "**/*/md.ts",
