@@ -8,6 +8,7 @@
   "jsdelivr": "/lib/",
   "typings": "lib/index.d.ts",
   "scripts": {
+    "commitlint": "commitlint -e",
     "reload": "rimraf node_modules && cnpm install",
     "build": "npx rollup -c --extend ./rollup.config.ts",
     "lint-staged": "lint-staged",
@@ -19,8 +20,21 @@
     "prod": "npm run build && npm run start",
     "eslint": "eslint . --ext .ts",
     "eslint:fix": "eslint . --ext .ts --fix",
-    "patch": "npm version patch -f && npm publish",
+    "patch": "npm version patch -f",
     "pub": "npm publish"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,vue,jsx,tsx}": [
+      "prettier --write",
+      "eslint --cache --fix",
+      "git add"
+    ]
   },
   "keywords": [
     "typescript",
@@ -36,13 +50,17 @@
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@types/bluebird": "^3.5.36",
     "@types/node": "^18.7.13",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
     "eslint": "^8.7.0",
-    "lint-staged": "^12.0.3",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.3.2",
     "node-notifier": "^8.0.2",
     "prettier": "^2.4.1",
     "rh-test": "^0.1.17",

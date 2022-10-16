@@ -4,7 +4,10 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
   "env": {
     "browser": true,
     "node": true,
@@ -21,6 +24,6 @@
   "rules": {
     "no-prototype-builtins": "off",
     "prefer-rest-params": "off",
-    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
