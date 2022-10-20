@@ -18,7 +18,8 @@ export function filter<T extends { [key: string]: any }>(
 
   const regObj: { [key: string]: RegExp } = {}
   // 生成相应的 RegExp
-  for (const key in filterConditions) regObj[key] = new RegExp(filterConditions[key], 'i')
+  for (const key in filterConditions)
+    regObj[key] = new RegExp(filterConditions[key], 'i')
   // 开始过滤
   return list.filter((item: T): boolean => {
 

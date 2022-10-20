@@ -7,15 +7,6 @@ export * from './error'
 export * from './ban'
 
 /**
- * @title changeCase
- * @description  字符转换
- * --- type: FirstUpper:首字母大写 FirstLower：首字母小写  Upper：全部大写 Lower：全部小写
- * @param str string
- * @param type number
- * @returns string
- */
-
-/**
  * 首字母大写
  */
 type CaseTypeFirstUpper = 'FirstUpper'
@@ -36,6 +27,14 @@ export type CaseType =
   | CaseTypeFirstLower
   | CaseTypeLower
   | CaseTypeUpper
+/**
+ * @title changeCase
+ * @description  字符转换
+ * --- type: FirstUpper:首字母大写 FirstLower：首字母小写  Upper：全部大写 Lower：全部小写
+ * @param str string
+ * @param type number
+ * @returns string
+ */
 export function changeCase(str: string, type: CaseType = 'Upper'): string {
   switch (type) {
     case 'FirstUpper':

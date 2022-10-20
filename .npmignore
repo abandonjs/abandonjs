@@ -9,3 +9,4 @@ tsconfig.json
 .prettier*
 rollup.config.*
 md.ts
+coverage/

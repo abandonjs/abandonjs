@@ -5,14 +5,6 @@ export * from './deepClone';
 export * from './error';
 export * from './ban';
 /**
- * @title changeCase
- * @description  字符转换
- * --- type: FirstUpper:首字母大写 FirstLower：首字母小写  Upper：全部大写 Lower：全部小写
- * @param str string
- * @param type number
- * @returns string
- */
-/**
  * 首字母大写
  */
 declare type CaseTypeFirstUpper = 'FirstUpper';
@@ -29,6 +21,14 @@ declare type CaseTypeUpper = 'Upper';
  */
 declare type CaseTypeLower = 'Lower';
 export declare type CaseType = CaseTypeFirstUpper | CaseTypeFirstLower | CaseTypeLower | CaseTypeUpper;
+/**
+ * @title changeCase
+ * @description  字符转换
+ * --- type: FirstUpper:首字母大写 FirstLower：首字母小写  Upper：全部大写 Lower：全部小写
+ * @param str string
+ * @param type number
+ * @returns string
+ */
 export declare function changeCase(str: string, type?: CaseType): string;
 /**
  * @title logGroup
@@ -53,39 +53,4 @@ export declare function isEmpty(value: any): boolean;
  * @returns
  */
 export declare function runFunc(func: any, ...args: any[]): any;
-export interface EventEmitter<T, U> {
-    cache: {
-        [key: string]: T[];
-    };
-    /**
-     * @description 绑定事件
-     * @param name 事件名称
-     * @param fn 待触发事件
-     */
-    on(name: string, fn: T): void;
-    /**
-     * @param name 移除事件的名称
-     */
-    off(name: string): boolean;
-    /**
-     * @description 触发后就移除当前事件
-     * @param name 待触发事件的名称
-     * @param args 触发事件的参数
-     */
-    once<Params extends any[] = any[]>(name: string, ...args: Params): U[];
-    /**
-     * @param name 待触发事件的名称
-     * @param args 触发事件的参数
-     */
-    emit<Params extends any[] = any[]>(name: string, ...args: Params): U[];
-}
-/**
- * @title EventEmitter<T, U>
- * @description 简易观察者模式
- */
-export declare class EventEmitter<T, U> {
-    cache: {
-        [key: string]: T[];
-    };
-}
 //# sourceMappingURL=index.d.ts.map

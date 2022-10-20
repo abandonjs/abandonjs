@@ -5,13 +5,29 @@
       "@babel/preset-env",
       {
         /* Babel 会在 Rollup 有机会做处理之前，将我们的模块转成 CommonJS，导致 Rollup 的一些处理失败 */
-        "modules": false
+        "modules": false,
+        "targets": {
+          "node": "current"
+        }
+      },
+      "es2015"
+    ]
+  ],
+  "plugins": [
+    "syntax-dynamic-import",
+    "transform-object-rest-spread",
+    [
+      "transform-class-properties",
+      {
+        "spec": true
       }
     ]
   ],
   "env": {
     "test": {
-      "plugins": ["@babel/plugin-transform-modules-commonjs"]
+      "plugins": [
+        "@babel/plugin-transform-modules-commonjs"
+      ]
     }
   }
 }

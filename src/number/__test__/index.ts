@@ -1,4 +1,4 @@
 import './random'
 import './type'
 import './getDecimal'
-import './test'
+import './testCase'

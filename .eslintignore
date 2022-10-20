@@ -6,3 +6,5 @@ md.ts
 rollup.config.ts
 config/
 commitlint*
+jest.config.js
+coverage/
