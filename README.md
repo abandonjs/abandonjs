@@ -2,8 +2,6 @@
 
 - 常用方法的封装
 
--
-
 ## 使用
 
 ```shell
@@ -108,7 +106,7 @@ import { filter } from 'rh-js-methods'
 - `param` `...filterConditions:T[]` 过滤使用的条件
 - `returns` `T[]` 过滤后的数组`(new)`
 
-### : `zip`
+### `zip`
 
 - `description:` 创建一个分组元素的数组，数组的第一个元素包含所有给定数组的第一个元素，数组的第二个元素包含所有给定数组的第二个元素，以此类推
 - `version:` `2.1.11`
@@ -131,6 +129,27 @@ import { filter } from 'rh-js-methods'
 - `param` `val` `16`进制颜色
 - `param` `?opa` 透明度
 - `returns` `string`
+
+<hr/>
+
+## event
+
+- `description` 绑定事件
+- `param` `name` 事件名称
+- `param` `fn` 待触发事件
+
+- `param` `name` 移除事件的名称
+
+- `description` 触发后就移除当前事件
+- `param` `name` 待触发事件的名称
+- `param` `args` 触发事件的参数
+
+- `param` `name` 待触发事件的名称
+- `param` `args` 触发事件的参数
+
+### `EventEmitter<T`, `U>`
+
+- `description` 简易观察者模式
 
 <hr/>
 
@@ -349,6 +368,19 @@ import { filter } from 'rh-js-methods'
 
 ## number
 
+### `isFloat`
+
+- `description` 判断数是否为浮点型
+- `param` `num` 待检测的数据类型
+- `returns` `boolean`
+
+### `random`
+
+- `description` 随机数
+- `param` `lower` { `number` } 下限
+- `param` `upper` { `number` } 上限
+- `param` `floating` { `number` = `0` } 是否返回浮点数(位数), `0:` 整数
+
 ### `spLength`
 
 - `description` 指定长度
@@ -374,12 +406,6 @@ import { filter } from 'rh-js-methods'
 - `description` 将值转换为`Number`, 不可以正确装换的值, 均返回`0`
 - `param` `value` `any` 待转换的数值
 - `returns` `number`
-
-### `isFloat`
-
-- `description` 判断数是否为浮点型
-- `param` `num` 待检测的数据类型
-- `returns` `boolean`
 
 ### `toFloat`
 
@@ -430,13 +456,6 @@ import { filter } from 'rh-js-methods'
 - `description` 数字每千位加逗号
 - `param` `num` `string|number`
 - `returns` `string`
-
-### `random`
-
-- `description` 随机数
-- `param` `lower` { `number` } 下限
-- `param` `upper` { `number` } 上限
-- `param` `floating` { `number` = `0` } 是否返回浮点数(位数), `0:` 整数
 
 <hr/>
 
@@ -639,26 +658,9 @@ import { filter } from 'rh-js-methods'
 ### `runFunc`
 
 - `description` 运行函数, 支持普通函数和`async`函数, 否则返回`func`
-- `param` `func`  
+- `param` `func`
 - `param` `...args`
 - `returns`
-
-  - `description` 绑定事件
-  - `param` `name` 事件名称
-  - `param` `fn` 待触发事件
-
-  - `param` `name` 移除事件的名称
-
-  - `description` 触发后就移除当前事件
-  - `param` `name` 待触发事件的名称
-  - `param` `args` 触发事件的参数
-
-  - `param` `name` 待触发事件的名称
-  - `param` `args` 触发事件的参数
-
-### `EventEmitter<T`, `U>`
-
-- `description` 简易观察者模式
 
 ### `IsEndOfStrings`
 

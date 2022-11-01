@@ -5,7 +5,7 @@
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
   "unpkg": "/lib/",
-  "jsdelivr": "/lib/",
+  "deliver": "/lib/",
   "typings": "lib/index.d.ts",
   "scripts": {
     "commitlint": "commitlint -e",
@@ -39,8 +39,12 @@
   "engines": {
     "node": ">=16"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:guanruihua/rh-js-methods.git"
+  },
   "author": "ruihuag",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/plugin-transform-modules-commonjs": "^7.18.6",

@@ -1,3 +1,7 @@
 {
-  "javascript.validate.enable": false, // javascript 格式校验
+  "javascript.validate.enable": false,
+  "cSpell.words": [
+    "commitlint",
+    "toolbelt"
+  ], // javascript 格式校验
 }
