@@ -7,7 +7,7 @@ import { Time } from './type';
  * @title toDate
  * @description 字符串装换成Date对象
  * @param value string 可以转换成时间的字符串
- * @returns Date
+ * @returns {Date}
  */
 export function toDate(value: string): Date {
 	// ios 不支持 YYYY-MM-DD hh:mm:ss
@@ -23,7 +23,7 @@ export function toDate(value: string): Date {
  * @param target:Date 目标时间
  * @param timeKey?: 'year' | 'mouth' | 'day' | 'hour' | 'minute' | 'second' | 'timeStamp'  指定倒计时单位
  * @param now?:Date 起始时间
- * @returns number 
+ * @returns {number} 
  */
 type TimeKey = 'year' | 'mouth' | 'day' | 'hour' | 'minute' | 'second' | 'timeStamp'
 export function deadline(
@@ -119,7 +119,7 @@ export function format(time: Time = new Date(), pattern = 'YYYY-MM-DD'): string 
  * @description 时间是否相同, 时间类型支持isDate的类型
  * @param timeA 比较时间
  * @param timeB 被比较时间
- * @returns boolean
+ * @returns {boolean}
  */
 export function isSameDate(timeA: Time, timeB: Time): boolean {
 

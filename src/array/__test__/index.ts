@@ -1,3 +1,4 @@
+import './flat'
 import { test } from 'rh-test'
 import * as _Array from '../index'
 import * as _ from '../index'
@@ -11,5 +12,7 @@ function testHoc(names: string[] = []) {
 		test(name, method, ...params)
 	})
 }
+
+
 
 testHoc(Object.keys(cases))
