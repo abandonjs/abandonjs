@@ -1,5 +1,6 @@
 import { type, types } from './type';
 export { type, types };
+export * from './log';
 export * from './matchValue';
 export * from './deepClone';
 export * from './error';
@@ -30,14 +31,6 @@ export declare type CaseType = CaseTypeFirstUpper | CaseTypeFirstLower | CaseTyp
  * @returns string
  */
 export declare function changeCase(str: string, type?: CaseType): string;
-/**
- * @title logGroup
- * @description 分组打印(简化console.groupCollapsed)
- * @param name 分组名称
- * @param ...args 需要分组打印的结果
- * @example logGroup(name[, ...args])
- */
-export declare function logGroup(name?: string, ...args: any[]): void;
 /**
  * @title isEmpty
  * @description 判断是否为无效值 undefined , null, NaN

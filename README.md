@@ -25,6 +25,14 @@ import { filter } from 'rh-js-methods'
 - `param` `retainNotObject` 是否保留非对象项
 - `returns` `T[]`
 
+### `flat`
+
+- `description` 数组扁平化
+- `param` `list` {`Array`}
+- `param` `depth` {`?number` = `1`} 深度
+- `returns` `Array`
+- `version:` `2.2.0`
+
 ### `isArray`
 
 - `description` 是否为数组
@@ -545,7 +553,7 @@ import { filter } from 'rh-js-methods'
 
 - `description` 字符串装换成`Date`对象
 - `param` `value` `string` 可以转换成时间的字符串
-- `returns` `Date`
+- `returns` {`Date`}
 
 ### `deadline`
 
@@ -553,7 +561,7 @@ import { filter } from 'rh-js-methods'
 - `param` `target:Date` 目标时间
 - `param` `timeKey?:` '`year`' | '`mouth`' | '`day`' | '`hour`' | '`minute`' | '`second`' | '`timeStamp`'  指定倒计时单位
 - `param` `now?:Date` 起始时间
-- `returns` `number`
+- `returns` {`number`}
 
 ### `isDate`
 
@@ -584,17 +592,17 @@ import { filter } from 'rh-js-methods'
 - `description` 时间是否相同, 时间类型支持`isDate`的类型
 - `param` `timeA` 比较时间
 - `param` `timeB` 被比较时间
-- `returns` `boolean`
+- `returns` {`boolean`}
 
 <hr/>
 
 ## util
 
-- `description` 超时时间
-- `default` `3000`
+  - `description` 超时时间
+  - `default` `3000`
   
-- `description` 最大执行次数
-- `default:` `1000000`
+  - `description` 最大执行次数
+  - `default:` `1000000`
   
 ### `ban<Params` `extends` `[]`, `Return>`
 
@@ -642,13 +650,6 @@ import { filter } from 'rh-js-methods'
 - `param` `type` `number`
 - `returns` `string`
 
-### `logGroup`
-
-- `description` 分组打印(简化`console.groupCollapsed)`
-- `param` `name` 分组名称
-- `param` `...args` 需要分组打印的结果
-- `example` `logGroup(name[`, `...args])`
-
 ### `isEmpty`
 
 - `description` 判断是否为无效值 `undefined` , `null`, `NaN`
@@ -693,6 +694,14 @@ import { filter } from 'rh-js-methods'
 
 - `param` `fileName` `string`
 - `returns` `boolean`
+
+### `logGroup`
+
+- `description` 分组打印(简化`console.groupCollapsed)`
+- `param` { `string` } `name` 分组名称
+- `param` { `unknown[]` } `...args` 需要分组打印的结果
+- `example` `logGroup(name[`, `...args])`
+- `return` `boolean`
 
 ### `matchValue`
 

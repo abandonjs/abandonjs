@@ -3,7 +3,7 @@ import { Time } from './type';
  * @title toDate
  * @description 字符串装换成Date对象
  * @param value string 可以转换成时间的字符串
- * @returns Date
+ * @returns {Date}
  */
 export declare function toDate(value: string): Date;
 /**
@@ -12,7 +12,7 @@ export declare function toDate(value: string): Date;
  * @param target:Date 目标时间
  * @param timeKey?: 'year' | 'mouth' | 'day' | 'hour' | 'minute' | 'second' | 'timeStamp'  指定倒计时单位
  * @param now?:Date 起始时间
- * @returns number
+ * @returns {number}
  */
 declare type TimeKey = 'year' | 'mouth' | 'day' | 'hour' | 'minute' | 'second' | 'timeStamp';
 export declare function deadline(target: Date, timeKey?: TimeKey, now?: Date): number;
@@ -48,7 +48,7 @@ export declare function format(time?: Time, pattern?: string): string;
  * @description 时间是否相同, 时间类型支持isDate的类型
  * @param timeA 比较时间
  * @param timeB 被比较时间
- * @returns boolean
+ * @returns {boolean}
  */
 export declare function isSameDate(timeA: Time, timeB: Time): boolean;
 export {};
