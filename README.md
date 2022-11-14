@@ -478,7 +478,7 @@ import { filter } from 'rh-js-methods'
 
 ### `isObject`
 
-- `description` 判断是否为`Oject`
+- `description` 判断是否为`Object`
 - `param` `value`
 - `returns` `boolean`
 
@@ -598,11 +598,11 @@ import { filter } from 'rh-js-methods'
 
 ## util
 
-  - `description` 超时时间
-  - `default` `3000`
+- `description` 超时时间
+- `default` `3000`
   
-  - `description` 最大执行次数
-  - `default:` `1000000`
+- `description` 最大执行次数
+- `default:` `1000000`
   
 ### `ban<Params` `extends` `[]`, `Return>`
 
@@ -635,7 +635,7 @@ import { filter } from 'rh-js-methods'
 - `param` `isErrorResult` : `R`
 - `returns` `(...args:Params)`=`>R`
 
-### `asyncRhrowError<<Params` `extends` `any[]`, `R` = `any>`
+### `asyncThrowError<<Params` `extends` `any[]`, `R` = `any>`
 
 - `description` 异步处理
 - `param` `func:` `(...args:` `Params)` => `R` 待捕获错误的函数
