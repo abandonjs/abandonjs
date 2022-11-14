@@ -4,6 +4,7 @@
  * @param list {Array}
  * @param depth {?number = 1} 深度
  * @returns Array
+ * @version: 2.2.0
  */
 export function flat(list: unknown[], depth = 1) {
 	if (!Array.isArray(list) || list.length === 0 || depth < 1) return []
