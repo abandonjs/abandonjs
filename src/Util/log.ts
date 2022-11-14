@@ -19,3 +19,15 @@ export function logGroup(name = '', ...args: unknown[]): boolean {
 		return false
 	}
 }
+
+export async function logAsync(name = '', ...args: unknown[]): Promise<boolean> {
+	try {
+		for (let i = 0; i < args.length; i++) {
+			console.log(`${name}-${i}:`, await args[i])
+		}
+		return true
+	} catch (error) {
+		console.error(error)
+		return false
+	}
+}
