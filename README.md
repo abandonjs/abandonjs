@@ -601,8 +601,13 @@ import { filter } from 'rh-js-methods'
 
 ## util
 
+### `BanConfig`
+
+- `name:` `timeout`
 - `description` 超时时间
 - `default` `3000`
+  
+- `name:` `count`
 - `description` 最大执行次数
 - `default:` `1000000`
   
