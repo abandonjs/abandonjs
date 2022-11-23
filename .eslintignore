@@ -8,3 +8,4 @@ config/
 commitlint*
 jest.config.js
 coverage/
+docs.js
