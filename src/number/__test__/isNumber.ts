@@ -40,10 +40,14 @@ test<any, any>('isNumber', isNumber,
 	{ name: 'isNumber 31', param: (null), tobe: false },
 	{ name: 'isNumber 32', param: (undefined), tobe: false },
 	{ name: 'isNumber 33', param: (''), tobe: false },
+	
 	{ name: 'isNumber 34', param: ('   '), tobe: false },
+
 	{ name: 'isNumber 35', param: ('foo'), tobe: false },
+	
 	{ name: 'isNumber 36', param: ([1]), tobe: false },
 	{ name: 'isNumber 37', param: ([]), tobe: false },
+	
 	{ name: 'isNumber 38', param: (function () { }), tobe: false },
 	{ name: 'isNumber 39', param: ({}), tobe: false },
 )
