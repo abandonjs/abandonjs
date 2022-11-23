@@ -30,16 +30,6 @@ export function spLength(value: number | string, min = 0, max: number): string {
 }
 
 /**
- * @title isNumber
- * @description 是否为数字
- * @param value any
- * @returns boolean
- */
-export function isNumber(value: any): boolean {
-  return type(value) === "Number" && typeof value === 'number'
-}
-
-/**
  * @title isEffectNumber
  * @description 是否为js的有效区间的数, 非number类型都为false
  * @param num any
