@@ -1,13 +1,14 @@
-import { test, toBe } from 'rh-test'
+import { test } from 'rh-test'
 import { MAX_VALUES_NUMBER } from '../../constants'
 import { isNumber } from '..'
 
 test<any, any>('isNumber', isNumber,
 	{ name: 'isNumber 1', param: MAX_VALUES_NUMBER, tobe: true },
-	{ name: 'isNumber 2', param: '1', tobe: false },
+	{ name: 'isNumber 2', param: '1', tobe: true },
 	{ name: 'isNumber 3', param: null, tobe: false },
 	{ name: 'isNumber 4', param: NaN, tobe: false },
 	{ name: 'isNumber 5', param: undefined, tobe: false },
+	{ name: 'isNumber 5-1', param: Infinity, tobe: false },
 	{ name: 'isNumber 6', param: -1, tobe: true },
 	{ name: 'isNumber 7', param: 10000, tobe: true },
 	{ name: 'isNumber 8', param: (5e3), tobe: true },
@@ -30,6 +31,7 @@ test<any, any>('isNumber', isNumber,
 	{ name: 'isNumber 24', param: ('10.10'), tobe: true },
 	{ name: 'isNumber 25', param: ('100'), tobe: true },
 	{ name: 'isNumber 26', param: ('5e3'), tobe: true },
+
 	{ name: 'isNumber 27', param: (parseInt('012')), tobe: true },
 	{ name: 'isNumber 28', param: (parseFloat('01')), tobe: true },
 	{ name: 'isNumber 29', param: (Infinity), tobe: false },

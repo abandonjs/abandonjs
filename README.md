@@ -382,6 +382,15 @@ import { filter } from 'rh-js-methods'
 - `param` `num` 待检测的数据类型
 - `returns` `boolean`
 
+### `isNumber`
+
+- `description` 是否为数字
+- `support:` `Number`, `NumberString`
+- `unsupported:` `Infinity`, `Function`
+- `param` `value` `any`
+- `returns` `boolean`
+- `update:` `2.2.0`
+
 ### `random`
 
 - `description` 随机数
@@ -396,12 +405,6 @@ import { filter } from 'rh-js-methods'
 - `param` `min` = `0`
 - `param` `max` `number`
 - `returns` `string`
-
-### `isNumber`
-
-- `description` 是否为数字
-- `param` `value` `any`
-- `returns` `boolean`
 
 ### `isEffectNumber`
 
@@ -598,11 +601,11 @@ import { filter } from 'rh-js-methods'
 
 ## util
 
-- `description` 超时时间
-- `default` `3000`
+  - `description` 超时时间
+  - `default` `3000`
   
-- `description` 最大执行次数
-- `default:` `1000000`
+  - `description` 最大执行次数
+  - `default:` `1000000`
   
 ### `ban<Params` `extends` `[]`, `Return>`
 
