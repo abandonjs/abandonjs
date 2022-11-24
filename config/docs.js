@@ -65,7 +65,7 @@ function AdaptData(data, module) {
 					}
 					iitem = iitem
 						.replace('\r\n ', '')
-						.replace(/([a-zA-Z\[\]\=\{\}\(\)\.\,\|:\?><]+)/gi, '`' + '$1' + '`')
+						.replace(/([a-zA-Z0-9\[\]\=\{\}\(\)\.\,\|:\?><]+)/gi, '`' + '$1' + '`')
 
 					return iitem
 

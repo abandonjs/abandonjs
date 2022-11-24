@@ -59,7 +59,7 @@ test('max', _.max,
   { params: [[1, 4, 5, 2, 99999999, 3, 1, 100, 5555555, '', '9999999912']], tobe: 9999999912 },
 )
 
-test('maxBy', _.maxBy,
+test<any, any>('maxBy', _.maxBy,
   { params: [[1, 4, 5, 2, 99999999, 3, 1, 100, 5555555]], tobe: 99999999 },
   { params: [[1, 4, 5, 2, 99999999, 3, 1, 100, 5555555, 'fjsdkfjksdjf']], tobe: 99999999 },
   { params: [[1, 4, 5, 2, 99999999, 3, 1, 100, 5555555, '', '9999999912']], tobe: 9999999912 },
@@ -78,7 +78,7 @@ test('meanBy', _.meanBy,
 
 
 
-test('min', _.min,
+test<any, any>('min', _.min,
   { params: [[1, 4, 5, 2, 3, 1, 100]], tobe: 1 },
   { params: [[1, 4, 5, 2, 3, 1, 100, 'fjsdkfjksdjf']], tobe: 1 },
   { params: [[1, 4, 5, 2, 3, 1, 100, '', '9999999912']], tobe: 1 },
@@ -86,7 +86,7 @@ test('min', _.min,
   { params: [[{ a: 123 }, { a: 999 }, { a: 111333 }], 'a'], tobe: undefined },
 )
 
-test('minBy', _.minBy,
+test<any, any>('minBy', _.minBy,
   { params: [[1, 4, 5, 2, 3, 1, 100]], tobe: 1 },
   { params: [[1, 4, 5, 2, 3, 1, 100, 'fjsdkfjksdjf']], tobe: 1 },
   { params: [[1, 4, 5, 2, 3, 1, 100, '', '9999999912']], tobe: 1 },
@@ -102,7 +102,7 @@ test('sum', _.sum,
   { params: [[{ a: 123 }, { a: 999 }, { a: 111333 }]], tobe: 0 },
 )
 
-test('sumBy', _.sumBy,
+test<any, any>('sumBy', _.sumBy,
   { params: [[1, 4, 5, 2, 3, 1, 100]], tobe: 116 },
   { params: [[1, 4, 5, 2, 3, 1, 100, 'fjsdkfjksdjf']], tobe: 116 },
   { params: [[1, 4, 5, 2, 3, 1, 100, '', '9999999912']], tobe: 10000000028 },
