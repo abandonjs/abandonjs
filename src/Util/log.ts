@@ -20,11 +20,20 @@ export function logGroup(name = '', ...args: unknown[]): boolean {
 	}
 }
 
-export async function logAsync(name = '', ...args: unknown[]): Promise<boolean> {
+/**
+ * @title logAsync
+ * @description 可直接打印 Promise 值
+ * @param ...args 
+ * @returns boolean
+ * @version 2.2.0
+ */
+export async function logAsync(...args: unknown[]): Promise<boolean> {
 	try {
+		const result: unknown[] = []
 		for (let i = 0; i < args.length; i++) {
-			console.log(`${name}-${i}:`, await args[i])
+			result.push(await args[i])
 		}
+		console.log(...result)
 		return true
 	} catch (error) {
 		console.error(error)
