@@ -1,7 +1,7 @@
 import { runFunc } from '../util'
 
 export interface EventEmitter<T, U> {
-  $cache: { [key: string]: T[] }
+  $cache: Record<string, T[]>
   /**
    * @description 绑定事件
    * @param name 事件名称
@@ -30,7 +30,7 @@ export interface EventEmitter<T, U> {
  * @description 简易观察者模式
  */
 export class EventEmitter<T, U> {
-  $cache: { [key: string]: T[] } = {}
+  $cache: Record<string, T[]> = {}
 
   $on(name: string, fn: T): void {
     if (this.$cache[name]) {
