@@ -1,4 +1,5 @@
-import { Val } from './util/type';
+import { Val } from './util/type'
+
 /**
  * @title toPathValue
  * @description 通过path 来获取值
@@ -9,21 +10,19 @@ import { Val } from './util/type';
 export function toPathValue(val: Val, path: string): Val {
 
 	const paths: string[] = path.split('.') || []
-	
-	let beforKey = ''
+
+	let beforeKey = ''
 	paths.forEach((item: string) => {
 
-		if (beforKey !== '' && val[beforKey+item] !== undefined) {
-			val = val[beforKey+item] || undefined
+		if (beforeKey !== '' && val[beforeKey + item] !== undefined) {
+			val = val[beforeKey + item] || undefined
 			return
 		}
 
 		if (val[item]) {
 			val = val[item] || undefined
-		} else {
-			if (/\\$/.test(item)) {
-				beforKey += item.replace(/\\$/, '.')
-			}
+		} else if (/\\$/.test(item)) {
+			beforeKey += item.replace(/\\$/, '.')
 		}
 
 	})

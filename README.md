@@ -25,6 +25,14 @@ import { filter } from 'rh-js-methods'
 - `param` `retainNotObject` 是否保留非对象项
 - `returns` `T[]`
 
+### `flat`
+
+- `description` 数组扁平化
+- `param` `list` {`Array`}
+- `param` `depth` {`?number` = `1`} 深度
+- `returns` `Array`
+- `version:` `2.2.0`
+
 ### `isArray`
 
 - `description` 是否为数组
@@ -374,6 +382,15 @@ import { filter } from 'rh-js-methods'
 - `param` `num` 待检测的数据类型
 - `returns` `boolean`
 
+### `isNumber`
+
+- `description` 是否为数字
+- `support:` `Number`, `NumberString`
+- `unsupported:` `Infinity`, `Function`
+- `param` `value` `any`
+- `returns` `boolean`
+- `update:` `2.2.0`
+
 ### `random`
 
 - `description` 随机数
@@ -388,12 +405,6 @@ import { filter } from 'rh-js-methods'
 - `param` `min` = `0`
 - `param` `max` `number`
 - `returns` `string`
-
-### `isNumber`
-
-- `description` 是否为数字
-- `param` `value` `any`
-- `returns` `boolean`
 
 ### `isEffectNumber`
 
@@ -470,7 +481,7 @@ import { filter } from 'rh-js-methods'
 
 ### `isObject`
 
-- `description` 判断是否为`Oject`
+- `description` 判断是否为`Object`
 - `param` `value`
 - `returns` `boolean`
 
@@ -545,7 +556,7 @@ import { filter } from 'rh-js-methods'
 
 - `description` 字符串装换成`Date`对象
 - `param` `value` `string` 可以转换成时间的字符串
-- `returns` `Date`
+- `returns` {`Date`}
 
 ### `deadline`
 
@@ -553,7 +564,7 @@ import { filter } from 'rh-js-methods'
 - `param` `target:Date` 目标时间
 - `param` `timeKey?:` '`year`' | '`mouth`' | '`day`' | '`hour`' | '`minute`' | '`second`' | '`timeStamp`'  指定倒计时单位
 - `param` `now?:Date` 起始时间
-- `returns` `number`
+- `returns` {`number`}
 
 ### `isDate`
 
@@ -584,15 +595,19 @@ import { filter } from 'rh-js-methods'
 - `description` 时间是否相同, 时间类型支持`isDate`的类型
 - `param` `timeA` 比较时间
 - `param` `timeB` 被比较时间
-- `returns` `boolean`
+- `returns` {`boolean`}
 
 <hr/>
 
 ## util
 
+### `BanConfig`
+
+- `name:` `timeout`
 - `description` 超时时间
 - `default` `3000`
   
+- `name:` `count`
 - `description` 最大执行次数
 - `default:` `1000000`
   
@@ -627,7 +642,7 @@ import { filter } from 'rh-js-methods'
 - `param` `isErrorResult` : `R`
 - `returns` `(...args:Params)`=`>R`
 
-### `asyncRhrowError<<Params` `extends` `any[]`, `R` = `any>`
+### `asyncThrowError<<Params` `extends` `any[]`, `R` = `any>`
 
 - `description` 异步处理
 - `param` `func:` `(...args:` `Params)` => `R` 待捕获错误的函数
@@ -641,13 +656,6 @@ import { filter } from 'rh-js-methods'
 - `param` `str` `string`
 - `param` `type` `number`
 - `returns` `string`
-
-### `logGroup`
-
-- `description` 分组打印(简化`console.groupCollapsed)`
-- `param` `name` 分组名称
-- `param` `...args` 需要分组打印的结果
-- `example` `logGroup(name[`, `...args])`
 
 ### `isEmpty`
 
@@ -693,6 +701,14 @@ import { filter } from 'rh-js-methods'
 
 - `param` `fileName` `string`
 - `returns` `boolean`
+
+### `logGroup`
+
+- `description` 分组打印(简化`console.groupCollapsed)`
+- `param` { `string` } `name` 分组名称
+- `param` { `unknown[]` } `...args` 需要分组打印的结果
+- `example` `logGroup(name[`, `...args])`
+- `return` `boolean`
 
 ### `matchValue`
 

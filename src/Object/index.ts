@@ -4,7 +4,7 @@ export * from './omit'
 
 /**
  * @title isObject
- * @description 判断是否为Oject
+ * @description 判断是否为Object
  * @param value 
  * @returns boolean
  */

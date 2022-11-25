@@ -1,11 +1,12 @@
 import { type, types } from './type'
 
 export { type, types }
+export * from './log'
 export * from './matchValue'
 export * from './deepClone'
 export * from './error'
 export * from './ban'
-
+export * from './is'
 /**
  * 首字母大写
  */
@@ -54,23 +55,6 @@ export function changeCase(str: string, type: CaseType = 'Upper'): string {
     default:
       return str
   }
-}
-
-/**
- * @title logGroup
- * @description 分组打印(简化console.groupCollapsed)
- * @param name 分组名称
- * @param ...args 需要分组打印的结果
- * @example logGroup(name[, ...args])
- */
-export function logGroup(name = '', ...args: any[]) {
-  console.groupCollapsed(`--- ${name} ---`)
-  Array.isArray(args) &&
-    args.length > 0 &&
-    args.forEach((item: any) => {
-      console.log(item)
-    })
-  console.groupEnd()
 }
 
 /**

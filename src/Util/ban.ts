@@ -1,12 +1,18 @@
 import { Func, AsyncFunc } from './../type';
 
+/**
+ * @title BanConfig
+ * @type <interface>
+ */
 interface BanConfig {
 	/**
+	 * @name: timeout
 	 * @description 超时时间
 	 * @default 3000
 	 */
 	timeout?: number
 	/**
+	 * @name: count
 	 * @description 最大执行次数
 	 * @default: 1000000
 	 */

@@ -1,6 +1,6 @@
 {
   "name": "rh-js-methods",
-  "version": "2.1.12",
+  "version": "2.2.0-beta.0",
   "description": "方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
@@ -39,6 +39,7 @@
   "engines": {
     "node": ">=16"
   },
+  "bugs": "https://github.com/guanruihua/rh-js-methods/issues",
   "repository": {
     "type": "git",
     "url": "git@github.com:guanruihua/rh-js-methods.git"

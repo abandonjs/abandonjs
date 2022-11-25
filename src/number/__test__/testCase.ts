@@ -13,16 +13,6 @@ test<any, any>('spLength', _.spLength,
 	{ params: [{}], tobe: '' },
 )
 
-test<any, any>('isNumber', _.isNumber,
-	{ param: MAX_VALUES_NUMBER, tobe: true },
-	{ param: '1', tobe: false },
-	{ param: null, tobe: false },
-	{ param: NaN, tobe: false },
-	{ param: undefined, tobe: false },
-	{ param: -1, tobe: true },
-	{ param: 10000, tobe: true },
-)
-
 test<any, any>('isEffectNumber', _.isEffectNumber,
 	{ param: 1, tobe: true },
 	{ param: '1', tobe: false },

@@ -5,6 +5,7 @@ module.exports = {
       2,
       'always',
       [
+        'step', // 草案中
         'bug', // 此项特别针对bug号，用于向测试反馈bug列表的bug修改情况
         'feat', // 新功能（feature）
         'fix', // 修补bug
