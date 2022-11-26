@@ -1,4 +1,4 @@
-import { test } from 'rh-test'
+import { test } from 'unit-testing-js'
 import { logGroup, logAsync } from '..'
 
 test('logGroup',

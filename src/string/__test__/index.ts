@@ -1,5 +1,5 @@
 import * as _ from '../index'
-import { test } from 'rh-test'
+import { test } from 'unit-testing-js'
 
 test('hide', _.hide,
 	{ params: ['abcd'], tobe: '****' },

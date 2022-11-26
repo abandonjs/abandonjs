@@ -5,6 +5,7 @@ export * from './matchValue';
 export * from './deepClone';
 export * from './error';
 export * from './ban';
+export * from './is';
 /**
  * 首字母大写
  */

@@ -1,8 +1,11 @@
-import './flat'
-import { test } from 'rh-test'
-import * as _Array from '../index'
-import * as _ from '../index'
+import { test } from 'unit-testing-js'
+import * as _Array from '..'
+import * as _ from '..'
+export * from '..'
 import { cases } from './cases'
+import './toArray'
+import './modules/filter'
+import './flat'
 // import './zip'
 
 function testHoc(names: string[] = []) {

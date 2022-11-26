@@ -1,5 +1,5 @@
 import * as _ from '../../index'
-import { test } from 'rh-test'
+import { test } from 'unit-testing-js'
 
 // const len = 10000000
 const len = 999

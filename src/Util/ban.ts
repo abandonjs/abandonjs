@@ -18,6 +18,7 @@ interface BanConfig {
 	 */
 	count?: number
 }
+
 /**
  * @title ban<Params extends [], Return>
  * @description 限制 方法的超时和执行次数
@@ -87,26 +88,6 @@ export function catchError<Params extends [], Return>(
 	return function (...args: Params): Return {
 		try {
 			return func(...args)
-		} catch (error) {
-			return errorReturnValue
-		}
-	}
-}
-
-
-/**
- * @title asyncCatchError<Params extends [], Return>
- * @param func AsyncFunc<Params, Return>
- * @param errorReturnValue Return
- * @returns async function (...args: Params): Return
- */
-export function asyncCatchError<Params extends [], Return>(
-	func: AsyncFunc<Params, Return>,
-	errorReturnValue: Return
-) {
-	return async function (...args: any) {
-		try {
-			return await func(...args)
 		} catch (error) {
 			return errorReturnValue
 		}

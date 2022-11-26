@@ -1,5 +1,5 @@
 import * as _ from '../index'
-import { test } from 'rh-test'
+import { test } from 'unit-testing-js'
 
 test('type', _.type,
 	{ param: '', tobe: 'String' },
@@ -18,7 +18,6 @@ test('type', _.type,
 	{ param: /a/, tobe: 'RegExp' },
 	{ param: new Date(), tobe: 'Date' },
 	{ param: undefined, tobe: 'Undefined' },
-
 )
 
 test('types', _.types,

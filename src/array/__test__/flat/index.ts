@@ -1,4 +1,4 @@
-import { test } from 'rh-test'
+import { test } from 'unit-testing-js'
 import { flat } from '../..'
 import './flat-runtime.test'
 

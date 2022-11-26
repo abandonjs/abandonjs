@@ -1,5 +1,5 @@
 import * as _ from '../index'
-import { test } from 'rh-test'
+import { test } from 'unit-testing-js'
 
 test('random', _.random,
 	{ params: [1.01, 1.03], tobes: ['<=1.3', '>=1.1'], type: 'Match' },

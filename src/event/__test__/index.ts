@@ -1,4 +1,4 @@
-import { test } from 'rh-test'
+import { test } from 'unit-testing-js'
 import * as _ from '../index'
 const _eb = new _.EventEmitter<any,any>();
 

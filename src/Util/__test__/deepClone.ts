@@ -1,5 +1,5 @@
 import * as _ from '../index'
-import { add, asyncAdd, test } from 'rh-test'
+import { add, asyncAdd, test } from 'unit-testing-js'
 
 const beforeEqual = (unit) => {
 	let tmp = unit.param
