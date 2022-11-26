@@ -1,6 +1,6 @@
 {
   "name": "abandonjs",
-  "version": "2.2.0-beta.1",
+  "version": "2.2.0-beta.2",
   "description": "方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
@@ -39,10 +39,10 @@
   "engines": {
     "node": ">=16"
   },
-  "bugs": "https://github.com/guanruihua/rh-js-methods/issues",
+  "bugs": "https://github.com/guanruihua/abandonjs/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:guanruihua/rh-js-methods.git"
+    "url": "git@github.com:guanruihua/abandonjs.git"
   },
   "author": "ruihuag",
   "license": "MIT",
