@@ -1,4 +1,4 @@
-import { test } from 'rh-test'
+import { test } from 'unit-testing-js'
 import { MAX_VALUES_NUMBER } from '../../constants'
 import { isNumber } from '..'
 

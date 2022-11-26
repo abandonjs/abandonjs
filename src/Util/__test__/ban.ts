@@ -1,4 +1,4 @@
-import { test, add, asyncAdd } from 'rh-test'
+import { test, add, asyncAdd } from 'unit-testing-js'
 import { ban, catchError, asyncBan } from '..'
 
 test('ban & catchError: count',

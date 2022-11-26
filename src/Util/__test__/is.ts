@@ -1,5 +1,5 @@
 import * as _ from '..'
-import { test } from 'rh-test'
+import { test } from 'unit-testing-js'
 
 test<any, any>('isFileExtension', _.isFileExtension,
 	{ param: 'png', tobe: false },

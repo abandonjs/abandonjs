@@ -1,5 +1,5 @@
 import * as _ from '../index'
-import { test } from 'rh-test'
+import { test } from 'unit-testing-js'
 
 test('type', _.type,
 	{ param: '', tobe: 'String' },

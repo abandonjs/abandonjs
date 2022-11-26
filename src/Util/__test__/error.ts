@@ -1,7 +1,7 @@
 import * as _ from '../index'
-import { add, equal } from 'rh-test'
+import { add, toBe, test } from 'unit-testing-js'
 
-equal<number | string>('throwError',
+test<number | string>('throwError', toBe,
 	{
 		func: _.throwError(add, 0),
 		params: [0, 1, 2, 3], tobe: 6
@@ -13,7 +13,7 @@ equal<number | string>('throwError',
 	}
 )
 
-equal<number | string>('asyncThrowError',
+test<number | string>('asyncThrowError', toBe,
 	{
 		func: _.asyncThrowError(add, 0),
 		params: [0, 1, 2, 3], tobe: 6

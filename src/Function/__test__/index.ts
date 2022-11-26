@@ -1,5 +1,5 @@
 import * as _ from '../index'
-import { test, add, asyncAdd } from 'rh-test'
+import { test, add, asyncAdd } from 'unit-testing-js'
 
 // throttle
 // debounce
@@ -11,7 +11,7 @@ test('toPromise', _.toPromise,
 )
 
 
-test('isFunction', _.isFunction,
+test<any>('isFunction', _.isFunction,
   { param: () => 123, tobe: true },
   { param: async () => 123, tobe: true },
   { param: function* () { }, tobe: true }

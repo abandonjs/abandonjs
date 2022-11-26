@@ -1,4 +1,4 @@
-import { runTime } from 'rh-test'
+import { runTime } from 'unit-testing-js'
 import { logAsync } from '../../../util'
 import { cases } from './flat-runtime.cases'
 

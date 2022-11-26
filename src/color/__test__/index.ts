@@ -1,5 +1,5 @@
 import * as _ from '../index'
-import { test, add, asyncAdd } from 'rh-test'
+import { test, add, asyncAdd } from 'unit-testing-js'
 
 test('isHexColor', _.isHexColor,
 	{ param: '123456', tobe: true },

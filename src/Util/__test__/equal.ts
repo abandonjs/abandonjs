@@ -1,5 +1,5 @@
 import * as _ from '../index'
-import { test } from 'rh-test'
+import { test } from 'unit-testing-js'
 
 const sym = Symbol(12)
 test<any, boolean>('equal', _.equal,

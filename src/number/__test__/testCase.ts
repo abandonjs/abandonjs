@@ -1,5 +1,5 @@
 import * as _ from '../index'
-import { test } from 'rh-test'
+import { test } from 'unit-testing-js'
 import { MAX_VALUES_NUMBER } from '../../constants'
 
 test<any, any>('spLength', _.spLength,

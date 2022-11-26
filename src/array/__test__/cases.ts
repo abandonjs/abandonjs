@@ -1,4 +1,4 @@
-import { CaseUnit } from 'rh-test'
+import { CaseUnit } from 'unit-testing-js'
 import * as _ from '../index'
 	
 type Method = (...args: any[]) => any | any[]

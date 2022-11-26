@@ -1,6 +1,6 @@
 import * as _Array from '../index'
 import * as _ from '../index'
-import { test } from 'rh-test'
+import { test } from 'unit-testing-js'
 
 test('zip', _Array.zip,
 	{
