@@ -1,6 +1,6 @@
 {
-  "name": "rh-js-methods",
-  "version": "2.2.0-beta.0",
+  "name": "abandonjs",
+  "version": "2.2.0-beta.1",
   "description": "方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",

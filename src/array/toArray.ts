@@ -6,5 +6,7 @@
  */
 export function toArray<T>(value: T | T[]): T[] {
 	if (Array.isArray(value)) return value
+	if ([undefined, null, NaN].includes(value as any))
+		return []
 	return [value]
 }

@@ -18,7 +18,6 @@ test('type', _.type,
 	{ param: /a/, tobe: 'RegExp' },
 	{ param: new Date(), tobe: 'Date' },
 	{ param: undefined, tobe: 'Undefined' },
-
 )
 
 test('types', _.types,

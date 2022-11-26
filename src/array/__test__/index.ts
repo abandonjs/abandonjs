@@ -3,6 +3,7 @@ import { test } from 'rh-test'
 import * as _Array from '../index'
 import * as _ from '../index'
 import { cases } from './cases'
+import './toArray'
 // import './zip'
 
 function testHoc(names: string[] = []) {
