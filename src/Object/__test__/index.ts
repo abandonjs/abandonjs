@@ -13,7 +13,7 @@ test('omit', _.omitRecord,
 	},
 )
 
-test<any>('isObject', _.isObject,
+test('isObject', _.isObject,
 	{ param: {}, tobe: true },
 	{ param: null, tobe: false },
 	{ param: undefined, tobe: false },
@@ -21,7 +21,7 @@ test<any>('isObject', _.isObject,
 	{ param: { a: 123 }, tobe: true },
 )
 
-test<any>('existKeys', _.existKeys,
+test('existKeys', _.existKeys,
 	{ params: [{ a: 123 }, 'a'], tobe: true },
 	{ params: [{ a: 123 }, ['a']], tobe: true },
 	{ params: [{ a: 123, b: 3 }, 'a'], tobe: true },

@@ -25,9 +25,3 @@ test('filter-filterConditions=Object', filter,
 		return item
 	})
 )
-// .then(item=>{
-// 	// console.log(item?.ErrorQue)
-// })
-
-
-// console.log(new RegExp('2','i').test('123'))

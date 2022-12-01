@@ -10,7 +10,7 @@ export type TCaseUnit = {
 }
 
 export const cases:Record<string,TCaseUnit> = {
-	'toArray': {
+	'toArray-cases': {
 		method: _.toArray,
 		params: [
 			{ param: [], tobe: [] },

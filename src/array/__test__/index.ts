@@ -5,7 +5,9 @@ export * from '..'
 import { cases } from './cases'
 import './toArray'
 import './modules/filter'
+import './modules/toArray'
 import './flat'
+
 // import './zip'
 
 function testHoc(names: string[] = []) {

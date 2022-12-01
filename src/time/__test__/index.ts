@@ -13,7 +13,7 @@ test('deadline', _.deadline,
 	{ params: [new Date('2022/06/17 07:03:50'), 'day', new Date('2022/06/15 07:03:50')], tobe: 2 },
 )
 
-test<any, any>('isDate', _.isDate,
+test('isDate', _.isDate,
 	{ params: ['123'], tobe: false },
 	{ params: [new Date()], tobe: true },
 	{ params: [new Date().getTime()], tobe: true },

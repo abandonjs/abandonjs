@@ -2,7 +2,7 @@ import { test } from 'unit-testing-js'
 import { MAX_VALUES_NUMBER } from '../../constants'
 import { isNumber } from '..'
 
-test<any, any>('isNumber', isNumber,
+test('isNumber', isNumber,
 	{ name: 'isNumber 1', param: MAX_VALUES_NUMBER, tobe: true },
 	{ name: 'isNumber 2', param: '1', tobe: true },
 	{ name: 'isNumber 3', param: null, tobe: false },

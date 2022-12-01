@@ -7,7 +7,7 @@ const beforeEqual = (unit) => {
 	return unit
 }
 
-test<any, any>('deepClone', _.deepClone,
+test('deepClone', _.deepClone,
 	{
 		param: [asyncAdd, { a: 1, b: { c: 1 } }],
 		tobe: [asyncAdd, { a: 1, b: { c: 1 } }],
