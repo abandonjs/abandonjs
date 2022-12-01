@@ -1,6 +1,8 @@
 import { type } from '../util'
 import { isObject } from '../object'
 
+export * from './stringify'
+
 /**
  * @title hide
  * @description 隐藏指定位置的字符
@@ -22,7 +24,6 @@ export function hide(target: string, start = 0, end?: number): string {
     .replace(reg, `$1${new Array(end - start + 1).fill('*').join('')}${end_len > 0 ? '$2' : ''}`)
 
 }
-
 
 /**
  * @title replaces

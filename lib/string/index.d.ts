@@ -1,3 +1,4 @@
+export * from './stringify';
 /**
  * @title hide
  * @description 隐藏指定位置的字符
