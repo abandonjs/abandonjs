@@ -6,18 +6,27 @@ import fs from 'fs'
 const url = 'src'
 const indexes: string[] = fs.readdirSync(url) || []
 
-let modules: string[] = (process.env[`npm_config_modules`] || '').split(/,|_| /)
+function runTest() {
 
-if (modules.length > 0) {
-  modules.forEach((name: string): void => {
-    if (indexes.includes(name)) {
-      import(`../src/${name}/__test__`)
-    }
-  })
+  let modules: string[] = (process.env[`npm_config_modules`] || '').split(/,|_| /)
+
+  if (modules.length === 1 && modules[0] === '') {
+    indexes.forEach((name: string): void => {
+      if (!['index.ts', 'type.ts', 'constants.ts'].includes(name))
+        import(`../src/${name}/__test__`)
+    })
+    return;
+  }
+
+  if (modules.length > 0) {
+    modules.forEach((name: string): void => {
+      if (indexes.includes(name)) {
+        import(`../src/${name}/__test__`)
+      }
+    })
+
+  }
 }
 
-else {
-  modules.forEach((name: string): void => {
-    import(`../src/${name}/__test__`)
-  })
-}
+
+runTest()
