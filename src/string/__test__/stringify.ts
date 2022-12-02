@@ -1,12 +1,13 @@
 import { UnitTest, BaseValueMap } from 'unit-testing-js'
 import { stringify } from '.'
 
+function test() {
+	console.log('test')
+}
 UnitTest(stringify, 'stringify:space')
 	.addParamMap([
 		{ a: '123', b: '345' },
-		function test(){
-			console.log('test')
-		}
+		test
 	])
 	.addParamMap([
 		null
@@ -14,6 +15,9 @@ UnitTest(stringify, 'stringify:space')
 	.addParamMap([
 		2
 	])
+	.setIndexValues({
+		1: JSON.stringify(test.toString(), null, 2).replace(/^(")+|(")+$/g, '')
+	})
 	.setMapValues(
 		[{ a: '123', b: '345' }, null, 2], `{
   "a": "123",
@@ -32,7 +36,11 @@ UnitTest(stringify, 'stringify')
 		/.+/,
 		Symbol(),
 		new Promise(resolve => resolve('Empty')),
-		new Proxy({ a: 123, b: 456 }, {})
+		new Proxy({ a: 123, b: 456 }, {}),
+		new Map(),
+		new WeakMap(),
+		new Set(),
+		new WeakSet,
 	]))
 	.tobe(
 		'null', 'NaN', 'undefined',
@@ -49,7 +57,11 @@ UnitTest(stringify, 'stringify')
 		42: "/.+/",
 		43: 'Symbol()',
 		44: '[object Promise]',
-		45: JSON.stringify({ a: 123, b: 456 })
+		45: JSON.stringify({ a: 123, b: 456 }),
+		46: '[object Map]',
+		47: '[object WeakMap]',
+		48: '[object Set]',
+		49: '[object WeakSet]',
 	})
 	.setMapValues(
 		[1669900531674], '1669900531674',

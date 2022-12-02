@@ -1,6 +1,6 @@
 {
   "name": "abandonjs",
-  "version": "2.2.0-beta.4",
+  "version": "2.2.0",
   "description": "方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
@@ -12,6 +12,7 @@
     "reload": "rimraf node_modules && cnpm install",
     "build": "npx rollup -c --extend ./rollup.config.ts",
     "md": "ts-node ./md.ts",
+    "docs": "node ./config/docs.js",
     "md:dev": "ts-node-dev --respawn --transpile-only ./md.ts",
     "test": "ts-node-dev --respawn --transpile-only ./test/index.ts",
     "restart": "rimraf dist && npm run build && npm start",
