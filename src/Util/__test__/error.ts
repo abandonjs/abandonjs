@@ -1,7 +1,7 @@
 import * as _ from '../index'
 import { add, toBe, test } from 'unit-testing-js'
 
-test<number | string>('throwError', toBe,
+test('throwError', toBe,
 	{
 		func: _.throwError(add, 0),
 		params: [0, 1, 2, 3], tobe: 6
@@ -13,7 +13,7 @@ test<number | string>('throwError', toBe,
 	}
 )
 
-test<number | string>('asyncThrowError', toBe,
+test('asyncThrowError', toBe,
 	{
 		func: _.asyncThrowError(add, 0),
 		params: [0, 1, 2, 3], tobe: 6

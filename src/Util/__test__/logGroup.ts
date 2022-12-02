@@ -13,7 +13,7 @@ test('logGroup',
 )
 
 
-test<any, any>('logAsync', logAsync,
+test('logAsync', logAsync,
 	{
 		params: [
 			new Promise(r => r(123)),

@@ -1,16 +1,16 @@
 import { CaseUnit } from 'unit-testing-js'
-import * as _ from '../index'
+import * as _ from '..'
 	
 type Method = (...args: any[]) => any | any[]
 
 export type TCaseUnit = {
 	method: Method
-	params: CaseUnit<any, any>[]
+	params: CaseUnit[]
 	[key:string]:any
 }
 
 export const cases:Record<string,TCaseUnit> = {
-	'toArray': {
+	'toArray-cases': {
 		method: _.toArray,
 		params: [
 			{ param: [], tobe: [] },

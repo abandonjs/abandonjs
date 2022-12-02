@@ -3,10 +3,13 @@ src/
 push.bat
 *.md
 .gitignore
-jest.config.ts
+jest.config.*
 tsconfig.json
 .eslint*
 .prettier*
 rollup.config.*
 md.ts
 coverage/
+commitlint.config.*
+.vscode*
+.husky*

@@ -131,5 +131,5 @@ ${desc}
 	})
 }
 
-action('./src', '../guanruihua.github.io/OpenSource/rh-js-methods')
+action('./src', '../guanruihua.github.io/OpenSource/abandonjs')
 console.log('Build docs success...')

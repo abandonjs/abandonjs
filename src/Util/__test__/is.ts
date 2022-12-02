@@ -1,7 +1,7 @@
 import * as _ from '..'
 import { test } from 'unit-testing-js'
 
-test<any, any>('isFileExtension', _.isFileExtension,
+test('isFileExtension', _.isFileExtension,
 	{ param: 'png', tobe: false },
 	{ param: 'jpeg', tobe: false },
 	{ param: 'jpg', tobe: false },
@@ -40,7 +40,7 @@ test<any, any>('isFileExtension', _.isFileExtension,
 	{ param: 'png.name', tobe: true },
 );
 
-test<any, any>('isImageFile', _.isImageFile,
+test('isImageFile', _.isImageFile,
 	{ name: 'isImage-1', param: '123.png', tobe: true },
 	{ name: 'isImage-2', param: '123.jpeg', tobe: true },
 	{ name: 'isImage-3', param: '123.jpg', tobe: true },
@@ -73,7 +73,7 @@ test<any, any>('isImageFile', _.isImageFile,
 	{ name: 'isImage-30', param: 'png.name', tobe: false },
 );
 
-test<any, any>('isH5VideoFile', _.isVideoFile,
+test('isH5VideoFile', _.isVideoFile,
 
 	{ param: 'mp4', tobe: false },
 	{ param: 'webm', tobe: false },
@@ -120,17 +120,17 @@ test<any, any>('isH5VideoFile', _.isVideoFile,
 	{ param: 'jpg.name', tobe: false },
 	{ param: 'png.name', tobe: false },
 );
-test<any, any>('isPdfFile', _.isPdfFile,
+test('isPdfFile', _.isPdfFile,
 	{ param: 'pdf', tobe: false },
 	{ param: 'name.pdf', tobe: true },
 );
 
-test<any, any>('isWordFile', _.isWordFile,
+test('isWordFile', _.isWordFile,
 	{ param: 'name.doc', tobe: true },
 	{ param: 'name.docx', tobe: true },
 );
 
-test<any, any>('isExcelFile', _.isExcelFile,
+test('isExcelFile', _.isExcelFile,
 	{ param: 'name.doc', tobe: false },
 	{ param: 'name.docx', tobe: false },
 	{ param: 'name.xls', tobe: true },

@@ -1,8 +1,9 @@
 import { type } from './type'
+import { stringify } from '../string'
 import { Val, Valer } from './util/type'
 import { matchNumberValue } from './util/matchNumberValue'
 import { toPathValue } from "./toPathValue"
-export { toPathValue } 
+export { toPathValue }
 
 /**
  * @title matchValue
@@ -45,6 +46,6 @@ export function equal(value: any, lastValue: any): boolean {
 	if (type(value) === 'Symbol') {
 		return false
 	}
-	if (JSON.stringify(value) === JSON.stringify(lastValue)) return true
+	if (stringify(value) === stringify(lastValue)) return true
 	return false
 }

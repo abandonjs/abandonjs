@@ -2,7 +2,7 @@ import * as _ from '../index'
 import { test } from 'unit-testing-js'
 import { MAX_VALUES_NUMBER } from '../../constants'
 
-test<any, any>('spLength', _.spLength,
+test('spLength', _.spLength,
 	{ params: ['121212', 3, 5], tobe: '21212' },
 	{ params: ['12', 3, 5], tobe: '012' },
 	{ params: ['123456', 1, 5], tobe: '23456' },
@@ -13,7 +13,7 @@ test<any, any>('spLength', _.spLength,
 	{ params: [{}], tobe: '' },
 )
 
-test<any, any>('isEffectNumber', _.isEffectNumber,
+test('isEffectNumber', _.isEffectNumber,
 	{ param: 1, tobe: true },
 	{ param: '1', tobe: false },
 	{ param: null, tobe: false },
@@ -28,7 +28,7 @@ test<any, any>('isEffectNumber', _.isEffectNumber,
 	{ param: -Infinity, tobe: false },
 )
 
-test<any, any>('toNumber', _.toNumber,
+test('toNumber', _.toNumber,
 	{ param: 1, tobe: 1 },
 	{ param: '1', tobe: 1 },
 	{ param: null, tobe: 0 },
@@ -61,7 +61,7 @@ test('inRnage', _.inRange,
 	{ params: [0, 1, 2], tobe: false },
 )
 
-test<any, any>('round', _.round,
+test('round', _.round,
 	{ param: 1, tobe: 1 },
 	{ param: [1.05, 2], tobe: '>1.05', type: 'Match' },
 	{ param: [1.056, 2], tobe: '<2', type: 'Match' },
@@ -75,7 +75,7 @@ test('between', _.between,
 )
 
 
-test<any, any>('toThousands', _.toThousands,
+test('toThousands', _.toThousands,
 	{ param: 1, tobe: '1' },
 	{ param: '1', tobe: '1' },
 	{ param: 1000, tobe: '1,000' },

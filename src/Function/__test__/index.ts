@@ -11,7 +11,7 @@ test('toPromise', _.toPromise,
 )
 
 
-test<any>('isFunction', _.isFunction,
+test('isFunction', _.isFunction,
   { param: () => 123, tobe: true },
   { param: async () => 123, tobe: true },
   { param: function* () { }, tobe: true }
