@@ -1,12 +1,6 @@
 export * from './existKeys';
 export * from './omit';
-/**
- * @title isObject
- * @description 判断是否为Object
- * @param value
- * @returns boolean
- */
-export declare function isObject(value: any): boolean;
+export * from './is';
 /**
  * @title serialize
  * @description 序列化对象

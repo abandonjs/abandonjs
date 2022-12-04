@@ -1,6 +1,8 @@
+export * from '..'
 import * as _ from '../index'
 import { test, add, asyncAdd } from 'unit-testing-js'
 
+import './is'
 // throttle
 // debounce
 
@@ -8,13 +10,6 @@ test('toPromise', _.toPromise,
   { param: 1, tobe: 1 },
   { params: [add, 1, 4], tobe: 5 },
   { func: (fs) => _.toPromise(fs, 1, 4), params: [add], tobe: 5 },
-)
-
-
-test('isFunction', _.isFunction,
-  { param: () => 123, tobe: true },
-  { param: async () => 123, tobe: true },
-  { param: function* () { }, tobe: true }
 )
 
 test('once', _.once(add),

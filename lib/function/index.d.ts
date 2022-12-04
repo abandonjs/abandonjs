@@ -1,5 +1,6 @@
 import { AnyFunction, AnyObject } from '../type';
 export * from './loop';
+export * from './is';
 /**
  * @title toPromise<T>
  * @description 将方法或值转换为Promise对象, 若传输values切target为function, 就会返回执行结果
@@ -8,13 +9,6 @@ export * from './loop';
  * @returns Promise<T>
  */
 export declare function toPromise<T>(target: any, ...values: any[]): Promise<T>;
-/**
- * @title isArray
- * @description 是否为数组
- * @param value any
- * @returns boolean
- */
-export declare function isFunction(value: any): boolean;
 /**
  * @title once
  * @description  fn 方法只会执行一次

@@ -2,6 +2,7 @@ import { AnyFunction, AnyObject } from '../type'
 import { type } from '../util'
 
 export * from './loop'
+export * from './is'
 
 /**
  * @title toPromise<T>
@@ -26,15 +27,6 @@ export function toPromise<T>(target: any, ...values: any[]): Promise<T> {
     })
 }
 
-/**
- * @title isArray
- * @description 是否为数组
- * @param value any
- * @returns boolean
- */
-export function isFunction(value: any): boolean {
-  return /Function/.test(type(value))
-}
 
 
 /**

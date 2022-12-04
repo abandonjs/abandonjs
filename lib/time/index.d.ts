@@ -1,4 +1,5 @@
 import { Time } from './type';
+export * from './is';
 /**
  * @title toDate
  * @description 字符串装换成Date对象
@@ -16,13 +17,6 @@ export declare function toDate(value: string): Date;
  */
 declare type TimeKey = 'year' | 'mouth' | 'day' | 'hour' | 'minute' | 'second' | 'timeStamp';
 export declare function deadline(target: Date, timeKey?: TimeKey, now?: Date): number;
-/**
- * @title isDate
- * @description 检查日期是否有效, 时间戳也为有效时间(13位)
- * @param date:any 待判断日期
- * @returns boolean
- */
-export declare function isDate(date: any): boolean;
 /**
  * @title format
  * @description 时间格式化
@@ -44,13 +38,4 @@ export declare function isDate(date: any): boolean;
 
  */
 export declare function format(time?: Time, pattern?: string): string;
-/**
- * @title isSameDate
- * @description 时间是否相同, 时间类型支持isDate的类型
- * @param timeA 比较时间
- * @param timeB 被比较时间
- * @returns {boolean}
- */
-export declare function isSameDate(timeA: Time, timeB: Time): boolean;
-export {};
 //# sourceMappingURL=index.d.ts.map

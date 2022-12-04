@@ -1,17 +1,6 @@
-import { type } from "../util"
 export * from './existKeys'
 export * from './omit'
-
-/**
- * @title isObject
- * @description 判断是否为Object
- * @param value 
- * @returns boolean
- */
-export function isObject(value: any): boolean {
-	return type(value) === 'Object' && typeof value === 'object'
-}
-
+export * from './is'
 
 /**
  * @title serialize

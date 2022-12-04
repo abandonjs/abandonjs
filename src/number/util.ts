@@ -1,6 +1,6 @@
 import { type } from '../util'
 import { INFINITY, MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../constants'
-import { isFloat } from './isFloat'
+import { isFloat } from './is'
 
 /**
  * @title spLength

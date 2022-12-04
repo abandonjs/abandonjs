@@ -212,6 +212,7 @@ export function minBy(list: any[], itteratee?: Itteratee): any {
  * @description 求和
  * @param list 要迭代的数组
  * @returns 总和
+ * @version 2.2.3
  */
 export function sum(list: any[] = []): number {
   return list.reduce((total = 0, item) => {
