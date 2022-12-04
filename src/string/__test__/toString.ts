@@ -1,35 +1,19 @@
-import { UnitTest, BaseValueMap } from 'unit-testing-js'
-import { stringify } from '.'
+import { test, UnitTest, BaseValueMap } from 'unit-testing-js'
+import { toString, toStrings } from '..'
 
-function test() {
-	console.log('test')
-}
+test('toString', toString,
+	{ param: 1, tobe: '1' },
+	{ param: { a: 1 }, tobe: '{"a":1}' },
+	{ param: [1, 2, '3'], tobe: '[1,2,"3"]' },
+)
 
-UnitTest(stringify, 'stringify:space')
-	.addParamMap([
-		{ a: '123', b: '345' },
-		test
-	])
-	.addParamMap([null])
-	.addParamMap([2])
-	.setIndexValues({
-		1: JSON.stringify(test.toString(), null, 2).replace(/^(")+|(")+$/g, '')
-	})
-	.setMapValues(
-		[{ a: '123', b: '345' }, null, 2], `{
-  "a": "123",
-  "b": "345"
-}`
-	)
-	.buildCases()
-	// .log('cases')
-	.run()
 
-UnitTest(stringify, 'stringify')
+UnitTest(toString, 'toString')
 	.addParamMap(BaseValueMap.get(
 		'@EMPTY', '@TRUE', '@FALSE', '@NUMBER',
 		'@EMPTY_FUNCTION', '@FUNCTION', '@DATE'
-	).concat([
+	)
+	.concat([
 		/.+/,
 		Symbol(),
 		new Promise(resolve => resolve('Empty')),
@@ -38,8 +22,8 @@ UnitTest(stringify, 'stringify')
 		new WeakMap(),
 		new Set(),
 		new WeakSet(),
-		[1, 2, 3]
-	]))
+	])
+	)
 	.tobe(
 		'null', 'NaN', 'undefined',
 		'true', '1', '10', 'template', '[]', '{}',
@@ -60,7 +44,6 @@ UnitTest(stringify, 'stringify')
 		47: '[object WeakMap]',
 		48: '[object Set]',
 		49: '[object WeakSet]',
-		50: JSON.stringify([1, 2, 3])
 	})
 	.setMapValues(
 		[1669900531674], '1669900531674',
@@ -72,3 +55,7 @@ UnitTest(stringify, 'stringify')
 	// .log('cases')
 	.run()
 
+
+test('toStrings', toStrings,
+	{ param: [1, 2, 3, '4'], tobe: ['1', '2', '3', '4'] }
+)

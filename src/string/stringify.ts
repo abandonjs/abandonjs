@@ -1,4 +1,5 @@
-import { type } from '../util'
+import { type } from '../util/type'
+import { toString } from './toString'
 
 /**
  * @title stringify
@@ -7,32 +8,18 @@ import { type } from '../util'
  * @param replacer {?(number|string)[]|(this:any,key:string,value:any)=>any}
  * @param space {?string|number}
  * @returns {string}
- * @version 2.2.0
+ * @lastUpdate 2.2.1
  */
 export function stringify(value: any, replacer?: (this: any, key: string, value: any) => any, space?: string | number): string;
 
 export function stringify(value: any, replacer?: (number | string)[] | null, space?: string | number): string;
 
 export function stringify(value, replacer, space): string {
-	let newValue: any = value
 
-	if (type(value) === 'String') newValue = value
-	if ([
-		'Function', 'AsyncFunction', 'GeneratorFunction',
-		'Symbol', 'RegExp', 'Promise', 'Date', 'NaN',
-		'Map', 'Set', 'WeakMap', 'WeakSet',
-	].includes(type(value)))
-		newValue = value.toString()
-
-
-	if (value === Infinity) newValue = 'Infinity'
-	if (value === -Infinity) newValue = '-Infinity'
-	if (value === undefined) newValue = 'undefined'
-	if (value === null) newValue = 'null'
-
-	if (type(newValue) === 'String') {
-		return JSON.stringify(newValue, replacer, space).replace(/^(")+|(")+$/g, '')
+	if (['Object', 'Array'].includes(type(value))) {
+		return JSON.stringify(value, replacer, space)
 	}
 
-	return JSON.stringify(newValue, replacer, space)
+	return JSON.stringify(toString(value), replacer, space)
+		.replace(/^(")+|(")+$/g, '')
 }

@@ -1,11 +1,12 @@
-# 2.2.0
+## 2.2.1
 
-## 修改
+- 优化部分`string`相关方法
 
-## 添加
+## 2.2.0
 
-> `isEndOfStrings`, `isFile`, `isImage`, `isH5Video`, `isPdf`, `isWord`, `isExcel` 等
+- 添加:
+  - `isEndOfStrings`, `isFile`, `isImage`, `isH5Video`, `isPdf`, `isWord`, `isExcel` 等
+  - `stringify`
 
-## 移除
-
-> `asyncCatchError`
+- 移除
+  - `asyncCatchError`
