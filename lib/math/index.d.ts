@@ -91,6 +91,7 @@ export declare function minBy(list: any[], itteratee?: Itteratee): any;
  * @description 求和
  * @param list 要迭代的数组
  * @returns 总和
+ * @version 2.2.3
  */
 export declare function sum(list?: any[]): number;
 /**

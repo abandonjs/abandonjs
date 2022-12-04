@@ -1,15 +1,27 @@
 import { type } from '../util'
 
 /**
- * @title isNumber
+ * @title isFloat
+ * @description 判断数是否为浮点型
+ * @param num 待检测的数据类型
+ * @returns boolean
+ */
+export function isFloat(num: number): boolean {
+  return (num % 1) !== 0
+}
+
+export const isNumber = (val: unknown): val is number =>  type(val) === 'Number'
+
+/**
+ * @title likeNumber
  * @description 是否为数字
  * @support: Number, NumberString
  * @unsupported: Infinity, Function
  * @param value any
  * @returns boolean
- * @update: 2.2.0
+ * @version: 2.2.3
  */
-export function isNumber(value: any): boolean {
+export function likeNumber(value: any): boolean {
 
 	if (type(value) === 'String') {
 		value = value.replaceAll(' ', '')
@@ -29,3 +41,5 @@ export function isNumber(value: any): boolean {
 
 	return false
 }
+
+// bigNum

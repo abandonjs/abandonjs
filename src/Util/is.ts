@@ -96,3 +96,11 @@ export function isExcelFile(fileName: string): boolean {
 }
 
 
+export const isClient = typeof window !== 'undefined';
+
+
+export const isBoolean = (val: unknown): val is boolean => typeof val === 'boolean';
+
+export const isWindow = (val: unknown): val is Window => typeof window !== 'undefined' && toString.call(val) === '[object Window]';
+export const isIOS = /* #__PURE__ */ isClient && window?.navigator?.userAgent && /iP(ad|hone|od)/.test(window.navigator.userAgent);
+export const hasOwn = <T extends object, K extends keyof T>(val: T, key: K): key is K => Object.prototype.hasOwnProperty.call(val, key);

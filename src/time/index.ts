@@ -1,7 +1,9 @@
-import { spLength } from '../number';
-import { replaces } from '../string';
-import { type } from '../util';
-import { Time } from './type';
+import { spLength } from '../number'
+import { replaces } from '../string'
+import { type } from '../util'
+import { Time } from './type'
+
+export * from './is'
 
 /**
  * @title toDate
@@ -45,19 +47,7 @@ export function deadline(
 	}
 }
 
-/**
- * @title isDate
- * @description 检查日期是否有效, 时间戳也为有效时间(13位)
- * @param date:any 待判断日期
- * @returns boolean
- */
-export function isDate(date: any): boolean {
-	if (type(date) === 'Number') {
-		if (date.toString().length === 13) return true
-		if (date.toString().length === 10) return true
-	}
-	return date instanceof Date && !isNaN(date.getTime());
-}
+
 
 /**
  * @title format
@@ -115,18 +105,3 @@ export function format(time: Time = new Date(), pattern = 'YYYY-MM-DD'): string 
 	])
 }
 
-/**
- * @title isSameDate
- * @description 时间是否相同, 时间类型支持isDate的类型
- * @param timeA 比较时间
- * @param timeB 被比较时间
- * @returns {boolean}
- */
-export function isSameDate(timeA: Time, timeB: Time): boolean {
-
-	if (!isDate(timeA) || !isDate(timeB)) return false
-	if (timeA.toString() === timeB.toString()) return true
-	if (new Date(timeA).getTime() === new Date(timeB).getTime()) return true
-
-	return false
-}

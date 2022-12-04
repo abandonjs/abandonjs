@@ -1,5 +1,7 @@
 import { test } from 'unit-testing-js'
-import * as _ from '../index'
+import * as _ from '..'
+
+import './is'
 
 const time = '2022/06/5 07:03:50'
 
@@ -16,7 +18,8 @@ test('deadline', _.deadline,
 test('isDate', _.isDate,
 	{ params: ['123'], tobe: false },
 	{ params: [new Date()], tobe: true },
-	{ params: [new Date().getTime()], tobe: true },
+	{ params: [new Date().getTime()], tobe: false },
+	// { params: [new Date().getTime()], tobe: true },
 )
 
 test('isSameDate', _.isSameDate,

@@ -1,4 +1,4 @@
-import { isFloat } from './isFloat'
+import { isFloat } from './is'
 import { getDecimal, toFloat } from './util'
 
 /**
