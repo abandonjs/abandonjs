@@ -7,11 +7,11 @@
 ## 使用
 
 ```shell
-npm install rh-js-methods
+npm install abandonjs
 ```
 
 ```js
-import { filter } from 'rh-js-methods'
+import { filter } from 'abandonjs'
 ```
 
 <div class="exploded-line" />
