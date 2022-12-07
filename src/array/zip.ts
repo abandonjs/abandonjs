@@ -1,11 +1,12 @@
 import { loops } from '../function/loop'
+import { toString } from '../string/toString'
 
 /**
  * @title zip
  * @description: 创建一个分组元素的数组，数组的第一个元素包含所有给定数组的第一个元素，数组的第二个元素包含所有给定数组的第二个元素，以此类推 
+ * @param arrays  {...any[]}
+ * @returns {any[]}
  * @version: 2.1.11
- * @param arrays : ...any[]
- * @returns any[]
  */
 export function zip<T>(...arrays: any[]): T[][] {
 	const len: number = arrays.length
@@ -21,17 +22,13 @@ export function zip<T>(...arrays: any[]): T[][] {
 	return result
 }
 
-
-
-export function zipObject<T>(props: (string | number)[], values: any[]): T {
+export function zipObject<T>(props: (string | number)[], values: (T[keyof T])[]): T {
 	const record: T = {} as T
 	for (let i = 0; i < props.length; i++) {
-		record[props[i]] = values[i]
+		record[toString(props[i])] = values[i]
 	}
 	return record
 }
-
-
 // const _path = (path: string, value: any) => {
 // 	const _record = {}
 // 	// return _path(path, value)
@@ -44,7 +41,7 @@ export function zipObject<T>(props: (string | number)[], values: any[]): T {
 // 		// const keys = props[i].split('.')
 // 		const key = /(\w)\./.exec(props[i])
 // 		// if (key?.length === 2) {
-// 		// 	record[key] = 
+// 		// 	record[key] =
 // 		// }
 // 		// record[keys[0]] = _path(,values[i])
 

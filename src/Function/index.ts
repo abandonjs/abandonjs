@@ -27,8 +27,6 @@ export function toPromise<T>(target: any, ...values: any[]): Promise<T> {
     })
 }
 
-
-
 /**
  * @title once
  * @description  fn 方法只会执行一次
