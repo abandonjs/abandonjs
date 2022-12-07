@@ -52,6 +52,40 @@ UnitTest(filter, 'filter:filterCondition=Record<string, any>')
 	// .log('cases')
 	.run()
 
+UnitTest(filter, 'filter:filterCondition=function')
+	.addParamMap(
+		[BaseValueMap.get('@EMPTY')]
+	)
+	.addParamMap([
+		Boolean
+	])
+	.setDefaultValue([])
+	.buildCases()
+	// .log('cases')
+	.run()
+
+// UnitTest(filter, 'filter:filterCondition=Record<string, any>, retainNotObject=true')
+// 	.addParamMap(
+// 		[
+// 			[{ a: 1, b: '1' }, { b: 1 }, { a: 1, b: '1', c: 3 }, {}],
+// 			[{ a: 1, b: '1' }, { b: 1, a: 0 }, { a: 1, b: '1', c: 3 }, {}]
+// 		].map(item => BaseValueMap.get('@EMPTY').concat(item))
+// 	)
+// 	.addParamMap([
+// 		{ a: 1 },
+// 		{ a: /1/ },
+// 		{ b: '1' },
+// 		{ a: /1/, b: '1' }
+// 	])
+// 	.addParam(true)
+// 	.setDefaultValue([
+// 		{ a: 1, b: '1' },
+// 		{ a: 1, b: '1', c: 3 }
+// 	])
+// 	.buildCases()
+// 	// .log('cases')
+// 	.run()
+
 // test('filter-filterConditions=Boolean', filter,
 // 	...Cases('@EMPTY', 123, '@EMPTY').map(item => {
 // 		item.tobe = [123]

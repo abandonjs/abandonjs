@@ -20,7 +20,6 @@ export function loop<T>(
 			return result
 		}
 
-
 	}
 	return result
 }

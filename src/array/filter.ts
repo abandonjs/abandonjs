@@ -18,6 +18,7 @@ export function filter<T extends Record<string, any>>(
   filterCondition?: FilterCondition<T>,
   retainNotObject = false
 ): T[] {
+  
   if (type(list) !== 'Array') return []
   if (!filterCondition || !list || list.length === 0) return list
 
@@ -25,7 +26,6 @@ export function filter<T extends Record<string, any>>(
     return list.filter(filterCondition as ((value: T, index: number, array: T[]) => boolean))
   }
 
-  // 开始过滤
   return list.filter((item: T): boolean => {
 
     if (!isObject(item)) return retainNotObject

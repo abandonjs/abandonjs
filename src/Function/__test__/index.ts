@@ -1,6 +1,7 @@
 export * from '..'
 import * as _ from '../index'
-import { test, add, asyncAdd } from 'unit-testing-js'
+import { test, add } from 'unit-testing-js'
+import './loop'
 
 import './is'
 // throttle
