@@ -1,52 +1,47 @@
 /**
- * @title loop
+ * @title loop<T>
  * @description: 指定次数遍历
- * @param length : number
- * @param  callback : (index: number) => true | void
- * @returns number
+ * @param num  {number}
+ * @param  callback  {?(indexes: number[]) => T}
+ * @returns {T[]}
+ * @version: 2.3.2
  */
 export function loop<T>(
-	length: number,
-	callback: (index: number | number[]) => T,
+	num: number,
+	callback: ((indexes: number[]) => T) = ((indexes: number[]) => indexes as T),
 	indexes: number[] = []
 ): T[] {
 	const result: T[] = []
-	for (let i = 0; i < length; i++) {
-
-		const unit = callback(indexes.concat(i))
-		result.push(unit)
-
-		if (Number.isNaN(result)) {
-			return result
-		}
-
+	for (let i = 0; i < num; i++) {
+		result.push(callback(indexes.concat(i)))
 	}
 	return result
 }
 
 /**
- * @title loops
+ * @title loops<T>
  * @description: 指定次数遍历
- * @param length : number[]
- * @param  callback : (index: number) => true | void
- * @returns number
+ * @param length  {number[]}
+ * @param callback  {((indexes: number[]) => T) = ((indexes: number[]) => indexes as T)}
+ * @returns {Array}
+ * @version: 2.3.2
  */
 export function loops<T>(
-	length: number[],
-	callback: (index: number | number[]) => T,
+	num: number[],
+	callback: ((indexes: number[]) => T) = ((indexes: number[]) => indexes as T),
 	indexes: number[] = []
-): any[] {
+) {
 
-	const len = length.length
+	const len = num.length
 	if (len === 0) {
 		return []
 	}
 
 	if (len === 1) {
-		return loop<T>(length[0], callback, indexes)
+		return loop<T>(num[0], callback, indexes)
 	}
 
-	const [_len, ..._length] = length
+	const [_len, ..._length] = num
 
 	const result: any[] = []
 
@@ -54,25 +49,77 @@ export function loops<T>(
 		result.push(loops(_length, callback, indexes.concat(i)))
 	}
 
-	return result 
+	return result
 
 }
 
+export function loopGroup<T>(
+	num: number[],
+	callback: ((indexes: number[]) => T) = ((indexes: number[]) => indexes as T),
+	indexes: number[] = []
+) {
+	const result: T[] = []
+
+	loops<T>(
+		num,
+		(_indexes: number[]) => {
+			result.push(callback(_indexes))
+			return _indexes as T
+		}, indexes)
+
+	return result
+}
+
 /**
- * @title loops<T>
+ * @title loopArray<T>
  * @description: 数组遍历
- * @version: 2.1.11
- * @param arrays 
- * @param callback 
- * @returns number
+ * @param arrays {T[]}
+ * @param callback {(unit:T,index?:number)=>true|void}
+ * @returns {T|undefined}
+ * @version: 2.3.2
  */
-export function loopArray<T>(arrays: T[], callback: (unit: T, index?: number) => true | void): number {
+export function loopArray<T>(
+	array: T[],
+	callback: (unit: T, index?: number) => true | void
+): T | undefined {
 
 	for (let i = 0; i < length; i++) {
-		if (callback(arrays[i], i)) {
-			return i
+		if (callback(array[i], i)) {
+			return array[i]
 		}
 	}
 
-	return -1
+	return
+}
+
+/**
+ * @title loopArray<T>
+ * @description: 数组遍历
+ * @version: 2.1.11
+ * @param arrays {T[]}
+ * @param callback {(unit:T,index?:number)=>true|void}
+ * @returns number
+ * @version: 2.3.2
+ */
+export function loopArrays<T>(
+	arrays: T[][],
+	callback: (unit: T[], indexes?: number[]) => T
+): T[][] {
+
+	const result: T[][] = []
+
+	loops(
+		arrays.map(item => item.length),
+		(indexes: number[]) => {
+			result.push(
+				callback(
+					indexes.map((i: number, j: number) => arrays[j][i]),
+					indexes
+				) as T[]
+			)
+			return indexes
+		}
+	)
+
+	return result
 }
