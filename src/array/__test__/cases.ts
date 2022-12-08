@@ -20,15 +20,6 @@ export const cases:Record<string,TCaseUnit> = {
 			{ param: [{}, 1], tobe: [{}, 1] },
 		]
 	},
-	'isArray': {
-		method: _.isArray,
-		params: [
-			{ param: [], tobe: true },
-			{ param: 1, tobe: false },
-			{ param: 33, tobe: false },
-			{ param: [{}, 1], tobe: true },
-		]
-	},
 	'pick': {
 		method: _.pick,
 		params: [
