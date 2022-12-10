@@ -20,10 +20,3 @@ test('isEmpty', _.isEmpty,
 	{ param: NaN, tobe: true },
 	{ param: Number.NaN, tobe: true },
 )
-
-test('runFunc', _.runFunc,
-	{ params: [() => 3], tobe: 3 },
-	{ params: [(a) => 3 + a, 2], tobe: 5 },
-	{ params: [async () => 3], tobe: 3 },
-	{ params: [async (a) => 3 + a, 2], tobe: 5 },
-)
