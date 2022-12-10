@@ -1,4 +1,4 @@
-import { isObject } from '../object'
+import { isObject } from '../object/is'
 
 /**
  * @title isString
@@ -25,5 +25,4 @@ export function isJsonString<T>(val: any): T | false {
 	} catch (e) {
 		return false
 	}
-
 }

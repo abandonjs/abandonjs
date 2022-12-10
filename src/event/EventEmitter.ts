@@ -1,4 +1,4 @@
-import { runFunc } from '../util'
+import { runFunc } from '../function'
 
 export interface EventEmitter<T, U> {
   $cache: Record<string, T[]>

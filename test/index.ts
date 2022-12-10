@@ -1,6 +1,8 @@
 import fs from 'fs'
-import { loadModule } from 'unit-testing-js'
+import { loadModule, TestSetting } from 'unit-testing-js'
 // npm run dev --modules=要运行的模块名(new)
+
+TestSetting.set('isSummary', true)
 
 const url = 'src'
 const indexes: string[] = fs.readdirSync(url) || []
@@ -29,6 +31,5 @@ function runTest() {
     })
   }
 }
-
 
 runTest()

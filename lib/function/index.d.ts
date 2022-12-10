@@ -1,4 +1,5 @@
 import { AnyFunction, AnyObject } from '../type';
+export * from './runFunc';
 export * from './loop';
 export * from './is';
 /**

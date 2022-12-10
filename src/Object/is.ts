@@ -1,4 +1,4 @@
-import { type } from "../util"
+import { type } from "../util/type"
 
 /**
  * @title isObject
@@ -18,5 +18,6 @@ export const isPromise = (value: unknown): value is Promise<any> => {
 
 const toString = Object.prototype.toString;
 
-export const isMap = (val: unknown): val is Map<any, any> => toString.call(val) === '[object Map'
+export const isMap = (val: unknown): val is Map<any, any> => toString.call(val) === '[object Map]'
+
 export const isSet = (val: unknown): val is Set<any> => toString.call(val) === '[object Set]'
