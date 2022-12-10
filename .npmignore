@@ -13,3 +13,5 @@ coverage/
 commitlint.config.*
 .vscode*
 .husky*
+config/
+.babelrc
