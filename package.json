@@ -1,6 +1,6 @@
 {
   "name": "abandonjs",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "description": "方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
