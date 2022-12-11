@@ -49,23 +49,28 @@ function AdaptData(data, module) {
 			const record = item
 				.split('* ')
 				.map(iitem => {
-					iitem = iitem.replace(/^@/, '')
+					// iitem = iitem.replace(/^@/, '')
 
-					const matchs = /^(title) (.+)/.exec(iitem)
+					const matchs = /^@(title) (.+)/.exec(iitem)
 					if (matchs && matchs.length === 3) {
 						name = matchs[2]
 						return;
 					}
 
-					const flag = iitem.indexOf('note')
+					const flag = iitem.indexOf('@note')
 					if (flag > -1) {
 						// console.log(iitem)
-						note = iitem.replace(/^note/, '')
+						note = iitem.replace(/^@note/, '')
 						return;
 					}
 					iitem = iitem
 						.replace('\r\n ', '')
-						.replace(/([a-zA-Z0-9\[\]\=\{\}\(\)\.\,\|:\?><]+)/gi, '`' + '$1' + '`')
+						.replace(/@([a-zA-Z0-9\$]{2,}) ([a-zA-Z0-9\$]{1,}) \{(.+)\}/gi,  '`$1` `$2` `$3`')
+						.replace(/@([a-zA-Z0-9\$]{2,}) ([a-zA-Z0-9\$]{1,})/gi,  '`$1` `$2`')
+						.replace(/@([a-zA-Z0-9]+)/, '`$1`')
+						// .replace(/@returns/, '`returns`')
+						// .replace(/@return/, '`return`')
+						// .replace(/([a-zA-Z0-9\$\[\]\=\{\}\(\)\.\,\|:\?><]{2,})/gi, '`' + '$1' + '`')
 
 					return iitem
 

@@ -1,6 +1,6 @@
 import { test } from 'unit-testing-js'
-import * as _ from '../index'
-const _eb = new _.EventEmitter<any,any>();
+import { EventEmitter } from '..'
+const _eb = new EventEmitter<any, any>()
 
 test('EventEmitter', (val) => val,
 	{
