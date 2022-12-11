@@ -25,6 +25,12 @@ export function isFloat(num: number): boolean {
 	return (num % 1) !== 0
 }
 
+/**
+ * @title isNumber
+ * @description 是否为数字
+ * @param num 待检测的数据类型
+ * @returns {boolean}
+ */
 export const isNumber = (val: unknown): val is number => type(val) === 'Number'
 
 /**
