@@ -1,5 +1,6 @@
 import { isFloat } from './is'
-import { getDecimal, toFloat } from './util'
+import { toFloat } from './to'
+import { getDecimal } from './util'
 
 /**
  * @title random
