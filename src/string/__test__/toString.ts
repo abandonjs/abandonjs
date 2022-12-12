@@ -1,28 +1,32 @@
 import { test, UnitTest, BaseValueMap } from 'unit-testing-js'
 import { toString, toStrings } from '..'
 
+
+
 test('toString', toString,
 	{ param: 1, tobe: '1' },
 	{ param: { a: 1 }, tobe: '{"a":1}' },
 	{ param: [1, 2, '3'], tobe: '[1,2,"3"]' },
+	{ param: BigInt(1).toString(), tobe: '1' }
 )
 
+// console.log(1.)
 
 UnitTest(toString, 'toString')
 	.addParamMap(BaseValueMap.get(
 		'@EMPTY', '@TRUE', '@FALSE', '@NUMBER',
 		'@EMPTY_FUNCTION', '@FUNCTION', '@DATE'
 	)
-	.concat([
-		/.+/,
-		Symbol(),
-		new Promise(resolve => resolve('Empty')),
-		new Proxy({ a: 123, b: 456 }, {}),
-		new Map(),
-		new WeakMap(),
-		new Set(),
-		new WeakSet(),
-	])
+		.concat([
+			/.+/,
+			Symbol(),
+			new Promise(resolve => resolve('Empty')),
+			new Proxy({ a: 123, b: 456 }, {}),
+			new Map(),
+			new WeakMap(),
+			new Set(),
+			new WeakSet(),
+		])
 	)
 	.tobe(
 		'null', 'NaN', 'undefined',
@@ -33,7 +37,7 @@ UnitTest(toString, 'toString')
 		'-1.7976931348623157e+308', 'function(){}', '()=>{}', 'async function(){}',
 		'async()=>{}', 'function*(){yield}', 'function(e){return e}', 'e=>e',
 		'async function(e){return e}', 'async e=>e',
-		'function*(e){yield e}', new Date(2022,12,2,4,13,14).toString()
+		'function*(e){yield e}', new Date(2022, 12, 2, 4, 13, 14).toString()
 	)
 	.setIndexValues({
 		42: "/.+/",

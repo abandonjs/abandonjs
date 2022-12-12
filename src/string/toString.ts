@@ -9,10 +9,11 @@ import { type } from '../util/type'
  */
 export function toString(value: any): string {
   if (type(value) === 'String') return value
+  
   if ([
     'Function', 'AsyncFunction', 'GeneratorFunction',
     'Symbol', 'RegExp', 'Promise', 'Date', 'NaN',
-    'Map', 'Set', 'WeakMap', 'WeakSet',
+    'Map', 'Set', 'WeakMap', 'WeakSet', 'BigInt'
   ].includes(type(value)))
     return value.toString()
 
