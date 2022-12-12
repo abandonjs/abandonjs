@@ -12,6 +12,10 @@ export function isFloat(num: number): boolean {
 
 export const isNumber = (val: unknown): val is number =>  type(val) === 'Number'
 
+
+export const isBigInt = (value:unknown): value is BigInt => type(value) === 'BigInt'
+
+
 /**
  * @title likeNumber
  * @description 是否为数字
@@ -41,5 +45,3 @@ export function likeNumber(value: any): boolean {
 
 	return false
 }
-
-// bigNum
