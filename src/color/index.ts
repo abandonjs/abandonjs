@@ -37,6 +37,5 @@ export function toRGB(val: string, opa?: number): string {
 	for (let i = 0; i < 3; i++) {
 		rgbArr.push(parseInt(v.substring(i * 2, i * 2 + 2), 16))
 	}
-	return `rgb${isOpa ? 'a' : ''}(${rgbArr.join(',')}${isOpa ? ',' + opa : ''})
-`
+	return `rgb${isOpa ? 'a' : ''}(${rgbArr.join(',')}${isOpa ? ',' + opa : ''})`
 }
