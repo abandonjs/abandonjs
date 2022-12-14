@@ -24,9 +24,14 @@ function runTest() {
   }
 
   if (modules.length > 0) {
-    modules.forEach((name: string): void => {
-      if (indexes.includes(name)) {
-        import(`../src/${name}/__test__`)
+    loadModule(async () => {
+      for (let i = 0; i < modules.length; i++) {
+        const name = modules[i]
+        if (
+          indexes.includes(name)
+          && !['index.ts', 'type.ts', 'constants.ts'].includes(name)
+        )
+          await import(`../src/${name}/__test__`)
       }
     })
   }
