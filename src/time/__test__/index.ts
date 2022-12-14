@@ -1,4 +1,5 @@
 import { test } from 'unit-testing-js'
+import './timezone'
 import * as _ from '..'
 
 import './is'

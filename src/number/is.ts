@@ -1,4 +1,19 @@
 import { type } from '../util'
+import { INFINITY } from '../constants'
+
+/**
+ * @title isEffectNumber
+ * @description 是否为js的有效区间的数, 非number类型都为false
+ * @param num any
+ * @returns boolean
+ */
+export function isEffectNumber(num: any): boolean {
+	if (type(num) === 'Number') {
+		if (num === INFINITY || num === -INFINITY) return false
+		return true
+	}
+	return false
+}
 
 /**
  * @title isFloat
@@ -7,10 +22,16 @@ import { type } from '../util'
  * @returns boolean
  */
 export function isFloat(num: number): boolean {
-  return (num % 1) !== 0
+	return (num % 1) !== 0
 }
 
-export const isNumber = (val: unknown): val is number =>  type(val) === 'Number'
+/**
+ * @title isNumber
+ * @description 是否为数字
+ * @param num 待检测的数据类型
+ * @returns {boolean}
+ */
+export const isNumber = (val: unknown): val is number => type(val) === 'Number'
 
 
 export const isBigInt = (value:unknown): value is BigInt => type(value) === 'BigInt'

@@ -1,5 +1,4 @@
-import { type } from '../util'
-import { INFINITY, MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../constants'
+import { INFINITY, MAX_VALUES_NUMBER } from '../constants'
 import { isFloat } from './is'
 
 /**
@@ -30,52 +29,6 @@ export function spLength(value: number | string, min = 0, max: number): string {
 }
 
 /**
- * @title isEffectNumber
- * @description 是否为js的有效区间的数, 非number类型都为false
- * @param num any
- * @returns boolean
- */
-export function isEffectNumber(num: any): boolean {
-  if (type(num) === 'Number') {
-    if (num === INFINITY || num === -INFINITY) return false
-    return true
-  }
-  return false
-}
-
-
-/**
- * @title toNumber
- * @description 将值转换为Number, 不可以正确装换的值, 均返回0
- * @param value any 待转换的数值
- * @returns number
- */
-export function toNumber(value: any): number {
-  if (type(value) === 'Number') {
-    if (value === INFINITY) return MAX_VALUES_NUMBER
-    if (value === -INFINITY) return MIN_VALUES_NUMBER
-    return value
-  }
-  const result = +value;
-  if (type(result) === 'Number') {
-    return result
-  }
-  return 0
-}
-
-/**
- * @title toFloat
- * @description 转换为指定位数的浮点数
- * @param num { number } 数字
- * @param fixed { number } 小数点位数
- * @returns { number }
- */
-// eslint-disable-next-line @typescript-eslint/no-inferrable-types
-export function toFloat(num: number, fixed: number = 1): number {
-  return Number(num.toFixed(fixed))
-}
-
-/**
  * @title getDecimal
  * @description 获取小数点位数
  * @param num { number }
@@ -98,8 +51,6 @@ export function clamp(num: number, lower: number = -INFINITY, upper: number = IN
   if (num > upper) return upper
   return num
 }
-
-
 
 /**
  * @title inRange

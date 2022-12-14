@@ -1,6 +1,6 @@
 {
   "name": "abandonjs",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "description": "方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
@@ -8,6 +8,7 @@
   "deliver": "/lib/",
   "typings": "lib/index.d.ts",
   "scripts": {
+    "git:style": "bash ./config/script/style.bat",
     "commitlint": "commitlint -e",
     "reload": "rimraf node_modules && pnpm install",
     "build": "npx rollup -c --extend ./rollup.config.ts",
