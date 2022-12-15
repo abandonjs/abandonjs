@@ -1,7 +1,7 @@
-import { isNumber } from '../number'
-import { isString } from '../string'
+import { isNumber } from './isNumber'
+import { isString } from './isString'
 import { type } from '../util/type'
-import { Time } from './type'
+import { Time } from '../time/type'
 
 /**
  * @title isDate

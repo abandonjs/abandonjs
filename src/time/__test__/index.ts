@@ -2,7 +2,7 @@ import { test } from 'unit-testing-js'
 import './timezone'
 import * as _ from '..'
 
-import './is'
+// import './is'
 
 const time = '2022/06/5 07:03:50'
 
@@ -15,23 +15,6 @@ test('toDate', _.toDate,
 test('deadline', _.deadline,
 	{ params: [new Date('2022/06/17 07:03:50'), 'day', new Date('2022/06/15 07:03:50')], tobe: 2 },
 )
-
-test('isDate', _.isDate,
-	{ params: ['123'], tobe: false },
-	{ params: [new Date()], tobe: true },
-	{ params: [new Date().getTime()], tobe: false },
-	// { params: [new Date().getTime()], tobe: true },
-)
-
-test('isSameDate', _.isSameDate,
-	{ params: [new Date(), new Date()], tobe: true },
-	{ params: [new Date().getTime(), new Date()], tobe: true },
-	{ params: [new Date(), 123], tobe: false },
-	{ params: [123, new Date()], tobe: false },
-	{ params: [123, 123], tobe: false },
-)
-
-
 
 test('format', _.format,
 	{ params: [new Date(time)], tobe: '2022-06-05' },

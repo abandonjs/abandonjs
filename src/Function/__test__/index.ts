@@ -3,7 +3,6 @@ import * as _ from '../index'
 import { test, add } from 'unit-testing-js'
 import './loop'
 
-import './is'
 // throttle
 // debounce
 

@@ -3,8 +3,6 @@ import { MapEntity } from '../..'
 
 const me = new MapEntity<any>()
 
-console.log([{ a: 1 }].includes({ a: 1 }))
-
 me.set('1', '2')
 me.set({ b: 1 }, 123)
 

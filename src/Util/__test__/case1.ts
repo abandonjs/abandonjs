@@ -1,4 +1,4 @@
-import * as _ from '../index'
+import * as _ from '..'
 import { test } from 'unit-testing-js'
 
 test('type', _.type,
@@ -34,9 +34,6 @@ test('toPathValue', _.toPathValue,
 		}, 'a\\.2\\.3.4'], tobe: 123
 	},
 )
-
-
-
 
 const tmpObj = {
 	a: {

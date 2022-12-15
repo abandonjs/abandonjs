@@ -1,5 +1,5 @@
 import { toNumber } from "../number/to"
-import { isString } from "../string/is"
+import { isString } from "../is"
 
 export type LikeNumber = number | `${number}`
 /**

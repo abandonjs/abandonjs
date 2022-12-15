@@ -10,8 +10,6 @@ test('toString', toString,
 	{ param: BigInt(1).toString(), tobe: '1' }
 )
 
-// console.log(1.)
-
 UnitTest(toString, 'toString')
 	.addParamMap(BaseValueMap.get(
 		'@EMPTY', '@TRUE', '@FALSE', '@NUMBER',

@@ -1,5 +1,6 @@
 import { useValue } from './util'
-import { toNumber, isEffectNumber, isNumber } from '../number'
+import { toNumber } from '../number'
+import { isEffectNumber, isNumber } from '../is/isNumber'
 import { type } from '../util'
 import { Itteratee } from '../type'
 import { MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../constants'

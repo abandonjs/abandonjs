@@ -1,4 +1,4 @@
-import { isFloat } from './is'
+import { isFloat } from '../is/isNumber'
 import { toFloat } from './to'
 import { getDecimal } from './util'
 
