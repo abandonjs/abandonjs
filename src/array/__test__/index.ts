@@ -3,7 +3,6 @@ export * from '..'
 import { cases } from './cases'
 import './modules/filter'
 import './modules/toArray'
-import './modules/isArray'
 import './flat'
 import './zip'
 

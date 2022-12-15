@@ -1,4 +1,4 @@
-import { type } from '../util'
+import { type } from '../util/type'
 
 export type FunctionType = (...args: unknown[]) => unknown
 export type AsyncFunctionType = (...args: unknown[]) => Promise<unknown>

@@ -1,5 +1,5 @@
 import { INFINITY, MAX_VALUES_NUMBER } from '../constants'
-import { isFloat } from './is'
+import { isFloat } from '../is/isNumber'
 
 /**
  * @title spLength

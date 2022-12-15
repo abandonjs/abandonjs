@@ -1,6 +1,5 @@
-import * as _ from '../index'
+import * as _ from '..'
 import { test } from 'unit-testing-js'
-import { MAX_VALUES_NUMBER } from '../../constants'
 
 test('spLength', _.spLength,
 	{ params: ['121212', 3, 5], tobe: '21212' },
@@ -13,21 +12,6 @@ test('spLength', _.spLength,
 	{ params: [{}], tobe: '' },
 )
 
-test('isEffectNumber', _.isEffectNumber,
-	{ param: 1, tobe: true },
-	{ param: '1', tobe: false },
-	{ param: null, tobe: false },
-	{ param: NaN, tobe: false },
-	{ param: undefined, tobe: false },
-	{ param: -1, tobe: true },
-	{ param: 10000, tobe: true },
-	{ param: MAX_VALUES_NUMBER * 9999, tobe: false },
-	{ param: Infinity, tobe: false },
-	{ param: MAX_VALUES_NUMBER, tobe: true },
-	{ param: -MAX_VALUES_NUMBER * 9999, tobe: false },
-	{ param: -Infinity, tobe: false },
-)
-
 test('toNumber', _.toNumber,
 	{ param: 1, tobe: 1 },
 	{ param: '1', tobe: 1 },
@@ -38,14 +22,6 @@ test('toNumber', _.toNumber,
 	{ param: 10000, tobe: 10000 },
 )
 
-test('isFloat', _.isFloat,
-	{ param: 1, tobe: false },
-	{ param: 1.1, tobe: true },
-	{ param: 1.0, tobe: false },
-	{ param: 0.0, tobe: false },
-)
-
-
 test('clamp', _.clamp,
 	{ params: [100, - 1, 1], tobe: 1 },
 	{ params: [-100, - 1, 1], tobe: -1 },
@@ -53,9 +29,7 @@ test('clamp', _.clamp,
 	{ params: [-10, -5, 5], tobe: -5 },
 )
 
-
-
-test('inRnage', _.inRange,
+test('inRange', _.inRange,
 	{ params: [0], tobe: true },
 	{ params: [0, 1], tobe: false },
 	{ params: [0, 1, 2], tobe: false },

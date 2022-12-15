@@ -7,4 +7,5 @@ export * from './ban';
 export * from './is';
 export * from './changeCase';
 export * from './toPathValue';
+export * from './isEqual';
 //# sourceMappingURL=index.d.ts.map

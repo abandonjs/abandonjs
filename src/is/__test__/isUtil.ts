@@ -1,6 +1,18 @@
 import * as _ from '..'
 import { test } from 'unit-testing-js'
 
+
+test('isEmpty', _.isEmpty,
+	{ param: '', tobe: false },
+	{ param: 0, tobe: false },
+	{ param: '-1', tobe: false },
+	{ param: -1, tobe: false },
+	{ param: undefined, tobe: true },
+	{ param: null, tobe: true },
+	{ param: NaN, tobe: true },
+	{ param: Number.NaN, tobe: true },
+)
+
 test('isFileExtension', _.isFileExtension,
 	{ param: 'png', tobe: false },
 	{ param: 'jpeg', tobe: false },

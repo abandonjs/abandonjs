@@ -8,7 +8,7 @@
 ## 使用
 
 ```shell
-npm install abandonjs
+npm install abandonjs -D
 ```
 
 ```js

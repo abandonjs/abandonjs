@@ -4,4 +4,3 @@ export * from './is'
 export * from './serialize'
 
 export * from './MapEntity'
-export * from './SetEntity'

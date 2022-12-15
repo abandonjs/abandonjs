@@ -1,7 +1,7 @@
 import * as _ from '..'
 import './MapEntity'
-import './SetEntity'
 import { test } from 'unit-testing-js'
+
 const obj = { a: 1, b: 'bb', c: undefined }
 
 test('omit', _.omitRecord,

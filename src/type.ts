@@ -13,3 +13,5 @@ export type AnyObject = {
 
 export type NoParamFn<Result> = () => Result
 export type OneParamFn<Param, Result> = (value: Param) => Result
+
+export type ObjectType<V = unknown> = Record<string, V>
