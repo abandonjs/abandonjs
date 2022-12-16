@@ -3,5 +3,4 @@ export * from './omit';
 export * from './is';
 export * from './serialize';
 export * from './MapEntity';
-export * from './SetEntity';
 //# sourceMappingURL=index.d.ts.map
