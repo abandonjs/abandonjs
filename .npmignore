@@ -16,3 +16,4 @@ commitlint.config.*
 config/
 .babelrc
 temp/
+docs/
