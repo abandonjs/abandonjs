@@ -1,0 +1,3 @@
+# BanConfig
+
+> - `type` <interface>
