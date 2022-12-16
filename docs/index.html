@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Ruihuag</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="description" content="Description">
+	<link rel="shortcut icon" href="/__assets__/rh-icon-32.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+	<link rel="stylesheet" href="/config/css/lv2/styles.css">
+</head>
+
+<body>
+	<div id="app">Loading...</div>
+	<div class="expand-btns">
+		<a href="https://github.com/guanruihua">
+			<img src="/__assets__/GitHub-Mark-32px.png" target="_blank" alt="github" />
+		</a>
+		<a href="/">
+			<img target="_self" src="/__assets__/home.png" alt="home" />
+		</a>
+		<button onclick="window.location.href = window.location.pathname">
+		<svg t="1670654811214" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3224" width="19" height="19"><path d="M985.43085037 748.716032v236.71481837h-946.86170074v-946.86170074h946.86170074v325.48333037h-59.179008v118.358016h59.179008v207.126528h-59.179008v59.179008h59.179008zM97.74815763 97.74815763v828.50368474h828.50368474V97.74815763H97.74815763z m132.05746726 259.61722312L310.52534518 443.91537778l151.49738667-141.25920711 40.33133985 43.29016888-194.75842845 181.61967408L186.51666963 397.72463408l43.28895526-40.36046697z m0 236.716032l80.71972029 86.5487834 151.49738667-141.26042074 40.33133985 43.29016889-194.75842845 181.61967407-121.07897362-129.83895229 43.28895526-40.35925333z m341.37338311-230.02893275H807.89504v59.179008H571.179008v-59.179008z m0 236.716032H807.89504v59.179008H571.179008v-59.179008z" fill="#171516" p-id="3225"></path></svg>
+		</button>
+	</div>
+
+
+	<script>
+		window.$docsify = {
+			// 侧边栏文档目录
+			loadSidebar: true,
+
+			subMaxLevel: 2,
+			alias: {
+				"/.*/_sidebar.md": "/_sidebar.md",
+			},
+			// 跳转后自动到顶部
+			auto2top: true,
+
+			// coverpage: true,
+			// PLUGINS
+			// ----------------------------------------------------------------
+			// 页面右侧toc
+			toc: {
+				tocMaxLevel: 2,
+				target: "h2, h3, h4, h5, h6",
+			},
+			copyCode: {
+				buttonText: 'Copy',
+				errorText: 'Error',
+				successText: 'Copied'
+			},
+			// 全文搜索
+			search: {
+				depth: 6,
+				noData: "没有搜到!",
+				placeholder: "搜索...",
+				// 避免搜索索引冲突,同一域下的多个网站之间
+				// namespace: "__ruihuag__website__name__"
+				paths: 'auto'
+			},
+			// 底部导航
+			pagination: {
+				previousText: "上一页",
+				nextText: "下一页",
+				crossChapter: true,
+				crossChapterText: true,
+			}
+
+		};
+	</script>
+	<!-- docsify -->
+	<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+
+	<!-- 代码高亮  https://cdn.jsdelivr.net/npm/prismjs@1/components/ -->
+
+	<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-cmake.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-csharp.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-docker.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-powershell.min.js"></script>
+
+
+	<!-- 多tab支持 -->
+	<script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1/dist/docsify-tabs.min.js"></script>
+
+	<!-- 代码复制 -->
+	<script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js"></script>
+
+	<!-- 底部 上一页下一页 -->
+	<script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/external-script.min.js"></script>
+
+	<!-- <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/ga.min.js"></script> -->
+
+	<!-- 全文搜索 -->
+	<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
+
+	<!-- 图片放大缩小 -->
+	<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+
+	<!-- 侧边栏目录折叠 -->
+	<script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+
+	<!-- 页面右侧 TOC -->
+	<script src="https://cdn.jsdelivr.net/npm/docsify-plugin-toc@1.1.0/dist/docsify-plugin-toc.min.js"></script>
+
+	<!-- emoji -->
+	<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+
+	<script>
+		// window.$docsify = {
+		// 	count: {
+		// 		countable: true,
+		// 		fontsize: '0.9em',
+		// 		color: 'rgb(90,90,90)',
+		// 		language: 'chinese'
+		// 	},
+		// 	search: {
+		// 		maxAge: 86400000, // 过期时间，单位毫秒，默认一天
+		// 		noData: '找不到结果',//搜索不到结果时显示
+		// 		paths: 'auto',//自动
+		// 		placeholder: '搜索',//搜索框提示
+		// 		depth: 999,
+		// 	},
+		// 	loadSidebar: true,
+		// 	// loadNavbar: true,
+		// 	subMaxLevel: 4,
+		// 	repo: 'https://github.com/guanruihua',
+		// 	copyCode: {
+		// 		buttonText: 'Copy',
+		// 		errorText: 'Error',
+		// 		successText: 'Copied'
+		// 	},
+		// 	plugins: [
+		// 		// function myPlugin2(hook, vm) {
+		// 		// 	console.log({ hook, vm })
+		// 		// }
+		// 	]
+		// }
+	</script>
+
+</body>
+
+</html>
