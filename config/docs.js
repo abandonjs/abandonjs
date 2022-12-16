@@ -137,4 +137,5 @@ ${desc}
 }
 
 action('./src', '../guanruihua.github.io/OpenSource/abandonjs')
+// action('./src', './docs')
 console.log('Build docs success...')
