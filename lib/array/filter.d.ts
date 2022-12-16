@@ -1,4 +1,4 @@
-export declare type FilterCondition<T = unknown> = ((value: T, index: number, array: T[]) => boolean) | Record<string, number | string | RegExp | any>;
+export type FilterCondition<T = unknown> = ((value: T, index: number, array: T[]) => boolean) | Record<string, number | string | RegExp | any>;
 /**
  * @title filter<T extends object>
  * @description 单层过滤

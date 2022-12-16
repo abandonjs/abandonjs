@@ -1,19 +1,16 @@
 import path from 'path'
 import rollupTypescript from 'rollup-plugin-typescript2'
-import babel from 'rollup-plugin-babel'
-import resolve from 'rollup-plugin-node-resolve'
+import babel from '@rollup/plugin-babel'
+import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import { eslint } from 'rollup-plugin-eslint'
-import { DEFAULT_EXTENSIONS } from '@babel/core'
-import { terser } from 'rollup-plugin-terser'
-import pkg from './package.json'
+import pkg from '../package.json'
 
 const paths = {
-  input: path.join(__dirname, '/src/index.ts'),
-  output: path.join(__dirname, '/lib')
+  input: path.join(__dirname, '..', '/src/index.ts'),
+  output: path.join(__dirname, '..', '/lib')
 }
 
-// rollup 配置项
 const rollupConfig = {
   input: paths.input,
   output: [
@@ -45,23 +42,19 @@ const rollupConfig = {
     commonjs(),
 
     // 配合 commonjs 解析第三方模块
-    resolve({
-      // 将自定义选项传递给解析插件
-      customResolveOptions: {
-        moduleDirectory: 'node_modules'
-      }
-    }),
+    resolve(),
     rollupTypescript(),
     babel({
-      runtimeHelpers: true,
+      babelHelpers: 'runtime',
+      // runtimeHelpers: true,
       // 只转换源代码，不运行外部依赖
       exclude: 'node_modules/**',
-      tsconfig:'./tsconfig.json',
-      include: './src',
+      // tsconfig: 'tsconfig.json',
+      include: 'src',
       // babel 默认不支持 ts 需要手动添加
-      extensions: [...DEFAULT_EXTENSIONS, '.ts']
+      extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.ts']
     }),
-    terser()
+    // terser()
 
   ]
 }

@@ -8,4 +8,5 @@ export * from './function';
 export * from './math';
 export * from './type';
 export * from './event';
+export * from './is';
 //# sourceMappingURL=index.d.ts.map

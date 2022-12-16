@@ -1,4 +1,3 @@
-export * from './is';
 export * from './to';
 export * from './deadline';
 export * from './format';

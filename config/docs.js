@@ -49,7 +49,6 @@ function AdaptData(data, module) {
 			const record = item
 				.split('* ')
 				.map(iitem => {
-					// iitem = iitem.replace(/^@/, '')
 
 					const matchs = /^@(title) (.+)/.exec(iitem)
 					if (matchs && matchs.length === 3) {
@@ -59,7 +58,6 @@ function AdaptData(data, module) {
 
 					const flag = iitem.indexOf('@note')
 					if (flag > -1) {
-						// console.log(iitem)
 						note = iitem.replace(/^@note/, '')
 						return;
 					}
