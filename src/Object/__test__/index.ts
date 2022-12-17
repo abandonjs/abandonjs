@@ -15,14 +15,6 @@ test('omit', _.omitRecord,
 	},
 )
 
-test('isObject', _.isObject,
-	{ param: {}, tobe: true },
-	{ param: null, tobe: false },
-	{ param: undefined, tobe: false },
-	{ param: NaN, tobe: false },
-	{ param: { a: 123 }, tobe: true },
-)
-
 test('existKeys', _.existKeys,
 	{ params: [{ a: 123 }, 'a'], tobe: true },
 	{ params: [{ a: 123 }, ['a']], tobe: true },

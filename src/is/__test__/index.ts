@@ -1,6 +1,0 @@
-import './isArray'
-import './isFunction'
-import './isNumber'
-import './isString'
-import './isTime'
-import './isUtil'

@@ -1,4 +1,4 @@
-import * as _ from '../index'
+import * as _ from '..'
 import { test } from 'unit-testing-js'
 import { INFINITY, MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../../constants'
 

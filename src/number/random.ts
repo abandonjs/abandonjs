@@ -1,4 +1,4 @@
-import { isFloat } from '../is/isNumber'
+import { isFloat } from 'check-it-type'
 import { toFloat } from './to'
 import { getDecimal } from './util'
 

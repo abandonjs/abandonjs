@@ -1,4 +1,4 @@
-import { type } from '../util'
+import { type } from 'check-it-type'
 import { INFINITY, MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../constants'
 
 /**

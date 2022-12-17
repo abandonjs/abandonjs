@@ -1,4 +1,4 @@
-import { type } from './type'
+import { type } from 'check-it-type'
 import { stringify } from '../string/stringify'
 import { Val, Valer } from './util/type'
 import { matchNumberValue } from './util/matchNumberValue'

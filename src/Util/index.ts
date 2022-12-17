@@ -1,4 +1,3 @@
-export * from './type'
 export * from './log'
 export * from './matchValue'
 export * from './deepClone'

@@ -1,4 +1,4 @@
-import { type } from "../type"
+import { type } from "check-it-type"
 import { Valer } from './type'
 
 export function matchNumberValue(val: number, valer: Valer):boolean {

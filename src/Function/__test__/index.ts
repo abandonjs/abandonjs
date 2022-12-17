@@ -1,5 +1,5 @@
 export * from '..'
-import * as _ from '../index'
+import * as _ from '..'
 import { test, add } from 'unit-testing-js'
 import './loop'
 

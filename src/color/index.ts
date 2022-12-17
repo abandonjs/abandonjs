@@ -1,4 +1,4 @@
-import { type } from "../util";
+import { type } from "check-it-type"
 
 /**
  * @title isHexColor

@@ -1,6 +1,6 @@
 {
   "name": "abandonjs",
-  "version": "2.3.7",
+  "version": "2.4.0-beta",
   "description": "方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
@@ -56,7 +56,7 @@
     "@types/node": "^18.11.2",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
-    "check-it-type": "^0.1.0",
+    "check-it-type": "0.1.2",
     "eslint": "^8.25.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.1",

@@ -1,6 +1,6 @@
-import { runTime } from 'unit-testing-js'
-import { logAsync } from '../../../util'
-import { cases } from './flat-runtime.cases'
+// import { runTime } from 'unit-testing-js'
+// import { logAsync } from '../../../util'
+// import { cases } from './flat-runtime.cases'
 
 export function flatten(arr: unknown) {
 	if (!Array.isArray(arr)) return [];
@@ -40,9 +40,9 @@ export function flattenArrayFlat(arr) {
 	return arr.flat(Infinity);
 }
 
-function logCasesTime(name, fn) {
-	logAsync(name, ...cases.map(async item => (await runTime(fn, item)).runTime))
-}
+// function logCasesTime(name, fn) {
+// 	logAsync(name, ...cases.map(async item => (await runTime(fn, item)).runTime))
+// }
 
 // logCasesTime('flattenArrayFlat-run-time', flattenArrayFlat)
 // logCasesTime('flattenArrayFlat-run-time', flattenArrayFlat)

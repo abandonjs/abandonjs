@@ -1,6 +1,6 @@
 import { spLength } from '../number'
 import { replaces } from '../string'
-import { type } from '../util'
+import { type } from 'check-it-type'
 import { Time } from './type'
 
 /**

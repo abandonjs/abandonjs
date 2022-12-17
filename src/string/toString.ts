@@ -1,4 +1,4 @@
-import { type } from '../util/type'
+import { type } from 'check-it-type'
 
 /**
  * @title toString
