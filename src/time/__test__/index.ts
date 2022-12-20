@@ -1,7 +1,8 @@
 import { test } from 'unit-testing-js'
 import './timezone'
+import './intervalDate'
+import './dayOfYear'
 import * as _ from '..'
-
 const time = '2022/06/5 07:03:50'
 
 test('toDate', _.toDate,

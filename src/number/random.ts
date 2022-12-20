@@ -31,3 +31,8 @@ export function random(
 	if (floating) return toFloat(result, floating)
 	return Math.ceil(result)
 }
+
+// 该方法用于获取两个整数之间的随机整数
+// const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
+// random(1, 50);
