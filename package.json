@@ -1,6 +1,6 @@
 {
   "name": "abandonjs",
-  "version": "2.3.7",
+  "version": "2.4.0",
   "description": "方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
@@ -45,6 +45,7 @@
   "author": "ruihuag",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.20.5",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@rollup/plugin-babel": "^6.0.3",
@@ -55,6 +56,7 @@
     "@types/node": "^18.11.2",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
+    "check-it-type": "0.1.4",
     "eslint": "^8.25.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.1",

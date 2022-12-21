@@ -1,9 +1,11 @@
 import { useValue } from './util'
 import { toNumber } from '../number'
-import { isEffectNumber, isNumber } from '../is/isNumber'
-import { type } from '../util'
+import { isEffectNumber, isNumber, type } from 'check-it-type'
 import { Itteratee } from '../type'
 import { MAX_VALUES_NUMBER, MIN_VALUES_NUMBER } from '../constants'
+
+export * from './oddAndEven'
+export * from './average'
 
 /**
  * @ 无限大（小）当做 js Number 的最大（小）值[主要处理计算异常的问题, 二期再加入大位数处理]

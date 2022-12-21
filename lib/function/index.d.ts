@@ -1,4 +1,4 @@
-import { AnyFunction, AnyObject } from '../type';
+import { AnyFunction, ObjectType } from '../type';
 export * from './runFunc';
 export * from './loop';
 /**
@@ -68,7 +68,7 @@ export declare function before(n: number, func: AnyFunction): AnyFunction;
  * @param partials 附加的部分参数
  * @returns 新的绑定函数
  */
-export declare function bind<T>(func: AnyFunction, thisArg?: AnyObject, ...partials: any[]): AnyFunction;
+export declare function bind<T>(func: AnyFunction, thisArg?: ObjectType, ...partials: any[]): AnyFunction;
 /**
  * @title curry
  * @description 柯里化

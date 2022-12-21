@@ -1,4 +1,4 @@
-import { isObject } from './is'
+import { isObject } from 'check-it-type'
 import { ObjectType } from '../type'
 import { isEqual } from '../util/isEqual'
 

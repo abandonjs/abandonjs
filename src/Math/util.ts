@@ -1,4 +1,4 @@
-import { type } from '../util'
+import { type } from 'check-it-type'
 import { Itteratee } from '../type'
 
 export function useValue(itteratee?: Itteratee): any {

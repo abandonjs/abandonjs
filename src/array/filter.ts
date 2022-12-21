@@ -1,5 +1,4 @@
-import { type } from '../util'
-import { isObject } from '../object'
+import { isObject, type } from 'check-it-type'
 
 export type FilterCondition<T = unknown> = ((value: T, index: number, array: T[]) => boolean)
   | Record<string, number | string | RegExp | any>

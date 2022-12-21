@@ -1,4 +1,4 @@
-import { isFloat } from '../is/isNumber'
+import { isFloat } from 'check-it-type'
 import { toFloat } from './to'
 import { getDecimal } from './util'
 
@@ -31,3 +31,8 @@ export function random(
 	if (floating) return toFloat(result, floating)
 	return Math.ceil(result)
 }
+
+// 该方法用于获取两个整数之间的随机整数
+// const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
+// random(1, 50);

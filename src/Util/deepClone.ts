@@ -1,4 +1,4 @@
-import { type } from "./type"
+import { type } from "check-it-type"
 
 function deepClonePredicate(value: any) {
   switch (type(value)) {
