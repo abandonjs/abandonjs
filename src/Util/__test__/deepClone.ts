@@ -1,5 +1,35 @@
-// import * as _ from '../index'
-// import { add, asyncAdd, test } from 'unit-testing-js'
+import { deepClone } from '..'
+import { arrayToTree } from '../../tree'
+import { toBe, test } from 'unit-testing-js'
+
+const obj = { a: 1, b: 2 }
+const dcObj = deepClone(obj)
+obj.a = 3
+
+const arr: any[] = [{ a: 1, b: 2 }, { a: 1, b: 2 }]
+const dcArr = deepClone(arr)
+arr[1].a = { c: 3 }
+
+const list: any = [
+	{ id: '1', },
+	{ id: '3', },
+	{ id: '4', pid: '2', },
+	{ id: '2', pid: '1', },
+]
+arrayToTree(list)
+
+test('deepClone', toBe,
+	{ param: dcObj, tobe: { a: 1, b: 2 } },
+	{ param: dcArr, tobe: [{ a: 1, b: 2 }, { a: 1, b: 2 }] },
+	{
+		param: list, tobe: [
+			{ id: '1', },
+			{ id: '3', },
+			{ id: '4', pid: '2', },
+			{ id: '2', pid: '1', },
+		]
+	}
+)
 
 // const beforeEqual = (unit) => {
 // 	let tmp = unit.param

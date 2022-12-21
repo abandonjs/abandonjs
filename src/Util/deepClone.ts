@@ -23,7 +23,13 @@ function deepClonePredicate(value: any) {
   return value
 }
 
-// 深拷贝
+/**
+ * @title deepClone
+ * @description 深拷贝
+ * @param value {any}
+ * @returns {any}
+ * @version 2.4.1
+ */
 export function deepClone(value: any) {
   return deepClonePredicate(value)
 }
