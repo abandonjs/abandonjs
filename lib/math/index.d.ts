@@ -1,4 +1,6 @@
 import { Itteratee } from '../type';
+export * from './oddAndEven';
+export * from './average';
 /**
  * @title HEX
  * @description 将数字装换成需要装换的数据格式(k, m, g, t, p, e, z, y, b)

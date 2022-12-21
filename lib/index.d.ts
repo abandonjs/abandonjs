@@ -9,4 +9,6 @@ export * from './function';
 export * from './math';
 export * from './type';
 export * from './event';
+export * from './sundry';
+export * from './tree';
 //# sourceMappingURL=index.d.ts.map

@@ -1,4 +1,4 @@
-import { AnyFunction, AnyObject } from '../type'
+import { AnyFunction, ObjectType } from '../type'
 import { type } from 'check-it-type'
 
 export * from './runFunc'
@@ -141,7 +141,7 @@ export function before(n: number, func: AnyFunction): AnyFunction {
  */
 export function bind<T>(
   func: AnyFunction,
-  thisArg: AnyObject = {},
+  thisArg: ObjectType = {},
   ...partials: any[]
 ): AnyFunction {
   return function (...args: any[]): T | undefined {
