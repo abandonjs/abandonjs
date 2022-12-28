@@ -1,8 +1,8 @@
 import { type } from 'check-it-type'
-import { stringify } from '../string/stringify'
 import { Val, Valer } from './util/type'
 import { matchNumberValue } from './util/matchNumberValue'
 import { toPathValue } from "./toPathValue"
+import { equal } from './isEqual'
 
 /**
  * @title matchValue
@@ -17,32 +17,11 @@ export function matchValue(val: Val, valer: Valer, path?: string): boolean {
 		val = toPathValue(val, path)
 	}
 
-	if (equal(val, valer)) {
-		return true
-	}
+	if (equal(val, valer)) return true
 
-	if (type(valer) === 'RegExp') {
-		return (valer as RegExp).test(String(val))
-	}
+	if (type(valer) === 'RegExp') return (valer as RegExp).test(String(val))
 
-	if (type(val) === 'Number') {
-		return matchNumberValue(val as number, valer)
-	}
+	if (type(val) === 'Number') return matchNumberValue(val as number, valer)
 
 	return true
-}
-
-/**
- * @title equal
- * @description 比较是否值和类型是否相等
- * @param value any
- * @param lastValue any 
- * @returns 
- */
-export function equal(value: unknown, lastValue: unknown): boolean {
-	if (value === lastValue) return true
-	if (type(value) !== type(value)) return false
-	if (type(value) === 'Symbol') return false
-	if (stringify(value) === stringify(lastValue)) return true
-	return false
 }

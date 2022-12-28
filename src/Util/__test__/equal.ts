@@ -1,8 +1,29 @@
-import * as _ from '../index'
+import * as _ from '..'
 import { test } from 'unit-testing-js'
 
 const sym = Symbol(12)
+const mapA = new Map([
+	['a', '1']
+])
+const mapB = new Map([
+	['a', '2']
+])
+const vmapA = new WeakMap([
+	[{}, '1']
+])
+const vmapB = new WeakMap([
+	[{}, '2']
+])
+
+const setA = new Set([1, 2, 3, 4, 4, undefined]);
+const setB = new Set([1, 2, 3, 4, 5]);
+const setC = new Set([1, 2, 3, 4, 4, undefined]);
+
 test('equal', _.equal,
+	{ params: [vmapA, vmapB], tobe: true },
+	{ params: [setA, setB], tobe: false },
+	{ params: [setA, setC], tobe: true },
+	{ params: [mapA, mapB], tobe: false },
 	{ name: 'date', params: [new Date('2022'), new Date('2022')], tobe: true },
 	{ params: [new Date(), new Date()], tobe: true },
 	{ params: [1, 1], tobe: true },
