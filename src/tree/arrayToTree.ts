@@ -1,19 +1,21 @@
+import { deepClone } from '../util/deepClone'
 import { ObjectType } from '../type'
 /**
  * @title arrayToTree
  * @description 数组转树
- * @param list {object[]}
+ * @param array {object[]}
  * @param id {string}
  * @param pid {string}
  * @returns {object[]}
- * @version 2.4.0
+ * @version 2.4.1
  */
 export function arrayToTree<T = unknown>(
-	list: ObjectType<T>[],
+	array: ObjectType<T>[],
 	id = 'id',
 	pid = 'pid',
 	child = 'children'
 ) {
+	const list: ObjectType<T>[] = deepClone(array)
 	const result: ObjectType<T>[] = []
 	const temp: ObjectType<any> = {}
 
