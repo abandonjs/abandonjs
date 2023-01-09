@@ -1,4 +1,4 @@
-import { random } from '../number'
+import { random } from '0math'
 
 /**
  * @title selects<T>
