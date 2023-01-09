@@ -26,7 +26,7 @@ const rollupConfig = {
       file: path.join(paths.output, 'index.esm.js'),
       format: 'esm',
       name: pkg.name,
-      sourcemap: true
+      sourcemap: true,
     }
   ],
   plugins: [
@@ -42,7 +42,12 @@ const rollupConfig = {
     commonjs(),
 
     // 配合 commonjs 解析第三方模块
-    resolve(),
+    resolve({
+      moduleDirectories: ['node_modules']
+      // customResolveOptions: {
+      //   moduleDirectory: 'node_modules''
+      // }
+    }),
     rollupTypescript(),
     babel({
       babelHelpers: 'runtime',

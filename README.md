@@ -14,3 +14,8 @@ npm install abandonjs -D
 ```js
 import { type } from 'abandonjs'
 ```
+
+## 分离工具方法
+
+- 类型判断: `check-it-type`
+- 数学方法: `0math`
