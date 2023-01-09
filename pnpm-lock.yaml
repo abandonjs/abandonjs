@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  0math: ^0.0.3
+  0math: 0.1.0
   '@babel/core': ^7.20.5
   '@commitlint/cli': ^17.1.2
   '@commitlint/config-conventional': ^17.1.0
@@ -30,7 +30,7 @@ specifiers:
   unit-testing-js: 0.3.3
 
 devDependencies:
-  0math: 0.0.3
+  0math: 0.1.0
   '@babel/core': 7.20.5
   '@commitlint/cli': 17.1.2_qvzakmwvdl4lvx4islpgat2ufy
   '@commitlint/config-conventional': 17.1.0
@@ -60,8 +60,8 @@ devDependencies:
 
 packages:
 
-  /0math/0.0.3:
-    resolution: {integrity: sha512-O03746HaaHxTuDYO0ZMippQ/aIfr0hnBZ7oopUz8DgS5FPXQayHqmfcVDV1BVdD3jlxVSa4IaJMNLCrAIhTLwg==}
+  /0math/0.1.0:
+    resolution: {integrity: sha512-2M7692JD9ZWL40yAiiFUhRHLAh9uPD0seCI5cM1iaSR18pNEXy1r1AgsZsKUFtMBqMCWPa5HQHBmJBOpSO+vcg==}
     engines: {node: '>=16'}
     dev: true
 

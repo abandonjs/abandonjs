@@ -1,6 +1,6 @@
 {
   "name": "abandonjs",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
@@ -45,7 +45,7 @@
   "author": "ruihuag",
   "license": "MIT",
   "devDependencies": {
-    "0math": "^0.0.3",
+    "0math": "0.1.0",
     "@babel/core": "^7.20.5",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
