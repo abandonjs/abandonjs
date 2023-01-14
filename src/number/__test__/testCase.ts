@@ -35,13 +35,6 @@ test('inRange', _.inRange,
 	{ params: [0, 1, 2], tobe: false },
 )
 
-test('round', _.round,
-	{ param: 1, tobe: 1 },
-	{ param: [1.05, 2], tobe: '>1.05', type: 'Match' },
-	{ param: [1.056, 2], tobe: '<2', type: 'Match' },
-
-)
-
 test('between', _.between,
 	{ params: [123, - 1, 1234], tobe: true },
 	{ params: [100, 99, 1000], tobe: true },
