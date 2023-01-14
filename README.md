@@ -19,3 +19,7 @@ import { type } from 'abandonjs'
 
 - 类型判断: `check-it-type`
 - 数学方法: `0math`
+
+## 移除
+
+- MapEntity
