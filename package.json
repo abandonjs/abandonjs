@@ -1,6 +1,6 @@
 {
   "name": "abandonjs",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "description": "方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
@@ -8,21 +8,14 @@
   "deliver": "/lib/",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "git:style": "bash ./config/script/style.bat",
     "commitlint": "commitlint -e",
     "reload": "rimraf node_modules && pnpm install",
     "build": "npx rollup -c ./config/rollup.build.ts",
     "build:ed": "npx rollup -c --extend ./rollup.config.ts",
     "docs": "node ./config/docs.js",
     "test": "ts-node-dev --respawn --transpile-only ./test/index.ts",
-    "start": "node ./dist/index.js",
     "eslint": "eslint . --ext .ts",
-    "eslint:fix": "eslint . --ext .ts --fix",
-    "pub": "npm publish",
-    "nocache": "jest --no-cache",
-    "watch": "jest --watchAll",
-    "jest": "jest --coverage",
-    "verbose": "npx jest --verbose"
+    "pub": "npm publish"
   },
   "husky": {
     "hooks": {
