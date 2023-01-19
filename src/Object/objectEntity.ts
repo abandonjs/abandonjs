@@ -24,7 +24,7 @@ export function ObjectEntity<Value = any>(target: ObjectType = {}, config?: Obje
 		return defaultKey
 	}
 
-	const list = (keyName: string = 'key', valueName: string = 'value', keyValueReverse: boolean = false) => {
+	const list = (keyName = 'key', valueName = 'value', keyValueReverse = false) => {
 		return Object.entries(target)
 			.map(([key, value]: [string, Value]) => {
 				if (keyValueReverse) {
