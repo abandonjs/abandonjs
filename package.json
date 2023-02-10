@@ -38,7 +38,7 @@
   "author": "ruihuag",
   "license": "MIT",
   "devDependencies": {
-    "0math": "0.1.0",
+    "0math": "0.1.1",
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
     "@rollup/plugin-babel": "^6.0.3",
@@ -47,7 +47,7 @@
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
-    "check-it-type": "0.1.7",
+    "check-it-type": "0.1.8",
     "eslint": "^8.31.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
@@ -60,6 +60,6 @@
     "rollup-plugin-typescript2": "^0.32.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.9.4",
-    "unit-testing-js": "0.3.5"
+    "unit-testing-js": "0.4.0"
   }
 }
