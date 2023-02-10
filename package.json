@@ -1,6 +1,6 @@
 {
   "name": "abandonjs",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "description": "方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
@@ -8,21 +8,14 @@
   "deliver": "/lib/",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "git:style": "bash ./config/script/style.bat",
     "commitlint": "commitlint -e",
     "reload": "rimraf node_modules && pnpm install",
     "build": "npx rollup -c ./config/rollup.build.ts",
     "build:ed": "npx rollup -c --extend ./rollup.config.ts",
     "docs": "node ./config/docs.js",
     "test": "ts-node-dev --respawn --transpile-only ./test/index.ts",
-    "start": "node ./dist/index.js",
     "eslint": "eslint . --ext .ts",
-    "eslint:fix": "eslint . --ext .ts --fix",
-    "pub": "npm publish",
-    "nocache": "jest --no-cache",
-    "watch": "jest --watchAll",
-    "jest": "jest --coverage",
-    "verbose": "npx jest --verbose"
+    "pub": "npm publish"
   },
   "husky": {
     "hooks": {
@@ -45,7 +38,7 @@
   "author": "ruihuag",
   "license": "MIT",
   "devDependencies": {
-    "0math": "0.1.0",
+    "0math": "0.1.1",
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
     "@rollup/plugin-babel": "^6.0.3",
@@ -54,7 +47,7 @@
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
-    "check-it-type": "0.1.4",
+    "check-it-type": "0.1.8",
     "eslint": "^8.31.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
@@ -67,6 +60,6 @@
     "rollup-plugin-typescript2": "^0.32.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.9.4",
-    "unit-testing-js": "0.3.5"
+    "unit-testing-js": "0.4.0"
   }
 }

@@ -1,5 +1,7 @@
 import * as _ from '..'
-import './MapEntity'
+export * from '..'
+import './ObjectEntity'
+// import './MapEntity'
 import { test } from 'unit-testing-js'
 
 const obj = { a: 1, b: 'bb', c: undefined }

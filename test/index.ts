@@ -39,5 +39,4 @@ function runTest() {
 
 }
 
-// console.log('test', loadModule, TestSetting, process.env)
 runTest()

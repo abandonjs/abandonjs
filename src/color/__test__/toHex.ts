@@ -1,6 +1,9 @@
-import * as _ from '..'
-import { test } from 'unit-testing-js'
+import { rgbToHex } from '..'
+import { UnitTest } from 'unit-testing-js'
 
-test('toHex', _.rgbToHex,
-	{ params: [255,255,255], tobe: '#ffffff' },
-)
+UnitTest(rgbToHex)
+	.addCases(
+		{ params: [255, 255, 255], tobe: '#ffffff' },
+		{ params: [0, 0, 0], tobe: '#000000' },
+	)
+	.run()
