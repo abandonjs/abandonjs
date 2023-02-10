@@ -37,7 +37,7 @@ export interface Color {
  * @param val 16进制颜色
  * @param ?opa 透明度
  * @returns {Color}
- * @version 2.5.3
+ * @version 2.5.4
  */
 export function toRGBRecord(val: string, opa?: number): Color {
 	if (val.length === 3) {
