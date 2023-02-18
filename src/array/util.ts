@@ -30,29 +30,6 @@ export function chunk<T>(list: T[], size: number): T[][] {
 }
 
 /**
- * @title concat<T>
- * @description 连接多个数组
- * @params ...list any[][] 多个数组 
- * @returns any[]
- */
-export function concat<T>(...list: T[]): T[] {
-  let result: T[] = []
-  if (list && list.length > 0) {
-    const len: number = list.length
-    let i = 0;
-    while (i < len) {
-      if (Array.isArray(list[i])) {
-        result = result.concat(list[i])
-      } else {
-        result.push(list[i])
-      }
-      i++;
-    }
-  }
-  return result
-}
-
-/**
  * @title drop<T>
  * @description 去除前n个元素
  * @param T[] list 数组
