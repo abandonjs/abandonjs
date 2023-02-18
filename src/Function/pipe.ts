@@ -1,15 +1,15 @@
-import { toArray } from "array";
-import { isFunction } from "check-it-type";
-import { AnyFunction } from "../type";
-
+import { toArray } from "../array"
+import { at } from '../collection'
+import { isFunction } from "check-it-type"
+import { AnyFunction } from "../type"
 
 /**
  * @title pipe
  * @description 管道函数, 链接前函数的值为下一个函数的参
- * @param handlers {Function[]} 函数数组
+ * @param ...handlers {Function[]} 函数数组
  * @returns {Function} 
  */
-export function pipe(handlers: AnyFunction[]) {
+export function pipe(...handlers: AnyFunction[]) {
 	return function (...args: unknown[]) {
 		let params: unknown[] = args
 		for (let i = 0; i < handlers.length; i++) {
@@ -18,8 +18,8 @@ export function pipe(handlers: AnyFunction[]) {
 				params = toArray(item(...params))
 				continue
 			}
-			return params
+			return at(params)
 		}
-		return params
+		return at(params)
 	}
 }
