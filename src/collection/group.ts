@@ -38,10 +38,10 @@ export function groupToMap<T extends MapType = MapType>(
 			if (isObject(value))
 				key = value[handler]
 		}
-		if (isEmpty(result.get(key))) {
-			result.set(key, [])
-		}
-		result.set(key, result.get(key)?.concat(value[i]))
+		result.set(key,
+			isEmpty(result.get(key))
+				? (result.get(key) as T[]).concat(value[i])
+				: [value[i]])
 	}
 	return result
 }
