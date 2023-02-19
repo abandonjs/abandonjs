@@ -2,7 +2,8 @@
  * @title concat<T>
  * @description 连接多个数组
  * @params ...list {T[][]} 多个数组 
- * @returns any[]
+ * @returns T[]
+ * @update 2.6.0
  */
 export function concat<T>(...list: T[]): T[] {
 	let result: T[] = []

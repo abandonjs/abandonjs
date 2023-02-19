@@ -1,4 +1,4 @@
-import { isObject, type } from 'check-it-type'
+import { isArray, isFunction, isObject, type } from 'check-it-type'
 
 export type FilterCondition<T = unknown> = ((value: T, index: number, array: T[]) => boolean)
   | Record<string, number | string | RegExp | any>
@@ -17,11 +17,11 @@ export function filter<T extends Record<string, any>>(
   filterCondition?: FilterCondition<T>,
   retainNotObject = false
 ): T[] {
-  
-  if (type(list) !== 'Array') return []
+
+  if (!isArray(list)) return []
   if (!filterCondition || !list || list.length === 0) return list
 
-  if (type(filterCondition) === 'Function') {
+  if (isFunction(filterCondition)) {
     return list.filter(filterCondition as ((value: T, index: number, array: T[]) => boolean))
   }
 
@@ -31,7 +31,7 @@ export function filter<T extends Record<string, any>>(
 
     let flag = true
 
-    if (type(filterCondition) === 'Object') {
+    if (isObject(filterCondition)) {
       for (const key in filterCondition) {
         const unit = filterCondition[key]
         const val = item[key]
