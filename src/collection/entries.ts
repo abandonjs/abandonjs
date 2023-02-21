@@ -1,4 +1,4 @@
-import { isArray, isString } from "check-it-type"
+import { isString } from "check-it-type"
 
 /**
  * @title entries
@@ -7,7 +7,6 @@ import { isArray, isString } from "check-it-type"
  * @returns 
  */
 export function entries<T>(value: string | T[]) {
-	console.log(value)
 	if (isString(value)) {
 		return value.split('').entries()
 	}
