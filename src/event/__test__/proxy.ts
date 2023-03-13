@@ -8,7 +8,6 @@ const props: ProxyFactoryProps = [
 ]
 const pf = new ProxyFactory(props)
 
-
 const ap = pf.getProxy<ObjectType>({})
 ap.a = 1
 ap.b = '2'
@@ -19,7 +18,7 @@ try {
 } catch (error) {
 	// console.log(error)
 }
-console.log(ap)
+// console.log(ap)
 
 
 // UnitTest(toBe, 'ProxyFactory')

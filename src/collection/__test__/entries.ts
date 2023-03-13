@@ -5,7 +5,7 @@ import { entries } from '..'
 
 const array1 = ['a', 'b', 'c', 'd', 'e']
 // console.log(array1.entries())
-console.log(entries(array1))
+// console.log(entries(array1))
 
 // UnitTest(entries, 'entries')
 // 	.addCases(

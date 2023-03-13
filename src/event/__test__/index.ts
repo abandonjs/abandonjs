@@ -1,2 +1,3 @@
 import './eventEmitter'
-import './proxy'
+// import './proxy'
+import './ProxyObject'

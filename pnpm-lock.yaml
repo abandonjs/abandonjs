@@ -10,7 +10,7 @@ specifiers:
   '@types/node': ^18.11.18
   '@typescript-eslint/eslint-plugin': ^5.48.1
   '@typescript-eslint/parser': ^5.48.1
-  check-it-type: 0.4.0
+  check-it-type: 0.4.2
   eslint: ^8.31.0
   eslint-plugin-prettier: ^4.2.1
   husky: ^8.0.3
@@ -34,7 +34,7 @@ devDependencies:
   '@types/node': 18.13.0
   '@typescript-eslint/eslint-plugin': 5.51.0_b635kmla6dsb4frxfihkw4m47e
   '@typescript-eslint/parser': 5.51.0_4vsywjlpuriuw3tl5oq6zy5a64
-  check-it-type: 0.4.0
+  check-it-type: 0.4.2
   eslint: 8.33.0
   eslint-plugin-prettier: 4.2.1_kcm2pbg4372aakdkvxabn7z2ri
   husky: 8.0.3
@@ -842,8 +842,8 @@ packages:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
     dev: true
 
-  /check-it-type/0.4.0:
-    resolution: {integrity: sha512-TPiz3ZswnLTr04+kz1VMIqfpLGqr4AAjhgV+7YcfO8WiOttR+1vEjUdHA+I7kwhk7M9GQQtO5YeLK+t/z0wSSQ==}
+  /check-it-type/0.4.2:
+    resolution: {integrity: sha512-ZyJR8jPF6hw8B+C8L6rSxlMYD3w0G7UDAojzbDpFlb9CzAq83+YwFETcwfGMDWZDFuExSgUBMoMYm4W18vMHCg==}
     engines: {node: '>=16'}
     dev: true
 
