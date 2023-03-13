@@ -1,3 +1,47 @@
+export interface ProxyObjectProp {
+	/**
+	 * @description 属性名
+	 */
+	name: string
+	/**
+	 * @description 默认值
+	 * @default undefined
+	 */
+	default?: any
+	/**
+	 * @description 初始化属性名
+	 */
+	initProp?: boolean
+
+	/**
+	 * @description 指定限制类型
+	 */
+	type?: string | string[]
+	/**
+	 * @description 不可以为空
+	 * @default false
+	 */
+	required?: boolean
+	/**
+	 * @description 只修改赋值一次, 优先级大于
+	 * @default false
+	 */
+	once?: boolean
+	
+	/**
+	 * @description false: 拦截 删除该属性
+	 */
+	configurable?: boolean
+	/**
+	 * @description false: 在枚举相应对象上的属性时该属性隐藏
+	 */
+	enumerable?: boolean
+	/**
+	 * @description false: 不可以修改值
+	 */
+	writable?: boolean
+}
+
 // interface ProxyHandler<T extends object> {
 //     /**
 //      * A trap method for a function call.

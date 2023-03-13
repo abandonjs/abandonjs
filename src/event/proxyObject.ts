@@ -1,18 +1,23 @@
 import type { ProxyObjectProp } from './type'
-import { ObjectType } from '../../type'
+import { ObjectType } from '../type'
 import { isEffectArray, isEffectObject, isEmpty, isNoEmpty, isObject, type } from 'check-it-type'
 
-export function ProxyObject(object: ObjectType<any>, props?: ProxyObjectProp[]) {
+/**
+ * @title ProxyObject<T extends object>
+ * @description 代理object的属性, 结合 Proxy 和 Object 用法
+ * @param object {T} 代理的object
+ * @param props {?ProxyObjectProp[]} object 属性配置
+ * @param handler {?ProxyHandler<T>}
+ * @returns {Proxy<T>}
+ */
+export function ProxyObject<T extends ObjectType>(object: T, props?: ProxyObjectProp[], handler: ProxyHandler<T> = {}) {
 	if (isEffectArray(props) && isObject(object)) {
 		const propsConfig: PropertyDescriptorMap = {}
-		const supplyConfigs: ObjectType<any> = {}
-
+		const supplyConfigs: Record<keyof T, any> = {} as Record<keyof T, any>
 		for (let i = 0; i < props.length; i++) {
 			const prop = props[i]
-			const propName = prop.name
+			const propName: keyof T = prop.name
 			const supplyConfig: ObjectType<any> = prop
-
-			// supplyConfigs[propName] = prop
 
 			if (isEmpty(propName)) continue;
 			let defaultValue = prop.default || undefined
@@ -40,14 +45,12 @@ export function ProxyObject(object: ObjectType<any>, props?: ProxyObjectProp[]) 
 		}
 
 		Object.defineProperties(object, propsConfig)
-		return new Proxy<ObjectType<any>>(object, {
-			get(target: any, prop: string | symbol, receiver: any): any {
-				return Reflect.get(target, prop)
-			},
+		const { set, ...rest } = handler
+		return new Proxy<T>(object, {
 			set(target: any, prop: string | symbol, newValue: any, receiver: any): boolean {
 				const supplyConfig: ObjectType<any> = supplyConfigs[prop as string]
 				const newValueType = type(newValue).toUpperCase()
-
+				if (set) return set(target, prop, newValue, receiver);
 				if (
 					(isEffectArray(supplyConfig.types) && !supplyConfig.types.includes(newValueType))
 					|| (supplyConfig.required === true && isEmpty(newValue))
@@ -56,7 +59,8 @@ export function ProxyObject(object: ObjectType<any>, props?: ProxyObjectProp[]) 
 					return Reflect.set(target, prop, target[prop], receiver)
 				}
 				return Reflect.set(target, prop, newValue, receiver)
-			}
+			},
+			...rest
 		})
 	}
 	return object

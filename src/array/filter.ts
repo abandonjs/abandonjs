@@ -1,4 +1,4 @@
-import { isArray, isFunction, isObject, type } from 'check-it-type'
+import { isArray, isFunction, isObject, isRegExp, type } from 'check-it-type'
 
 export type FilterCondition<T = unknown> = ((value: T, index: number, array: T[]) => boolean)
   | Record<string, number | string | RegExp | any>
@@ -41,7 +41,7 @@ export function filter<T extends Record<string, any>>(
           break
         }
 
-        if (type(unit) === 'RegExp' && !unit.test(val)) {
+        if (isRegExp(unit) && !unit.test(val)) {
           flag = false
           break
         }

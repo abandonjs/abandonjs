@@ -1,5 +1,5 @@
 export * from 'check-it-type'
-export * from '0math'
+// export * from '0math'
 
 export * from './number'
 export * from './string'

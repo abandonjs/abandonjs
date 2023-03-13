@@ -3,8 +3,12 @@ import { test, toBe } from 'unit-testing-js'
 
 
 {
-	const obj: Record<string, any> = {}
-	const poObj = ProxyObject(obj, [
+	interface PO {
+		a: string
+		[key: string]: any
+	}
+	const obj: PO = {} as PO
+	const poObj = ProxyObject<PO>(obj, [
 		{
 			name: 'a5',
 			// configurable: false,
@@ -163,9 +167,6 @@ import { test, toBe } from 'unit-testing-js'
 			poObj.b1 = 123
 		} catch (error) { }
 	}
-
-	console.log(poObj)
-
 
 	test('ProxyObject', toBe,
 		{ name: 'g1', param: poObj.g1, tobe: 'vv' },
