@@ -1,5 +1,5 @@
 export * from 'check-it-type'
-export * from '0math'
+// export * from '0math'
 
 export * from './number'
 export * from './string'
@@ -10,5 +10,5 @@ export * from './object'
 export * from './function'
 export * from './type'
 export * from './event'
-export * from './sundry'
 export * from './tree'
+export * from './collection'

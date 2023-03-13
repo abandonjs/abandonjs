@@ -19,6 +19,7 @@ import { type } from 'abandonjs'
 
 - 类型判断: `check-it-type`
 - 数学方法: `0math`
+  - 温度方法 转移 到该包
 
 ## 移除
 

@@ -38,12 +38,7 @@ export const cases:Record<string,TCaseUnit> = {
 			{ params: [[1, 1, 1, 1], 2], tobe: [[1, 1], [1, 1]] },
 		]
 	},
-	'concat': {
-		method: _.concat,
-		params: [
-			{ params: [[1, 1, 1, 1], 2, [3]], tobe: [1, 1, 1, 1, 2, 3] },
-		]
-	},
+	
 	'drop': {
 		method: _.drop,
 		params: [
