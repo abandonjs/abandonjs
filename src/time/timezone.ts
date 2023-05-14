@@ -16,9 +16,13 @@ export type LikeNumber = number | `${number}`
  ```
  */
 export function timezone(originOffset: LikeNumber, targetOffset: LikeNumber) {
-	originOffset = isString(originOffset) ? toNumber(originOffset) * 3600000 : originOffset
-	targetOffset = isString(targetOffset) ? toNumber(targetOffset) * 3600000 : targetOffset
-	const offset: number = targetOffset - originOffset
+
+	const originOffsetNum = isString(originOffset) ? toNumber(originOffset) * 3600000 : originOffset
+
+	const targetOffsetNum = isString(targetOffset) ? toNumber(targetOffset) * 3600000 : targetOffset
+
+	const offset: number = targetOffsetNum - originOffsetNum
+	
 	return (date: Date) => new Date(date.getTime() + offset)
 }
 

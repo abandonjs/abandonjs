@@ -40,6 +40,7 @@
   "license": "MIT",
   "devDependencies": {
     "0math": "0.1.2",
+    "@babel/core": "^7.21.8",
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
     "@rollup/plugin-babel": "^6.0.3",

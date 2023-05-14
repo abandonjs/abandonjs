@@ -1,4 +1,4 @@
-import { isArray, isFunction, isEffectArray, isEmpty, isObject, isRegExp, isString, } from 'asura-eye'
+import { isArray, isFunction, isObject, isRegExp, isString, } from 'asura-eye'
 import { ObjectType } from '../type'
 import { stringify } from '../string'
 

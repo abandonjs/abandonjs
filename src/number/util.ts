@@ -1,5 +1,5 @@
 import { INFINITY, MAX_VALUES_NUMBER } from '../constants'
-import { isFloat } from 'asura-eye'
+import { isFloat, isNumber } from 'asura-eye'
 
 /**
  * @title spLength
@@ -10,20 +10,14 @@ import { isFloat } from 'asura-eye'
  * @returns string
  */
 export function spLength(value: number | string, min = 0, max: number): string {
-  if (!/^[0-9]*$/.test(String(value))) {
-    return new Array(min).fill('0').join('')
-  }
+  
+  const tmpValue: string = isNumber(value) ? value.toString() : value
 
-  const tmpValue: string = value.toString()
+  if (!/^[0-9]*$/.test(tmpValue)) return new Array(min).fill(0).join('')
+  
   const len = tmpValue.length
-
-  if (len > max) {
-    return tmpValue.slice(len - max)
-  }
-
-  if (len < min) {
-    return new Array(min - len).fill('0').join('') + tmpValue
-  }
+  if (len > max) return tmpValue.slice(len - max)
+  if (len < min) return new Array(min - len).fill(0).join('') + tmpValue
 
   return tmpValue
 }
