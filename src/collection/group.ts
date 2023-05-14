@@ -1,4 +1,4 @@
-import { isEmpty, isFunction, isObject, isString } from "check-it-type"
+import { isEmpty, isFunction, isObject, isString } from "asura-eye"
 import { MapType, ObjectType } from "../type"
 import { toString } from '../string'
 

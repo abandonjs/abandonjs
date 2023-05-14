@@ -1,4 +1,4 @@
-import { isArray, isEmpty, isString } from "check-it-type"
+import { isArray, isEmpty, isString } from "asura-eye"
 
 /**
  * @title at<T>

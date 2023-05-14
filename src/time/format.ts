@@ -1,6 +1,6 @@
 import { spLength } from '../number'
 import { replaces } from '../string'
-import { type } from 'check-it-type'
+import { type } from 'asura-eye'
 import { Time } from './type'
 
 /**
@@ -10,7 +10,7 @@ import { Time } from './type'
  * @param pattern?:string 格式 
  * @returns string 格式化后的数据 
 
- * @note
+ * @eg
 | 符号 | 结果| 描述 |
 |:----|:----|:----|
 | YYYY	| 2022	| 4位数字的年份(忽略大小写) |
@@ -21,7 +21,6 @@ import { Time } from './type'
 | h  hh	| 1-12 |	12 小时制 |
 | m  mm | 0-59 |	分钟|
 | s  ss	| 0-59 |	秒钟|
-
  */
 
 export function format(time: Time = new Date(), pattern = 'YYYY-MM-DD'): string {

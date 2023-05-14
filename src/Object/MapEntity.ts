@@ -1,4 +1,4 @@
-import { isObject } from 'check-it-type'
+import { isObject } from 'asura-eye'
 import { ObjectType } from '../type'
 import { isEqual } from '../util/isEqual'
 

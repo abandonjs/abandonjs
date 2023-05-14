@@ -1,15 +1,16 @@
 import { CaseUnit } from 'unit-testing-js'
 import * as _ from '..'
-	
+import { ObjectType } from '../../type'
+
 type Method = (...args: any[]) => any | any[]
 
 export type TCaseUnit = {
 	method: Method
 	params: CaseUnit[]
-	[key:string]:any
+	[key: string]: any
 }
 
-export const cases:Record<string,TCaseUnit> = {
+export const cases: ObjectType<TCaseUnit> = {
 	'toArray-cases': {
 		method: _.toArray,
 		params: [
@@ -18,12 +19,6 @@ export const cases:Record<string,TCaseUnit> = {
 			{ param: 1, tobe: [1] },
 			{ param: 33, tobe: [33] },
 			{ param: [{}, 1], tobe: [{}, 1] },
-		]
-	},
-	'pick': {
-		method: _.pick,
-		params: [
-			{ param: [1, 2, 3], tobes: ['<=3', '>=1'], type: 'Match' }
 		]
 	},
 	'unique': {
@@ -36,38 +31,6 @@ export const cases:Record<string,TCaseUnit> = {
 		method: _.chunk,
 		params: [
 			{ params: [[1, 1, 1, 1], 2], tobe: [[1, 1], [1, 1]] },
-		]
-	},
-	
-	'drop': {
-		method: _.drop,
-		params: [
-			{ params: [[1, 2, 3, 4]], tobe: [1, 2, 3, 4] },
-			{ params: [[1, 2, 3, 4], 2], tobe: [3, 4] },
-		]
-	},
-	'dropRight': {
-		method: _.dropRight,
-		params: [
-			{ params: [[1, 1, 1, 2]], tobe: [1, 1, 1] },
-			{ params: [[1, 1, 1, 1], 2], tobe: [1, 1] },
-			{ params: [[1, 2, 3]], tobe: [1, 2] },
-			{ params: [[1, 2, 3, 9, 10], 4], tobe: [1] },
-			{ params: [[1, 2, 3], 2], tobe: [1] },
-			{ params: [[1, 2, 3], 5], tobe: [] },
-			{ params: [[1, 2, 3], 0], tobe: [1, 2, 3] },
-		]
-	},
-	'fill': {
-		method: _.fill,
-		params: [
-			{ params: [[1, 2, 3], 4, 1], tobe: [1, 2, 3, 4] }
-		]
-	},
-	'difference': {
-		method: _.difference,
-		params: [
-			{ params: [[1, 2, 3], 4, 1], tobe: [2, 3] }
 		]
 	},
 	'filter': {

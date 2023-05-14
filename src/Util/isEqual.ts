@@ -1,4 +1,4 @@
-import { type } from 'check-it-type'
+import { type } from 'asura-eye'
 import { stringify } from '../string'
 import { MapType, SetType } from '../type'
 

@@ -15,12 +15,7 @@ npm install abandonjs -D
 import { type } from 'abandonjs'
 ```
 
-## 分离工具方法
+## 其他工具方法
 
-- 类型判断: `check-it-type`
-- 数学方法: `0math`
-  - 温度方法 转移 到该包
-
-## 移除
-
-- MapEntity
+- 类型判断: [`asura-eye`](https://github.com/abandonjs/asura-eye)
+- 数学方法: [`0math`](https://github.com/guanruihua/0math)

@@ -1,4 +1,4 @@
-import { type } from 'check-it-type'
+import { type } from 'asura-eye'
 import { UnitTest } from 'unit-testing-js'
 import { isMapIterator } from 'util/types'
 import { entries } from '..'

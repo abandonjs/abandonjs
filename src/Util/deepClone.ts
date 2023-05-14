@@ -1,4 +1,4 @@
-import { type } from "check-it-type"
+import { type } from "asura-eye"
 
 function deepClonePredicate(value: any) {
   switch (type(value)) {

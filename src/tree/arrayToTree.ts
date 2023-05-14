@@ -1,5 +1,6 @@
 import { deepClone } from '../util/deepClone'
 import { ObjectType } from '../type'
+
 /**
  * @title arrayToTree
  * @description 数组转树

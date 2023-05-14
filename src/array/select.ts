@@ -9,17 +9,19 @@ import { random } from '0math'
  * @returns T[]
  */
 export function selects<T>(list: T[], min: number, max: number): T[] {
-  if (max > list.length) {
-    max = list.length - 1
-  }
+
+  if (max > list.length) max = list.length - 1
+  
   let len: number = random(min, max) || 0
   const result: T[] = []
   let index = 0
+  
   while (len--) {
     index = ~~(Math.random() * list.length)
     result.push(list[index])
     list.splice(index, 1)
   }
+  
   return result
 }
 

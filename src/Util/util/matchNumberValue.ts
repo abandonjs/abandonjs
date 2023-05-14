@@ -1,4 +1,4 @@
-import { type } from "check-it-type"
+import { type } from "asura-eye"
 import { Valer } from './type'
 
 export function matchNumberValue(val: number, valer: Valer):boolean {

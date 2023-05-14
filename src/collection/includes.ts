@@ -1,4 +1,4 @@
-import { isArray, isObject, isString } from 'check-it-type'
+import { isArray, isObject, isString } from 'asura-eye'
 import { stringify } from '../string'
 import { Collection, CollectionKey } from './type'
 

@@ -1,12 +1,16 @@
+import { ObjectType } from '../type'
 import { loops } from '../function/loop'
-import { toString } from '../string/toString'
 
 /**
- * @title zip
- * @description: 创建一个分组元素的数组，数组的第一个元素包含所有给定数组的第一个元素，数组的第二个元素包含所有给定数组的第二个元素，以此类推 
- * @param arrays  {...any[]}
- * @returns {any[]}
+ * @title zip<T>
+ * @description: 每个数组同样的下标组成一个新数组
+ * @param ...arrays {...T[]}
+ * @returns {T[][]}
  * @version: 2.1.11
+ * @eg: ```ts
+ zip(['fred', 'barney'], [30, 40], [true, false]) 
+ => [['fred', 30, true], ['barney', 40, false]]
+ ```
  */
 export function zip<T>(...arrays: any[]): T[][] {
 	const len: number = arrays.length
@@ -22,32 +26,27 @@ export function zip<T>(...arrays: any[]): T[][] {
 	return result
 }
 
-export function zipObject<T>(props: (string | number)[], values: (T[keyof T])[]): T {
-	const record: T = {} as T
-	for (let i = 0; i < props.length; i++) {
-		record[toString(props[i])] = values[i]
-	}
+/**
+ * @title zipObject<Value>
+ * @description: 第一个数组是对象的key, 第二个数组是对象的value
+ * @param props {(string|number)[]}
+ * @param values {Value[]}
+ * @returns {ObjectType<Value>}
+ * @version: 2.1.11
+ * @eg: ```ts
+ zipObject(['a', 'b'], [1, 2]) 
+ => { 'a': 1, 'b': 2 }
+ ```
+ */
+export function zipObject<Value>(
+	props: (string | number)[],
+	values: Value[]
+): ObjectType<Value> {
+	const record: ObjectType<Value> = {}
+	props.forEach(
+		(key: string | number, index: number) => {
+			record[key] = values[index]
+		}
+	)
 	return record
 }
-// const _path = (path: string, value: any) => {
-// 	const _record = {}
-// 	// return _path(path, value)
-// }
-
-// export function zipObjectDeep<T>(props: string[], values: any[]): T {
-// 	const record: T = {} as T
-// 	const _props = [...props]
-// 	for (let i = 0; i < props.length; i++) {
-// 		// const keys = props[i].split('.')
-// 		const key = /(\w)\./.exec(props[i])
-// 		// if (key?.length === 2) {
-// 		// 	record[key] =
-// 		// }
-// 		// record[keys[0]] = _path(,values[i])
-
-// 		// for (let j = 1; i < keys.length; j++) {
-// 		// }
-// 		// record[props[i]] = values[i]
-// 	}
-// 	return record
-// }

@@ -1,4 +1,6 @@
-import { isArray, isFunction, isObject, isRegExp, type } from 'check-it-type'
+import { isArray, isFunction, isEffectArray, isEmpty, isObject, isRegExp, isString, } from 'asura-eye'
+import { ObjectType } from '../type'
+import { stringify } from '../string'
 
 export type FilterCondition<T = unknown> = ((value: T, index: number, array: T[]) => boolean)
   | Record<string, number | string | RegExp | any>
@@ -12,7 +14,7 @@ export type FilterCondition<T = unknown> = ((value: T, index: number, array: T[]
  * @returns {T[]}
  * @version 2.3.1
  */
-export function filter<T extends Record<string, any>>(
+export function filter<T extends ObjectType>(
   list: T[],
   filterCondition?: FilterCondition<T>,
   retainNotObject = false
@@ -24,32 +26,30 @@ export function filter<T extends Record<string, any>>(
   if (isFunction(filterCondition)) {
     return list.filter(filterCondition as ((value: T, index: number, array: T[]) => boolean))
   }
+  if (isObject(filterCondition))
 
-  return list.filter((item: T): boolean => {
+    return list.filter((item: T): boolean => {
 
-    if (!isObject(item)) return retainNotObject
+      if (!isObject(item)) return retainNotObject
 
-    let flag = true
-
-    if (isObject(filterCondition)) {
       for (const key in filterCondition) {
         const unit = filterCondition[key]
-        const val = item[key]
-
-        if (val !== unit && type(unit) !== 'RegExp') {
-          flag = false
+        const originValue = item[key]
+        if (originValue === unit) break
+        if (isRegExp(unit)) {
+          const val: string = isString(originValue)
+            ? originValue as string
+            : stringify(originValue)
+          if (!unit.test(val))
+            return false
           break
         }
 
-        if (isRegExp(unit) && !unit.test(val)) {
-          flag = false
-          break
-        }
-
+        return false
       }
 
-    }
+      return true
+    })
 
-    return flag
-  })
+  return list
 }

@@ -9,16 +9,8 @@ test('zip', _.zip,
 )
 
 test('zipObject', _.zipObject,
-	{ params: [['a', 'b'], [1, 2]], tobe: { 'a': 1, 'b': 2 } }
+	{
+		params: [['a', 'b'], [1, 2]],
+		tobe: { 'a': 1, 'b': 2 }
+	}
 )
-
-// test('zipObjectDeep', _Array.zipObjectDeep,
-// 	{
-// 		params: [['a.b[0].c', 'a.b[1].d'], [1, 2]],
-// 		tobe: { 'a': { 'b': [{ 'c': 1 }, { 'd': 2 }] } }
-// 	}
-// )
-
-
-// console.log('a.b[0].c'.replace(/\w\./,''))
-// console.log(/(\w)./.exec('a.b[0].c').length)

@@ -1,6 +1,6 @@
 import type { ProxyObjectProp } from './type'
 import { ObjectType } from '../type'
-import { isEffectArray, isEffectObject, isEmpty, isNoEmpty, isObject, type } from 'check-it-type'
+import { isEffectArray, isEffectObject, isEmpty, isNoEmpty, isObject, type } from 'asura-eye'
 
 /**
  * @title ProxyObject<T extends object>

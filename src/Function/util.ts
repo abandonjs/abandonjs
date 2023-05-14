@@ -1,5 +1,5 @@
 import { AnyFunction, ObjectType } from '../type'
-import { type } from 'check-it-type'
+import { type } from 'asura-eye'
 
 /**
  * @title toPromise<T>

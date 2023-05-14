@@ -1,4 +1,4 @@
-import { isEmpty, isString } from "check-it-type";
+import { isEmpty, isString } from "asura-eye";
 
 export function from<T>(value: string | T[], callback: (element: T, index: number) => T, thisArg?: unknown) {
 	if (isEmpty(thisArg)) {

@@ -1,5 +1,4 @@
-export * from 'check-it-type'
-// export * from '0math'
+export * from 'asura-eye'
 
 export * from './number'
 export * from './string'

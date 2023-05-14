@@ -1,8 +1,7 @@
 import { test } from 'unit-testing-js'
 export * from '..'
 import { cases } from './cases'
-import './modules/filter'
-import './modules/toArray'
+import './modules'
 import './flat'
 import './zip'
 

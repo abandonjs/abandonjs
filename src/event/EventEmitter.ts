@@ -36,7 +36,7 @@ export interface EventEmitter<T, U> {
  * @property $off {(name: string)=>boolean} 移除事件的名称
  * @property $once {<Params extends any[] = any[]>(name: string, ...args: Params)=>U[]} 触发后就移除当前事件
  * @property $emit {<Params extends any[] = any[]>(name: string, ...args: Params)=> U[]} 触发事件
- * @note
+ * @eg
  ```js
  const ev = new EventEmitter()
  ev.$on('fn1', ()=>console.log(1))

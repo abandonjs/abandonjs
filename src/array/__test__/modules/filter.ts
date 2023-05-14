@@ -31,7 +31,7 @@ UnitTest(filter, 'filter:filterCondition=function')
 	// .log('cases')
 	.run()
 
-UnitTest(filter, 'filter:filterCondition=Record<string, any>')
+UnitTest(filter, 'filter:filterCondition=ObjectType')
 	.addParamMap(
 		[
 			[{ a: 1, b: '1' }, { b: 1 }, { a: 1, b: '1', c: 3 }, {}],
