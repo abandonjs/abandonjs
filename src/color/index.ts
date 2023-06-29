@@ -1,2 +1,2 @@
-export * from './toHex'
-export * from './toRGB'
+export * from './hex'
+export * from './rgb'
