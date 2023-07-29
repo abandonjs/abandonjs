@@ -5,16 +5,17 @@
  * @returns T[]
  * @update 2.6.0
  */
-export function concat<T>(...list: T[]): T[] {
+export function concat<T = unknown>(...list: unknown[]): T[] {
 	let result: T[] = []
 	if (list && list.length > 0) {
 		const len: number = list.length
 		let i = 0;
 		while (i < len) {
-			if (Array.isArray(list[i])) {
-				result = result.concat(list[i])
+			const item = list[i]
+			if (Array.isArray(item)) {
+				item.forEach(unit => result.push(unit))
 			} else {
-				result.push(list[i])
+				result.push(item as T)
 			}
 			i++;
 		}

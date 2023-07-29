@@ -2,7 +2,7 @@ import { type } from 'asura-eye'
 import { Val, Valer } from './util/type'
 import { matchNumberValue } from './util/matchNumberValue'
 import { toPathValue } from "./toPathValue"
-import { equal } from './isEqual'
+import { equal } from './equal'
 
 /**
  * @title matchValue
