@@ -13,9 +13,4 @@ UnitTest(includes)
 		{ name: 'string', params: ['pebbles', 'eb', 1], tobe: true },
 		{ name: 'string', params: ['pebbles', 'ebbless'], tobe: false },
 	)
-	.run(
-		// [
-			// 'array', 
-			// 'string'
-		// ]
-	)
+	.run()
