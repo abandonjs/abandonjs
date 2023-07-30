@@ -8,15 +8,15 @@ import { toArray } from "./toArray"
  * @param n=0 {number} 要去除元素个数 
  * @returns {T[]} 剩余切片
  */
-export function drop<T>(list: T[] = [], n = 0): T[] {
+export function drop<T = any>(list: T[] = [], n = 0): T[] {
 	
-	if (!isArray(list)) return toArray(list)
+	if (!isArray(list)) return toArray(list) as T[]
 	while (n--) {
 		if (list.length < 1) return []
 		if (list.length > 0)
 			list.shift()
 	}
-	return list
+	return list as T[]
 }
 
 /**
@@ -26,7 +26,7 @@ export function drop<T>(list: T[] = [], n = 0): T[] {
  * @param n=1 需要删除的元素数量
  * @returns T[]
  */
-export function dropRight<T>(list: T[], n = 1): T[] {
+export function dropRight<T = any>(list: T[], n = 1): T[] {
 	const len = Math.max(list.length || 0, list.length)
-	return list.splice(0, len - n)
+	return list.splice(0, len - n) as T[]
 }

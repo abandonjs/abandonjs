@@ -1,6 +1,8 @@
 ## 3.0.0
 
-- 重构: `indexOf`
+- 重构: `indexOf`, `includes`
+- 修改: `getLength` 取代 `size`
+- 去除: `group`, `groupToMap`
 
 ## 2.7.0
 

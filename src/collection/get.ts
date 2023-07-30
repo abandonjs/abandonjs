@@ -1,11 +1,20 @@
-import { isArray, isEmpty, isMap, isNumber, isSet, isString } from "asura-eye"
+import { isArray, isEmpty, isMap, isNumber, isObject, isSet, isString } from "asura-eye"
 import type { Collection, CollectionKey } from "./type"
 
+/**
+ * @title getLength
+ * @description 获取集合长度(大小)
+ * @param collection {Collection}
+ * @returns {number}
+ */
 export function getLength(collection: Collection) {
 	if (
 		isArray(collection)
 		|| isString(collection)
 	) return collection.length
+
+	if (isObject(collection))
+		return Object.keys(collection).length
 
 	if (
 		isSet(collection)
@@ -15,6 +24,13 @@ export function getLength(collection: Collection) {
 	return 0
 }
 
+/**
+ * @title getIndex
+ * @description 获取集合key
+ * @param collection {Collection}
+ * @param key {CollectionKey}
+ * @returns {CollectionKey}
+ */
 export function getIndex(collection: Collection, key: CollectionKey) {
 
 	if (

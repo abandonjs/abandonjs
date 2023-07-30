@@ -1,5 +1,5 @@
 import { test } from 'unit-testing-js'
-import * as _ from '..'
+import * as _ from '../..'
 
 test('zip', _.zip,
 	{

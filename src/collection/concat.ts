@@ -1,3 +1,5 @@
+import { isArray, isSet } from "asura-eye";
+
 /**
  * @title concat<T>
  * @description 连接多个数组
@@ -7,18 +9,21 @@
  */
 export function concat<T = unknown>(...list: unknown[]): T[] {
 	let result: T[] = []
-	if (list && list.length > 0) {
-		const len: number = list.length
-		let i = 0;
-		while (i < len) {
-			const item = list[i]
-			if (Array.isArray(item)) {
-				item.forEach(unit => result.push(unit))
-			} else {
-				result.push(item as T)
-			}
-			i++;
+	if (!list || list.length === 0) return []
+	const len: number = list.length
+	let i = -1;
+	while (++i < len) {
+		const item = list[i]
+		if (isArray(item)) {
+			item.forEach(unit => result.push(unit))
+			continue;
 		}
+		if (isSet(item)) {
+			item.forEach(unit => result.push(unit as T))
+			continue;
+		}
+		result.push(item as T)
+
 	}
 	return result
 }

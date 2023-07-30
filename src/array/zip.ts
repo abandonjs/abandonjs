@@ -29,7 +29,7 @@ export function zip<T>(...arrays: any[]): T[][] {
 /**
  * @title zipObject<Value>
  * @description: 第一个数组是对象的key, 第二个数组是对象的value
- * @param props {(string|number)[]}
+ * @param keys {(string|number)[]}
  * @param values {Value[]}
  * @returns {ObjectType<Value>}
  * @version: 2.1.11
@@ -39,11 +39,11 @@ export function zip<T>(...arrays: any[]): T[][] {
  ```
  */
 export function zipObject<Value>(
-	props: (string | number)[],
+	keys: (string | number)[],
 	values: Value[]
 ): ObjectType<Value> {
 	const record: ObjectType<Value> = {}
-	props.forEach(
+	keys.forEach(
 		(key: string | number, index: number) => {
 			record[key] = values[index]
 		}

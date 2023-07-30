@@ -1,4 +1,4 @@
-import { isArray, isEmpty, isMap, isNumber, isSet, isString } from "asura-eye"
+import { isArray, isEmpty, isMap, isNumber, isObject, isSet, isString } from "asura-eye"
 import type { CollectionKey, Collection } from "./type"
 import { getIndex, getLength } from "./get"
 
@@ -19,11 +19,16 @@ export function at(
 	if (len === 0) return undefined
 
 	const newIndex = getIndex(collection, index)
-	if (!isNumber(newIndex) || isEmpty(newIndex)) return undefined
+	if (isEmpty(newIndex)) return undefined
 
 	if (
-		isString(collection)
-		|| isArray(collection)
+		isNumber(newIndex) &&
+		(isString(collection) || isArray(collection))
+	) return collection[newIndex]
+
+	if (
+		isObject(collection) &&
+		(isNumber(newIndex) || isString(newIndex))
 	) return collection[newIndex]
 
 	if (isSet(collection)) {
@@ -35,7 +40,7 @@ export function at(
 	}
 
 	if (isMap(collection))
-		return collection.get(newIndex)
+		return (collection as Map<any, any>).get(newIndex)
 
 	return undefined
 }

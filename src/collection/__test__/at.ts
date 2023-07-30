@@ -5,7 +5,7 @@ UnitTest(at, 'at')
 	.addParamMap(
 		[
 			[1, 24, 9, 0],
-			'abee,fg'
+			'abee,fg',
 		],
 		[0, 1, 3, 9, -1]
 	)
@@ -20,6 +20,24 @@ UnitTest(at, 'at')
 		7: 'abee,fg'[3],
 		8: 'abee,fg'[6],
 		9: 'abee,fg'[6],
+	})
+	.buildCases()
+	// .log('cases')
+	.run()
+
+UnitTest(at, 'at-Object')
+	.addParamMap(
+		[
+			{
+				a: 1,
+				b: 2,
+			}
+		],
+		['a', 'b', 'c']
+	)
+	.setIndexValues({
+		0: 1,
+		1: 2,
 	})
 	.buildCases()
 	// .log('cases')

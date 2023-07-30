@@ -11,7 +11,7 @@ import { isString } from "asura-eye"
  * @version 2.6.0
  */
 export function copyWithin<T>(value: string | T[], target: number, start = 0, end?: number) {
-	if (value.length === 0) return value
+	if (value.length === 0) return []
 	if (isString(value)) {
 		return value.split('').copyWithin(target, start, end).join('')
 	}
