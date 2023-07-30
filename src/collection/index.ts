@@ -6,5 +6,6 @@ export * from './copyWithin'
 export * from './entries'
 export * from './indexOf'
 export * from './get'
+export * from './omit'
 
 export * from './type'
