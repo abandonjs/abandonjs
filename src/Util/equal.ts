@@ -64,20 +64,21 @@ export function equalSet(compareSet: SetType, beCompareSet: SetType): boolean {
  * @version 2.4.4
  */
 export function equal(compareValue: unknown, beCompareValue: unknown): boolean {
-	if (type(compareValue) !== type(compareValue)) return false
+	if (type(compareValue) !== type(beCompareValue)) return false
 	if (compareValue === beCompareValue) return true
-	if (
-		type(compareValue) === 'Symbol'
-		|| type(beCompareValue) === 'Symbol'
-	) return false
-	if (type(compareValue) === 'Map') return equalMap(compareValue as MapType, beCompareValue as MapType)
-	if (type(compareValue) === 'Set') return equalSet(compareValue as SetType, beCompareValue as SetType)
+
 	if (
 		isObject(compareValue)
 		&& isObject(beCompareValue)
 	)
 		return equalObject(compareValue, beCompareValue)
 
+	if (
+		type(compareValue) === 'Symbol'
+		|| type(beCompareValue) === 'Symbol'
+	) return false
+	if (type(compareValue) === 'Map') return equalMap(compareValue as MapType, beCompareValue as MapType)
+	if (type(compareValue) === 'Set') return equalSet(compareValue as SetType, beCompareValue as SetType)
 
 	return stringify(compareValue) === stringify(beCompareValue)
 }
