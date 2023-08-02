@@ -1,3 +1,11 @@
+## 3.2.0
+
+- `changeCase` 拆分 为 `toFirstUpperCase`, `toFirstLowerCase`, `toUpperCase`, `toLowerCase`
+- `ban`, 重构并改名为 `limitTime`
+- `throwError` 重构并改名为 `guard`
+- `asyncThrowError` 重构并改名为 `asyncGuard`
+- 去除:  `logAsync`
+
 ## 3.0.0
 
 - 重构: `indexOf`, `includes`

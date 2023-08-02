@@ -1,4 +1,5 @@
-import { Val } from './util/type'
+import { isEmpty, isObject } from 'asura-eye'
+import type { Val } from '../type'
 
 /**
  * @title toPathValue
@@ -9,24 +10,15 @@ import { Val } from './util/type'
  */
 export function toPathValue(val: Val, path: string): Val {
 
-	const paths: string[] = path.split('.') || []
+	const paths: string[] = path.split(/(?<!\\)\./) || []
 
-	let beforeKey = ''
-	paths.forEach((item: string) => {
+	let tmpValue: Val = val
 
-		if (beforeKey !== '' && val[beforeKey + item] !== undefined) {
-			val = val[beforeKey + item] || undefined
-			return
-		}
-
-		if (val[item]) {
-			val = val[item] || undefined
-		} else if (/\\$/.test(item)) {
-			beforeKey += item.replace(/\\$/, '.')
-		}
-
-	})
-
-	return val
-
+	for (let i = 0; i < paths.length; i++) {
+		const item = paths[i].replaceAll('\\.', '.')
+		tmpValue = isObject(tmpValue) ? tmpValue[item] : undefined
+		if (isEmpty(tmpValue) || i === paths.length - 1)
+			return tmpValue
+	}
+	return undefined
 }

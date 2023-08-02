@@ -1,17 +1,6 @@
 import * as _ from '..'
 import { test } from 'unit-testing-js'
 
-
-test('toPathValue', _.toPathValue,
-	{
-		params: [{
-			['a.2.3']: {
-				4: 123
-			}
-		}, 'a\\.2\\.3.4'], tobe: 123
-	},
-)
-
 const tmpObj = {
 	a: {
 		b: {
@@ -25,6 +14,25 @@ const tmpObj = {
 		}
 	}
 }
+
+test('toPathValue', _.toPathValue,
+{
+	params: [
+		tmpObj,
+		'a.b.c.e'
+	],
+	tobe: 12356
+},
+	{
+		params: [{
+			['a.2.3']: {
+				4: 123
+			}
+		}, 'a\\.2\\.3.4'], tobe: 123
+	},
+)
+
+
 
 test('matchValue', _.matchValue,
 	{ params: [tmpObj, tmpObj], tobe: true },

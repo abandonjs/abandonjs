@@ -9,7 +9,7 @@ import { isTime, Time } from 'asura-eye'
  * @version 2.4.0
  */
 export function isSameDate(timeA: Time, timeB: Time): boolean {
-
+	
 	if (!isTime(timeA) || !isTime(timeB)) return false
 	if (timeA.toString() === timeB.toString()) return true
 	if (new Date(timeA).getTime() === new Date(timeB).getTime()) return true

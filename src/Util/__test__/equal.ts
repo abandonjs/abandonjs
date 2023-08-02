@@ -42,4 +42,5 @@ test('equal', _.equal,
 	{ params: [null, ''], tobe: false },
 	{ params: [{a: 1, b: 2}, {b: 2, a: 1}], tobe: true },
 	{ name: '20', params: [{a: '1', b: 2}, {b: 2, a: 1}], tobe: false },
+	{ params: [{a: '1', b: 2}, {b: 2, a: 1}], tobe: false },
 )
