@@ -1,12 +1,12 @@
 import { equal } from '../util'
 import { ObjectType } from '../type'
 
-export interface ObjectEntity<Value> {
+export interface ObjectEntityConfig<Value> {
 	defaultValue?: Value
 	defaultKey?: string
 }
 
-export function ObjectEntity<Value = any>(target: ObjectType = {}, config?: ObjectEntity<Value>) {
+export function ObjectEntity<Value = any>(target: ObjectType = {}, config?: ObjectEntityConfig<Value>) {
 
 	const { defaultValue, defaultKey } = config || {};
 

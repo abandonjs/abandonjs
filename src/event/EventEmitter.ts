@@ -1,33 +1,4 @@
 import { runFunc } from '../function'
-
-export interface EventEmitter<T, U> {
-  /**
-   * @description 事件缓存
-   */
-  $cache: Record<string, T[]>
-  /**
-   * @description 绑定事件
-   * @param name 事件name
-   * @param fn 待触发事件
-   */
-  $on(name: string, fn: T): void
-  /**
-   * @param name 移除事件的名称
-   */
-  $off(name: string): boolean
-  /**
-   * @description 触发后就移除当前事件
-   * @param name 待触发事件name
-   * @param args 触发事件的参数
-   */
-  $once<Params extends any[] = any[]>(name: string, ...args: Params): U[]
-  /**
-   * @param name 待触发事件name
-   * @param args 触发事件的参数
-   */
-  $emit<Params extends any[] = any[]>(name: string, ...args: Params): U[]
-}
-
 /**
  * @title EventEmitter<T, U>
  * @description 简易观察者模式
@@ -36,7 +7,7 @@ export interface EventEmitter<T, U> {
  * @property $off {(name: string)=>boolean} 移除事件的名称
  * @property $once {<Params extends any[] = any[]>(name: string, ...args: Params)=>U[]} 触发后就移除当前事件
  * @property $emit {<Params extends any[] = any[]>(name: string, ...args: Params)=> U[]} 触发事件
- * @note
+ * @eg
  ```js
  const ev = new EventEmitter()
  ev.$on('fn1', ()=>console.log(1))
@@ -48,8 +19,15 @@ export interface EventEmitter<T, U> {
  ```
  */
 export class EventEmitter<T = any, U = any> {
+  /**
+  * @description 事件缓存
+  */
   $cache: Record<string, T[]> = {}
-
+  /**
+    * @description 绑定事件
+    * @param name 事件name
+    * @param fn 待触发事件
+    */
   $on(name: string, fn: T): void {
     if (this.$cache[name]) {
       if (Array.isArray(this.$cache[name])) {
@@ -62,13 +40,19 @@ export class EventEmitter<T = any, U = any> {
 
     this.$cache[name] = [fn]
   }
-
+  /**
+    * @param name 移除事件的名称
+    */
   $off(name: string): boolean {
     if (!this.$cache[name]) return false
     delete this.$cache[name]
     return true
   }
-
+  /**
+     * @description 触发后就移除当前事件
+     * @param name 待触发事件name
+     * @param args 触发事件的参数
+     */
   $once<Params extends any[] = any[]>(name: string, ...args: Params): U[] {
     if (this.$cache && this.$cache[name]) {
       const result = this.$cache[name].map((i) => runFunc(i, ...args))
@@ -77,9 +61,12 @@ export class EventEmitter<T = any, U = any> {
     }
     return []
   }
-
-  // 创建副本，如果回调函数内继续注册相同事件，会造成死循环
+  /**
+   * @param name 待触发事件name
+   * @param args 触发事件的参数
+   */
   $emit<Params extends any[] = any[]>(name: string, ...args: Params): U[] {
+    // 创建副本，如果回调函数内继续注册相同事件，会造成死循环
     if (!this.$cache[name]) return []
     return this.$cache[name].map((i) => runFunc(i, ...args))
   }

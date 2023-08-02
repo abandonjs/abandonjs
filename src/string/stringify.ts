@@ -1,4 +1,4 @@
-import { type } from 'check-it-type'
+import { isArray, isObject } from 'asura-eye'
 import { toString } from './toString'
 
 /**
@@ -10,13 +10,13 @@ import { toString } from './toString'
  * @returns {string}
  * @lastUpdate 2.2.1
  */
-export function stringify(value: any, replacer?: (this: any, key: string, value: any) => any, space?: string | number): string;
+export function stringify(
+	value: unknown,
+	replacer?: (number | string)[] | null,
+	space?: string | number
+): string {
 
-export function stringify(value: any, replacer?: (number | string)[] | null, space?: string | number): string;
-
-export function stringify(value, replacer, space): string {
-
-	if (['Object', 'Array'].includes(type(value))) {
+	if (isObject(value) || isArray(value)) {
 		return JSON.stringify(value, replacer, space)
 	}
 

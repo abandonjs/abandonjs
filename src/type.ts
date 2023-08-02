@@ -10,6 +10,9 @@ export type AsyncFunc<T extends [], U> = (...arg: T) => Promise<U>
 export type NoParamFn<Result> = () => Result
 export type OneParamFn<Param, Result> = (value: Param) => Result
 
+/**
+ * @description 任意对象类型
+ */
 export type ObjectType<Value = unknown> = Record<string, Value>
 export type MapType<Value = unknown> = Map<string | number, Value>
 export type SetType<Value = unknown> = Set<Value>

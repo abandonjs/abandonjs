@@ -1,6 +1,8 @@
-import { isArray, isObject, isString } from 'check-it-type'
+import { isArray, isNumber, isObject, isString } from 'asura-eye'
 import { stringify } from '../string'
-import { Collection, CollectionKey } from './type'
+import { Collection, CollectionKey, CollectionValue } from './type'
+import { getIndex } from './get'
+import { equal } from '../util'
 
 /**
  * @title includes
@@ -10,27 +12,41 @@ import { Collection, CollectionKey } from './type'
  * @param fromIndex {number=0} 要检索的索引
  * @returns {boolean}
  */
-export function includes(collection: Collection, value: CollectionKey, fromIndex = 0): boolean {
-	const newIndex = fromIndex >= 0 ? fromIndex : (isObject(collection) ? Object.keys(collection) : collection).length + fromIndex
+export function includes(
+	collection: Collection,
+	value: CollectionValue,
+	fromIndex: CollectionKey = 0
+): boolean {
+	const newIndex = getIndex(collection, fromIndex)
 
 	if (isString(collection)) {
+		if (!isNumber(newIndex)) return false
 		const newCollection = collection.substring(newIndex)
 		const newValue = isString(value) ? value : stringify(value)
 		if (collection.length < newValue.length) return false
 		return newCollection.indexOf(newValue) > -1
 	}
+
 	if (isArray(collection)) {
 		if (fromIndex === 0) return collection.includes(value)
+		if (!isNumber(newIndex)) return false
 		for (let i = newIndex; i < collection.length; i++)
-			if (collection[i] === value) return true
+			if (equal(collection[i], value)) return true
 		return false
 	}
+
 	if (isObject(collection)) {
 		if (fromIndex === 0) return Object.values(collection).includes(value)
-		const keys = Object.keys(collection)
-		for (let i = newIndex; i < keys.length; i++) {
-			const key = keys[i]
-			if (collection[key] === value) return true
+		if (isNumber(newIndex)) {
+			const keys = Object.keys(collection)
+			for (let i = newIndex; i < keys.length; i++) {
+				const key = keys[i]
+				if (equal(collection[key], value)) return true
+			}
+			return false
+		}
+		if (isString(newIndex)) {
+			return equal(collection[newIndex], value)
 		}
 		return false
 	}

@@ -1,4 +1,4 @@
-import { isTime, Time } from 'check-it-type'
+import { isTime, Time } from 'asura-eye'
 
 /**
  * @title isSameDate

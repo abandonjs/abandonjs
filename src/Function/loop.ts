@@ -1,3 +1,5 @@
+import { isEffectArray } from "asura-eye"
+
 /**
  * @title loop<T>
  * @description: 指定次数遍历
@@ -83,11 +85,12 @@ export function loopArray<T>(
 	callback: (unit: T, index?: number) => true | void
 ): T | undefined {
 
-	for (let i = 0; i < length; i++) {
-		if (callback(array[i], i)) {
-			return array[i]
+	if (isEffectArray<T>(array))
+		for (let i = 0; i < array.length; i++) {
+			if (callback(array[i], i)) {
+				return array[i]
+			}
 		}
-	}
 
 	return
 }

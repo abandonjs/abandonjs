@@ -10,9 +10,9 @@ export function once(fn: AnyFunction): any {
   let returnValue: any
   let canRun = true
 
-  return function (): any {
+  return function (...args: any[]) {
     if (canRun) {
-      returnValue = fn.apply(this, arguments)
+      returnValue = fn.apply(this, ...args)
       canRun = false
     }
     return returnValue

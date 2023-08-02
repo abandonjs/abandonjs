@@ -1,6 +1,6 @@
 import { toArray } from "../array"
 import { at } from '../collection'
-import { isFunction } from "check-it-type"
+import { isFunction } from "asura-eye"
 import { AnyFunction } from "../type"
 
 /**

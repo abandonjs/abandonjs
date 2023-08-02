@@ -1,2 +1,0 @@
-import './toRGB'
-import './toHex'

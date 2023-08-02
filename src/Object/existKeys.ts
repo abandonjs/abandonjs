@@ -1,7 +1,6 @@
-import { toArray } from "../array/toArray";
-export interface iObject {
-	[key: string]: any;
-}
+import { ObjectType } from "../type"
+import { toArray } from "../array/toArray"
+
 /**
  * @title existKeys
  * @description 判断对象是否拥有指定keys
@@ -9,7 +8,7 @@ export interface iObject {
  * @param keys string[] | string
  * @returns boolean
  */
-export function existKeys(obj: iObject, keys: string[] | string): boolean {
+export function existKeys(obj: ObjectType, keys: string[] | string): boolean {
 	const objKeys: string[] = Object.keys(obj);
 	keys = toArray<string>(keys)
 

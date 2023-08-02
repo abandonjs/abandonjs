@@ -1,6 +1,6 @@
 {
   "name": "abandonjs",
-  "version": "2.6.0",
+  "version": "3.0.0",
   "description": "方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
@@ -11,6 +11,7 @@
     "commitlint": "commitlint -e",
     "reload": "rimraf node_modules && pnpm install",
     "build": "npx rollup -c ./config/rollup.build.ts",
+    "git": "node config/git",
     "build:ed": "npx rollup -c --extend ./rollup.config.ts",
     "docs": "node ./config/docs.js",
     "test": "ts-node-dev --respawn --transpile-only ./test/index.ts",
@@ -39,6 +40,7 @@
   "license": "MIT",
   "devDependencies": {
     "0math": "0.1.2",
+    "@babel/core": "^7.21.8",
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
     "@rollup/plugin-babel": "^6.0.3",
@@ -47,7 +49,9 @@
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
-    "check-it-type": "0.4.2",
+    "asura-eye": "^0.6.1",
+    "command-go": "^0.1.1",
+    "enquirer": "^2.3.6",
     "eslint": "^8.31.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
@@ -58,7 +62,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.32.1",
     "ts-node-dev": "^1.1.8",
-    "typescript": "^4.9.4",
+    "typescript": "^5.1.6",
     "unit-testing-js": "0.4.0"
   }
 }

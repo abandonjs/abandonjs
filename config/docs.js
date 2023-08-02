@@ -45,7 +45,7 @@ function AdaptData(data, module) {
 		.filter(item => item.indexOf('* @') > -1)
 		.forEach(item => {
 			let name = undefined
-			let note = undefined
+			let eg = undefined
 			const record = item
 				.split('* ')
 				.map(iitem => {
@@ -56,9 +56,9 @@ function AdaptData(data, module) {
 						return;
 					}
 
-					const flag = iitem.indexOf('@note')
+					const flag = iitem.indexOf('@eg')
 					if (flag > -1) {
-						note = iitem.replace(/^@note/, '')
+						eg = iitem.replace(/^@eg/, '')
 						return;
 					}
 					iitem = iitem
@@ -72,7 +72,6 @@ function AdaptData(data, module) {
 
 					return iitem
 
-
 				})
 				.filter(i => i && !['\r\n', '\r\n '].includes(i))
 				.map(item => {
@@ -85,7 +84,7 @@ function AdaptData(data, module) {
 			dataMap.set(name, {
 				desc: record.join('\r\n'),
 				module,
-				note,
+				eg,
 			})
 
 		})
@@ -109,15 +108,15 @@ function action(inputPath, outputPath, lv = 0) {
 			// console.log(names)
 			names.forEach(name => {
 				const _path = outputPath + '/' + name.split(/[ /<]/)[0] + '.md'
-				const { desc, note } = dataMap.get(name)
+				const { desc, eg } = dataMap.get(name)
 				let _data =
 					`# ${name}
 
 ${desc}
 `
 
-				if (note) {
-					_data += note
+				if (eg) {
+					_data += eg
 				}
 
 				fs.writeFileSync(_path, _data)

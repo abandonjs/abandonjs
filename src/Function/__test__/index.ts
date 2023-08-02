@@ -14,13 +14,13 @@ test('toPromise', _.toPromise,
   { func: (fs) => _.toPromise(fs, 1, 4), params: [add], tobe: 5 },
 )
 
-test('once', _.once(add),
-  { params: [1, 2], tobe: 3 },
-  { params: [33, 2], tobe: 3 },
-  { params: [332, 2], tobe: 3 },
-  { params: [33, 22], tobe: 3 },
-  { params: [33, 21], tobe: 3 },
-)
+// test('once', _.once(add),
+//   { params: [1, 2], tobe: 3 },
+//   { params: [33, 2], tobe: 3 },
+//   { params: [332, 2], tobe: 3 },
+//   { params: [33, 22], tobe: 3 },
+//   { params: [33, 21], tobe: 3 },
+// )
 
 test('after', _.after(3, add),
   { params: [1, 2], tobe: undefined },

@@ -1,7 +1,7 @@
 import { UnitTest } from 'unit-testing-js'
-import { size } from '..'
+import { getLength } from '..'
 
-UnitTest(size)
+UnitTest(getLength)
 	.addCases(
 		{ param: 'string', tobe: 6 },
 		{ param: 'string'.split(''), tobe: 6 },

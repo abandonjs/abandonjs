@@ -1,6 +1,11 @@
 import { test, Cases, UnitTest, BaseValueMap } from 'unit-testing-js'
 import { filter } from '..'
 
+test('filter', filter,
+	{ params: [[{ a: 123 }, { a: 456 }, 12], { a: 123 }], tobe: [{ a: 123 }] },
+	{ params: [[{ a: 123 }, { a: 456 }, 12], { a: 123 }, true], tobe: [{ a: 123 }, 12] },
+)
+
 test('filter-no-filterCondition', filter,
 	...Cases('@EMPTY', 123, '@EMPTY').map(item => {
 		item.tobe = item.params
@@ -31,7 +36,7 @@ UnitTest(filter, 'filter:filterCondition=function')
 	// .log('cases')
 	.run()
 
-UnitTest(filter, 'filter:filterCondition=Record<string, any>')
+UnitTest(filter, 'filter:filterCondition=ObjectType')
 	.addParamMap(
 		[
 			[{ a: 1, b: '1' }, { b: 1 }, { a: 1, b: '1', c: 3 }, {}],

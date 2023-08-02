@@ -1,4 +1,4 @@
-import { test, BaseValueMap, UnitTest } from 'unit-testing-js'
+import { test, UnitTest } from 'unit-testing-js'
 import { flat } from '../..'
 import './flat-runtime.test'
 

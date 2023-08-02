@@ -1,4 +1,4 @@
-import { isString } from "check-it-type"
+import { isString } from "asura-eye"
 
 /**
  * @title copyWithin<T>
@@ -11,6 +11,7 @@ import { isString } from "check-it-type"
  * @version 2.6.0
  */
 export function copyWithin<T>(value: string | T[], target: number, start = 0, end?: number) {
+	if (value.length === 0) return []
 	if (isString(value)) {
 		return value.split('').copyWithin(target, start, end).join('')
 	}

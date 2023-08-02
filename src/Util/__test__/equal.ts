@@ -39,4 +39,5 @@ test('equal', _.equal,
 	{ params: [undefined, null], tobe: false },
 	{ params: ['', undefined], tobe: false },
 	{ params: [null, ''], tobe: false },
+	{ params: [{a: 1, b: 2}, {b: 2, a: 1}], tobe: true },
 )

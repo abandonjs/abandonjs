@@ -1,6 +1,6 @@
-import { isObject } from 'check-it-type'
+import { isObject } from 'asura-eye'
 import { ObjectType } from '../type'
-import { isEqual } from '../util/isEqual'
+import { equal } from '../util/equal'
 
 export type MapEntityUnit<V> = Map<string, V> | WeakMap<ObjectType, V>
 export type MapEntityKey = string | ObjectType
@@ -40,7 +40,7 @@ export interface MapEntityProps<V> {
 function includes(list: unknown[], item: unknown): boolean {
 	if (isObject(item)) {
 		for (let i = 0; i < list.length; i++)
-			if (isEqual(list[i], item))
+			if (equal(list[i], item))
 				return true
 	}
 	if (list.includes(item)) return true
@@ -67,10 +67,10 @@ export class MapEntity<V = unknown> implements MapEntityProps<V>{
 		if (!includes(this.keyList, key)) return false
 		--this.size;
 		const newKeyList = [...this.keyList]
-		this.keyList = this.keyList.filter(item => !isEqual(item, key))
+		this.keyList = this.keyList.filter(item => !equal(item, key))
 		if (!isObject(key)) return this.map.delete(key)
 		for (let i = 0; i < newKeyList.length; i++)
-			if (isEqual(newKeyList[i], key))
+			if (equal(newKeyList[i], key))
 				return this.weakMap.delete(newKeyList[i] as ObjectType)
 
 		return false
@@ -94,7 +94,7 @@ export class MapEntity<V = unknown> implements MapEntityProps<V>{
 	get(key: MapEntityKey): V | undefined {
 		if (!isObject(key)) return this.map.get(key)
 		for (let i = 0; i < this.keyList.length; i++)
-			if (isEqual(this.keyList[i], key))
+			if (equal(this.keyList[i], key))
 				return this.weakMap.get(this.keyList[i] as ObjectType)
 		return undefined
 	}
@@ -110,7 +110,7 @@ export class MapEntity<V = unknown> implements MapEntityProps<V>{
 				return this
 			}
 			for (let i = 0; i < this.keyList.length; i++)
-				if (isEqual(this.keyList[i], key))
+				if (equal(this.keyList[i], key))
 					this.weakMap.set(this.keyList[i] as ObjectType, value)
 			return this
 		}
@@ -123,7 +123,7 @@ export class MapEntity<V = unknown> implements MapEntityProps<V>{
 			return this
 		}
 		for (let i = 0; i < this.keyList.length; i++)
-			if (isEqual(this.keyList[i], key))
+			if (equal(this.keyList[i], key))
 				this.weakMap.set(this.keyList[i] as ObjectType, value)
 		this.weakMap.set(key, value)
 		return this

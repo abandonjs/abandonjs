@@ -1,7 +1,3 @@
-// import { runTime } from 'unit-testing-js'
-// import { logAsync } from '../../../util'
-// import { cases } from './flat-runtime.cases'
-
 export function flatten(arr: unknown) {
 	if (!Array.isArray(arr)) return [];
 

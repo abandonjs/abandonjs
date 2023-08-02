@@ -1,5 +1,5 @@
 import { INFINITY, MAX_VALUES_NUMBER } from '../constants'
-import { isFloat } from 'check-it-type'
+import { isFloat, isNumber } from 'asura-eye'
 
 /**
  * @title spLength
@@ -10,20 +10,14 @@ import { isFloat } from 'check-it-type'
  * @returns string
  */
 export function spLength(value: number | string, min = 0, max: number): string {
-  if (!/^[0-9]*$/.test(String(value))) {
-    return new Array(min).fill('0').join('')
-  }
+  
+  const tmpValue: string = isNumber(value) ? value.toString() : value
 
-  const tmpValue: string = value.toString()
+  if (!/^[0-9]*$/.test(tmpValue)) return new Array(min).fill(0).join('')
+  
   const len = tmpValue.length
-
-  if (len > max) {
-    return tmpValue.slice(len - max)
-  }
-
-  if (len < min) {
-    return new Array(min - len).fill('0').join('') + tmpValue
-  }
+  if (len > max) return tmpValue.slice(len - max)
+  if (len < min) return new Array(min - len).fill(0).join('') + tmpValue
 
   return tmpValue
 }
@@ -81,18 +75,6 @@ export function between(num: number, start = 0, end: number = MAX_VALUES_NUMBER)
   if (num < start) return false
   return true
 }
-
-// /**
-//   * @title round
-//   * @description数字四舍五入，保留n位小数
-//   * @param number number 待处理数值
-//   * @param n number = 0 四舍五入的位数
-//   * @returns 
-// */
-// export function round(number: number, n = 0): number {
-//   if (n <= 0) return Math.round(number)
-//   return Math.round(number * Math.pow(10, n)) / Math.pow(10, n)
-// }
 
 /**
  * @title toThousands
