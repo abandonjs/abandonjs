@@ -1,7 +1,9 @@
 ## 3.0.0
 
 - 重构: `indexOf`, `includes`
-- 修改: `getLength` 取代 `size`
+- 修改:
+  - `getLength` 取代 `size`
+  - `omit` 取代 `omitRecord`, 添加对 `Map` 的支持
 - 去除: `group`, `groupToMap`
 
 ## 2.7.0
