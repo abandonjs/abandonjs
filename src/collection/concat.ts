@@ -5,7 +5,7 @@ import { isArray, isSet } from "asura-eye";
  * @description 连接多个数组
  * @params ...list {T[][]} 多个数组 
  * @returns T[]
- * @update 2.6.0
+ * @lastUpdate 2.6.0
  */
 export function concat<T = unknown>(...list: unknown[]): T[] {
 	let result: T[] = []

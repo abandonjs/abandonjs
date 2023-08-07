@@ -1,3 +1,8 @@
+## 3.3.0
+
+- `matchNumberValue` 改为`compareNumber`
+- `matchValue` 改为`compareValue`
+
 ## 3.2.0
 
 - `changeCase` 拆分 为 `toFirstUpperCase`, `toFirstLowerCase`, `toUpperCase`, `toLowerCase`

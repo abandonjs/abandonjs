@@ -1,9 +1,17 @@
-import { isNumber, isRegExp, type } from 'asura-eye'
+import { isArray, isEmpty, isNumber, isRegExp, type } from 'asura-eye'
 import { Val, Valer } from '../type'
 import { toPathValue } from "./toPathValue"
 import { equal } from './equal'
 
-export function matchNumberValue(val: number, valer: Valer): boolean {
+/**
+ * @title compareNumber
+ * @param val 被比较值
+ * @param valer 比较值 / 可为正则 / [number, number] / 字符串(=number,<=number...)
+ * @param path 值的路径 用逗号隔开
+ * @returns boolean
+ * @lastUpdate @3.2.0
+ */
+export function compareNumber(val: number, valer: Valer): boolean {
 
 	const valType: string = type(val)
 	const valerType: string = type(valer)
@@ -15,6 +23,21 @@ export function matchNumberValue(val: number, valer: Valer): boolean {
 	if (valType !== 'Number') {
 		return false
 	}
+
+	if (isArray(valer) && valer.length > 0) {
+		let min = -Infinity
+		let max = Infinity
+
+		if (!isEmpty(valer[0])) {
+			min = Number(valer[0])
+		}
+
+		if (valer.length > 1 && !isEmpty(valer[1])) {
+			max = Number(valer[1])
+		}
+		return val > min && val < max
+	}
+
 
 	if (valerType === 'String') {
 
@@ -36,13 +59,13 @@ export function matchNumberValue(val: number, valer: Valer): boolean {
 
 
 /**
- * @title matchValue
+ * @title compareValue
  * @param val 被比较值
  * @param valer 比较值 / 可为正则
  * @param path 值的路径 用逗号隔开
  * @returns boolean
  */
-export function matchValue(val: Val, valer: Valer, path?: string): boolean {
+export function compareValue(val: Val, valer: Valer, path?: string): boolean {
 
 	if (path) {
 		val = toPathValue(val, path)
@@ -52,7 +75,8 @@ export function matchValue(val: Val, valer: Valer, path?: string): boolean {
 
 	if (isRegExp(valer)) return (valer as RegExp).test(String(val))
 
-	if (isNumber(val)) return matchNumberValue(val as number, valer)
+	if (isNumber(Number(val))) return compareNumber(Number(val), valer)
+	if (isNumber(val)) return compareNumber(val as number, valer)
 
 	return true
 }

@@ -15,6 +15,16 @@ test('toArray', toArray,
 		param: new Set([1, 2, 3]),
 		tobe: [1, 2, 3]
 	},
+	{
+		param: {
+			a: '1',
+			b: 2,
+		},
+		tobe: [
+			['a', '1'],
+			['b', 2],
+		]
+	},
 	{ param: 123, tobe: [123] },
 	{ param: undefined, tobe: [] },
 	{ params: [null], tobe: [] },
@@ -25,7 +35,7 @@ test('toArray', toArray,
 	{ params: [10], tobe: [10] },
 	{ params: ['template'], tobe: ['template'] },
 	{ params: [[]], tobe: [] },
-	{ params: [{}], tobe: [{}] },
+	{ params: [{}], tobe: [] },
 	{ params: [false], tobe: [false] },
 	{ params: [0], tobe: [0] },
 	{ params: [-1], tobe: [-1] },

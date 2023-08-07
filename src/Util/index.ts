@@ -1,5 +1,5 @@
 export * from './log'
-export * from './matchValue'
+export * from './compare'
 export * from './deepClone'
 export * from './limitTime'
 export * from './changeCase'
