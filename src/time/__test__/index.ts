@@ -3,6 +3,7 @@ import './timezone'
 import './intervalDate'
 import './dayOfYear'
 import * as _ from '..'
+
 const time = '2022/06/5 07:03:50'
 
 test('toDate', _.toDate,
@@ -13,6 +14,11 @@ test('toDate', _.toDate,
 
 test('deadline', _.deadline,
 	{ params: [new Date('2022/06/17 07:03:50'), 'day', new Date('2022/06/15 07:03:50')], tobe: 2 },
+)
+
+test('isSameDate', _.isSameDate,
+	{ params: [new Date('2022/06/17 07:03:50'), new Date('2022/06/15 07:03:50')], tobe: false },
+	{ params: [new Date('2022/06/17 07:03:50'), new Date('2022/06/17 07:03:50')], tobe: true },
 )
 
 test('format', _.format,

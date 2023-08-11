@@ -1,4 +1,4 @@
-import { Func, AsyncFunc } from './../type';
+import type { Func, AsyncFunc } from '../type'
 
 /**
  * @title BanConfig
@@ -20,19 +20,19 @@ interface BanConfig {
 }
 
 /**
- * @title ban<Params extends [], Return>
+ * @title limitTime<Params extends [], Return>
  * @description 限制 方法的超时和执行次数
  * @param func Func<Params, Return>
  * @param config BanConfig
  * @returns function (...args: Params): Return
  */
-export function ban<Params extends [], Return>(
+export function limitTime<Params extends [], Return>(
 	func: Func<Params, Return>,
 	config: BanConfig
 ): Func<Params, Return> {
 	let { timeout = 3000, count = 1000000 } = config
-	if (timeout < 1) timeout = 3000
-	if (count < 1) count = 1000000
+	if (timeout < 0) timeout = 3000
+	if (count < 0) count = 1000000
 	let runCount = 1
 	return function (...args: Params): Return {
 		if (runCount > count) throw new Error('Possible infinite loop')
@@ -48,18 +48,18 @@ export function ban<Params extends [], Return>(
 }
 
 /**
- * @title asyncBan<Params extends [], Return>
+ * @title asyncLimitTime<Params extends [], Return>
  * @param func AsyncFunc<Params, Return>
  * @param config BanConfig
  * @returns function (...args: Params): Return
  */
-export function asyncBan<Params extends [], Return>(
+export function asyncLimitTime<Params extends [], Return>(
 	func: AsyncFunc<Params, Return>,
 	config: BanConfig
 ) {
 	let { timeout = 3000, count = 1000000 } = config
-	if (timeout < 1) timeout = 3000
-	if (count < 1) count = 1000000
+	if (timeout < 0) timeout = 3000
+	if (count < 0) count = 1000000
 	let runCount = 1
 
 	return async function (...args: Params) {
@@ -72,24 +72,5 @@ export function asyncBan<Params extends [], Return>(
 		runCount++;
 
 		return result
-	}
-}
-
-/**
- * @title catchError<Params extends [], Return>
- * @param func Func<Params, Return>
- * @param errorReturnValue Return
- * @returns function (...args: Params): Return
- */
-export function catchError<Params extends [], Return>(
-	func: Func<Params, Return>,
-	errorReturnValue: Return
-) {
-	return function (...args: Params): Return {
-		try {
-			return func(...args)
-		} catch (error) {
-			return errorReturnValue
-		}
 	}
 }

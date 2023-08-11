@@ -1,8 +1,39 @@
-import { type } from 'asura-eye'
-import { Val, Valer } from './util/type'
-import { matchNumberValue } from './util/matchNumberValue'
+import { isNumber, isRegExp, type } from 'asura-eye'
+import { Val, Valer } from '../type'
 import { toPathValue } from "./toPathValue"
 import { equal } from './equal'
+
+export function matchNumberValue(val: number, valer: Valer): boolean {
+
+	const valType: string = type(val)
+	const valerType: string = type(valer)
+
+	if (valerType === 'RegExp') {
+		return (valer as RegExp).test(String(val))
+	}
+
+	if (valType !== 'Number') {
+		return false
+	}
+
+	if (valerType === 'String') {
+
+		const [matNum, Sym = '=']: string[] = /(?<=([<>=!]+))[0-9]+/gi.exec(valer as string) || []
+
+		switch (Sym) {
+			case '=': return val === Number(matNum)
+			case '>': return val > Number(matNum)
+			case '>=': return val >= Number(matNum)
+			case '<': return val < Number(matNum)
+			case '<=': return val <= Number(matNum)
+			case '<>':
+			case '!=': return val != Number(matNum)
+		}
+	}
+
+	return false
+}
+
 
 /**
  * @title matchValue
@@ -19,9 +50,9 @@ export function matchValue(val: Val, valer: Valer, path?: string): boolean {
 
 	if (equal(val, valer)) return true
 
-	if (type(valer) === 'RegExp') return (valer as RegExp).test(String(val))
+	if (isRegExp(valer)) return (valer as RegExp).test(String(val))
 
-	if (type(val) === 'Number') return matchNumberValue(val as number, valer)
+	if (isNumber(val)) return matchNumberValue(val as number, valer)
 
 	return true
 }
