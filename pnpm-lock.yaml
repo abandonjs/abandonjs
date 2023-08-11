@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 devDependencies:
   0math:
     specifier: 0.1.2
@@ -74,8 +78,8 @@ devDependencies:
     specifier: ^5.1.6
     version: 5.1.6
   unit-testing-js:
-    specifier: 1.0.0
-    version: 1.0.0
+    specifier: 1.1.0
+    version: 1.1.0
 
 packages:
 
@@ -3278,8 +3282,8 @@ packages:
     hasBin: true
     dev: true
 
-  /unit-testing-js@1.0.0:
-    resolution: {integrity: sha512-aPWnOJHrjGOfStk+wm+tXrWDN4a3t7tqkrUkwHCNCk9T49M6vURp8ySLoGcgMau1woK71ev5v05vv/a8MzytEw==}
+  /unit-testing-js@1.1.0:
+    resolution: {integrity: sha512-FqNW/5G81WLFoZj4ebIipLpANzlN6j7CX/lBSVskJrJE+0WTRrpp+AzRD++TfpHPZenhi+957a776gVKNYULgA==}
     engines: {node: '>=16'}
     dev: true
 
