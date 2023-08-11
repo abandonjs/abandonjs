@@ -1,4 +1,5 @@
-import './case1'
+import './compare'
+import './toPathValue'
 import './case2'
 import './deepClone'
 import './equal'

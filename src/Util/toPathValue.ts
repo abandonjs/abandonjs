@@ -1,4 +1,4 @@
-import { isEmpty, isObject } from 'asura-eye'
+import { isArray, isEmpty, isNumber, isObject, isString } from 'asura-eye'
 import type { Val } from '../type'
 
 /**
@@ -8,7 +8,16 @@ import type { Val } from '../type'
  * @param path string 路径 (若路径有`.` 可用`\\.`代替)
  * @returns 通过路径获取对应值
  */
-export function toPathValue(val: Val, path: string): Val {
+export function toPathValue(val: Val, path: string | number): Val {
+
+	if (isNumber(path)) {
+		if (isString(val) || isArray(val))
+			return val[path]
+		else {
+			return undefined
+		}
+	}
+
 
 	const paths: string[] = path.split(/(?<!\\)\./) || []
 

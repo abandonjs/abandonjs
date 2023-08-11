@@ -23,6 +23,9 @@ export type ValBase = undefined | null | number | string | boolean | ValBase[] |
 export type Val = ValBase
 
 export type ValerBase = number | string | boolean | RegExp
-export type Valer = ValerBase | ValBase[] | {
+export type Valer = ValerBase | ValBase[] | [
+	undefined | string | number,
+	undefined | string | number
+] | {
 	[key: string]: Valer
 }

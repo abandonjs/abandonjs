@@ -15,26 +15,13 @@ const tmpObj = {
 	}
 }
 
-test('toPathValue', _.toPathValue,
-{
-	params: [
-		tmpObj,
-		'a.b.c.e'
-	],
-	tobe: 12356
-},
-	{
-		params: [{
-			['a.2.3']: {
-				4: 123
-			}
-		}, 'a\\.2\\.3.4'], tobe: 123
-	},
-)
-
-
-
-test('matchValue', _.matchValue,
+test('compareValue', _.compareValue,
+	{ params: [123, [110, 130]], tobe: true },
+	{ params: ['123', [110, 130]], tobe: true },
+	{ params: [123, [, 130]], tobe: true },
+	{ params: [123, [140, 130]], tobe: false },
+	{ params: [123, [140]], tobe: false },
+	{ params: [123, [140]], tobe: false },
 	{ params: [tmpObj, tmpObj], tobe: true },
 	{ params: [tmpObj.a, tmpObj, 'a'], tobe: true },
 	{ params: [tmpObj, '>=123', 'a.b.c.1'], tobe: true },

@@ -2,7 +2,8 @@ import { isArray, isFunction, isObject, isRegExp, isString, } from 'asura-eye'
 import { ObjectType } from '../type'
 import { stringify } from '../string'
 
-export type FilterCondition<T = unknown> = ((value: T, index: number, array: T[]) => boolean)
+export type FilterCondition<T = unknown> =
+  ((value: T, index: number, array: T[]) => boolean)
   | Record<string, number | string | RegExp | any>
 
 /**
@@ -27,7 +28,6 @@ export function filter<T extends ObjectType>(
     return list.filter(filterCondition as ((value: T, index: number, array: T[]) => boolean))
   }
   if (isObject(filterCondition))
-
     return list.filter((item: T): boolean => {
 
       if (!isObject(item)) return retainNotObject

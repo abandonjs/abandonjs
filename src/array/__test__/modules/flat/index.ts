@@ -15,7 +15,7 @@ test('flat-case-1', flat,
 	{ param: NaN, tobe: [] },
 	{ param: false, tobe: [false] },
 	{ param: '', tobe: [''] },
-	{ param: {}, tobe: [{}] },
+	{ param: {}, tobe: [] },
 )
 
 UnitTest(flat, 'flat')

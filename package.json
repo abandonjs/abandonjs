@@ -1,6 +1,6 @@
 {
   "name": "abandonjs",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
@@ -63,6 +63,6 @@
     "rollup-plugin-typescript2": "^0.32.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^5.1.6",
-    "unit-testing-js": "1.0.0"
+    "unit-testing-js": "1.1.0"
   }
 }
