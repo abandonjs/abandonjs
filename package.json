@@ -8,15 +8,17 @@
   "deliver": "/lib/",
   "typings": "lib/index.d.ts",
   "scripts": {
+    "test": "jest",
     "jt": "jest",
     "jtc": "jest --coverage",
+    "jtw": "jest --watch",
     "commitlint": "commitlint -e",
     "reload": "rimraf node_modules && pnpm install",
     "build": "npx rollup -c ./config/rollup.build.ts",
     "git": "node config/git",
     "build:ed": "npx rollup -c --extend ./rollup.config.ts",
     "docs": "node ./config/docs.js",
-    "test": "ts-node-dev --respawn --transpile-only ./test/index.ts",
+    "test_run": "ts-node-dev --respawn --transpile-only ./test/index.ts",
     "eslint": "eslint . --ext .ts",
     "pub": "npm publish"
   },

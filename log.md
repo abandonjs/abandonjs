@@ -1,5 +1,8 @@
 ## 3.4.0
 
+- 添加 jest 测试方法
+- 备注风格改成 jsdoc 风格
+
 ## 3.3.0
 
 - `matchNumberValue` 改为`compareNumber`
