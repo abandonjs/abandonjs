@@ -18,7 +18,7 @@
     "git": "node config/git",
     "build:ed": "npx rollup -c --extend ./rollup.config.ts",
     "docs": "node ./config/docs.js",
-    "test_run": "ts-node-dev --respawn --transpile-only ./test/index.ts",
+    "dev": "ts-node-dev --respawn --transpile-only ./test/index.ts",
     "eslint": "eslint . --ext .ts",
     "pub": "npm publish"
   },
