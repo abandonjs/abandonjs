@@ -41,3 +41,22 @@ function runTest() {
 }
 
 runTest()
+
+// const obj = {
+//   a: 3
+// }
+
+// const v = new Proxy<any>(obj, {
+//   get: function (target, prop, receiver) {
+//     // console.log(target, prop, receiver)
+//     return target[prop]
+//   },
+//   set: function (target, prop, receiver) {
+//     // console.log(target, prop, receiver)
+//     return Reflect.set(target, prop, receiver)
+//   },
+// })
+
+// v.a = 123
+
+// console.log(v.a)

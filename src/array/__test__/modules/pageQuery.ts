@@ -2,17 +2,17 @@ import { UnitTest } from 'unit-testing-js'
 import { pageQuery } from '../..'
 
 const list = [
-	{ a: 1, b: 11, c: 'fafda_1222', d: 'cccc' },
-	{ a: 2, b: 12, c: 'fafda_1223', d: 'cccc' },
-	{ a: 3, b: 13, c: 'fafda_1224', d: 'cccc' },
-	{ a: 4, b: 14, c: 'fafda_1225', d: 'cccc' },
-	{ a: 5, b: 15, c: 'fafda_1226', d: 'cccc' },
-	{ a: 6, b: 16, c: 'fafda_1227', d: 'cccc' },
-	{ a: 7, b: 17, c: 'fafda_1228', d: 'cccc' },
-	{ a: 8, b: 18, c: 'fafda_1229', d: 'cccc' },
-	{ a: 9, b: 19, c: 'fafda_1230', d: 'cccc' },
-	{ a: 10, b: 20, c: 'fafda_1231', d: 'cccc' },
-	{ a: 11, b: 21, c: 'fafda_1232', d: 'cccc' },
+	{ a: 1, b: 11, c: 'code_1222', d: 'cccc' },
+	{ a: 2, b: 12, c: 'code_1223', d: 'cccc' },
+	{ a: 3, b: 13, c: 'code_1224', d: 'cccc' },
+	{ a: 4, b: 14, c: 'code_1225', d: 'cccc' },
+	{ a: 5, b: 15, c: 'code_1226', d: 'cccc' },
+	{ a: 6, b: 16, c: 'code_1227', d: 'cccc' },
+	{ a: 7, b: 17, c: 'code_1228', d: 'cccc' },
+	{ a: 8, b: 18, c: 'code_1229', d: 'cccc' },
+	{ a: 9, b: 19, c: 'code_1230', d: 'cccc' },
+	{ a: 10, b: 20, c: 'code_1231', d: 'cccc' },
+	{ a: 11, b: 21, c: 'code_1232', d: 'cccc' },
 ]
 
 UnitTest(pageQuery)
@@ -33,21 +33,21 @@ UnitTest(pageQuery)
 			},
 			tobe: {
 				list: [
-					{ a: 1, b: 11, c: 'fafda_1222', d: 'cccc' },
-					{ a: 2, b: 12, c: 'fafda_1223', d: 'cccc' },
-					{ a: 3, b: 13, c: 'fafda_1224', d: 'cccc' },
-					{ a: 4, b: 14, c: 'fafda_1225', d: 'cccc' },
-					{ a: 5, b: 15, c: 'fafda_1226', d: 'cccc' },
-					{ a: 6, b: 16, c: 'fafda_1227', d: 'cccc' },
-					{ a: 7, b: 17, c: 'fafda_1228', d: 'cccc' },
-					{ a: 8, b: 18, c: 'fafda_1229', d: 'cccc' },
-					{ a: 9, b: 19, c: 'fafda_1230', d: 'cccc' },
-					{ a: 11, b: 21, c: 'fafda_1232', d: 'cccc' },
+					{ a: 1, b: 11, c: 'code_1222', d: 'cccc' },
+					{ a: 2, b: 12, c: 'code_1223', d: 'cccc' },
+					{ a: 3, b: 13, c: 'code_1224', d: 'cccc' },
+					{ a: 4, b: 14, c: 'code_1225', d: 'cccc' },
+					{ a: 5, b: 15, c: 'code_1226', d: 'cccc' },
+					{ a: 6, b: 16, c: 'code_1227', d: 'cccc' },
+					{ a: 7, b: 17, c: 'code_1228', d: 'cccc' },
+					{ a: 8, b: 18, c: 'code_1229', d: 'cccc' },
+					{ a: 9, b: 19, c: 'code_1230', d: 'cccc' },
+					{ a: 11, b: 21, c: 'code_1232', d: 'cccc' },
 				],
 				pageList: [
-					{ a: 1, b: 11, c: 'fafda_1222', d: 'cccc' },
-					{ a: 2, b: 12, c: 'fafda_1223', d: 'cccc' },
-					{ a: 3, b: 13, c: 'fafda_1224', d: 'cccc' },
+					{ a: 1, b: 11, c: 'code_1222', d: 'cccc' },
+					{ a: 2, b: 12, c: 'code_1223', d: 'cccc' },
+					{ a: 3, b: 13, c: 'code_1224', d: 'cccc' },
 				],
 				paging: { pageNo: 1, pageSize: 3, total: 10 }
 			},
@@ -64,21 +64,21 @@ UnitTest(pageQuery)
 			},
 			tobe: {
 				list: [
-					{ a: 1, b: 11, c: 'fafda_1222', d: 'cccc' },
-					{ a: 2, b: 12, c: 'fafda_1223', d: 'cccc' },
-					{ a: 3, b: 13, c: 'fafda_1224', d: 'cccc' },
-					{ a: 4, b: 14, c: 'fafda_1225', d: 'cccc' },
-					{ a: 5, b: 15, c: 'fafda_1226', d: 'cccc' },
-					{ a: 6, b: 16, c: 'fafda_1227', d: 'cccc' },
-					{ a: 7, b: 17, c: 'fafda_1228', d: 'cccc' },
-					{ a: 8, b: 18, c: 'fafda_1229', d: 'cccc' },
-					{ a: 9, b: 19, c: 'fafda_1230', d: 'cccc' },
-					{ a: 11, b: 21, c: 'fafda_1232', d: 'cccc' },
+					{ a: 1, b: 11, c: 'code_1222', d: 'cccc' },
+					{ a: 2, b: 12, c: 'code_1223', d: 'cccc' },
+					{ a: 3, b: 13, c: 'code_1224', d: 'cccc' },
+					{ a: 4, b: 14, c: 'code_1225', d: 'cccc' },
+					{ a: 5, b: 15, c: 'code_1226', d: 'cccc' },
+					{ a: 6, b: 16, c: 'code_1227', d: 'cccc' },
+					{ a: 7, b: 17, c: 'code_1228', d: 'cccc' },
+					{ a: 8, b: 18, c: 'code_1229', d: 'cccc' },
+					{ a: 9, b: 19, c: 'code_1230', d: 'cccc' },
+					{ a: 11, b: 21, c: 'code_1232', d: 'cccc' },
 				],
 				pageList: [
-					{ a: 1, b: 11, c: 'fafda_1222', d: 'cccc' },
-					{ a: 2, b: 12, c: 'fafda_1223', d: 'cccc' },
-					{ a: 3, b: 13, c: 'fafda_1224', d: 'cccc' },
+					{ a: 1, b: 11, c: 'code_1222', d: 'cccc' },
+					{ a: 2, b: 12, c: 'code_1223', d: 'cccc' },
+					{ a: 3, b: 13, c: 'code_1224', d: 'cccc' },
 				],
 				paging: { pageNo: 1, pageSize: 3, total: 10 }
 			},
@@ -109,10 +109,10 @@ UnitTest(pageQuery)
 			},
 			tobe: {
 				list: [
-					{ a: 1, b: 11, c: 'fafda_1222', d: 'cccc' }
+					{ a: 1, b: 11, c: 'code_1222', d: 'cccc' }
 				],
 				pageList: [
-					{ a: 1, b: 11, c: 'fafda_1222', d: 'cccc' }
+					{ a: 1, b: 11, c: 'code_1222', d: 'cccc' }
 				],
 				paging: { pageNo: 1, pageSize: 3, total: 1 }
 			},
