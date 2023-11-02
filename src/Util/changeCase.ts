@@ -1,5 +1,6 @@
 /**
- * 首字母大写
+ * @title toFirstUpperCase
+ * @description 首字母大写
  */
 export const toFirstUpperCase = (value: string) => value.replace(
   /\b.*/g,
@@ -7,7 +8,8 @@ export const toFirstUpperCase = (value: string) => value.replace(
 )
 
 /**
- * 首字母小写
+ * @title toFirstLowerCase
+ * @description 首字母小写
  */
 export const toFirstLowerCase = (value: string) => value.replace(
   /\b.*/g,
@@ -15,11 +17,13 @@ export const toFirstLowerCase = (value: string) => value.replace(
 )
 
 /**
- * 全部大写
+ * @title toUpperCase
+ * @description 全部大写
  */
 export const toUpperCase = (value: string) => value.toUpperCase()
 
 /**
- * 全部小写
+ * @title toLowerCase 
+ * @description 全部小写
  */
 export const toLowerCase = (value: string) => value.toLowerCase()

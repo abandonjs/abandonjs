@@ -3,6 +3,8 @@
 - 添加 jest 测试方法
 - 备注风格改成 jsdoc 风格
 - 重构: pageQuery
+- maxSort 改名 descSort
+- minSort 改名 ascSort
 
 ## 3.3.0
 

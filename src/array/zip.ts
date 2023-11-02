@@ -4,7 +4,7 @@ import { loops } from '../function/loop'
 /**
  * @title zip<T>
  * @description: 每个数组同样的下标组成一个新数组
- * @param ...arrays {...T[]}
+ * @param {...T[]} ...arrays 
  * @returns {T[][]}
  * @version: 2.1.11
  * @eg: ```ts
@@ -12,7 +12,7 @@ import { loops } from '../function/loop'
  => [['fred', 30, true], ['barney', 40, false]]
  ```
  */
-export function zip<T>(...arrays: any[]): T[][] {
+export function zip<T = any>(...arrays: any[]): T[][] {
 	const len: number = arrays.length
 	const maxLen: number = arrays[0].length
 	const result: T[][] = loops(
@@ -29,8 +29,8 @@ export function zip<T>(...arrays: any[]): T[][] {
 /**
  * @title zipObject<Value>
  * @description: 第一个数组是对象的key, 第二个数组是对象的value
- * @param keys {(string|number)[]}
- * @param values {Value[]}
+ * @param {(string|number)[]} keys
+ * @param {Value[]} values
  * @returns {ObjectType<Value>}
  * @version: 2.1.11
  * @eg: ```ts
@@ -38,7 +38,7 @@ export function zip<T>(...arrays: any[]): T[][] {
  => { 'a': 1, 'b': 2 }
  ```
  */
-export function zipObject<Value>(
+export function zipObject<Value = any>(
 	keys: (string | number)[],
 	values: Value[]
 ): ObjectType<Value> {

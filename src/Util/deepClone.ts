@@ -26,7 +26,7 @@ function deepClonePredicate(value: any) {
 /**
  * @title deepClone
  * @description 深拷贝
- * @param value {any}
+ * @param {unknown} value
  * @returns {any}
  * @version 2.4.1
  */

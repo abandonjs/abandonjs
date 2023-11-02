@@ -1,7 +1,7 @@
 /**
  * @title dayOfYear
  * @description 指定日期位于今年的第几天
- * @param date {Date}
+ * @param {Date} date
  * @returns {number}
  */
 export const dayOfYear = (date: Date = new Date()): number =>

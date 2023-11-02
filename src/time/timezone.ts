@@ -5,8 +5,8 @@ export type LikeNumber = number | `${number}`
 /**
  * @title timezone
  * @description 指定时区时间偏移量, 转换为目标时间
- * @param originOffset {LikeNumber} 当前时间的时区(number:时间偏移量|string:时区)
- * @param targetOffset {LikeNumber} 目标时间的时区(number:时间偏移量|string:时区)
+ * @param {LikeNumber} originOffset 当前时间的时区(number:时间偏移量|string:时区)
+ * @param {LikeNumber} targetOffset 目标时间的时区(number:时间偏移量|string:时区)
  * @returns {(data:Date)=>Date} 
  * @eg
  ```js

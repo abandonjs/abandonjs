@@ -5,10 +5,9 @@ import { equal } from './equal'
 
 /**
  * @title compareNumber
- * @param val 被比较值
- * @param valer 比较值 / 可为正则 / [number, number] / 字符串(=number,<=number...)
- * @param path 值的路径 用逗号隔开
- * @returns boolean
+ * @param {number} val 被比较值
+ * @param {number|string} valer 比较值 / 可为正则 / [number, number] / 字符串(=number,<=number...)
+ * @returns {boolean}
  * @lastUpdate @3.2.0
  */
 export function compareNumber(val: number, valer: Valer): boolean {
@@ -60,9 +59,9 @@ export function compareNumber(val: number, valer: Valer): boolean {
 
 /**
  * @title compareValue
- * @param val 被比较值
- * @param valer 比较值 / 可为正则
- * @param path 值的路径 用逗号隔开
+ * @param {Val} val 被比较值
+ * @param {Valer} valer 比较值 / 可为正则
+ * @param {string} [path] 值的路径 用逗号隔开
  * @returns boolean
  */
 export function compareValue(val: Val, valer: Valer, path?: string): boolean {

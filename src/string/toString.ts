@@ -1,21 +1,21 @@
-import { type } from 'asura-eye'
+import { isString, type } from 'asura-eye'
 
 /**
  * @title toString
  * @description 任意类型均可转换为string
- * @param value {any}
+ * @param {unknown} value
  * @returns {string}
  * @lastUpdate: 2.2.1
  */
-export function toString(value: any): string {
-  if (type(value) === 'String') return value
-  
+export function toString(value: unknown): string {
+  if (isString(value)) return value
+
   if ([
     'Function', 'AsyncFunction', 'GeneratorFunction',
     'Symbol', 'RegExp', 'Promise', 'Date', 'NaN',
     'Map', 'Set', 'WeakMap', 'WeakSet', 'BigInt'
   ].includes(type(value)))
-    return value.toString()
+    return (value as any).toString()
 
   if (value === Infinity) return 'Infinity'
   if (value === -Infinity) return '-Infinity'
@@ -28,7 +28,7 @@ export function toString(value: any): string {
 /**
  * @title toStrings
  * @description 转换为字符串数组, 即数组的的项转换为数组
- * @param value {any[]}
+ * @param {any[]} values
  * @returns {string[]}
  */
 export function toStrings(values: any[]): string[] {

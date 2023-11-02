@@ -1,7 +1,7 @@
 /**
  * @title toDate
  * @description 字符串装换成Date对象
- * @param value string 可以转换成时间的字符串
+ * @param {string} value 可以转换成时间的字符串
  * @returns {Date}
  */
 export function toDate(value: string): Date {

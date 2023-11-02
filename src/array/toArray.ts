@@ -3,7 +3,7 @@ import { isEmpty, isMap, isObject, isSet } from "asura-eye"
 /**
  * @title toArray<T>
  * @description 将非数组转换为数组, 对象会转换成 Array([key,value])
- * @param value {T|T[]}
+ * @param {T|T[]} value 
  * @returns {T[]}
  * @lastUpdate 3.3.0
  */

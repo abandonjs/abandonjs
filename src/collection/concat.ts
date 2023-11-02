@@ -3,8 +3,8 @@ import { isArray, isSet } from "asura-eye";
 /**
  * @title concat<T>
  * @description 连接多个数组
- * @params ...list {T[][]} 多个数组 
- * @returns T[]
+ * @params {any[]} ...list 多个数组 
+ * @returns {T[]}
  * @lastUpdate 2.6.0
  */
 export function concat<T = unknown>(...list: unknown[]): T[] {

@@ -14,6 +14,77 @@ const list = [
   { id: '10', a: 10, b: 20, c: 'code_1231', d: 'cccc' },
   { id: '11', a: 11, b: 21, c: 'code_1232', d: 'cccc' },
 ]
+
+{
+
+  const { getPage, removeOne, removes, addOne, adds } = pageQuery({
+    dataSource: [
+      { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
+    ],
+    noRangeProps: ['a']
+  })
+  const page = getPage({
+    a: [0, 2],
+    id: [0, 2],
+    b: ['10', '12']
+  })
+
+  // console.log(page)
+  test('page', {
+    param: page.dataSource,
+    tobe: [
+      // { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
+    ]
+  })
+}
+{
+
+  const { getPage, removeOne, removes, addOne, adds } = pageQuery({
+    dataSource: [
+      { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
+    ]
+  })
+  const page = getPage({
+    a: [0, 2],
+    id: [0, 2],
+    b: ['10', '12']
+  })
+
+  // console.log(page)
+  test('page', {
+    param: page.dataSource,
+    tobe: [
+      { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
+    ]
+  })
+}
+{
+
+  const { getPage, removeOne, removes, addOne, adds } = pageQuery({
+    dataSource: [
+      { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
+      { id: '3', a: 3, b: 13, c: 'code_1224', d: 'cccc' },
+      { id: '2', a: 2, b: 12, c: 'code_1223', d: 'cccc' },
+    ]
+  })
+  const page = getPage({}, {
+    sortBy: {
+      id: 'asc'
+    }
+  })
+
+  // console.log(page)
+  test('page', {
+    param: page.dataSource,
+    tobe: [
+      { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
+      { id: '2', a: 2, b: 12, c: 'code_1223', d: 'cccc' },
+      { id: '3', a: 3, b: 13, c: 'code_1224', d: 'cccc' }
+    ]
+  })
+}
+
+
 {
   const { getPage, removeOne, removes, addOne, adds } = pageQuery({ dataSource: [...list] })
 

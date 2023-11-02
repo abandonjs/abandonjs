@@ -5,8 +5,8 @@ import { getIndex, getLength } from "./get"
 /**
  * @title at
  * @description 通过下标获取值
- * @param collection {Collection}
- * @param index {CollectionKey=0} 可为负数
+ * @param {Collection} collection
+ * @param {CollectionKey} [index=0] 可为负数
  * @returns {CollectionValue}
  * @version 2.6.0
  */
