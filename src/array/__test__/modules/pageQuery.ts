@@ -1,4 +1,4 @@
-import { UnitTest, test } from 'unit-testing-js'
+import { test } from 'unit-testing-js'
 import { pageQuery } from '../..'
 
 const list = [

@@ -8,7 +8,6 @@
   "deliver": "/lib/",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "test": "jest",
     "jt": "jest",
     "jtc": "jest --coverage",
     "jtw": "jest --watch",
@@ -18,7 +17,7 @@
     "git": "node config/git",
     "build:ed": "npx rollup -c --extend ./rollup.config.ts",
     "docs": "node ./config/docs.js",
-    "dev": "ts-node-dev --respawn --transpile-only ./test/index.ts",
+    "test": "ts-node-dev --respawn --transpile-only ./test/index.ts",
     "eslint": "eslint . --ext .ts",
     "pub": "npm publish"
   },
