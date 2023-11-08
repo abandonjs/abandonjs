@@ -8,9 +8,12 @@ module.exports = {
   // transform: {
   //   "^.+\\.tsx?$": "ts-jest",
   // },
-  testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+  // testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
   // moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
+  testMatch: [
+    "**/*/*.test.ts"
+  ],
   transformIgnorePatterns: [
-    "/node_modules/(?!(module-to-transform1|module-to-transform2)/)",
+    "/node_modules/",
   ],
 };

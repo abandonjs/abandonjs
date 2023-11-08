@@ -8,6 +8,7 @@
   "deliver": "/lib/",
   "typings": "lib/index.d.ts",
   "scripts": {
+    "jtClean": "jest --clearCache",
     "jt": "jest",
     "jtc": "jest --coverage",
     "jtw": "jest --watch",

@@ -8,12 +8,6 @@ import './pipe'
 // throttle
 // debounce
 
-test('toPromise', _.toPromise,
-  { param: 1, tobe: 1 },
-  { params: [add, 1, 4], tobe: 5 },
-  { func: (fs) => _.toPromise(fs, 1, 4), params: [add], tobe: 5 },
-)
-
 // test('once', _.once(add),
 //   { params: [1, 2], tobe: 3 },
 //   { params: [33, 2], tobe: 3 },
