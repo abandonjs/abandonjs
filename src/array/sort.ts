@@ -15,13 +15,13 @@ function getSortNum(value: unknown, sortIndex?: string | number): number {
 /**
  * @title descSort<T=object>
  * @description 降序排序(从大到小排序)
- * @param list {unknown[]}
- * @param sortIndex {string|number} 索引路径, 参考toPathValue的路径
+ * @param {T[]} list
+ * @param {string|number} [sortIndex] 索引路径, 参考toPathValue的路径
  * @returns {T[]}
  * @create 3.3.0
  * @lastUpdate 3.3.0
  */
-export function descSort<T = ObjectType>(list: T[], sortIndex?: string | number) {
+export function descSort<T = ObjectType>(list: T[], sortIndex?: string | number):T[] {
 
 	const handler = (before: T, after: T) => {
 		if (isString(before) && isString(after)) return after.localeCompare(before)
@@ -38,13 +38,13 @@ export function descSort<T = ObjectType>(list: T[], sortIndex?: string | number)
 /**
  * @title ascSort<T=object>
  * @description 升序排序(从小到大排序)
- * @param list {unknown[]}
- * @param sortIndex {string|number} 索引路径, 参考toPathValue的路径
+ * @param {T[]} list 
+ * @param {string|number} sortIndex 索引路径, 参考toPathValue的路径
  * @returns {T[]}
  * @create 3.3.0
  * @lastUpdate 3.3.0
  */
-export function ascSort<T = ObjectType>(list: T[], sortIndex?: string | number) {
+export function ascSort<T = ObjectType>(list: T[], sortIndex?: string | number):T[] {
 	const handler = (before: T, after: T) => {
 		if (isString(before) && isString(after)) return before.localeCompare(after)
 		return getSortNum(before, sortIndex) - getSortNum(after, sortIndex)
