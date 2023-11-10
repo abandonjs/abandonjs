@@ -11,15 +11,31 @@ const getList = () => [
   { id: '8', a: 8, b: 18, c: 'code_1229', d: 'cccc' },
   { id: '9', a: 9, b: 19, c: 'code_1230', d: 'cccc' },
   { id: '10', a: 10, b: 20, c: 'code_1231', d: 'cccc' },
-  { id: '11', a: 11, b: 21, c: 'code_1232', d: 'cccc' },
+  { id: '11', a: 11, b: 21, c: 'code_1232', d: 'cccc', ra: [1, 2] },
 ]
 
 describe('pageQuery', () => {
-  it('query', () => {
-    const pq = pageQuery(getList())
+  it('query: 2', () => {
+    const pq = pageQuery(getList(), {
+      noRangeFields: ['ra']
+    })
     const page1 = pq.getPage(
-      { 
-        a: [1, 9], 
+      {
+        ra: [1, 2],
+      }
+    )
+    expect(page1.dataSource).toEqual([
+      { id: '11', a: 11, b: 21, c: 'code_1232', d: 'cccc', ra: [1, 2] },
+    ])
+  })
+
+  it('query', () => {
+    const pq = pageQuery(getList(), {
+      noRangeFields: ['ra']
+    })
+    const page1 = pq.getPage(
+      {
+        a: [1, 9],
         b: 11,
       },
       {
@@ -67,7 +83,7 @@ describe('pageQuery', () => {
     expect(page4.pagination).toEqual({
       pageNo: 1,
       pageSize: 10,
-      total: 12,
+      total: 11,
     })
     pq.add({})
 
@@ -75,7 +91,7 @@ describe('pageQuery', () => {
     expect(page5.pagination).toEqual({
       pageNo: 1,
       pageSize: 10,
-      total: 13,
+      total: 12,
     })
   })
 })

@@ -1,4 +1,4 @@
-import { type } from 'asura-eye'
+import { isEmpty, type } from 'asura-eye'
 import { toString } from './toString'
 
 /**
@@ -11,6 +11,7 @@ import { toString } from './toString'
  * @lastUpdate 2.2.1
  */
 export function hide(target: string, start: number = 0, end?: number): string {
+	if(isEmpty(target)) return ''
 	if (type(target) !== 'String') {
 		target = toString(target)
 	}

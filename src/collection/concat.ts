@@ -3,13 +3,13 @@ import { isArray, isSet } from "asura-eye";
 /**
  * @title concat<T>
  * @description 连接多个数组
- * @params {any[]} ...list 多个数组 
+ * @param {...unknown[]} ...list 多个数组 
  * @returns {T[]}
  * @lastUpdate 2.6.0
  */
 export function concat<T = unknown>(...list: unknown[]): T[] {
-	let result: T[] = []
 	if (!list || list.length === 0) return []
+	const result: T[] = []
 	const len: number = list.length
 	let i = -1;
 	while (++i < len) {

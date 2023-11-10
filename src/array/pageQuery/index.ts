@@ -140,21 +140,26 @@ export function pageQuery(originDataSource: ObjectType[] = [], props: PageQueryP
   const del = (indexes: string | string[]) => {
     if (isEffectArray<string>(indexes)) {
       dataSource = getDataSource()
-        .filter(item => !indexes.includes(item[uniqueIndex] as any))
+        .filter(item => !indexes.includes(item[uniqueIndex] as string))
+      return
     }
-    if (!isString(indexes)) {
+    if (isString(indexes)) {
       dataSource = getDataSource()
         .filter(item => item[uniqueIndex] !== indexes)
+      return
     }
   }
   const add = (record: ObjectType | ObjectType[]) => {
-    if (isEffectArray(record)) {
-      record.forEach(add)
-    } else if (isObject(record)) {
+    if (isObject(record)) {
       if (isEmpty(record[uniqueIndex])) {
         record[uniqueIndex] = '__vid__' + vid()
       }
       dataSource.unshift(record)
+      return
+    }
+    if (isEffectArray(record)) {
+      record.forEach(add)
+      return
     }
   }
 
