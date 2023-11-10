@@ -17,11 +17,7 @@ export function zip<T = any>(...arrays: any[]): T[][] {
 	let index = 0
 	while (index < length - 1) {
 		const item = arrays.map(item => {
-			try {
-				return item[index]
-			} catch (error) {
-				return undefined
-			}
+			return item[index]
 		})
 		result.push(item)
 		index++

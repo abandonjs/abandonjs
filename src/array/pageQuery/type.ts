@@ -31,10 +31,6 @@ type Field = {
 
 export interface PageQueryProps {
 	/**
-	 * @description 待处理数组
-	 */
-	dataSource?: ObjectType[]
-	/**
 	 * @description 唯一索引
 	 * @default 'id'
 	 */
@@ -52,6 +48,6 @@ export interface PageQueryProps {
 	/**
 	 * @description 不需要范围处理的查询参数
 	 */
-	noRangeProps?: string[]
+	noRangeFields?: string[]
 	fields?: ObjectType<Field>
 }

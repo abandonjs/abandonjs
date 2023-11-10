@@ -1,4 +1,4 @@
-import { isEffectArray, isEffectObject, isEmpty, isNumber, isString, likeNumber } from "asura-eye"
+import { isEffectArray, isEffectObject, isEmpty, isNumber, isObject, isString, likeNumber } from "asura-eye"
 import { type ObjectType } from "../../type"
 import { stringify, vid } from "../../string"
 import type { Pagination, PageQueryProps, DataSourceConfig } from './type'
@@ -11,14 +11,13 @@ import { equal } from '../../util'
  * @param {PageQueryProps} props 
  * @returns 
  */
-export function pageQuery(props: PageQueryProps = {}) {
+export function pageQuery(originDataSource: ObjectType[] = [], props: PageQueryProps = {}) {
   const {
     uniqueIndex = 'id',
     fields,
     fuzzyQuery = true,
     numberFuzzyQuery = false,
-    noRangeProps,
-    dataSource: originDataSource = [],
+    noRangeFields,
   } = props
 
   // 原始数据
@@ -63,8 +62,8 @@ export function pageQuery(props: PageQueryProps = {}) {
 
     if (
       !(
-        isEffectArray(noRangeProps) &&
-        noRangeProps.includes(key)
+        isEffectArray(noRangeFields) &&
+        noRangeFields.includes(key)
       ) &&
       likeNumber(value) &&
       isEffectArray(beValue) &&
@@ -138,30 +137,24 @@ export function pageQuery(props: PageQueryProps = {}) {
     }
   }
 
-  const removeOne = (index: string) => {
-    if (!isEmpty(index)) {
-      dataSource = getDataSource()
-        .filter(item => item[uniqueIndex] !== index)
-    }
-  }
-
-  const removes = (indexes: string[]) => {
-    if (isEffectArray(indexes)) {
+  const del = (indexes: string | string[]) => {
+    if (isEffectArray<string>(indexes)) {
       dataSource = getDataSource()
         .filter(item => !indexes.includes(item[uniqueIndex] as any))
     }
-  }
-
-  const addOne = (record: ObjectType) => {
-    if (isEmpty(record[uniqueIndex])) {
-      record[uniqueIndex] = '__vid__' + vid()
+    if (!isString(indexes)) {
+      dataSource = getDataSource()
+        .filter(item => item[uniqueIndex] !== indexes)
     }
-    dataSource.unshift(record)
   }
-
-  const adds = (records: ObjectType[]) => {
-    if (isEffectArray(records)) {
-      records.forEach(addOne)
+  const add = (record: ObjectType | ObjectType[]) => {
+    if (isEffectArray(record)) {
+      record.forEach(add)
+    } else if (isObject(record)) {
+      if (isEmpty(record[uniqueIndex])) {
+        record[uniqueIndex] = '__vid__' + vid()
+      }
+      dataSource.unshift(record)
     }
   }
 
@@ -169,9 +162,7 @@ export function pageQuery(props: PageQueryProps = {}) {
     dataSource,
     getPage,
     getDataSource,
-    removeOne,
-    removes,
-    addOne,
-    adds,
+    del,
+    add,
   }
 }

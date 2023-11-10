@@ -17,11 +17,12 @@ const list = [
 
 {
 
-  const { getPage, removeOne, removes, addOne, adds } = pageQuery({
-    dataSource: [
+  const { getPage, del, add } = pageQuery(
+    [
       { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
     ],
-    noRangeProps: ['a']
+    {
+    noRangeFields: ['a']
   })
   const page = getPage({
     a: [0, 2],
@@ -39,11 +40,11 @@ const list = [
 }
 {
 
-  const { getPage, removeOne, removes, addOne, adds } = pageQuery({
-    dataSource: [
+  const { getPage, del, add } = pageQuery(
+    [
       { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
     ]
-  })
+  )
   const page = getPage({
     a: [0, 2],
     id: [0, 2],
@@ -60,13 +61,13 @@ const list = [
 }
 {
 
-  const { getPage, removeOne, removes, addOne, adds } = pageQuery({
-    dataSource: [
+  const { getPage, del, add } = pageQuery(
+    [
       { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
       { id: '3', a: 3, b: 13, c: 'code_1224', d: 'cccc' },
       { id: '2', a: 2, b: 12, c: 'code_1223', d: 'cccc' },
     ]
-  })
+  )
   const page = getPage({}, {
     sortBy: {
       id: 'asc'
@@ -86,21 +87,21 @@ const list = [
 
 
 {
-  const { getPage, removeOne, removes, addOne, adds } = pageQuery({ dataSource: [...list] })
+  const { getPage, del, add } = pageQuery([...list] )
 
 
-  removeOne('2')
-  removes(['9', '11'])
-  addOne({ id: '12', a: 1, b: 11, c: 'code_1222', d: 'cccc' })
+  del('2')
+  del(['9', '11'])
+  add({ id: '12', a: 1, b: 11, c: 'code_1222', d: 'cccc' })
 
-  adds([
+  add([
     { id: '13', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
     { id: '14', a: 1, b: 11, c: 'code_1222', d: 'cccc' }
   ])
 
   const page = getPage()
 
-  test('pageQuery:remove',
+  test('pageQuery:del',
     {
       param: page.dataSource,
       tobe: [
@@ -127,7 +128,7 @@ const list = [
   )
 }
 {
-  const { getPage } = pageQuery({ dataSource: [...list] })
+  const { getPage } = pageQuery([...list] )
 
   const page = getPage()
 
