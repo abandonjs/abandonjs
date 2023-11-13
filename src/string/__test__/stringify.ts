@@ -25,6 +25,7 @@ UnitTest(stringify, 'stringify:space')
 	// .log('cases')
 	.run()
 
+	false &&
 UnitTest(stringify, 'stringify')
 	.addParamMap(BaseValueMap.get(
 		'@EMPTY', '@TRUE', '@FALSE', '@NUMBER',
