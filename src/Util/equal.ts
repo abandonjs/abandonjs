@@ -58,9 +58,9 @@ export function equalSet(compareSet: SetType, beCompareSet: SetType): boolean {
 /**
  * @title equal
  * @description 比较是否值和类型是否相等, 不支持WeakMap, WeakSet
- * @param compareValue {unknown}
- * @param beCompareValue {unknown}
- * @returns boolean
+ * @param {unknown} compareValue
+ * @param {unknown} beCompareValue
+ * @returns {boolean}
  * @version 2.4.4
  */
 export function equal(compareValue: unknown, beCompareValue: unknown): boolean {

@@ -3,10 +3,9 @@ test/
 lib/
 src/*/__test__
 md.ts
-rollup.config.ts
 config/
 commitlint*
-jest.config.js
+*.config.js
 coverage/
 docs.js
 temp/

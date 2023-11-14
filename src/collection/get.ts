@@ -4,7 +4,7 @@ import type { Collection, CollectionKey } from "./type"
 /**
  * @title getLength
  * @description 获取集合长度(大小)
- * @param collection {Collection}
+ * @param {Collection} collection
  * @returns {number}
  */
 export function getLength(collection: Collection) {
@@ -27,8 +27,8 @@ export function getLength(collection: Collection) {
 /**
  * @title getIndex
  * @description 获取集合key
- * @param collection {Collection}
- * @param key {CollectionKey}
+ * @param {Collection} collection 
+ * @param {CollectionKey} key
  * @returns {CollectionKey}
  */
 export function getIndex(collection: Collection, key: CollectionKey) {

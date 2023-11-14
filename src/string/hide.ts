@@ -4,13 +4,13 @@ import { toString } from './toString'
 /**
  * @title hide
  * @description 隐藏指定位置的字符
- * @param target {string} 待替换子串
- * @param start {?number=0}  开始位置
- * @param end {?number=target.length} 结束位置
+ * @param {string} target 待替换子串
+ * @param {number} [start=0] 开始位置
+ * @param {number} [end=target.length] 结束位置
  * @returns {string}
  * @lastUpdate 2.2.1
  */
-export function hide(target: string, start = 0, end?: number): string {
+export function hide(target: string, start: number = 0, end?: number): string {
 	if (type(target) !== 'String') {
 		target = toString(target)
 	}

@@ -2,9 +2,9 @@ import { isAsyncFunction, isFunction } from "asura-eye"
 
 /**
  * @title guard
- * @param func {function}
- * @param errorReturnValue {unknown}
- * @returns function (...args: unknown[]): unknown
+ * @param {Function} func
+ * @param {unknown} errorReturnValue
+ * @returns {(...args:unknown[])=>unknown}
  */
 export function guard(
 	func: unknown,
@@ -23,9 +23,9 @@ export function guard(
 
 /**
  * @title asyncGuard
- * @param func {function}
- * @param errorReturnValue {unknown}
- * @returns function (...args: unknown[]): unknown
+ * @param {Function} func
+ * @param {unknown} errorReturnValue
+ * @returns {(...args:unknown[])=>unknown}
  */
 export function asyncGuard(
 	func: unknown,

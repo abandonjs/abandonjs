@@ -6,8 +6,8 @@ import type { CollectionKey, CollectionValue, Collection } from "./type"
 /**
  * @title indexOf
  * @description 拓展原生 Array.prototype.indexOf | String.prototype.indexOf 的适用方法, 拓展 Map, Set
- * @param collection {Collection}
- * @param value {CollectionValue}
+ * @param {Collection} collection
+ * @param {CollectionValue} value
  * @returns {CollectionKey}
  */
 export function indexOf(

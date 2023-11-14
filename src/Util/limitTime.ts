@@ -22,9 +22,9 @@ interface BanConfig {
 /**
  * @title limitTime<Params extends [], Return>
  * @description 限制 方法的超时和执行次数
- * @param func Func<Params, Return>
- * @param config BanConfig
- * @returns function (...args: Params): Return
+ * @param {Func<Params,Return>} func 
+ * @param {BanConfig} config 
+ * @returns {(...args:Params):Return}
  */
 export function limitTime<Params extends [], Return>(
 	func: Func<Params, Return>,
@@ -48,10 +48,10 @@ export function limitTime<Params extends [], Return>(
 }
 
 /**
- * @title asyncLimitTime<Params extends [], Return>
- * @param func AsyncFunc<Params, Return>
- * @param config BanConfig
- * @returns function (...args: Params): Return
+ * @title asyncLimitTime<Params, Return>
+ * @param {AsyncFunc<Params,Return>} func 
+ * @param {BanConfig} config 
+ * @returns {(...args:Params):Return}
  */
 export function asyncLimitTime<Params extends [], Return>(
 	func: AsyncFunc<Params, Return>,

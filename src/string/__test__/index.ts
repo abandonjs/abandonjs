@@ -4,7 +4,8 @@ import './stringify'
 import './toString'
 import './hide'
 
-import './test'
+import './myTest'
+import './compareString'
 
 
 // truncateString('Hi, I should be truncated because I am too loooong!', 36)

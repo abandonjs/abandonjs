@@ -1,7 +1,7 @@
 import { test } from 'unit-testing-js'
-import { maxSort, minSort } from '../..'
+import { descSort, ascSort } from '../..'
 
-test(maxSort,
+test(descSort,
 	{ params: [[]], tobe: [] },
 	{ params: [[1, 2, 3, 4, 5, 6]], tobe: [6, 5, 4, 3, 2, 1] },
 	{ params: [['1', '2', '3', '4', '5', '6']], tobe: ['6', '5', '4', '3', '2', '1'] },
@@ -32,7 +32,7 @@ test(maxSort,
 	},
 )
 
-test(minSort,
+test(ascSort,
 	{ params: [[]], tobe: [] },
 	{ params: [[1, 2, 3, 4, 5, 6]], tobe: [1, 2, 3, 4, 5, 6] },
 	{

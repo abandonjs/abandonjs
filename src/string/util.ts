@@ -1,11 +1,11 @@
 /**
  * @title replaces
  * @description 同时定义多个replace的规则使用
- * @param target {string}
- * @param regs {reg:RegExp|string,value:string}[]
+ * @param {string} target
+ * @param {{reg:RegExp|string,value:string}[]} regs 
  * @returns {string}
  */
-export function replaces(target = '', regs: {
+export function replaces(target: string = '', regs: {
 	reg: RegExp | string,
 	value: string
 }[] = []): string {
@@ -19,8 +19,8 @@ export function replaces(target = '', regs: {
 /**
  * @title reverseString 
  * @description 反转字符串
- * @param target string
- * @return string
+ * @param {string} target
+ * @return {string}
  */
 export function reverseString(target: string): string {
 	return target.split('').reverse().join('')

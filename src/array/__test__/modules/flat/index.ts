@@ -1,6 +1,6 @@
 import { test, UnitTest } from 'unit-testing-js'
 import { flat } from '../..'
-import './flat-runtime.test'
+import './flat-runtime'
 
 test('flat-case-1', flat,
 	{ name: 'depth=1-1', param: [1, [2, [3, 4, 5]]], tobe: [1, 2, [3, 4, 5]] },

@@ -5,8 +5,8 @@ import { type CollectionKey } from "./type"
 /**
  * @title omit<T extends ObjectType>
  * @description 去除集合属性
- * @param collection {T|Map}
- * @param propertys {Coll[]}
+ * @param {T|Map} collection
+ * @param {CollectionKey[]} propertys
  * @returns {T|Map}
  */
 export function omit<T extends ObjectType = ObjectType>(

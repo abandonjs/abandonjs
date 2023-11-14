@@ -6,8 +6,8 @@ import { Time } from './type'
 /**
  * @title format
  * @description 时间格式化
- * @param time:number|string|Date  时间
- * @param pattern?:string 格式 
+ * @param {number|string|Date} [time=new Date()]  时间
+ * @param {string} [pattern='YYYY-MM-DD'] 格式 
  * @returns string 格式化后的数据 
 
  * @eg
@@ -22,7 +22,6 @@ import { Time } from './type'
 | m  mm | 0-59 |	分钟|
 | s  ss	| 0-59 |	秒钟|
  */
-
 export function format(time: Time = new Date(), pattern = 'YYYY-MM-DD'): string {
 
 	if (type(time) === 'Number') {
