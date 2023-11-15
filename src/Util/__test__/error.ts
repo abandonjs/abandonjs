@@ -1,4 +1,4 @@
-import * as _ from '../index'
+import * as _ from '..'
 import { add, toBe, test } from 'unit-testing-js'
 
 test('guard', toBe,

@@ -12,7 +12,7 @@ export function guard(
 ) {
 	return (...args: unknown[]) => {
 		try {
-			if (isFunction(func) || isAsyncFunction(func))
+			if (isFunction(func))
 				return func(...args)
 			return func
 		} catch (error) {
