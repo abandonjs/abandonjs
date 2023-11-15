@@ -14,7 +14,7 @@ export function guard(
 		try {
 			if (isFunction(func))
 				return func(...args)
-			return func
+			return errorReturnValue
 		} catch (error) {
 			return errorReturnValue
 		}
@@ -35,7 +35,7 @@ export function asyncGuard(
 		try {
 			if (isAsyncFunction(func)) return await func(...args)
 			if (isFunction(func)) return func(...args)
-			return func
+			return errorReturnValue
 		} catch (error) {
 			return errorReturnValue
 		}
