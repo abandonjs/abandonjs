@@ -1,21 +1,19 @@
-import type { AnyFunction, ObjectType } from '../type'
+import type { Func } from '../type'
 
 /**
- * @title bind
+ * @title bind<Params,Result>
  * @description thisArg绑定func的this，并且func会接收partials附加参数
- * @param func 绑定的函数
- * @param thisArg 绑定的对象
- * @param partials 附加的部分参数
+ * @param {Function} func 绑定的函数
+ * @param {Params} partials 附加的部分参数
  * @returns 新的绑定函数
  */
-export function bind<T>(
-  func: AnyFunction,
-  thisArg: ObjectType = {},
-  ...partials: any[]
-): AnyFunction {
-  return function (...args: any[]): T | undefined {
+export function bind<Params extends unknown[] = any[], Result = any>(
+  func: Func<Params, Result>,
+  ...partials: Params
+): Func<Params, Result> {
+  return function (...args: Params): Result {
     if (func)
-      return func.call(thisArg, ...[...partials, ...args])
-    return
+      return func.call(this, ...[...partials, ...args])
+    return undefined as Result
   }
 }
