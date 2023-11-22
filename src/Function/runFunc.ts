@@ -1,4 +1,5 @@
 import { type } from 'asura-eye'
+import type { Func } from '../type'
 
 /**
  * @title runFunc
@@ -7,12 +8,8 @@ import { type } from 'asura-eye'
  * @param ...args
  * @returns
  */
-export function runFunc(func: any, ...args: any[]) {
-	if (type(func) === 'Function') {
+export function runFunc<Params extends unknown[] = any[], Result = any>(func: Func<Params, Result>, ...args: Params): Result | undefined {
+	if (type(func) === 'Function' || type(func) === 'AsyncFunction') {
 		return func(...args)
 	}
-	if (type(func) === 'AsyncFunction') {
-		return (async () => await func(...args))()
-	}
-	return func
 }

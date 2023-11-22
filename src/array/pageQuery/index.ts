@@ -1,4 +1,4 @@
-import { isEffectArray, isEffectObject, isEmpty, isNumber, isString, likeNumber } from "asura-eye"
+import { isEffectArray, isEffectObject, isEmpty, isFunction, isNumber, isObject, isString, likeNumber } from "asura-eye"
 import { type ObjectType } from "../../type"
 import { stringify, vid } from "../../string"
 import type { Pagination, PageQueryProps, DataSourceConfig } from './type'
@@ -11,44 +11,32 @@ import { equal } from '../../util'
  * @param {PageQueryProps} props 
  * @returns 
  */
-export function pageQuery(props: PageQueryProps = {}) {
+export function pageQuery(originDataSource: ObjectType[] = [], props: PageQueryProps = {}) {
   const {
     uniqueIndex = 'id',
+    noRangeFields,
+    handleValue,
     fields,
-    fuzzyQuery = true,
-    numberFuzzyQuery = false,
-    noRangeProps,
-    dataSource: originDataSource = [],
   } = props
 
   // 原始数据
   let dataSource = [...originDataSource]
 
-  const getConfig = (key: string) => {
-    let useNumberFuzzyQuery = numberFuzzyQuery
-    let useFuzzyQuery = fuzzyQuery
-
-    if (fields) {
-      const { numberFuzzyQuery, fuzzyQuery } = fields[key] || {}
-      if (!isEmpty(numberFuzzyQuery)) useNumberFuzzyQuery = numberFuzzyQuery
-      if (!isEmpty(fuzzyQuery)) useFuzzyQuery = fuzzyQuery
-    }
-    return {
-      useFuzzyQuery,
-      useNumberFuzzyQuery,
-    }
-  }
-
   const getValue = (record: ObjectType, key: string) => {
     let value = record[key]
-    if (isEmpty(value)) return ''
-    const { useFuzzyQuery, useNumberFuzzyQuery } = getConfig(key)
+    if (fields && isFunction(fields[key])) {
+      return fields[key](value, key)
+    } else if (handleValue) {
+      return handleValue(value, key)
+    }
 
-    if (isString(value) && useFuzzyQuery) {
+    if (isEmpty(value)) return ''
+
+    if (isString(value)) {
       value = value.trim().toUpperCase()
     }
 
-    if (isNumber(value) && useNumberFuzzyQuery) {
+    if (isNumber(value)) {
       value = stringify(value)
     }
 
@@ -59,12 +47,10 @@ export function pageQuery(props: PageQueryProps = {}) {
     const value = getValue(item, key)
     const beValue = getValue(params, key)
 
-    const { useFuzzyQuery } = getConfig(key)
-
     if (
       !(
-        isEffectArray(noRangeProps) &&
-        noRangeProps.includes(key)
+        isEffectArray(noRangeFields) &&
+        noRangeFields.includes(key)
       ) &&
       likeNumber(value) &&
       isEffectArray(beValue) &&
@@ -78,7 +64,7 @@ export function pageQuery(props: PageQueryProps = {}) {
       return false
     }
 
-    if (useFuzzyQuery && isString(value) && isString(beValue)) {
+    if (isString(value) && isString(beValue)) {
       return value.indexOf(beValue) > -1
     }
 
@@ -138,30 +124,29 @@ export function pageQuery(props: PageQueryProps = {}) {
     }
   }
 
-  const removeOne = (index: string) => {
-    if (!isEmpty(index)) {
+  const del = (indexes: string | string[]) => {
+    if (isEffectArray<string>(indexes)) {
       dataSource = getDataSource()
-        .filter(item => item[uniqueIndex] !== index)
+        .filter(item => !indexes.includes(item[uniqueIndex] as string))
+      return
     }
-  }
-
-  const removes = (indexes: string[]) => {
-    if (isEffectArray(indexes)) {
+    if (isString(indexes)) {
       dataSource = getDataSource()
-        .filter(item => !indexes.includes(item[uniqueIndex] as any))
+        .filter(item => item[uniqueIndex] !== indexes)
+      return
     }
   }
-
-  const addOne = (record: ObjectType) => {
-    if (isEmpty(record[uniqueIndex])) {
-      record[uniqueIndex] = '__vid__' + vid()
+  const add = (record: ObjectType | ObjectType[]) => {
+    if (isObject(record)) {
+      if (isEmpty(record[uniqueIndex])) {
+        record[uniqueIndex] = '__vid__' + vid()
+      }
+      dataSource.unshift(record)
+      return
     }
-    dataSource.unshift(record)
-  }
-
-  const adds = (records: ObjectType[]) => {
-    if (isEffectArray(records)) {
-      records.forEach(addOne)
+    if (isEffectArray(record)) {
+      record.forEach(add)
+      return
     }
   }
 
@@ -169,9 +154,7 @@ export function pageQuery(props: PageQueryProps = {}) {
     dataSource,
     getPage,
     getDataSource,
-    removeOne,
-    removes,
-    addOne,
-    adds,
+    del,
+    add,
   }
 }

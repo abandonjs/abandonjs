@@ -1,80 +1,26 @@
-import { test, UnitTest } from 'unit-testing-js'
-import { loop, loops, loopGroup, loopArrays } from '..'
+import { test } from 'unit-testing-js'
+import { loop } from '..'
 
-UnitTest(loop, 'loop')
-	.addParamMap(
-		[0, 3, 2],
-		[v => v]
-	)
-	.addParam([1])
-	.tobe(
-		[],
-		[[1, 0], [1, 1], [1, 2]],
-		[[1, 0], [1, 1]]
-	)
-	.setDefaultValue([])
-	.buildCases()
-	.run()
+const result: any[] = []
 
-UnitTest(loops, 'loops')
-	.addParamMap(
-		[[2, 3, 2]]
-	)
-	.tobe(
-		[
-			[
-				[[0, 0, 0], [0, 0, 1]],
-				[[0, 1, 0], [0, 1, 1]],
-				[[0, 2, 0], [0, 2, 1]]
-			],
-			[
-				[[1, 0, 0], [1, 0, 1]],
-				[[1, 1, 0], [1, 1, 1]],
-				[[1, 2, 0], [1, 2, 1]]
-			]
-		]
-	)
-	.setDefaultValue([])
-	.buildCases()
-	.run()
+loop([
+	[2, 3, 2],
+	[1, 3, 4],
+], (values: any, indexes: any) => {
+	result.push({ values, indexes })
+})
 
-
-UnitTest(loopGroup, 'loopGroup')
-	.addParamMap(
-		[[2, 3, 2]]
-	)
-	.tobe(
-		[
-			[0, 0, 0], [0, 0, 1],
-			[0, 1, 0], [0, 1, 1],
-			[0, 2, 0], [0, 2, 1],
-			[1, 0, 0], [1, 0, 1],
-			[1, 1, 0], [1, 1, 1],
-			[1, 2, 0], [1, 2, 1]
-		]
-	)
-	.setDefaultValue([])
-	.buildCases()
-	.run()
-
-UnitTest(loopArrays, 'loopArrays')
-	.addParam(
-		[
-			[1, 2, 3],
-			[4, 5, 6, 7],
-		]
-	)
-	.addParamMap([
-		e => {
-			return e
-		},
-		e => e,
-	])
-	.tobe(
-		[[1,4],[1,5],[1,6],[1,7],[2,4],[2,5],[2,6],[2,7],[3,4],[3,5],[3,6],[3,7]],
-		[[1,4],[1,5],[1,6],[1,7],[2,4],[2,5],[2,6],[2,7],[3,4],[3,5],[3,6],[3,7]]
-	)
-	.setDefaultValue([])
-	.buildCases()
-	// .log('cases')
-	.run()
+const value = [
+	{ values: [2, 1], indexes: [0, 0] },
+	{ values: [2, 3], indexes: [0, 1] },
+	{ values: [2, 4], indexes: [0, 2] },
+	{ values: [3, 1], indexes: [1, 0] },
+	{ values: [3, 3], indexes: [1, 1] },
+	{ values: [3, 4], indexes: [1, 2] },
+	{ values: [2, 1], indexes: [2, 0] },
+	{ values: [2, 3], indexes: [2, 1] },
+	{ values: [2, 4], indexes: [2, 2] },
+]
+test('loop',
+	{ param: result, tobe: value }
+)

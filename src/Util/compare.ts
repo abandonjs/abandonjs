@@ -23,6 +23,10 @@ export function compareNumber(val: number, valer: Valer): boolean {
 		return false
 	}
 
+	if(val === valer){
+		return true
+	}
+
 	if (isArray(valer) && valer.length > 0) {
 		let min = -Infinity
 		let max = Infinity
@@ -62,7 +66,7 @@ export function compareNumber(val: number, valer: Valer): boolean {
  * @param {Val} val 被比较值
  * @param {Valer} valer 比较值 / 可为正则
  * @param {string} [path] 值的路径 用逗号隔开
- * @returns boolean
+ * @returns {boolean}
  */
 export function compareValue(val: Val, valer: Valer, path?: string): boolean {
 
@@ -74,8 +78,8 @@ export function compareValue(val: Val, valer: Valer, path?: string): boolean {
 
 	if (isRegExp(valer)) return (valer as RegExp).test(String(val))
 
-	if (isNumber(Number(val))) return compareNumber(Number(val), valer)
 	if (isNumber(val)) return compareNumber(val as number, valer)
+	if (isNumber(Number(val))) return compareNumber(Number(val), valer)
 
-	return true
+	return false
 }

@@ -1,4 +1,4 @@
-import { isArray, isObject } from 'asura-eye'
+import { isArray, isEmpty, isObject } from 'asura-eye'
 import { toString } from './toString'
 
 /**
@@ -17,6 +17,9 @@ export function stringify(
 ): string {
 
 	if (isObject(value) || isArray(value)) {
+		return JSON.stringify(value, replacer, space)
+	}
+	if(isEmpty(value)){
 		return JSON.stringify(value, replacer, space)
 	}
 

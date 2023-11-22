@@ -19,36 +19,26 @@ export function includes(
 ): boolean {
 	const newIndex = getIndex(collection, fromIndex)
 
-	if (isString(collection)) {
-		if (!isNumber(newIndex)) return false
+	if (isString(collection) && isNumber(newIndex)) {
 		const newCollection = collection.substring(newIndex)
 		const newValue = isString(value) ? value : stringify(value)
-		if (collection.length < newValue.length) return false
 		return newCollection.indexOf(newValue) > -1
 	}
 
 	if (isArray(collection)) {
 		if (fromIndex === 0) return collection.includes(value)
-		if (!isNumber(newIndex)) return false
-		for (let i = newIndex; i < collection.length; i++)
-			if (equal(collection[i], value)) return true
-		return false
+		if (isNumber(newIndex)) {
+			for (let i = newIndex; i < collection.length; i++)
+				if (equal(collection[i], value)) return true
+			return false
+		}
 	}
 
 	if (isObject(collection)) {
 		if (fromIndex === 0) return Object.values(collection).includes(value)
-		if (isNumber(newIndex)) {
-			const keys = Object.keys(collection)
-			for (let i = newIndex; i < keys.length; i++) {
-				const key = keys[i]
-				if (equal(collection[key], value)) return true
-			}
-			return false
-		}
 		if (isString(newIndex)) {
 			return equal(collection[newIndex], value)
 		}
-		return false
 	}
 	return false
 }

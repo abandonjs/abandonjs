@@ -1,7 +1,6 @@
 export * from './log'
 export * from './compare'
 export * from './deepClone'
-export * from './limitTime'
 export * from './changeCase'
 export * from './toPathValue'
 export * from './equal'

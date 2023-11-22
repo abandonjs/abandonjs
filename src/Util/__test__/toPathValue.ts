@@ -16,13 +16,21 @@ const tmpObj = {
 }
 
 test('toPathValue', _.toPathValue,
-{
-	params: [
-		tmpObj,
-		'a.b.c.e'
-	],
-	tobe: 12356
-},
+	{
+		params: [tmpObj],
+		tobe: tmpObj
+	},
+	{
+		params: [tmpObj, 'a.b.c.d.1'],
+		tobe: 233
+	},
+	{
+		params: [
+			tmpObj,
+			'a.b.c.e'
+		],
+		tobe: 12356
+	},
 	{
 		params: [{
 			['a.2.3']: {

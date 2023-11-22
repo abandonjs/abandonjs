@@ -45,8 +45,8 @@ devDependencies:
     specifier: ^5.48.1
     version: 5.51.0(eslint@8.33.0)(typescript@5.1.6)
   asura-eye:
-    specifier: ^0.6.1
-    version: 0.6.1
+    specifier: ^0.7.0
+    version: 0.7.0
   babel-jest:
     specifier: ^29.7.0
     version: 29.7.0(@babel/core@7.22.9)
@@ -2485,8 +2485,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /asura-eye@0.6.1:
-    resolution: {integrity: sha512-dUR78qAGaa1xmHZcWffpzOt0Z9SbPfbWkmR2hrR2gSm00k9LXZP3LzEnIyBLgoRZWA3uTg0elbopQSlfR95AOQ==}
+  /asura-eye@0.7.0:
+    resolution: {integrity: sha512-n5WYnvYXEulpdahQXdJPlrIfmAC1p7DGgZrTJBNxEqLIMtkNI8Q8qhOlNql1+v0T3fP1jNbfMnyuNd0EhAS8GA==}
     engines: {node: '>=16'}
     dev: true
 

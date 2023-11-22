@@ -1,5 +1,4 @@
 import { ObjectType } from '../type'
-import { loops } from '../function/loop'
 
 /**
  * @title zip<T>
@@ -13,15 +12,16 @@ import { loops } from '../function/loop'
  ```
  */
 export function zip<T = any>(...arrays: any[]): T[][] {
-	const len: number = arrays.length
-	const maxLen: number = arrays[0].length
-	const result: T[][] = loops(
-		[maxLen, len],
-		(indexes: [number, number]) => {
-			if (indexes.length !== maxLen) return
-			const [depth0, depth1] = indexes
-			return arrays[depth1][depth0]
+	const result: T[][] = []
+	const length = arrays.length
+	let index = 0
+	while (index < length - 1) {
+		const item = arrays.map(item => {
+			return item[index]
 		})
+		result.push(item)
+		index++
+	}
 
 	return result
 }

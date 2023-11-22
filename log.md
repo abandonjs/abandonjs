@@ -1,3 +1,10 @@
+## 3.5.0
+
+- 取消 `asura-eye` 方法的导出, 需要使用需单独安装该包
+- 重写`loop`相关方法, 去除除`loop*`相关方法
+- 移除`toPromise`, `flip`, `from`, `limitTime`, `after`, `before`, `ary`
+- 修复已知bug
+
 ## 3.4.0
 
 - 添加 jest 测试方法

@@ -27,10 +27,10 @@ UnitTest(toString, 'toString')
 		])
 	)
 	.tobe(
-		'null', 'NaN', 'undefined',
+		'', '', '',
 		'true', '1', '10', 'template', '[]', '{}',
-		'false', '0', '-1', 'null', 'NaN',
-		'undefined', '', '0', '0.00001', '-0.00001', '1',
+		'false', '0', '-1', '', '',
+		'', '', '0', '0.00001', '-0.00001', '1',
 		'-1', '99999', '-99999', 'Infinity', '-Infinity', '1.7976931348623157e+308',
 		'-1.7976931348623157e+308', 'function(){}', '()=>{}', 'async function(){}',
 		'async()=>{}', 'function*(){yield}', 'function(e){return e}', 'e=>e',

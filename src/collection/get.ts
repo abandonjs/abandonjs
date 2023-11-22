@@ -1,5 +1,6 @@
-import { isArray, isEmpty, isMap, isNumber, isObject, isSet, isString } from "asura-eye"
+import { isArray, isEffectObject, isEmpty, isMap, isNumber, isObject, isSet, isString } from "asura-eye"
 import type { Collection, CollectionKey } from "./type"
+import { stringify } from '../string'
 
 /**
  * @title getLength
@@ -7,7 +8,7 @@ import type { Collection, CollectionKey } from "./type"
  * @param {Collection} collection
  * @returns {number}
  */
-export function getLength(collection: Collection) {
+export function getLength(collection: Collection): number {
 	if (
 		isArray(collection)
 		|| isString(collection)
@@ -29,27 +30,38 @@ export function getLength(collection: Collection) {
  * @description 获取集合key
  * @param {Collection} collection 
  * @param {CollectionKey} key
- * @returns {CollectionKey}
+ * @returns {CollectionKey|undefined}
  */
-export function getIndex(collection: Collection, key: CollectionKey) {
+export function getIndex(collection: Collection, key: CollectionKey): CollectionKey | undefined {
 
 	if (
 		isArray(collection)
 		|| isString(collection)
-		|| isMap(collection)
 		|| isSet(collection)
 	) {
 		const len = getLength(collection)
-		if (len === 0) return 0
 		let newIndex = isNumber(key) ? key : Number(key)
-		if (isEmpty(newIndex) || !isNumber(newIndex)) return key
+		if (isEmpty(newIndex) || !isNumber(newIndex)) return undefined
 
+		if (len === 0) return 0
 		if (newIndex > len) return len - 1
 		if (newIndex < 0) return len + newIndex
 
 		return newIndex
 	}
 
-	return key
+	if (
+		isMap(collection) &&
+		collection.has(key as any)
+	)
+		return key
+
+	if (isEffectObject(collection)) {
+		const newKey: string = isString(key) ? key : stringify(key)
+		if (Object.keys(collection).includes(newKey))
+			return newKey
+	}
+
+	return undefined
 
 }

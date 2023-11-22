@@ -16,8 +16,7 @@ export function omit<T extends ObjectType = ObjectType>(
 	if (isMap(collection)) {
 		const newMap = new Map(collection)
 		propertys.forEach(property => {
-			isString(property)
-				&& newMap.delete(property)
+			newMap.delete(property as any)
 		})
 		return newMap
 	}

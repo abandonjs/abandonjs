@@ -3,14 +3,6 @@ import { omit } from '..'
 
 const obj = { a: 1, b: 'bb', c: undefined }
 
-// console.log((omit(
-// 	new Map([
-// 		['a', 'b'],
-// 		['a1', 'b1'],
-// 	]),
-// 	['a1']
-// )))
-
 test(omit,
 	{
 		params: [

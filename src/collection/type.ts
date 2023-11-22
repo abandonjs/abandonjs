@@ -13,4 +13,4 @@ export type CollectionKey = number | string | ObjectType | any[]
 /**
  * @description 数据集合值(Value)
  */
-export type CollectionValue = number | string | ObjectType | any[]
+export type CollectionValue = number | string | ObjectType | any[] | undefined

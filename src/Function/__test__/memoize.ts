@@ -3,14 +3,14 @@ import { memoize } from '..'
 
 const _ = memoize((a, b) => [a + b, a - b])
 
-UnitTest(_, 'pipe')
+UnitTest(_, 'memoize')
 	.addCases(
 		{
-			param: [5, 3],
+			params: [5, 3],
 			tobe: [8, 2]
 		},
 		{
-			param: [5, 3],
+			params: [5, 3],
 			tobe: [8, 2]
 		},
 	)

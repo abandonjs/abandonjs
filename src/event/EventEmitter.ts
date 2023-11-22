@@ -1,3 +1,4 @@
+import type { AnyFunction } from '../type'
 import { runFunc } from '../function'
 /**
  * @title EventEmitter<T, U>
@@ -18,7 +19,7 @@ import { runFunc } from '../function'
  // 2
  ```
  */
-export class EventEmitter<T = any, U = any> {
+export class EventEmitter<T extends AnyFunction = any, U = any> {
   /**
   * @description 事件缓存
   */
@@ -53,7 +54,7 @@ export class EventEmitter<T = any, U = any> {
      * @param name 待触发事件name
      * @param args 触发事件的参数
      */
-  $once<Params extends any[] = any[]>(name: string, ...args: Params): U[] {
+  $once<Params extends unknown[] = any[]>(name: string, ...args: Params): U[] {
     if (this.$cache && this.$cache[name]) {
       const result = this.$cache[name].map((i) => runFunc(i, ...args))
       delete this.$cache[name]
@@ -65,9 +66,9 @@ export class EventEmitter<T = any, U = any> {
    * @param name 待触发事件name
    * @param args 触发事件的参数
    */
-  $emit<Params extends any[] = any[]>(name: string, ...args: Params): U[] {
+  $emit<Params extends unknown[] = any[]>(name: string, ...args: Params): U[] {
     // 创建副本，如果回调函数内继续注册相同事件，会造成死循环
     if (!this.$cache[name]) return []
-    return this.$cache[name].map((i) => runFunc(i, ...args))
+    return this.$cache[name].map((i) => runFunc(i as any, ...args) as U)
   }
 }

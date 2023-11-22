@@ -1,4 +1,4 @@
-import { isString, type } from 'asura-eye'
+import { isEmpty, isString, type } from 'asura-eye'
 
 /**
  * @title toString
@@ -9,18 +9,18 @@ import { isString, type } from 'asura-eye'
  */
 export function toString(value: unknown): string {
   if (isString(value)) return value
+  if(isEmpty(value)) return ''
 
+  
   if ([
     'Function', 'AsyncFunction', 'GeneratorFunction',
-    'Symbol', 'RegExp', 'Promise', 'Date', 'NaN',
+    'Symbol', 'RegExp', 'Promise', 'Date',
     'Map', 'Set', 'WeakMap', 'WeakSet', 'BigInt'
   ].includes(type(value)))
     return (value as any).toString()
 
   if (value === Infinity) return 'Infinity'
   if (value === -Infinity) return '-Infinity'
-  if (value === undefined) return 'undefined'
-  if (value === null) return 'null'
 
   return JSON.stringify(value)
 }
@@ -28,9 +28,9 @@ export function toString(value: unknown): string {
 /**
  * @title toStrings
  * @description 转换为字符串数组, 即数组的的项转换为数组
- * @param {any[]} values
+ * @param {unknown[]} values
  * @returns {string[]}
  */
-export function toStrings(values: any[]): string[] {
+export function toStrings(values: unknown[]): string[] {
   return values.map(i => toString(i))
 }
