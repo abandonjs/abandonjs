@@ -1,5 +1,6 @@
 import { isArray, isEffectObject, isEmpty, isMap, isNumber, isObject, isSet, isString } from "asura-eye"
 import type { Collection, CollectionKey } from "./type"
+import { stringify } from '../string'
 
 /**
  * @title getLength
@@ -41,7 +42,7 @@ export function getIndex(collection: Collection, key: CollectionKey): Collection
 		const len = getLength(collection)
 		let newIndex = isNumber(key) ? key : Number(key)
 		if (isEmpty(newIndex) || !isNumber(newIndex)) return undefined
-		
+
 		if (len === 0) return 0
 		if (newIndex > len) return len - 1
 		if (newIndex < 0) return len + newIndex
@@ -55,11 +56,10 @@ export function getIndex(collection: Collection, key: CollectionKey): Collection
 	)
 		return key
 
-	if (
-		isEffectObject(collection) &&
-		Object.keys(collection).includes(key as string)
-	) {
-		return key
+	if (isEffectObject(collection)) {
+		const newKey: string = isString(key) ? key : stringify(key)
+		if (Object.keys(collection).includes(newKey))
+			return newKey
 	}
 
 	return undefined

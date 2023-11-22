@@ -13,7 +13,7 @@ import { getIndex, getLength } from "./get"
 export function at(
 	collection: Collection,
 	index: CollectionKey = 0
-):CollectionValue {
+): CollectionValue {
 	if (isEmpty(collection)) return undefined
 	const len = getLength(collection)
 	if (len === 0) return undefined
@@ -31,16 +31,12 @@ export function at(
 		(isNumber(newIndex) || isString(newIndex))
 	) return collection[newIndex]
 
-	if (isSet<CollectionValue>(collection)) {
-		let index = -1
-		for (const value of collection)
-			if (++index === newIndex) return value
-
-		return undefined
-	}
-
 	if (isMap(collection))
 		return (collection as Map<CollectionKey, CollectionValue>).get(newIndex)
 
-	return undefined
+	let i = -1
+	if (isSet<CollectionValue>(collection))
+		for (const value of collection)
+			if (++i === newIndex) return value
+
 }
