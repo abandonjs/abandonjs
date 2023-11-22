@@ -1,4 +1,4 @@
-import { isEffectArray, isEmpty } from "asura-eye"
+import { isArray, isEmpty } from "asura-eye"
 
 function loopCore<T>(
 	target: T[][] | T[],
@@ -9,7 +9,7 @@ function loopCore<T>(
 ) {
 	if (index < target.length) {
 		const nowTarget = target[index]
-		if (isEffectArray(nowTarget)) {
+		if (isArray(nowTarget)) {
 			for (let i = 0; i < nowTarget.length; i++) {
 				const newValues = values.concat(nowTarget[i])
 				const newIndexes = indexes.concat(i)
