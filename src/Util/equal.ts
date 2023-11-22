@@ -35,7 +35,7 @@ export function equalMap(compareMap: MapType, beCompareMap: MapType): boolean {
 	for (const [key, value] of compareMap) {
 		const beCompareMapTempValue = beCompareMap.get(key)
 		if (value !== beCompareMapTempValue
-			|| (beCompareMapTempValue === undefined && !beCompareMap.has(key)))
+			|| beCompareMapTempValue === undefined)
 			return false
 	}
 	return true

@@ -3,9 +3,7 @@ import { type } from "asura-eye"
 function deepClonePredicate(value: any) {
   switch (type(value)) {
     case 'RegExp':
-    case 'Function':
-    case 'AsyncFunction':
-    case 'GeneratorFunction':
+      return new RegExp(value)
     case 'Array':
     case 'Object': {
       const cloneObj = new value.constructor()
@@ -27,9 +25,9 @@ function deepClonePredicate(value: any) {
  * @title deepClone
  * @description 深拷贝
  * @param {unknown} value
- * @returns {any}
+ * @returns {Result}
  * @version 2.4.1
  */
-export function deepClone(value: any) {
-  return deepClonePredicate(value)
+export function deepClone<Result = any>(value: unknown): Result {
+  return deepClonePredicate(value) as Result
 }

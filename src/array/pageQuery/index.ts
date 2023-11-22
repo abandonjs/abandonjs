@@ -1,4 +1,4 @@
-import { isEffectArray, isEffectObject, isEmpty, isNumber, isObject, isString, likeNumber } from "asura-eye"
+import { isEffectArray, isEffectObject, isEmpty, isFunction, isNumber, isObject, isString, likeNumber } from "asura-eye"
 import { type ObjectType } from "../../type"
 import { stringify, vid } from "../../string"
 import type { Pagination, PageQueryProps, DataSourceConfig } from './type'
@@ -14,40 +14,29 @@ import { equal } from '../../util'
 export function pageQuery(originDataSource: ObjectType[] = [], props: PageQueryProps = {}) {
   const {
     uniqueIndex = 'id',
-    fields,
-    fuzzyQuery = true,
-    numberFuzzyQuery = false,
     noRangeFields,
+    handleValue,
+    fields,
   } = props
 
   // 原始数据
   let dataSource = [...originDataSource]
 
-  const getConfig = (key: string) => {
-    let useNumberFuzzyQuery = numberFuzzyQuery
-    let useFuzzyQuery = fuzzyQuery
-
-    if (fields) {
-      const { numberFuzzyQuery, fuzzyQuery } = fields[key] || {}
-      if (!isEmpty(numberFuzzyQuery)) useNumberFuzzyQuery = numberFuzzyQuery
-      if (!isEmpty(fuzzyQuery)) useFuzzyQuery = fuzzyQuery
-    }
-    return {
-      useFuzzyQuery,
-      useNumberFuzzyQuery,
-    }
-  }
-
   const getValue = (record: ObjectType, key: string) => {
     let value = record[key]
-    if (isEmpty(value)) return ''
-    const { useFuzzyQuery, useNumberFuzzyQuery } = getConfig(key)
+    if (fields && isFunction(fields[key])) {
+      return fields[key](value, key)
+    } else if (handleValue) {
+      return handleValue(value, key)
+    }
 
-    if (isString(value) && useFuzzyQuery) {
+    if (isEmpty(value)) return ''
+
+    if (isString(value)) {
       value = value.trim().toUpperCase()
     }
 
-    if (isNumber(value) && useNumberFuzzyQuery) {
+    if (isNumber(value)) {
       value = stringify(value)
     }
 
@@ -57,8 +46,6 @@ export function pageQuery(originDataSource: ObjectType[] = [], props: PageQueryP
   const isEqual = (item: ObjectType, params: ObjectType, key: string): boolean => {
     const value = getValue(item, key)
     const beValue = getValue(params, key)
-
-    const { useFuzzyQuery } = getConfig(key)
 
     if (
       !(
@@ -77,7 +64,7 @@ export function pageQuery(originDataSource: ObjectType[] = [], props: PageQueryP
       return false
     }
 
-    if (useFuzzyQuery && isString(value) && isString(beValue)) {
+    if (isString(value) && isString(beValue)) {
       return value.indexOf(beValue) > -1
     }
 

@@ -11,24 +11,6 @@ export type Pagination = {
 
 export type DataSourceConfig = ObjectType & Pick<Pagination, 'sortBy'>
 
-
-type Field = {
-	/**
- * @description 模糊查询(包含不区分大小写, 去除前后空格, 优先级比单独指定低)
- * @default true
- */
-	fuzzyQuery?: boolean
-	/**
-	 * @description 数字类型模糊查询(包含不区分大小写, 去除前后空格, 优先级比单独指定低)
-	 * @default false
-	 */
-	numberFuzzyQuery?: boolean
-	/**
-	 * @description 类型比对
-	 */
-	handle?(value: any, beValue: any): boolean
-}
-
 export interface PageQueryProps {
 	/**
 	 * @description 唯一索引
@@ -36,18 +18,15 @@ export interface PageQueryProps {
 	 */
 	uniqueIndex?: string
 	/**
-	 * @description 模糊查询(包含不区分大小写, 去除前后空格, 优先级比单独指定低)
-	 * @default true
-	 */
-	fuzzyQuery?: boolean
-	/**
-	 * @description 数字类型模糊查询(包含不区分大小写, 去除前后空格, 优先级比单独指定低)
-	 * @default false
-	 */
-	numberFuzzyQuery?: boolean
-	/**
 	 * @description 不需要范围处理的查询参数
 	 */
 	noRangeFields?: string[]
-	fields?: ObjectType<Field>
+	/**
+	 * @description 数据处理(全字段配置)
+	 */
+	handleValue?: (value: unknown, key?: string) => unknown
+	/**
+	 * @description 数据处理(单个字段配置)
+	 */
+	fields?: ObjectType<(value: unknown, key?: string) => unknown>
 }

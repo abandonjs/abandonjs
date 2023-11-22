@@ -15,6 +15,51 @@ const getList = () => [
 ]
 
 describe('pageQuery', () => {
+  it('filter:3', () => {
+    const pq = pageQuery(getList())
+    const page1 = pq.getPage(
+      {
+        a: ['aaa', 12],
+      }
+    )
+    expect(page1.dataSource).toEqual([])
+  })
+  it('filter:2', () => {
+    const pq = pageQuery(getList(), {
+      noRangeFields: ['ra'],
+      fields: {
+        a: value => value,
+      }
+    })
+    const page1 = pq.getPage(
+      {
+        ra: [1, 2],
+        a: [10, 12],
+        c: 'code'
+      }
+    )
+    expect(page1.dataSource).toEqual([
+      { id: '11', a: 11, b: 21, c: 'code_1232', d: 'cccc', ra: [1, 2] },
+    ])
+  })
+  it('filter', () => {
+    const pq = pageQuery(getList(), {
+      noRangeFields: ['ra'],
+      handleValue: value => value,
+      fields: {
+        a: value => value,
+      }
+    })
+    const page1 = pq.getPage(
+      {
+        ra: [1, 2],
+        c: 'code'
+      }
+    )
+    expect(page1.dataSource).toEqual([
+      { id: '11', a: 11, b: 21, c: 'code_1232', d: 'cccc', ra: [1, 2] },
+    ])
+  })
   it('query: 2', () => {
     const pq = pageQuery(getList(), {
       noRangeFields: ['ra']
