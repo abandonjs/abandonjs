@@ -1,5 +1,6 @@
-import { isArray, isEmpty, isObject } from 'asura-eye'
+import { isArray, isEmpty, isObject, isString } from 'asura-eye'
 import { toString } from './toString'
+import { type ObjectType } from '../type'
 
 /**
  * @title stringify
@@ -11,18 +12,30 @@ import { toString } from './toString'
  * @lastUpdate 2.2.1
  */
 export function stringify(
-	value: unknown,
-	replacer?: (number | string)[] | null,
-	space?: string | number
+  value: unknown,
+  replacer?: (number | string)[] | null,
+  space?: string | number
 ): string {
+  if (isObject(value) || isArray(value)) {
+    return JSON.stringify(value, replacer, space)
+  }
+  if (isEmpty(value)) {
+    return JSON.stringify(value, replacer, space)
+  }
 
-	if (isObject(value) || isArray(value)) {
-		return JSON.stringify(value, replacer, space)
-	}
-	if(isEmpty(value)){
-		return JSON.stringify(value, replacer, space)
-	}
+  return JSON.stringify(toString(value), replacer, space).replace(
+    /^(")+|(")+$/g,
+    ''
+  )
+}
 
-	return JSON.stringify(toString(value), replacer, space)
-		.replace(/^(")+|(")+$/g, '')
+export function parse<T = ObjectType>(value: unknown, defaultValue?: T): T {
+  try {
+    if (isString(value)) {
+      return JSON.parse(value)
+    }
+    return defaultValue as T
+  } catch (error) {
+    return defaultValue as T
+  }
 }
