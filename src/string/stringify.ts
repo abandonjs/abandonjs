@@ -16,10 +16,10 @@ export function stringify(
   replacer?: (number | string)[] | null,
   space?: string | number
 ): string {
-  if (isObject(value) || isArray(value)) {
-    return JSON.stringify(value, replacer, space)
-  }
   if (isEmpty(value)) {
+    return String(value)
+  }
+  if (isObject(value) || isArray(value)) {
     return JSON.stringify(value, replacer, space)
   }
 
