@@ -15,6 +15,7 @@ export function pageQuery(originDataSource: ObjectType[] = [], props: PageQueryP
   const {
     uniqueIndex = 'id',
     noRangeFields,
+    keepFields,
     handleValue,
     fields,
   } = props
@@ -31,13 +32,15 @@ export function pageQuery(originDataSource: ObjectType[] = [], props: PageQueryP
     }
 
     if (isEmpty(value)) return ''
-
+    if(isEffectArray(keepFields) && keepFields.includes(key)){
+      return value
+    }
     if (isString(value)) {
-      value = value.trim().toUpperCase()
+      return value.trim().toUpperCase()
     }
 
     if (isNumber(value)) {
-      value = stringify(value)
+      return stringify(value)
     }
 
     return value

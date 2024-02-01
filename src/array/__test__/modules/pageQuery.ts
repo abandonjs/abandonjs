@@ -12,38 +12,37 @@ const list = [
   { id: '8', a: 8, b: 18, c: 'code_1229', d: 'cccc' },
   { id: '9', a: 9, b: 19, c: 'code_1230', d: 'cccc' },
   { id: '10', a: 10, b: 20, c: 'code_1231', d: 'cccc' },
-  { id: '11', a: 11, b: 21, c: 'code_1232', d: 'cccc' },
+  { id: '11', a: 11, b: 21, c: 'code_1232', d: 'cccc' }
 ]
-
 {
-
   const { getPage, del, add } = pageQuery(
-    [
-      { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
-    ],
+    [{ id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' }],
     {
+      keepFields: ['a'],
       noRangeFields: ['a']
-    })
+    }
+  )
   const page = getPage({
-    a: [0, 2],
+    a: 1,
     id: [0, 2],
-    b: ['10', '12'],
+    b: ['10', '12']
   })
 
   // console.log(page)
-  test('page', {
+  test('page3', {
     param: page.dataSource,
     tobe: [
-      // { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
+      { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' }
     ]
   })
 }
-{
 
+{
   const { getPage, del, add } = pageQuery(
-    [
-      { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
-    ]
+    [{ id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' }],
+    {
+      noRangeFields: ['a']
+    }
   )
   const page = getPage({
     a: [0, 2],
@@ -55,24 +54,40 @@ const list = [
   test('page', {
     param: page.dataSource,
     tobe: [
-      { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
+      // { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
     ]
   })
 }
 {
-
-  const { getPage, del, add } = pageQuery(
-    [
-      { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
-      { id: '3', a: 3, b: 13, c: 'code_1224', d: 'cccc' },
-      { id: '2', a: 2, b: 12, c: 'code_1223', d: 'cccc' },
-    ]
-  )
-  const page = getPage({}, {
-    sortBy: {
-      id: 'asc'
-    }
+  const { getPage, del, add } = pageQuery([
+    { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' }
+  ])
+  const page = getPage({
+    a: [0, 2],
+    id: [0, 2],
+    b: ['10', '12']
   })
+
+  // console.log(page)
+  test('page', {
+    param: page.dataSource,
+    tobe: [{ id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' }]
+  })
+}
+{
+  const { getPage, del, add } = pageQuery([
+    { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
+    { id: '3', a: 3, b: 13, c: 'code_1224', d: 'cccc' },
+    { id: '2', a: 2, b: 12, c: 'code_1223', d: 'cccc' }
+  ])
+  const page = getPage(
+    {},
+    {
+      sortBy: {
+        id: 'asc'
+      }
+    }
+  )
 
   // console.log(page)
   test('page', {
@@ -84,7 +99,6 @@ const list = [
     ]
   })
 }
-
 
 {
   const { getPage, del, add } = pageQuery([
@@ -98,9 +112,8 @@ const list = [
     { id: '8', a: 8, b: 18, c: 'code_1229', d: 'cccc' },
     { id: '9', a: 9, b: 19, c: 'code_1230', d: 'cccc' },
     { id: '10', a: 10, b: 20, c: 'code_1231', d: 'cccc' },
-    { id: '11', a: 11, b: 21, c: 'code_1232', d: 'cccc' },
+    { id: '11', a: 11, b: 21, c: 'code_1232', d: 'cccc' }
   ])
-
 
   del('2')
   del(['9', '11'])
@@ -113,7 +126,8 @@ const list = [
 
   const page = getPage()
 
-  test('pageQuery:del',
+  test(
+    'pageQuery:del',
     {
       param: page.dataSource,
       tobe: [
@@ -126,7 +140,7 @@ const list = [
         { id: '5', a: 5, b: 15, c: 'code_1226', d: 'cccc' },
         { id: '6', a: 6, b: 16, c: 'code_1227', d: 'cccc' },
         { id: '7', a: 7, b: 17, c: 'code_1228', d: 'cccc' },
-        { id: '8', a: 8, b: 18, c: 'code_1229', d: 'cccc' },
+        { id: '8', a: 8, b: 18, c: 'code_1229', d: 'cccc' }
       ]
     },
     {
@@ -134,9 +148,9 @@ const list = [
       tobe: {
         pageNo: 1,
         pageSize: 10,
-        total: 11,
+        total: 11
       }
-    },
+    }
   )
 }
 {
@@ -144,7 +158,8 @@ const list = [
 
   const page = getPage()
 
-  test('pageQuery',
+  test(
+    'pageQuery',
     {
       param: page.dataSource,
       tobe: [
@@ -157,7 +172,7 @@ const list = [
         { id: '7', a: 7, b: 17, c: 'code_1228', d: 'cccc' },
         { id: '8', a: 8, b: 18, c: 'code_1229', d: 'cccc' },
         { id: '9', a: 9, b: 19, c: 'code_1230', d: 'cccc' },
-        { id: '10', a: 10, b: 20, c: 'code_1231', d: 'cccc' },
+        { id: '10', a: 10, b: 20, c: 'code_1231', d: 'cccc' }
       ]
     },
     {
@@ -165,12 +180,11 @@ const list = [
       tobe: {
         pageNo: 1,
         pageSize: 10,
-        total: 11,
+        total: 11
       }
-    },
+    }
   )
 }
-
 
 // UnitTest(pageQuery)
 // 	.addCases(
