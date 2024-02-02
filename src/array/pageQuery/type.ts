@@ -18,6 +18,10 @@ export interface PageQueryProps {
 	 */
 	uniqueIndex?: string
 	/**
+	 * @description 保持原值, 不进行转换后比对
+	 */
+	keepFields?: string[]
+	/**
 	 * @description 不需要范围处理的查询参数
 	 */
 	noRangeFields?: string[]

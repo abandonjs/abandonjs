@@ -5,5 +5,5 @@ module.exports = {
 	"bracketSpacing": true,
 	"htmlWhitespaceSensitivity": "ignore",
 	"endOfLine": "auto",
-	"trailingComma": "none"
+	"trailingComma": "all",
 }
