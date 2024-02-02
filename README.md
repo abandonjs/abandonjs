@@ -1,8 +1,8 @@
 # abandonjs
 
-![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg) [![npm version](https://img.shields.io/npm/v/abandonjs.svg?style=flat)](https://www.npmjs.com/package/abandonjs)
+[![MIT License](https://img.shields.io/github/license/abandonjs/abandonjs.svg)](https://github.com/abandonjs/abandonjs/blob/main/LICENSE) [![npm version](https://img.shields.io/npm/v/abandonjs.svg?style=flat)](https://www.npmjs.com/package/abandonjs) [![GitHub open issues](https://img.shields.io/github/issues/abandonjs/abandonjs.svg)](https://github.com/abandonjs/abandonjs/issues?q=is%3Aopen+is%3Aissue)
 
-- [Api docs](https://abandonjs.github.io/)
+- [Api](https://abandonjs.github.io/)
 - 常用方法的封装
 
 ## 使用
@@ -12,7 +12,7 @@ npm install abandonjs -D
 ```
 
 ```js
-import { type } from 'abandonjs'
+import { toPathValue } from 'abandonjs'
 ```
 
 ## 其他工具方法

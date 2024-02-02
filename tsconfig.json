@@ -17,6 +17,7 @@
     "experimentalDecorators":true,
     "baseUrl": "./src",
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true
   },
   "include": ["./src/**/*", "*.d.ts"],
