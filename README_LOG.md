@@ -1,3 +1,7 @@
+## 3.7.1
+
+- fix: `format`: 完善方法
+
 ## 3.7.0
 
 - add `padNumber`: 填充数字
