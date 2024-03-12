@@ -17,7 +17,7 @@
     "build": "npx rollup -c ./config/rollup.build.ts",
     "git": "node config/git",
     "build:ed": "npx rollup -c --extend ./rollup.config.ts",
-    "docs": "node ./config/docs.js",
+    "docs": "node ./config/docs.cjs",
     "test": "ts-node-dev --respawn --transpile-only ./test/index.ts",
     "eslint": "eslint . --ext .ts",
     "pub": "npm publish"
@@ -43,6 +43,7 @@
   "author": "ruihuag",
   "license": "MIT",
   "devDependencies": {
+    "0file-system": "^0.2.1",
     "0math": "0.1.2",
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.23.2",

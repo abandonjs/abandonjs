@@ -19,8 +19,7 @@ const getOffsetToTimezone = (date: Date, format = 'Z') => {
  * @param {number|string|Date} [time=new Date()]  时间
  * @param {string} [pattern='YYYY-MM-DD'] 格式 
  * @returns {string} 格式化后的数据 
- * @eg
-| 符号 | 结果| 描述 |
+ * @eg | 符号 | 结果| 描述 |
 |:----|:----|:----|
 | YYYY	| 2022	| 4位数字的年份 |
 | YY	|  1-14	| 2 位数字的年份 |

@@ -1,0 +1,1424 @@
+[
+  {
+    "params": [
+      {
+        "type": "{T[]}",
+        "name": "list",
+        "description": "",
+        "origin": "{T[]} list"
+      },
+      {
+        "type": "{number}",
+        "name": "size",
+        "description": "切割点索引",
+        "origin": "{number} size 切割点索引"
+      }
+    ],
+    "title": "chunk<T>",
+    "description": "通过 size 切割数组",
+    "returns": "{T[][]} [ [切割点前数据], [切割点后数据] ]"
+  },
+  {
+    "params": [
+      {
+        "type": "{T[]}",
+        "name": "list",
+        "description": "数组",
+        "origin": "{T[]} list 数组"
+      },
+      {
+        "type": "{number}",
+        "name": "n=0",
+        "description": "要去除元素个数 ",
+        "origin": "{number} n=0 要去除元素个数 "
+      }
+    ],
+    "title": "drop<T>",
+    "description": "去除前n个元素(影响原数据)",
+    "returns": "{T[]} 剩余切片"
+  },
+  {
+    "params": [
+      {
+        "type": "{T[]}",
+        "name": "list",
+        "description": "要处理的数组",
+        "origin": "{T[]} list 要处理的数组"
+      },
+      {
+        "type": "{number}",
+        "name": "[n=1]",
+        "description": "需要删除的元素数量",
+        "origin": "{number} [n=1] 需要删除的元素数量"
+      }
+    ],
+    "title": "dropRight<T>",
+    "description": "从右往左删除的指定个数",
+    "returns": "{T[]} "
+  },
+  {
+    "params": [
+      {
+        "type": "{T[]}",
+        "name": "array",
+        "description": "{T[]} 待填充改变的数组",
+        "origin": "{T[]} array {T[]} 待填充改变的数组"
+      },
+      {
+        "type": "{T|(index:number)=>T}",
+        "name": "value",
+        "description": "填充值",
+        "origin": "{T|(index:number)=>T} value 填充值"
+      },
+      {
+        "type": "{number}",
+        "name": "[num=0]",
+        "description": "填充个数",
+        "origin": "{number} [num=0] 填充个数"
+      }
+    ],
+    "title": "fill<T>",
+    "description": "在原有数组上改变, 修改指定位置的值",
+    "returns": "returns"
+  },
+  {
+    "params": [
+      {
+        "type": "{T[]}",
+        "name": "list",
+        "description": "待过滤数组",
+        "origin": "{T[]} list 待过滤数组"
+      },
+      {
+        "type": "{FilterCondition<T>}",
+        "name": "filterCondition",
+        "description": "过滤条件",
+        "origin": "{FilterCondition<T>} filterCondition 过滤条件"
+      },
+      {
+        "type": "{boolean}",
+        "name": "[retainNotObject=false]",
+        "description": "是否保留非对象项",
+        "origin": "{boolean} [retainNotObject=false] 是否保留非对象项"
+      }
+    ],
+    "title": "filter<T>",
+    "description": "单层过滤",
+    "returns": "{T[]}",
+    "version": "2.3.1"
+  },
+  {
+    "params": [
+      {
+        "type": "{T[]}",
+        "name": "list",
+        "description": "",
+        "origin": "{T[]} list"
+      },
+      {
+        "type": "{number}",
+        "name": "[depth=1]",
+        "description": "深度",
+        "origin": "{number} [depth=1] 深度"
+      }
+    ],
+    "title": "flat<T>",
+    "description": "数组扁平化",
+    "returns": "{T[]}",
+    "version": "version: 2.2.0",
+    "lastUpdate": "3.4.0"
+  },
+  {
+    "params": [
+      {
+        "type": "{T[]}",
+        "name": "list",
+        "description": "",
+        "origin": "{T[]} list"
+      },
+      {
+        "type": "{number}",
+        "name": "[min=0]",
+        "description": "最小值(包括)",
+        "origin": "{number} [min=0] 最小值(包括)"
+      },
+      {
+        "type": "{number}",
+        "name": "[max=list.length-1]",
+        "description": "最大值(包括)",
+        "origin": "{number} [max=list.length-1] 最大值(包括)"
+      }
+    ],
+    "title": "selects<T>",
+    "description": "指定范围 来随机选择数组元素",
+    "returns": "{T[]}"
+  },
+  {
+    "params": [
+      {
+        "type": "{T[]}",
+        "name": "list",
+        "description": "待选择数组",
+        "origin": "{T[]} list 待选择数组"
+      },
+      {
+        "type": "{?number}",
+        "name": "index",
+        "description": " 指定选择索引(可为负数)",
+        "origin": "{?number} index  指定选择索引(可为负数)"
+      }
+    ],
+    "title": "select<T>",
+    "description": "选择数组其中一项, 不指定就随机选一",
+    "returns": "{T|null} 选择项"
+  },
+  {
+    "params": [
+      {
+        "type": "{T[]}",
+        "name": "list",
+        "description": "",
+        "origin": "{T[]} list"
+      },
+      {
+        "type": "{string|number}",
+        "name": "[sortIndex]",
+        "description": "索引路径, 参考`toPathValue`的路径",
+        "origin": "{string|number} [sortIndex] 索引路径, 参考`toPathValue`的路径"
+      }
+    ],
+    "title": "descSort<T=object>",
+    "description": "降序排序(从大到小排序)",
+    "returns": "{T[]}",
+    "create": "3.3.0",
+    "lastUpdate": "3.3.0"
+  },
+  {
+    "params": [
+      {
+        "type": "{T[]}",
+        "name": "list",
+        "description": "",
+        "origin": "{T[]} list "
+      },
+      {
+        "type": "{string|number}",
+        "name": "sortIndex",
+        "description": "索引路径, 参考toPathValue的路径",
+        "origin": "{string|number} sortIndex 索引路径, 参考toPathValue的路径"
+      }
+    ],
+    "title": "ascSort<T=object>",
+    "description": "升序排序(从小到大排序)",
+    "returns": "{T[]}",
+    "create": "3.3.0",
+    "lastUpdate": "3.3.0"
+  },
+  {
+    "params": [
+      {
+        "type": "{T|T[]}",
+        "name": "value",
+        "description": "",
+        "origin": "{T|T[]} value "
+      }
+    ],
+    "title": "toArray<T>",
+    "description": "将非数组转换为数组, 对象会转换成 Array([key,value])",
+    "returns": "{T[]}",
+    "lastUpdate": "3.3.0"
+  },
+  {
+    "params": [
+      {
+        "type": "{T[]}",
+        "name": "list",
+        "description": "待过滤数组",
+        "origin": "{T[]} list 待过滤数组"
+      }
+    ],
+    "title": "unique<T>",
+    "description": "去除数组重复项",
+    "returns": "{T[]}"
+  },
+  {
+    "params": [
+      {
+        "type": "{...T[]}",
+        "name": "...arrays",
+        "description": "",
+        "origin": "{...T[]} ...arrays "
+      }
+    ],
+    "title": "zip<T>",
+    "description": "description: 每个数组同样的下标组成一个新数组",
+    "returns": "{T[][]}",
+    "version": "2.1.11",
+    "eg": "```ts\r\n zip(['fred', 'barney'], [30, 40], [true, false]) \r\n => [['fred', 30, true], ['barney', 40, false]]\r\n ```"
+  },
+  {
+    "params": [
+      {
+        "type": "{(string|number)[]}",
+        "name": "keys",
+        "description": "",
+        "origin": "{(string|number)[]} keys"
+      },
+      {
+        "type": "{Value[]}",
+        "name": "values",
+        "description": "",
+        "origin": "{Value[]} values"
+      }
+    ],
+    "title": "zipObject<Value>",
+    "description": "description: 第一个数组是对象的key, 第二个数组是对象的value",
+    "returns": "{ObjectType<Value>}",
+    "version": "2.1.11",
+    "eg": "```ts\r\n zipObject(['a', 'b'], [1, 2]) \r\n => { 'a': 1, 'b': 2 }\r\n ```"
+  },
+  {
+    "params": [
+      {
+        "type": "{Collection}",
+        "name": "collection",
+        "description": "",
+        "origin": "{Collection} collection"
+      },
+      {
+        "type": "{CollectionKey}",
+        "name": "[index=0]",
+        "description": "可为负数",
+        "origin": "{CollectionKey} [index=0] 可为负数"
+      }
+    ],
+    "title": "at",
+    "description": "通过下标获取值",
+    "returns": "{CollectionValue}",
+    "version": "2.6.0"
+  },
+  {
+    "params": [
+      {
+        "type": "{...unknown[]}",
+        "name": "...list",
+        "description": "多个数组 ",
+        "origin": "{...unknown[]} ...list 多个数组 "
+      }
+    ],
+    "title": "concat<T>",
+    "description": "连接多个数组",
+    "returns": "{T[]}",
+    "lastUpdate": "2.6.0"
+  },
+  {
+    "params": [
+      {
+        "type": "{string|T[]}",
+        "name": "value",
+        "description": "代复制子串/数组",
+        "origin": "{string|T[]} value 代复制子串/数组"
+      },
+      {
+        "type": "{number}",
+        "name": "target",
+        "description": "复制结果目标下标",
+        "origin": "{number} target 复制结果目标下标"
+      },
+      {
+        "type": "{number}",
+        "name": "[start=0]",
+        "description": "被复制起点",
+        "origin": "{number} [start=0] 被复制起点"
+      },
+      {
+        "type": "{number}",
+        "name": "end",
+        "description": "被复制终点, 不指定及复制最后",
+        "origin": "{number} end 被复制终点, 不指定及复制最后"
+      }
+    ],
+    "title": "copyWithin<T>",
+    "description": "浅复制数组或子串的一部分到同一数组中的另一个位置，并返回它，不会改变原数组/字串的长度",
+    "returns": "{string|T[]}",
+    "version": "2.6.0"
+  },
+  {
+    "params": [
+      {
+        "type": "{string|T[]}",
+        "name": "value",
+        "description": "",
+        "origin": "{string|T[]} value "
+      }
+    ],
+    "title": "entries",
+    "description": "返回一个数组迭代对象",
+    "returns": ""
+  },
+  {
+    "params": [
+      {
+        "type": "{Collection}",
+        "name": "collection",
+        "description": "",
+        "origin": "{Collection} collection"
+      }
+    ],
+    "title": "getLength",
+    "description": "获取集合长度(大小)",
+    "returns": "{number}"
+  },
+  {
+    "params": [
+      {
+        "type": "{Collection}",
+        "name": "collection",
+        "description": "",
+        "origin": "{Collection} collection "
+      },
+      {
+        "type": "{CollectionKey}",
+        "name": "key",
+        "description": "",
+        "origin": "{CollectionKey} key"
+      }
+    ],
+    "title": "getIndex",
+    "description": "获取集合key",
+    "returns": "{CollectionKey|undefined}"
+  },
+  {
+    "params": [
+      {
+        "type": "{Array|Object|string}",
+        "name": "collection",
+        "description": "要检索的集合",
+        "origin": "{Array|Object|string} collection 要检索的集合"
+      },
+      {
+        "type": "{number|string}",
+        "name": "value",
+        "description": "要检索的值",
+        "origin": "{number|string} value 要检索的值"
+      },
+      {
+        "type": "{number|string}",
+        "name": "[fromIndex=0]",
+        "description": "要检索的索引",
+        "origin": "{number|string} [fromIndex=0] 要检索的索引"
+      }
+    ],
+    "title": "includes",
+    "description": "检查 value(值) 是否在 collection(集合); 如果指定 fromIndex 是负数，那么从 collection(集合) 的结尾开始检索",
+    "returns": "{boolean}"
+  },
+  {
+    "params": [
+      {
+        "type": "{Collection}",
+        "name": "collection",
+        "description": "",
+        "origin": "{Collection} collection"
+      },
+      {
+        "type": "{CollectionValue}",
+        "name": "value",
+        "description": "",
+        "origin": "{CollectionValue} value"
+      }
+    ],
+    "title": "indexOf",
+    "description": "拓展原生 Array.prototype.indexOf | String.prototype.indexOf 的适用方法, 拓展 Map, Set",
+    "returns": "{CollectionKey}"
+  },
+  {
+    "params": [
+      {
+        "type": "{Collection}",
+        "name": "collection",
+        "description": "",
+        "origin": "{Collection} collection"
+      },
+      {
+        "type": "{string|number}",
+        "name": "[index]",
+        "description": ": 可以输入下标/2n+1 这种格式",
+        "origin": "{string|number} [index] : 可以输入下标/2n+1 这种格式"
+      }
+    ],
+    "title": "nth",
+    "description": "通过指定规则回去集合参数",
+    "return": "{Collection|CollectionValue}"
+  },
+  {
+    "params": [
+      {
+        "type": "{T|Map}",
+        "name": "collection",
+        "description": "",
+        "origin": "{T|Map} collection"
+      },
+      {
+        "type": "{CollectionKey[]}",
+        "name": "propertys",
+        "description": "",
+        "origin": "{CollectionKey[]} propertys"
+      }
+    ],
+    "title": "omit<T extends ObjectType>",
+    "description": "去除集合属性",
+    "returns": "{T|Map}"
+  },
+  {
+    "params": [],
+    "title": "EventEmitter<T, U>",
+    "description": "简易观察者模式",
+    "property": [
+      "$cache {Record<string,T[]>} 事件缓存",
+      "$on {(name:string,fn:T)=>void} 绑定事件",
+      "$off {(name: string)=>boolean} 移除事件的名称",
+      "$once {<Params extends any[] = any[]>(name: string, ...args: Params)=>U[]} 触发后就移除当前事件",
+      "$emit {<Params extends any[] = any[]>(name: string, ...args: Params)=> U[]} 触发事件"
+    ],
+    "eg": "```js\r\n const ev = new EventEmitter()\r\n ev.$on('fn1', ()=>console.log(1))\r\n ev.$on('fn2', ()=>console.log(2))\r\n ev.$emit('fn1')\r\n // 1\r\n ev.$emit('fn2')\r\n // 2\r\n ```"
+  },
+  {
+    "params": [
+      {
+        "type": "object",
+        "name": "{T}",
+        "description": "代理的object",
+        "origin": "object {T} 代理的object"
+      },
+      {
+        "type": "props",
+        "name": "{?ProxyObjectProp[]}",
+        "description": "object 属性配置",
+        "origin": "props {?ProxyObjectProp[]} object 属性配置"
+      },
+      {
+        "type": "handler",
+        "name": "{?ProxyHandler<T>}",
+        "description": "",
+        "origin": "handler {?ProxyHandler<T>}"
+      }
+    ],
+    "title": "ProxyObject<T extends object>",
+    "description": "代理object的属性, 结合 Proxy 和 Object 用法",
+    "returns": "{Proxy<T>}"
+  },
+  {
+    "params": [
+      {
+        "type": "func",
+        "name": "限定函数",
+        "description": "",
+        "origin": "func 限定函数"
+      },
+      {
+        "type": "n",
+        "name": "限制参数数量",
+        "description": "",
+        "origin": "n 限制参数数量"
+      }
+    ],
+    "title": "ary",
+    "description": "调用func最多接受n个参数",
+    "returns": "新的覆盖函数"
+  },
+  {
+    "params": [
+      {
+        "type": "n",
+        "name": "超过n次不再调用",
+        "description": "",
+        "origin": "n 超过n次不再调用"
+      },
+      {
+        "type": "func",
+        "name": "限定函数",
+        "description": "",
+        "origin": "func 限定函数"
+      }
+    ],
+    "title": "before",
+    "description": "调用n次后，再调用就会返回最后一次调用的结果",
+    "returns": "新的限定函数"
+  },
+  {
+    "params": [
+      {
+        "type": "{Function}",
+        "name": "func",
+        "description": "绑定的函数",
+        "origin": "{Function} func 绑定的函数"
+      },
+      {
+        "type": "{Params}",
+        "name": "partials",
+        "description": "附加的部分参数",
+        "origin": "{Params} partials 附加的部分参数"
+      }
+    ],
+    "title": "bind<Params,Result>",
+    "description": "thisArg绑定func的this，并且func会接收partials附加参数",
+    "returns": "新的绑定函数"
+  },
+  {
+    "params": [
+      {
+        "type": "{Function}",
+        "name": "func",
+        "description": "待柯里化函数",
+        "origin": "{Function} func 待柯里化函数"
+      },
+      {
+        "type": "{number}",
+        "name": "[len=1]",
+        "description": "待柯里化参数个数",
+        "origin": "{number} [len=1] 待柯里化参数个数"
+      }
+    ],
+    "title": "curry<Params,Result>",
+    "description": "柯里化",
+    "returns": "柯里化函数"
+  },
+  {
+    "params": [
+      {
+        "type": "{Function}",
+        "name": "fn",
+        "description": "",
+        "origin": "{Function} fn"
+      },
+      {
+        "type": "{number}",
+        "name": "interval",
+        "description": "",
+        "origin": "{number} interval"
+      }
+    ],
+    "title": "debounce<Params>",
+    "description": "description\r\n * -- 防抖:  时间内只会执行一次 可以减少函数触发的频率\r\n * -- 当函数触发时，使用一个定时器延迟执行操作。\r\n * -- 当函数被再次触发时，清除已设置的定时器，重新设置定时器。\r\n * -- 如果上一次的延迟操作还未执行，则会被清除。",
+    "returns": "{Func<Params>}"
+  },
+  {
+    "params": [
+      {
+        "type": "func",
+        "name": "指定函数",
+        "description": "",
+        "origin": "func 指定函数"
+      },
+      {
+        "type": "{number}",
+        "name": "[delayTime=0]",
+        "description": "延迟时间",
+        "origin": "{number} [delayTime=0] 延迟时间"
+      },
+      {
+        "type": "{Params}",
+        "name": "...args",
+        "description": "传输参数",
+        "origin": "{Params} ...args 传输参数"
+      }
+    ],
+    "title": "delay<Params,Result>",
+    "returns": "{Promise<Result>} func执行结果(Promise)"
+  },
+  {
+    "params": [
+      {
+        "type": "{T[][]}",
+        "name": "target",
+        "description": "",
+        "origin": "{T[][]} target"
+      },
+      {
+        "type": "{(values?:T[],indexes?:number[])=>void}",
+        "name": "callback",
+        "description": "",
+        "origin": "{(values?:T[],indexes?:number[])=>void} callback"
+      }
+    ],
+    "title": "loop<T>",
+    "description": "description: 指定数组遍历遍历",
+    "update": "3.5.0"
+  },
+  {
+    "params": [
+      {
+        "type": "{Function}",
+        "name": "func",
+        "description": "",
+        "origin": "{Function} func"
+      }
+    ],
+    "title": "memoize<Params,Result>",
+    "description": "缓存方法结果, 若参数相同, 会返回相同结果",
+    "returns": "{(...args: Params)=>Result}"
+  },
+  {
+    "params": [
+      {
+        "type": "{Function}",
+        "name": "func",
+        "description": "指定值运行一次的方法",
+        "origin": "{Function} func 指定值运行一次的方法"
+      }
+    ],
+    "title": "once<Params,Result>",
+    "description": " fn 方法只会执行一次, 多次执行返回值为第一次的返回值",
+    "returns": "{Function} 返回封装后的方法"
+  },
+  {
+    "params": [
+      {
+        "type": "{Function[]}",
+        "name": "...funcs",
+        "description": "函数数组",
+        "origin": "{Function[]} ...funcs 函数数组"
+      }
+    ],
+    "title": "pipe<Params,Result>",
+    "description": "管道函数, 链接前函数的值为下一个函数的参",
+    "returns": "{(...args: Params)=>Result}"
+  },
+  {
+    "params": [
+      {
+        "type": "func",
+        "name": "",
+        "description": "",
+        "origin": "func"
+      },
+      {
+        "type": "...args",
+        "name": "",
+        "description": "",
+        "origin": "...args"
+      }
+    ],
+    "title": "runFunc",
+    "description": "运行函数, 支持普通函数和async函数, 否则返回func",
+    "returns": "returns"
+  },
+  {
+    "params": [
+      {
+        "type": "{Function}",
+        "name": "fn",
+        "description": "待处理函数",
+        "origin": "{Function} fn 待处理函数"
+      },
+      {
+        "type": "{number}",
+        "name": "interval",
+        "description": "number 间隔",
+        "origin": "{number} interval number 间隔"
+      }
+    ],
+    "title": "throttle<Params>",
+    "description": "节流: 用于限制函数触发频率, 每个delay时间间隔，最多只能执行函数一次",
+    "returns": "{(...args: Params)=>void}"
+  },
+  {
+    "params": [
+      {
+        "type": "{number|string}",
+        "name": "value",
+        "description": "推荐使用字符串，数字小数点最后的零可能会导致结果不符合预期",
+        "origin": "{number|string} value 推荐使用字符串，数字小数点最后的零可能会导致结果不符合预期"
+      },
+      {
+        "type": "{number|`${number|''}.${number|''}`}",
+        "name": "length",
+        "description": "length>0 表整数位保留部分， length<0 表小数点保留位： '2.3': 表2位整数， 3位小数",
+        "origin": "{number|`${number|''}.${number|''}`} length length>0 表整数位保留部分， length<0 表小数点保留位： '2.3': 表2位整数， 3位小数"
+      }
+    ],
+    "title": "padNumber",
+    "description": "填充数字",
+    "returns": "{string}"
+  },
+  {
+    "params": [
+      {
+        "type": "{unknown}",
+        "name": "num",
+        "description": "待转换的数值",
+        "origin": "{unknown} num 待转换的数值"
+      }
+    ],
+    "title": "toNumber",
+    "description": "将值转换为Number, 不可以正确装换的值, 均返回0",
+    "returns": "{number}"
+  },
+  {
+    "params": [
+      {
+        "type": "{number}",
+        "name": "num",
+        "description": "数字",
+        "origin": "{number} num 数字"
+      },
+      {
+        "type": "{number}",
+        "name": "fixed",
+        "description": "小数点位数",
+        "origin": "{number} fixed 小数点位数"
+      }
+    ],
+    "title": "toFloat",
+    "description": "转换为指定位数的浮点数",
+    "returns": "{number}"
+  },
+  {
+    "params": [
+      {
+        "type": "{string|number}",
+        "name": "num",
+        "description": "",
+        "origin": "{string|number} num"
+      }
+    ],
+    "title": "toThousands",
+    "description": "数字每千位加逗号",
+    "returns": "{string}"
+  },
+  {
+    "params": [
+      {
+        "type": "{number|string}",
+        "name": "value",
+        "description": "",
+        "origin": "{number|string} value"
+      },
+      {
+        "type": "{number}",
+        "name": "[min=0]",
+        "description": "",
+        "origin": "{number} [min=0]"
+      },
+      {
+        "type": "{number}",
+        "name": "max",
+        "description": "",
+        "origin": "{number} max"
+      }
+    ],
+    "title": "spLength",
+    "description": "指定长度",
+    "returns": "{string}"
+  },
+  {
+    "params": [
+      {
+        "type": "{number}",
+        "name": "num",
+        "description": "",
+        "origin": "{number} num"
+      }
+    ],
+    "title": "getDecimal",
+    "description": "获取小数点位数",
+    "returns": "{number}"
+  },
+  {
+    "params": [
+      {
+        "type": "{number}",
+        "name": "num",
+        "description": "待限制的值",
+        "origin": "{number} num 待限制的值"
+      },
+      {
+        "type": "{number}",
+        "name": "lower",
+        "description": "下限",
+        "origin": "{number} lower 下限"
+      },
+      {
+        "type": "{number}",
+        "name": "upper",
+        "description": "上限",
+        "origin": "{number} upper 上限"
+      }
+    ],
+    "title": "clamp",
+    "description": "限制在lower和upper之间",
+    "returns": "返回被限制的值"
+  },
+  {
+    "params": [
+      {
+        "type": "{number}",
+        "name": "num",
+        "description": "要检查的值",
+        "origin": "{number} num 要检查的值"
+      },
+      {
+        "type": "{number}",
+        "name": "start=0",
+        "description": "开始范围",
+        "origin": "{number} start=0 开始范围"
+      },
+      {
+        "type": "{number}",
+        "name": "end",
+        "description": "结束范围(包含该值)",
+        "origin": "{number} end 结束范围(包含该值)"
+      }
+    ],
+    "title": "inRange",
+    "description": "判断是否在该范围",
+    "returns": "{boolean}"
+  },
+  {
+    "params": [
+      {
+        "type": "{number}",
+        "name": "num",
+        "description": "待判断值",
+        "origin": "{number} num 待判断值"
+      },
+      {
+        "type": "{number}",
+        "name": "start=0",
+        "description": "起始值",
+        "origin": "{number} start=0 起始值"
+      },
+      {
+        "type": "{number}",
+        "name": "[end]",
+        "description": "结束值(不包含该值)",
+        "origin": "{number} [end] 结束值(不包含该值)"
+      }
+    ],
+    "title": "between",
+    "description": "判断值是否在两值之间",
+    "returns": "{boolean}"
+  },
+  {
+    "params": [
+      {
+        "type": "obj",
+        "name": "object",
+        "description": "",
+        "origin": "obj object"
+      },
+      {
+        "type": "keys",
+        "name": "string[]",
+        "description": "| string",
+        "origin": "keys string[] | string"
+      }
+    ],
+    "title": "existKeys",
+    "description": "判断对象是否拥有指定keys",
+    "returns": "boolean"
+  },
+  {
+    "params": [
+      {
+        "type": "query",
+        "name": "object",
+        "description": "",
+        "origin": "query object"
+      },
+      {
+        "type": "encode",
+        "name": "boolean",
+        "description": "= false",
+        "origin": "encode boolean = false"
+      }
+    ],
+    "title": "serialize",
+    "description": "序列化对象",
+    "returns": "string "
+  },
+  {
+    "params": [
+      {
+        "type": "{string}",
+        "name": "compare",
+        "description": "",
+        "origin": "{string} compare "
+      },
+      {
+        "type": "{string}",
+        "name": "compared",
+        "description": "",
+        "origin": "{string} compared "
+      }
+    ],
+    "title": "compareString",
+    "description": "比较字符串大小",
+    "returns": "{boolean}"
+  },
+  {
+    "params": [
+      {
+        "type": "{string}",
+        "name": "target",
+        "description": "待替换子串",
+        "origin": "{string} target 待替换子串"
+      },
+      {
+        "type": "{number}",
+        "name": "[start=0]",
+        "description": "开始位置",
+        "origin": "{number} [start=0] 开始位置"
+      },
+      {
+        "type": "{number}",
+        "name": "[end=target.length]",
+        "description": "结束位置",
+        "origin": "{number} [end=target.length] 结束位置"
+      }
+    ],
+    "title": "hide",
+    "description": "隐藏指定位置的字符",
+    "returns": "{string}",
+    "lastUpdate": "2.2.1"
+  },
+  {
+    "params": [],
+    "title": "vid",
+    "description": "获取虚拟id (时间戳)",
+    "returns": "{string}"
+  },
+  {
+    "params": [
+      {
+        "type": "{string}",
+        "name": "target",
+        "description": "",
+        "origin": "{string} target"
+      },
+      {
+        "type": "{{reg:RegExp|string,value:string}[]}",
+        "name": "regs",
+        "description": "",
+        "origin": "{{reg:RegExp|string,value:string}[]} regs "
+      }
+    ],
+    "title": "replaces",
+    "description": "同时定义多个replace的规则使用",
+    "returns": "{string}"
+  },
+  {
+    "params": [
+      {
+        "type": "{string}",
+        "name": "target",
+        "description": "",
+        "origin": "{string} target"
+      }
+    ],
+    "title": "reverseString ",
+    "description": "反转字符串",
+    "return": "{string}"
+  },
+  {
+    "params": [
+      {
+        "type": "{unknown}",
+        "name": "value",
+        "description": "",
+        "origin": "{unknown} value"
+      },
+      {
+        "type": "{(number|string)[]|(this:any,key:string,value:any)=>any}[replacer]",
+        "name": "",
+        "description": "",
+        "origin": "{(number|string)[]|(this:any,key:string,value:any)=>any}[replacer]"
+      },
+      {
+        "type": "{string|number}",
+        "name": "[space]",
+        "description": "",
+        "origin": "{string|number} [space]"
+      }
+    ],
+    "title": "stringify",
+    "description": "JSON.stringify 的二次封装, 原本很多类型返回undefined等值, 都会返回各有意义的值, value 为字符串类型不会再加多一对双引号",
+    "returns": "{string}",
+    "lastUpdate": "2.2.1"
+  },
+  {
+    "params": [
+      {
+        "type": "{unknown}",
+        "name": "value",
+        "description": "",
+        "origin": "{unknown} value"
+      }
+    ],
+    "title": "toString",
+    "description": "任意类型均可转换为string",
+    "returns": "{string}",
+    "lastUpdate": "lastUpdate: 2.2.1"
+  },
+  {
+    "params": [
+      {
+        "type": "{unknown[]}",
+        "name": "values",
+        "description": "",
+        "origin": "{unknown[]} values"
+      }
+    ],
+    "title": "toStrings",
+    "description": "转换为字符串数组, 即数组的的项转换为数组",
+    "returns": "{string[]}"
+  },
+  {
+    "params": [
+      {
+        "type": "{string}",
+        "name": "str",
+        "description": "",
+        "origin": "{string} str"
+      },
+      {
+        "type": "{string",
+        "name": "}length",
+        "description": "",
+        "origin": "{string }length"
+      }
+    ],
+    "title": "truncateString",
+    "description": "指定长度处截断字符串",
+    "returns": "{string}"
+  },
+  {
+    "params": [
+      {
+        "type": "{Date}",
+        "name": "date",
+        "description": "",
+        "origin": "{Date} date"
+      }
+    ],
+    "title": "dayOfYear",
+    "description": "指定日期位于今年的第几天",
+    "returns": "{number}"
+  },
+  {
+    "params": [
+      {
+        "type": "{Date}",
+        "name": "target",
+        "description": "{Date} 目标时间",
+        "origin": "{Date} target {Date} 目标时间"
+      },
+      {
+        "type": "{'year'|'mouth'|'day'|'hour'|'minute'|'second'|'timeStamp'}",
+        "name": "[timeKey]",
+        "description": "  指定倒计时单位",
+        "origin": "{'year'|'mouth'|'day'|'hour'|'minute'|'second'|'timeStamp'} [timeKey]   指定倒计时单位"
+      },
+      {
+        "type": "{Date}",
+        "name": "[now=new",
+        "description": "Date()] 起始时间",
+        "origin": "{Date} [now=new Date()] 起始时间"
+      }
+    ],
+    "title": "deadline",
+    "description": "倒计时",
+    "returns": "{number}"
+  },
+  {
+    "params": [
+      {
+        "type": "{Date}",
+        "name": "startDate",
+        "description": "",
+        "origin": "{Date} startDate"
+      },
+      {
+        "type": "{Date}",
+        "name": "endDate",
+        "description": "",
+        "origin": "{Date} endDate"
+      }
+    ],
+    "title": "intervalDate",
+    "description": "两个日期间隔天数",
+    "returns": "{number}",
+    "version": "2.4.0"
+  },
+  {
+    "params": [
+      {
+        "type": "{Time}",
+        "name": "timeA",
+        "description": "比较时间",
+        "origin": "{Time} timeA 比较时间"
+      },
+      {
+        "type": "{Time}",
+        "name": "timeB",
+        "description": "被比较时间",
+        "origin": "{Time} timeB 被比较时间"
+      }
+    ],
+    "title": "isSameDate",
+    "description": "时间是否相同, 时间类型支持isDate的类型",
+    "returns": "{boolean}",
+    "version": "2.4.0"
+  },
+  {
+    "params": [
+      {
+        "type": "{LikeNumber}",
+        "name": "originOffset",
+        "description": "当前时间的时区(number:时间偏移量|string:时区)",
+        "origin": "{LikeNumber} originOffset 当前时间的时区(number:时间偏移量|string:时区)"
+      },
+      {
+        "type": "{LikeNumber}",
+        "name": "targetOffset",
+        "description": "目标时间的时区(number:时间偏移量|string:时区)",
+        "origin": "{LikeNumber} targetOffset 目标时间的时区(number:时间偏移量|string:时区)"
+      }
+    ],
+    "title": "timezone",
+    "description": "指定时区时间偏移量, 转换为目标时间",
+    "returns": "{(data:Date)=>Date} ",
+    "eg": "```js\r\n const oDate = new Date('2022-12-11T07:58:07.945Z')\r\n const tDate = new Date('2022-12-11T15:58:07.945Z')\r\n timezone('1', 9 * 3600000)(oDate) ==> tDate\r\n ```"
+  },
+  {
+    "params": [
+      {
+        "type": "{string}",
+        "name": "value",
+        "description": "可以转换成时间的字符串",
+        "origin": "{string} value 可以转换成时间的字符串"
+      }
+    ],
+    "title": "toDate",
+    "description": "字符串装换成Date对象",
+    "returns": "{Date}"
+  },
+  {
+    "params": [
+      {
+        "type": "{object[]}",
+        "name": "array",
+        "description": "",
+        "origin": "{object[]} array "
+      },
+      {
+        "type": "{string}",
+        "name": "id",
+        "description": "",
+        "origin": "{string} id"
+      },
+      {
+        "type": "{string}",
+        "name": "pid",
+        "description": "",
+        "origin": "{string} pid"
+      }
+    ],
+    "title": "arrayToTree",
+    "description": "数组转树",
+    "returns": "{object[]}",
+    "version": "2.4.1"
+  },
+  {
+    "params": [],
+    "title": "toFirstUpperCase",
+    "description": "首字母大写"
+  },
+  {
+    "params": [],
+    "title": "toFirstLowerCase",
+    "description": "首字母小写"
+  },
+  {
+    "params": [],
+    "title": "toUpperCase",
+    "description": "全部大写"
+  },
+  {
+    "params": [],
+    "title": "toLowerCase ",
+    "description": "全部小写"
+  },
+  {
+    "params": [
+      {
+        "type": "{number}",
+        "name": "val",
+        "description": "被比较值",
+        "origin": "{number} val 被比较值"
+      },
+      {
+        "type": "{number|string}",
+        "name": "valer",
+        "description": "比较值 / 可为正则 / [number, number] / 字符串(=number,<=number...)",
+        "origin": "{number|string} valer 比较值 / 可为正则 / [number, number] / 字符串(=number,<=number...)"
+      }
+    ],
+    "title": "compareNumber",
+    "returns": "{boolean}",
+    "lastUpdate": "@3.2.0"
+  },
+  {
+    "params": [
+      {
+        "type": "{Val}",
+        "name": "val",
+        "description": "被比较值",
+        "origin": "{Val} val 被比较值"
+      },
+      {
+        "type": "{Valer}",
+        "name": "valer",
+        "description": "比较值 / 可为正则",
+        "origin": "{Valer} valer 比较值 / 可为正则"
+      },
+      {
+        "type": "{string}",
+        "name": "[path]",
+        "description": "值的路径 用逗号隔开",
+        "origin": "{string} [path] 值的路径 用逗号隔开"
+      }
+    ],
+    "title": "compareValue",
+    "returns": "{boolean}"
+  },
+  {
+    "params": [
+      {
+        "type": "{unknown}",
+        "name": "value",
+        "description": "",
+        "origin": "{unknown} value"
+      }
+    ],
+    "title": "deepClone",
+    "description": "深拷贝",
+    "returns": "{Result}",
+    "version": "2.4.1"
+  },
+  {
+    "params": [
+      {
+        "type": "{unknown}",
+        "name": "compareValue",
+        "description": "",
+        "origin": "{unknown} compareValue"
+      },
+      {
+        "type": "{unknown}",
+        "name": "beCompareValue",
+        "description": "",
+        "origin": "{unknown} beCompareValue"
+      }
+    ],
+    "title": "equal",
+    "description": "比较是否值和类型是否相等, 不支持WeakMap, WeakSet",
+    "returns": "{boolean}",
+    "version": "2.4.4"
+  },
+  {
+    "params": [
+      {
+        "type": "{Function}",
+        "name": "func",
+        "description": "",
+        "origin": "{Function} func"
+      },
+      {
+        "type": "{unknown}",
+        "name": "errorReturnValue",
+        "description": "",
+        "origin": "{unknown} errorReturnValue"
+      }
+    ],
+    "title": "guard",
+    "returns": "{(...args:unknown[])=>unknown}"
+  },
+  {
+    "params": [
+      {
+        "type": "{Function}",
+        "name": "func",
+        "description": "",
+        "origin": "{Function} func"
+      },
+      {
+        "type": "{unknown}",
+        "name": "errorReturnValue",
+        "description": "",
+        "origin": "{unknown} errorReturnValue"
+      }
+    ],
+    "title": "asyncGuard",
+    "returns": "{(...args:unknown[])=>unknown}"
+  },
+  {
+    "params": [
+      {
+        "type": "{number|string|ObjectType}",
+        "name": "beComparedValue",
+        "description": "被比较的值(大)",
+        "origin": "{number|string|ObjectType} beComparedValue 被比较的值(大)"
+      },
+      {
+        "type": "{number|string|ObjectType}",
+        "name": "compareValue",
+        "description": "比较的值(小)",
+        "origin": "{number|string|ObjectType} compareValue 比较的值(小)"
+      }
+    ],
+    "title": "like",
+    "description": "beComparedValue 包含 comparedValue 的值, 模糊匹配, 忽略换行和空格",
+    "example": "like('1223', '123') => true",
+    "returns": "{boolean}"
+  },
+  {
+    "params": [
+      {
+        "type": "{string}",
+        "name": "name",
+        "description": "分组名称",
+        "origin": "{string} name 分组名称"
+      },
+      {
+        "type": "{unknown[]}",
+        "name": "...args",
+        "description": "需要分组打印的结果",
+        "origin": "{unknown[]} ...args 需要分组打印的结果"
+      }
+    ],
+    "title": "logGroup",
+    "description": "分组打印(简化console.groupCollapsed)",
+    "example": "logGroup(name[, ...args])"
+  },
+  {
+    "params": [
+      {
+        "type": "val",
+        "name": "待取值",
+        "description": "",
+        "origin": "val 待取值"
+      },
+      {
+        "type": "{string|number}",
+        "name": "path",
+        "description": "string 路径 (若路径有`.` 可用`\\\\.`代替)",
+        "origin": "{string|number} path string 路径 (若路径有`.` 可用`\\\\.`代替)"
+      }
+    ],
+    "title": "toPathValue",
+    "description": "通过path 来获取值",
+    "returns": "通过路径获取对应值"
+  }
+]
