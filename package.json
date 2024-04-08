@@ -27,6 +27,9 @@
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
     }
   },
+  "publishConfig": {
+    "git-checks": false
+  },
   "keywords": [
     "typescript",
     "javascript",
