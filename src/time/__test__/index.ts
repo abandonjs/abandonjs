@@ -1,3 +1,4 @@
+import './cron'
 import { test } from 'unit-testing-js'
 import './timezone'
 import './intervalDate'

@@ -5,7 +5,7 @@ src/*/__test__
 md.ts
 config/
 commitlint*
-*.config.js
 coverage/
 docs.js
 temp/
+babel.config.js

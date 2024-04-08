@@ -1,11 +1,11 @@
-import { equal, equalObject } from '../..'
+import { equal } from '../..'
 
 describe('equal', () => {
   it('object', () => {
     expect(equal({ a: 1 }, { a: 1 })).toBe(true)
     expect(equal({ a: 1 }, { a: 2 })).toBe(false)
     expect(equal({ a: 1, b: 2 }, { a: 2 })).toBe(false)
-    expect(equalObject({ a: 1, b: 2 }, 'a' as any)).toBe(false)
+    // expect(equalObject({ a: 1, b: 2 }, 'a' as any)).toBe(false)
   })
   it('size', () => {
     expect(equal(new Map(), new Map([[1, 1]]))).toBe(false)

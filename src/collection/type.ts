@@ -1,4 +1,4 @@
-import type { MapType, ObjectType, SetType } from "type"
+import type { MapType, ObjectType, SetType } from "0type"
 
 /**
  * @description 数据集合
