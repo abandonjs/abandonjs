@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 devDependencies:
+  0file-system:
+    specifier: ^0.2.1
+    version: 0.2.1
   0math:
     specifier: 0.1.2
     version: 0.1.2
@@ -100,6 +103,10 @@ devDependencies:
     version: 1.1.0
 
 packages:
+
+  /0file-system@0.2.1:
+    resolution: {integrity: sha512-aXTLZWwwT7l680c6NgAIyPf++Mlu3+4QvUDM5yBTMGG8jiF8Q4gi+htnFn2TOTdbggvoOe3ZBDGciPq35Q9ubQ==}
+    dev: true
 
   /0math@0.1.2:
     resolution: {integrity: sha512-CBsdjg0XMsOSgPfmlo24owJAzL8oa6hNYsxnIUALgV8Q5fEf8U9IMdBS91N7EAaH5m+MVnO7yMMJvoq0Bs0/1w==}

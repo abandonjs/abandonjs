@@ -3,14 +3,14 @@ import { type ObjectType } from '../type'
 import { stringify } from '../string'
 
 /**
- * @title like
+ * @title has
  * @description beComparedValue 包含 comparedValue 的值, 模糊匹配, 忽略换行和空格
  * @param {number|string|ObjectType} beComparedValue 被比较的值(大)
  * @param {number|string|ObjectType} compareValue 比较的值(小)
- * @example like('1223', '123') => true
+ * @example has('1223', '123') => true
  * @returns {boolean}
  */
-export function like(
+export function has(
   beComparedValue: number | string | ObjectType,
   compareValue: number | string | ObjectType
 ): boolean {

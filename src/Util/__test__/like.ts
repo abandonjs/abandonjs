@@ -2,7 +2,7 @@ import * as _ from '..'
 import { test } from 'unit-testing-js'
 
 test(
-  _.like,
+  _.has,
   {
     params: [{ a: 123 }, { a: '1 23  ' }],
     tobe: true

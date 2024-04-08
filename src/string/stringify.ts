@@ -1,4 +1,4 @@
-import { isArray, isEmpty, isObject, isString } from 'asura-eye'
+import { isArray, isEmpty, isObject, isString, isSymbol } from 'asura-eye'
 import { toString } from './toString'
 import { type ObjectType } from '../type'
 
@@ -22,6 +22,8 @@ export function stringify(
   if (isObject(value) || isArray(value)) {
     return JSON.stringify(value, replacer, space)
   }
+
+  if (isSymbol(value)) return value.toString()
 
   return JSON.stringify(toString(value), replacer, space).replace(
     /^(")+|(")+$/g,

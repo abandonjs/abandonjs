@@ -5,8 +5,8 @@ import { ObjectType } from '../type'
  * @description: 每个数组同样的下标组成一个新数组
  * @param {...T[]} ...arrays 
  * @returns {T[][]}
- * @version: 2.1.11
- * @eg: ```ts
+ * @version 2.1.11
+ * @eg ```ts
  zip(['fred', 'barney'], [30, 40], [true, false]) 
  => [['fred', 30, true], ['barney', 40, false]]
  ```
@@ -32,8 +32,8 @@ export function zip<T = any>(...arrays: any[]): T[][] {
  * @param {(string|number)[]} keys
  * @param {Value[]} values
  * @returns {ObjectType<Value>}
- * @version: 2.1.11
- * @eg: ```ts
+ * @version 2.1.11
+ * @eg ```ts
  zipObject(['a', 'b'], [1, 2]) 
  => { 'a': 1, 'b': 2 }
  ```

@@ -15,7 +15,7 @@ const list = [
   { id: '11', a: 11, b: 21, c: 'code_1232', d: 'cccc' }
 ]
 {
-  const { getPage, del, add } = pageQuery(
+  const { getPage } = pageQuery(
     [{ id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' }],
     {
       keepFields: ['a'],
@@ -31,14 +31,12 @@ const list = [
   // console.log(page)
   test('page3', {
     param: page.dataSource,
-    tobe: [
-      { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' }
-    ]
+    tobe: [{ id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' }]
   })
 }
 
 {
-  const { getPage, del, add } = pageQuery(
+  const { getPage } = pageQuery(
     [{ id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' }],
     {
       noRangeFields: ['a']
@@ -59,7 +57,7 @@ const list = [
   })
 }
 {
-  const { getPage, del, add } = pageQuery([
+  const { getPage } = pageQuery([
     { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' }
   ])
   const page = getPage({
@@ -75,7 +73,7 @@ const list = [
   })
 }
 {
-  const { getPage, del, add } = pageQuery([
+  const { getPage } = pageQuery([
     { id: '1', a: 1, b: 11, c: 'code_1222', d: 'cccc' },
     { id: '3', a: 3, b: 13, c: 'code_1224', d: 'cccc' },
     { id: '2', a: 2, b: 12, c: 'code_1223', d: 'cccc' }

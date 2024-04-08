@@ -1,3 +1,4 @@
+export * from './nth'
 export * from './includes'
 export * from './concat'
 export * from './at'

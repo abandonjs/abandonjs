@@ -2,14 +2,24 @@ import { padNumber } from '../../number'
 import { type, isNaN } from 'asura-eye'
 import { Time } from '../type'
 
+const getOffsetToTimezone = (date: Date, format = 'Z') => {
+  const offsetMinutes = date.getTimezoneOffset()
+  const offsetHours = offsetMinutes / 60
+  const sign = offsetHours > 0 ? '-' : '+'
+  const absOffsetHours = Math.abs(offsetHours)
+  const hours = Math.floor(absOffsetHours)
+  const minutes = Math.floor((absOffsetHours - hours) * 60)
+  if (format === 'ZZ') return sign + padNumber(hours, 2) + padNumber(minutes, 2)
+  return sign + padNumber(hours, 2) + ':' + padNumber(minutes, 2)
+}
+
 /**
  * @title format
  * @description 时间格式化
  * @param {number|string|Date} [time=new Date()]  时间
  * @param {string} [pattern='YYYY-MM-DD'] 格式 
  * @returns {string} 格式化后的数据 
- * @eg
-| 符号 | 结果| 描述 |
+ * @eg | 符号 | 结果| 描述 |
 |:----|:----|:----|
 | YYYY	| 2022	| 4位数字的年份 |
 | YY	|  1-14	| 2 位数字的年份 |
@@ -26,7 +36,7 @@ import { Time } from '../type'
 | A | AM PM	|
 | a | am pm |
 | Z |	+05:00 |	UTC 的偏移量，±HH:mm
-| ZZ |	+0500	| UTC 的偏移量，±HHmm
+| ZZ |+0500	| UTC 的偏移量，±HHmm
  */
 export function format(
   time: Time = new Date(),
@@ -48,13 +58,13 @@ export function format(
   const minutes: number = date.getMinutes()
   const seconds: number = date.getSeconds()
   const milliseconds = date.getMilliseconds()
-
-  const reg = /Y{4}|YY|MM|M|DD|D|d|HH|H|hh|h|mm|m|ss|s|SSS|SS|S|A|a|X|x|./gi
+  const reg =
+    /Y{4}|\[Y{4}\]|YY|\[YY\]|[DMHhmsZ]{1,2}|\[[DMHhmsZ]{1,2}\]|SSS|\[SSS\]|[AaXxd]|\[[AaXxd]\]|./gi
   const patterns: string[] = pattern.match(reg) || []
   const result = patterns
     .map((item) => {
-      if (!item.match(reg))
-        return item
+      if (!item.match(reg)) return item
+      if (item.match(/^\[.*?\]$/)) return item.replace(/\[|\]/gi, '')
 
       if (item === 'YYYY') return padNumber(year, 4)
       if (item === 'YY') return padNumber(year % 100, 2)
@@ -84,6 +94,9 @@ export function format(
       if (item === 'SSS') return padNumber(milliseconds, 3)
       if (item === 'SS') return padNumber(Math.floor(milliseconds / 10), 2)
       if (item === 'S') return padNumber(Math.floor(milliseconds / 100), 1)
+
+      if (item === 'ZZ') return getOffsetToTimezone(date, 'ZZ')
+      if (item === 'Z') return getOffsetToTimezone(date)
 
       return item
     })
