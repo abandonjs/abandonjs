@@ -1,4 +1,4 @@
-import type { Func } from '../type'
+import type { AnyFunction } from '../type'
 
 /**
  * @title debounce<Params>
@@ -11,13 +11,15 @@ import type { Func } from '../type'
  * @param {number} interval
  * @returns {Func<Params>}
  */
-export function debounce<Params extends unknown[] = any[]>(fn: Func<Params>, interval: number): Func<Params> {
+export function debounce(
+  fn: AnyFunction,
+  interval: number,
+) {
   let timer: any = 0
-  const debounced = (...args: Params) => {
+  return () => {
     clearTimeout(timer)
     timer = setTimeout((): void => {
-      fn.apply(this, args)
+      fn.apply(this, arguments)
     }, interval)
   }
-  return debounced
 }
