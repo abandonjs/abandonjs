@@ -1,6 +1,6 @@
 {
   "name": "abandonjs",
-  "version": "3.10.1",
+  "version": "3.12.0",
   "description": "js / ts 方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
@@ -41,7 +41,7 @@
   "bugs": "https://github.com/abandonjs/abandonjs/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:abandonjs/abandonjs.git"
+    "url": "git+ssh://git@github.com/abandonjs/abandonjs.git"
   },
   "author": "ruihuag",
   "license": "MIT",
