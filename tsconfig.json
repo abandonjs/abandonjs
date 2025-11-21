@@ -6,6 +6,7 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "declaration": true,
+    "noEmit": true,
     "declarationMap": true,
     "declarationDir": "lib",
     "noImplicitAny": false,
@@ -19,5 +20,5 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*.ts", "**/*.d.ts"],
-  "exclude": ["src/**/__test__/*.ts"]
+  "exclude": ["src/**/__test__/*.ts", "lib", "src/**/__test__"]
 }

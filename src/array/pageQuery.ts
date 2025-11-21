@@ -1,9 +1,9 @@
 import { isEffectArray, isEffectObject, isEmpty, isFunction, isNumber, isObject, isString, likeNumber } from "asura-eye"
-import { type ObjectType } from "../../type"
-import { stringify, vid } from "../../string"
+import { type ObjectType } from "../type"
+import { stringify, vid } from "../string"
 import type { Pagination, PageQueryProps, DataSourceConfig } from './type'
-import { descSort, ascSort } from '../sort'
-import { equal } from '../../util'
+import { descSort, ascSort } from './sort'
+import { equal } from '../util'
 
 /**
  * @title pageQuery

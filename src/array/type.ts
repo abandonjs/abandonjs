@@ -1,4 +1,4 @@
-import { type ObjectType } from "../../type"
+import { type ObjectType } from "../type"
 
 type SortBy = ObjectType<'desc' | 'asc' | unknown>
 

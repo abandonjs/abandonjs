@@ -1,6 +1,6 @@
 {
   "name": "abandonjs",
-  "version": "3.12.0",
+  "version": "3.12.1",
   "description": "js / ts 方法包",
   "module": "lib/index.esm.js",
   "main": "lib/index.js",
@@ -47,7 +47,7 @@
   "license": "MIT",
   "devDependencies": {
     "0file-system": "^0.2.1",
-    "0math": "0.1.2",
+    "0math": "0.1.6",
     "0type": "^0.2.0",
     "@babel/core": "^7.24.4",
     "@babel/plugin-transform-runtime": "^7.24.3",

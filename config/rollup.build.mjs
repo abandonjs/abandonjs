@@ -15,40 +15,44 @@ export default {
       file: 'lib/index.js',
       format: 'cjs',
       name,
-      sourcemap: true
+      sourcemap: true,
     },
     {
       file: 'lib/index.min.js',
       format: 'cjs',
       name,
       sourcemap: true,
-      plugins: [terser()]
+      plugins: [terser()],
     },
     // 输出 es 规范的代码
     {
       file: 'lib/index.esm.js',
       format: 'esm',
       name,
-      sourcemap: true
+      sourcemap: true,
     },
     {
       file: 'lib/index.esm.min.js',
       format: 'esm',
       name,
       sourcemap: true,
-      plugins: [terser()]
-    }
+      plugins: [terser()],
+    },
   ],
   plugins: [
     eslint({
       throwOnError: true,
       throwOnWarning: true,
       include: ['src/**/*.ts'],
-      exclude: ['node_modules/**', 'lib/**', '*.js', 'dist/**']
+      exclude: ['node_modules/**', 'lib/**', '*.js', 'dist/**'],
     }),
     json(),
-    ts(),
+    ts({
+      tsconfig: 'tsconfig.json',
+      // include: ['src/**/*.ts', 'src/**/*.d.ts'],
+      // exclude: ['**/__test__/**', '**/*.test.*'],
+    }),
     commonjs(),
-    resolve()
-  ]
+    resolve(),
+  ],
 }

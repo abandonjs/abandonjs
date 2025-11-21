@@ -1,6 +1,6 @@
-import { padNumber } from '../../number'
+import { padNumber } from '../number'
 import { type, isNaN } from 'asura-eye'
-import { Time } from '../type'
+import { Time } from './type'
 
 const getOffsetToTimezone = (date: Date, format = 'Z') => {
   const offsetMinutes = date.getTimezoneOffset()
